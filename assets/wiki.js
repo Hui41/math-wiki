@@ -603,3 +603,76 @@
 
 })();
 
+
+/* Mathematical footnote on the All Notes homepage */
+
+(() => {
+  function addMathFootnote() {
+    const isHome = /\/notes\/(?:index\.html)?$/.test(
+      window.location.pathname
+    );
+
+    if (!isHome) return;
+
+    const article = document.querySelector("main article");
+    if (!article) return;
+
+    // Prevent duplicate insertion.
+    if (document.getElementById("math-footnote")) return;
+
+    const note = document.createElement("div");
+    note.id = "math-footnote";
+
+    note.innerHTML = String.raw`
+      <div class="math-footnote-label">Mathematical note</div>
+      <p>
+        If \(ax^2-bx-c\leq 0\) with \(a,b,c>0\), then
+      </p>
+      \[
+        x\leq\max\left\{
+        \frac{2b}{a},\,2\sqrt{\frac ca}
+        \right\}.
+      \]
+    `;
+
+    article.appendChild(note);
+
+    const style = document.createElement("style");
+    style.textContent = `
+      #math-footnote {
+        margin-top: 65px;
+        padding: 20px 8px 6px;
+        border-top: 1px solid currentColor;
+        color: inherit;
+        font-size: 0.88em;
+        line-height: 1.7;
+      }
+
+      .math-footnote-label {
+        font-size: 0.82em;
+        font-style: italic;
+        opacity: 0.65;
+        margin-bottom: 12px;
+      }
+
+      #math-footnote p {
+        margin: 8px 0;
+      }
+
+      #math-footnote mjx-container[display="true"] {
+        margin: 12px 0;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Typeset the formula after MathJax is ready.
+    if (window.MathJax && MathJax.startup) {
+      MathJax.startup.promise.then(() => {
+        return MathJax.typesetPromise([note]);
+      }).catch(error => console.error(error));
+    }
+  }
+
+  window.addEventListener("load", addMathFootnote);
+})();
+
