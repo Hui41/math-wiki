@@ -1,47 +1,110 @@
-:root{font-family:Georgia,'Times New Roman',serif;color:#26334a;background:#fcfcfb}*{box-sizing:border-box}body{margin:0}header{height:62px;border-bottom:1px solid #e3e7eb;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 28px}.logo{color:#183c66;text-decoration:none;font-family:system-ui,sans-serif;font-size:18px;font-weight:650}.right{color:#8492a4;font:12px system-ui,sans-serif}.layout{display:grid;grid-template-columns:235px minmax(0,1fr);min-height:calc(100vh - 62px)}aside{padding:26px 20px;background:#f6f8fb;border-right:1px solid #e3e7eb;font:14px system-ui,sans-serif}aside>a{display:block;font-weight:600;color:#244a78;text-decoration:none;margin-bottom:22px}input{width:100%;padding:11px;border:1px solid #d6dde8;border-radius:7px;background:white}#results a{display:block;padding:9px 3px;color:#315c90;text-decoration:none}.aside-help{margin-top:30px;line-height:2;color:#77818f;font-size:12px}main{padding:34px clamp(24px,6vw,95px);width:100%;max-width:1180px}nav{height:24px;font:13px system-ui,sans-serif}a{color:#27639a}h1{font-size:32px;font-weight:500;letter-spacing:-.4px;margin:16px 0 28px}article{font-size:18px;line-height:1.85}article h1{font-size:28px}article h2{font-size:23px;margin-top:34px}article p{margin:16px 0}article a.missing{color:#ac5d5d;text-decoration:underline dotted}.theorem{border-left:3px solid #9db5ca;background:#f7f9fc;padding:12px 20px;margin:24px 0;border-radius:4px}.theorem.remark,.theorem.example{border-color:#b2b7ae;background:#fafaf7}.theorem.proof{border-color:#c8b3a4;background:#fcfaf7}.theorem p:first-child{margin-top:0}.theorem p:last-child{margin-bottom:0}mjx-container[display=true]{overflow-x:auto;overflow-y:hidden}.index-list{padding-left:23px}.index-list li{margin:12px 0}.index-list small{display:block;color:#8893a0;font:12px system-ui,sans-serif}footer{border-top:1px solid #e9ebee;padding:24px 0;margin-top:64px;font:12px system-ui,sans-serif;color:#9da6b0}code{font-size:.83em;background:#eef2f6;padding:2px 4px;border-radius:4px}@media(max-width:700px){.layout{grid-template-columns:1fr}aside{border:0;border-bottom:1px solid #e3e7eb;padding:12px 20px}aside .aside-help{display:none}main{padding:25px 20px}article{font-size:16px}header{padding:0 17px}}
+/* Personal Math Wiki — complete stylesheet */
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #26334a;
+  background: #fcfcfb;
+}
 
-.structure{padding:16px 20px;background:#f4f6f8;border:1px solid #dee5ed;border-radius:8px;margin:18px 0 30px}.structure strong{font:600 15px system-ui,sans-serif}.structure ul{margin:10px 0 0;padding-left:24px;list-style:disc}.structure li{margin:5px 0}.structure li.subsubpage{margin-left:24px;list-style:circle}.theorem>header{font-weight:700;margin-bottom:8px}.theorem>section>p:first-child{margin-top:0}.theorem>section>p:last-child{margin-bottom:0}.theorem.exercise{border-color:#a8a0ca}.references{font-size:.9em}.references li{margin:12px 0}
+* { box-sizing: border-box; }
+body { margin: 0; }
 
+/* Site header only: do not style headers inside theorems. */
+body > header {
+  height: 62px;
+  border-bottom: 1px solid #e3e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+.logo {
+  color: #183c66;
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 650;
+}
+.right { color: #8492a4; font: 12px system-ui, sans-serif; }
+.layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); min-height: calc(100vh - 62px); }
+aside { padding: 26px 20px; background: #f6f8fb; border-right: 1px solid #e3e7eb; font: 14px system-ui, sans-serif; }
+aside > a { display: block; font-weight: 600; color: #244a78; text-decoration: none; margin-bottom: 22px; }
+input { width: 100%; padding: 11px; border: 1px solid #d6dde8; border-radius: 7px; background: white; }
+#results a { display: block; padding: 9px 3px; color: #315c90; text-decoration: none; }
+.aside-help { margin-top: 30px; line-height: 2; color: #77818f; font-size: 12px; }
+main { padding: 34px clamp(24px, 6vw, 95px); width: 100%; max-width: 1180px; min-width: 0; }
+nav { height: 24px; font: 13px system-ui, sans-serif; }
+a { color: #27639a; }
+h1 { font-size: 32px; font-weight: 500; letter-spacing: -.4px; margin: 16px 0 28px; }
+article { font-size: 18px; line-height: 1.85; }
+article h1 { font-size: 28px; }
+article h2 { font-size: 23px; margin-top: 34px; }
+article p { margin: 16px 0; }
+article a.missing { color: #ac5d5d; text-decoration: underline dotted; }
 
-/* Compact theorem environments */
-
+/* Compact theorem environments. The generated HTML is:
+   <div class="theorem remark"><header>注</header><section><p>正文...</p></section></div>
+   Display the heading and first paragraph inline, without a header card. */
 .theorem {
-  padding: 12px 18px;
-  margin: 18px 0;
+  border-left: 3px solid #9db5ca;
+  background: #f7f9fc;
+  padding: 12px 20px;
+  margin: 20px 0;
   border-radius: 4px;
+  line-height: 1.8;
 }
+.theorem.remark,
+.theorem.example { border-color: #b2b7ae; background: #fafaf7; }
+.theorem.proof { border-color: #c8b3a4; background: #fcfaf7; }
+.theorem.exercise { border-color: #a8a0ca; }
 
-/* Make theorem titles inline */
-.theorem > header {
+article .theorem > header {
+  all: unset;
   display: inline;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: transparent;
   font: inherit;
-  font-weight: bold;
+  font-weight: 700;
+  color: #26334a;
 }
-
-/* Connect titles directly to content */
-.theorem > header::after {
-  content: ". ";
-}
-
-.theorem > section {
+article .theorem > header::after { content: "．"; }
+article .theorem > section { display: inline; }
+article .theorem > section > p:first-child {
   display: inline;
+  margin: 0;
+}
+article .theorem > section > p:not(:first-child) {
+  display: block;
+  margin: 12px 0;
+}
+article .theorem > section > p:last-child { margin-bottom: 0; }
+article .theorem > section > p:first-child:last-child { margin: 0; }
+
+/* Display MathJax equations on their own line, even inside inline section wrappers. */
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+article .theorem mjx-container[display="true"] {
+  display: block;
+  margin: 14px 0;
 }
 
-.theorem > section > p:first-child {
-  display: inline;
-}
+.index-list { padding-left: 23px; }
+.index-list li { margin: 12px 0; }
+.index-list small { display: block; color: #8893a0; font: 12px system-ui, sans-serif; }
+footer { border-top: 1px solid #e9ebee; padding: 24px 0; margin-top: 64px; font: 12px system-ui, sans-serif; color: #9da6b0; }
+code { font-size: .83em; background: #eef2f6; padding: 2px 4px; border-radius: 4px; }
 
-/* Keep spacing between subsequent paragraphs */
-.theorem > section > p:not(:first-child) {
-  margin-top: 10px;
-}
+/* Wiki structure navigation */
+.structure { padding: 16px 20px; background: #f4f6f8; border: 1px solid #dee5ed; border-radius: 8px; margin: 18px 0 30px; }
+.structure strong { font: 600 15px system-ui, sans-serif; }
+.structure ul { margin: 10px 0 0; padding-left: 24px; list-style: disc; }
+.structure li { margin: 5px 0; }
+.structure li.subsubpage { margin-left: 24px; list-style: circle; }
+.references { font-size: .9em; }
+.references li { margin: 12px 0; }
 
-/* Reduce unnecessary vertical space */
-.theorem > section > p:last-child {
-  margin-bottom: 0;
+@media (max-width: 700px) {
+  .layout { grid-template-columns: 1fr; }
+  aside { border: 0; border-bottom: 1px solid #e3e7eb; padding: 12px 20px; }
+  aside .aside-help { display: none; }
+  main { padding: 25px 20px; }
+  article { font-size: 16px; }
+  body > header { padding: 0 17px; }
 }
