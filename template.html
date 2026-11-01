@@ -1,122 +1,88 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="robots" content="noindex,nofollow">
-
   <title><!-- TITLE --> · Mathematical Notes</title>
-
   <link rel="stylesheet" href="/assets/wiki.css">
-
-  <!-- MathJax configuration -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [
-          ['\\(', '\\)'],
-          ['$', '$']
-        ],
-
-        displayMath: [
-          ['\\[', '\\]'],
-          ['$$', '$$']
-        ],
-
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
         processEscapes: true,
-
         tags: 'ams',
-
-        packages: {
-          '[+]': ['ams']
-        },
-
+        packages: {'[+]': ['ams']},
         macros: {
           dbb: '\\bar{\\partial}_b',
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-
           /* PAGE_MACROS */
         }
       },
-
       options: {
-        skipHtmlTags: [
-          'script',
-          'noscript',
-          'style',
-          'textarea',
-          'pre',
-          'code'
-        ]
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code']
       }
     };
   </script>
-
-  <script defer
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-
 <body>
-
-  <!-- Top navigation -->
   <header>
-    <a class="logo" href="/notes/">
-      ∑ &nbsp; Mathematical Notes
-    </a>
-
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
     <span class="right">Personal wiki</span>
   </header>
-
   <div class="layout">
-
-    <!-- Sidebar -->
     <aside>
-
       <a href="/notes/">Index</a>
-
-      <input
-        id="search"
-        type="search"
-        placeholder="Search notes…"
-      >
-
+      <input id="search" type="search" placeholder="Search notes…">
       <div id="results"></div>
-
-      <div class="aside-help">
-        Links: <code>[[Sas]]</code>
-        <br>
-        Inline formulas: <code>$...$</code>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
       </div>
-
+      <div class="aside-help">
+        Links: <code>[[Sas]]</code><br>
+        Formulas: <code>$...$</code>
+      </div>
     </aside>
-
-    <!-- Main content -->
     <main>
-
-      <nav>
-        <!-- NAV -->
-      </nav>
-
+      <nav><!-- NAV --></nav>
       <h1><!-- TITLE --></h1>
-
-      <article>
-        <!-- CONTENT -->
-      </article>
-
-      <footer>
-        Source-controlled math notes · GitHub Pages
-      </footer>
-
+      <article><!-- CONTENT --></article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>
-
   </div>
-
   <script src="/assets/wiki.js"></script>
-
+  <script>
+    // Automatic contents of THIS note; no Python/build.py changes needed.
+    (function () {
+      const article = document.querySelector('main article');
+      const toc = document.getElementById('page-toc');
+      const list = document.getElementById('page-toc-list');
+      if (!article || !toc || !list) return;
+      const headings = Array.from(article.querySelectorAll('h1, h2, h3'));
+      if (!headings.length) return;
+      const used = new Set(Array.from(document.querySelectorAll('[id]')).map(x => x.id));
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          let id = 'section-' + (index + 1);
+          while (used.has(id)) id += '-x';
+          heading.id = id;
+        }
+        used.add(heading.id);
+        const li = document.createElement('li');
+        li.className = 'toc-' + heading.tagName.toLowerCase();
+        const link = document.createElement('a');
+        link.href = '#' + encodeURIComponent(heading.id);
+        link.textContent = heading.textContent.trim();
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+      toc.hidden = false;
+    })();
+  </script>
 </body>
 </html>
