@@ -1,0 +1,133 @@
+
+
+
+
+\section{Laplace's equation}
+
+See \cite{axl2013,gtr2001}. 
+\begin{problem}
+	Consider
+	\begin{equation}
+		\Delta u=0 \text { in } \Omega \quad \text{or} \quad \Delta u=f \text { in } \Omega.
+	\end{equation}
+\end{problem}
+
+\begin{remark}
+	Usaully, we only consider $\Omega$ is a bound domain, and the Green formula is valid.
+\end{remark}
+
+
+
+\begin{example}
+	\begin{enumerate}
+		\item $u(x)=\left(x^{1}\right)^{2}-\left(x^{2}\right)^{2}$.
+		\item 1, $x_1,\cdots, x_n,x_{i}^{2}-x_{j}^{2},x_{i}x_{j}(i\neq j), (3x_{i}^{2}-x_{j}^2)x_{j}$. These are called harmnic polynomials.
+		\item Real and imaginary part of holomorphic functions.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[fundamental solution]
+	\begin{equation}
+		\Gamma(x, y)=\Gamma(|x-y|):= \begin{cases}\frac{1}{2 \pi} \log |x-y| & \text { for } d=2 \\ \frac{1}{d(2-d) \omega_{d}}|x-y|^{2-d} & \text { for } d>2\end{cases}
+	\end{equation}
+\end{definition}
+
+\begin{theorem}
+	Assume $u \in C^{2}(\bar{\Omega}), y\in \Omega$. Then 
+	\begin{equation}
+		u(y)=\int_{\partial \Omega}\left\{u(x) \frac{\partial \Gamma}{\partial v_{x}}(x, y)-\Gamma(x, y) \frac{\partial u}{\partial v}(x)\right\} d o(x)+\int_{\Omega} \Gamma(x, y) \Delta u(x) \mathrm{d} x
+	\end{equation}
+\end{theorem}
+
+\begin{theorem}
+	Assume $\varphi \in C^{0}(\partial B_R(0))$,
+	then  the following Dirichlet problem has unique solution $u\in C^{2} (B_R(0)) \cap C^{0}(\overline{B}_R(0))$.
+	$$
+	\begin{aligned}
+		&\Delta u(x)=0 \quad \text { for } x \in B_R(0),\\
+		&u(x)=\varphi(x) \quad \text { for } x \in \partial B_R(0) .
+	\end{aligned}
+	$$
+	The solution can be expressed by 
+	$$
+	u(y):= \begin{cases}\frac{R^{2}-|y|^{2}}{d \omega_{d} R} \int_{\partial B_R(0)} \frac{\varphi(x)}{|x-y|^{d}} d o(x) & \text { for } y \in B_R(0) \\ \varphi(y) & \text { for } y \in \partial B_R(0)\end{cases}.
+	$$
+\end{theorem}
+
+\begin{corollary}
+	Harmonic function is analytic.
+\end{corollary}
+
+\begin{theorem}[Mean value property]
+	For any harmonic function $u$, we have 
+	$$
+	u(x)=\bbint_{\partial B(x, r)} u d S=\bbint_{B(x, r)} u d y.
+	$$
+\end{theorem}
+
+\begin{theorem}[Weyl lemma]
+	If $u$ is locally integrable on $\Omega$, and 
+	$$
+	\int_{\Omega} u(x) \Delta \varphi(x) \mathrm{d} x=0, \quad \forall \varphi \in C_{0}^{\infty}(\Omega).
+	$$
+	Then $u$ is harmonic, and in particula, $u$ is smooth. 
+\end{theorem}
+
+\begin{theorem}[maximum principal]
+	If $\Delta u\geq 0$ and $u$ attains maximum at interior point, then $u$ is constant.
+\end{theorem}
+
+
+
+
+
+
+\begin{theorem}[Singularity removable \cite{jost2013}]
+	If $u$ is harmonic outside a point in domain with dimension $\geq 2$, and $u$ is bounded, then $u$ is harmonic. 
+\end{theorem}
+
+We know from this that Laplace's equation does not always  have a solution.
+
+\begin{theorem}[Liouville theorem]
+	Assume $u: \mathbb{R}^{d} \rightarrow \mathbb{R}$ is bounded harmonic function,
+	then $u$ is constant.
+\end{theorem}
+
+\begin{theorem}[\cite{jost2013}]
+	Let $u: \mathbb{R}^{d} \rightarrow \mathbb{R}$ be a nonnegative harmonic function,
+	then $u$ is constant. 
+\end{theorem}
+
+
+
+\begin{theorem}[Harnack inequality]
+	Assume $u$ is a nonnegative harmonic function on $\Omega $, then 
+	$$
+	\sup _{\Omega^{\prime}} u \leq c \inf _{\Omega^{\prime}} u .
+	$$
+	where $c=c\left(d, \Omega, \Omega^{\prime}\right),\Omega^{\prime} \subset \subset \Omega$.
+\end{theorem}
+
+\begin{theorem}[monotone convergence]
+	Suppose $\{u_n\}$ is a sequence of monotone increasing harmnic functions, and $\exists y\in \Omega$ s.t. $\{u_n(y)\}$ is bounded.
+	Then $\{u_n\}$ locally converges to a harmonic function.
+\end{theorem}
+
+From mean value property, we have 
+\begin{theorem}
+	If a sequence of harmonic functions uniformly converge to a function, then the limit function is also harmonic.
+\end{theorem}
+
+According to gradient estimates \cite{gtr2001}:
+\begin{theorem}[Normal family]
+	Any bouded harmonic functions sequence has subsequence uniformly converging in a compact domain.
+\end{theorem}
+
+\begin{theorem}
+	Suppose $u$ is harmonic on unit ball, denote 
+	$$
+	H(r)=\bbint_{\partial B(x, r)} u^2 d S, \quad  D(r)=r^2 \bbint_{B(x, r)} |\nabla u|^2 d y.
+	$$ 
+	Then $H(r),D(r), \frac{D(r)}{H(r)}$ are monotone increasing.
+\end{theorem}
+
