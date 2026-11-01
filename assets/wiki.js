@@ -625,8 +625,8 @@
 
     note.innerHTML = String.raw`
       <p>
-        If  \(a,b,c>0\), then \(ax^2-bx-c\leq 0 \Rightarrow x\leq\max\left\{
-        \frac{2b}{a},\,2\sqrt{\frac ca}\right\}.\)
+        If \(ax^2-bx-c\leq 0\) with \(a,b,c>0\), then
+        \(x\leq\max\left\{\frac{2b}{a}, 2\sqrt{\frac ca}\right\}\).
       </p>
     `;
 
