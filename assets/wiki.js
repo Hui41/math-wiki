@@ -1,187 +1,275 @@
+/* Personal Math Wiki:
+   Theme, table of contents, section numbering, search.
+*/
 
-/* Personal Math Wiki: search, light/dark mode, numbered headings and page TOC. */
 (() => {
   'use strict';
 
-  // The script is served from /assets/wiki.js (local) or
-  // /math-wiki/assets/wiki.js (GitHub Pages).
-  // Determine the base automatically.
-  const script = document.currentScript;
-  const scriptUrl = script
-    ? new URL(script.src, location.href)
-    : new URL('/assets/wiki.js', location.href);
+  // ========================================
+  // 1. Determine the GitHub Pages base path
+  // ========================================
 
-  const base = scriptUrl.pathname
-    .replace(/\/assets\/wiki\.js$/, '')
+  const script = document.currentScript;
+
+  const path = script
+    ? new URL(script.src, location.href).pathname
+    : '/assets/wiki.js';
+
+  const base = path
+    .replace(/\/assets\/wiki\.js(?:$|\?.*)/, '')
     .replace(/\/$/, '');
 
-  const siteUrl = (path) => `${base}${path}`;
+  const assetUrl = (part) => base + part;
 
-  // Theme selection is remembered per browser.
-  // Default follows the Mac/system theme.
-  const storageKey = 'math-wiki-theme';
-  const media = window.matchMedia('(prefers-color-scheme: dark)');
 
-  let selected = null;
+  // ========================================
+  // 2. Light / Dark theme
+  // ========================================
+
+  const key = 'math-wiki-theme';
+
+  const media = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+  );
+
+  let preference = null;
 
   try {
-    selected = localStorage.getItem(storageKey);
+    preference = localStorage.getItem(key);
   } catch (_) {}
 
-  const prefersDark = () => media.matches;
+  function theme() {
+    return preference === 'dark' ||
+           preference === 'light'
+      ? preference
+      : (media.matches ? 'dark' : 'light');
+  }
 
-  const activeTheme = () =>
-    selected === 'light' || selected === 'dark'
-      ? selected
-      : (prefersDark() ? 'dark' : 'light');
+  function setTheme() {
+    const current = theme();
 
-  const root = document.documentElement;
-
-  function applyTheme() {
-    const dark = activeTheme() === 'dark';
-
-    root.setAttribute(
+    document.documentElement.setAttribute(
       'data-theme',
-      dark ? 'dark' : 'light'
+      current
     );
 
-    const toggle = document.getElementById('theme-toggle');
+    const button = document.getElementById(
+      'theme-toggle'
+    );
 
-    if (toggle) {
-      toggle.textContent = dark ? '☀ Light' : '☾ Dark';
-      toggle.setAttribute(
+    if (button) {
+      button.textContent = current === 'dark'
+        ? '☀ Light'
+        : '☾ Dark';
+
+      button.setAttribute(
         'aria-label',
-        dark
+        current === 'dark'
           ? 'Switch to light mode'
           : 'Switch to dark mode'
+      );
+
+      button.setAttribute(
+        'aria-pressed',
+        String(current === 'dark')
       );
     }
   }
 
-  applyTheme();
+  setTheme();
+
+  const onSystemChange = () => {
+    if (
+      preference !== 'dark' &&
+      preference !== 'light'
+    ) {
+      setTheme();
+    }
+  };
 
   if (media.addEventListener) {
-    media.addEventListener('change', () => {
-      if (!selected) applyTheme();
-    });
+    media.addEventListener(
+      'change',
+      onSystemChange
+    );
+  } else if (media.addListener) {
+    media.addListener(onSystemChange);
   }
 
-  function ready() {
-    const header = document.querySelector('body > header');
 
-    if (header && !document.getElementById('theme-toggle')) {
-      const controls = document.createElement('div');
-      controls.className = 'header-actions';
+  // ========================================
+  // 3. Initialize the page
+  // ========================================
 
-      const right = header.querySelector('.right');
+  function initialize() {
 
-      if (right) controls.appendChild(right);
+    // --------------------------------------
+    // 3.1 Create or locate theme button
+    // --------------------------------------
 
-      const button = document.createElement('button');
+    let button = document.getElementById(
+      'theme-toggle'
+    );
 
-      button.id = 'theme-toggle';
-      button.type = 'button';
-      button.className = 'theme-toggle';
+    // Compatibility with older templates
+    if (!button) {
+      const header = document.querySelector(
+        'body > header'
+      );
 
+      if (header) {
+        button = document.createElement('button');
+
+        button.id = 'theme-toggle';
+        button.className = 'theme-toggle';
+        button.type = 'button';
+
+        header.appendChild(button);
+      }
+    }
+
+    if (button) {
       button.addEventListener('click', () => {
-        selected = activeTheme() === 'dark'
+
+        preference = theme() === 'dark'
           ? 'light'
           : 'dark';
 
         try {
-          localStorage.setItem(storageKey, selected);
+          localStorage.setItem(
+            key,
+            preference
+          );
         } catch (_) {}
 
-        applyTheme();
+        setTheme();
       });
-
-      controls.appendChild(button);
-      header.appendChild(controls);
-
-      applyTheme();
     }
 
-    // Search.
-    // No dependence on Python-generated hard-coded /notes/ paths.
-    const input = document.getElementById('search');
-    const results = document.getElementById('results');
+    setTheme();
+
+
+    // ======================================
+    // 4. Wiki search
+    // ======================================
+
+    const input = document.getElementById(
+      'search'
+    );
+
+    const results = document.getElementById(
+      'results'
+    );
 
     if (input && results) {
       let entries = [];
 
-      fetch(siteUrl('/search.json'))
-        .then(r => {
-          if (!r.ok) {
-            throw new Error('Search index unavailable');
+      fetch(assetUrl('/search.json'))
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              'Search index not found'
+            );
           }
-          return r.json();
+
+          return response.json();
         })
-        .then(data => {
-          entries = Array.isArray(data) ? data : [];
+        .then((data) => {
+          entries = Array.isArray(data)
+            ? data
+            : [];
         })
         .catch(() => {
           entries = [];
         });
 
       input.addEventListener('input', () => {
-        const q = input.value.trim().toLocaleLowerCase();
+
+        const needle = input.value
+          .trim()
+          .toLocaleLowerCase();
 
         results.replaceChildren();
 
-        if (!q) return;
+        if (!needle) return;
 
-        for (const page of entries
-          .filter(p =>
-            (`${p.title || ''} ${p.text || ''}`)
-              .toLocaleLowerCase()
-              .includes(q)
-          )
-          .slice(0, 12)) {
+        const matched = entries.filter(
+          (entry) => {
+            const text = String(
+              (entry.title || '') +
+              ' ' +
+              (entry.text || '')
+            ).toLocaleLowerCase();
 
-          const a = document.createElement('a');
+            return text.includes(needle);
+          }
+        ).slice(0, 12);
 
-          a.href =
-            siteUrl('/notes/') +
+        for (const page of matched) {
+          const anchor = document.createElement(
+            'a'
+          );
+
+          anchor.href =
+            assetUrl('/notes/') +
             encodeURIComponent(page.slug) +
             '/';
 
-          a.textContent = page.title || page.slug;
+          anchor.textContent =
+            page.title || page.slug;
 
-          results.appendChild(a);
+          results.appendChild(anchor);
         }
       });
     }
 
-    // The LaTeX renderer outputs sections
-    // as article h1, h2 and h3.
-    // Number them without altering the source .wiki files.
-    const article = document.querySelector('main article');
 
-    const toc = document.getElementById('page-toc');
-    const list = document.getElementById('page-toc-list');
+    // ======================================
+    // 5. Section numbering and page TOC
+    // ======================================
+
+    const article = document.querySelector(
+      'main article'
+    );
+
+    const toc = document.getElementById(
+      'page-toc'
+    );
+
+    const list = document.getElementById(
+      'page-toc-list'
+    );
 
     if (!article) return;
 
-    const headings = [
-      ...article.querySelectorAll('h1, h2, h3')
-    ];
+    const heads = Array.from(
+      article.querySelectorAll(
+        'h1, h2, h3'
+      )
+    );
 
-    if (!headings.length) {
+    if (list) {
+      list.replaceChildren();
+    }
+
+    if (!heads.length) {
       if (toc) toc.hidden = true;
       return;
     }
 
-    const counts = [0, 0, 0];
+    const counters = [0, 0, 0];
 
-    const usedIds = new Set(
-      [...document.querySelectorAll('[id]')]
-        .map(x => x.id)
+    const allIds = new Set(
+      Array.from(
+        document.querySelectorAll('[id]')
+      ).map(el => el.id)
     );
 
-    if (list) list.replaceChildren();
+    heads.forEach((heading, i) => {
 
-    for (const heading of headings) {
-      const level = Number(heading.tagName.slice(1));
+      const level = Number(
+        heading.tagName.substring(1)
+      );
 
       const original =
         heading.dataset.originalTitle ||
@@ -189,66 +277,92 @@
 
       heading.dataset.originalTitle = original;
 
-      // Skip numbering if heading already has
-      // a manually written numeric prefix.
-      const manuallyNumbered =
-        /^\d+(?:\.\d+)*[.)．]?\s+/.test(original);
+      // Update section counters
 
-      counts[level - 1]++;
-
-      for (let j = level; j < 3; j++) {
-        counts[j] = 0;
+      if (level === 1) {
+        counters[0]++;
+        counters[1] = 0;
+        counters[2] = 0;
+      } else if (level === 2) {
+        counters[1]++;
+        counters[2] = 0;
+      } else {
+        counters[2]++;
       }
 
-      const parts = counts
+      const number = counters
         .slice(0, level)
-        .filter(
-          (n, i) => i === level - 1 || n !== 0
+        .filter(n => n > 0)
+        .join('.');
+
+      // Avoid duplicate numbering
+
+      const alreadyNumbered =
+        /^\d+(?:\.\d+)*[.．)]?\s+/.test(
+          original
         );
 
-      const number = parts.join('.');
-
-      const title = manuallyNumbered
+      const displayed = alreadyNumbered
         ? original
         : `${number}. ${original}`;
 
-      heading.textContent = title;
+      heading.textContent = displayed;
+
+      // Give each heading a unique anchor
 
       if (!heading.id) {
-        let id =
-          `section-${level}-${number.replace(/\./g, '-')}`;
+        let id = `section-${i + 1}`;
 
-        while (usedIds.has(id)) {
+        while (allIds.has(id)) {
           id += '-x';
         }
 
         heading.id = id;
-        usedIds.add(id);
+        allIds.add(id);
       }
 
-      if (list) {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
+      // Generate sidebar TOC entry
 
-        a.className =
+      if (list) {
+        const li = document.createElement(
+          'li'
+        );
+
+        li.className =
           `toc-${heading.tagName.toLowerCase()}`;
 
-        a.href = '#' + encodeURIComponent(heading.id);
-        a.textContent = title;
+        const a = document.createElement(
+          'a'
+        );
+
+        a.href =
+          '#' + encodeURIComponent(heading.id);
+
+        a.textContent = displayed;
 
         li.appendChild(a);
         list.appendChild(li);
       }
-    }
+    });
 
     if (toc && list) {
-      toc.hidden = !list.children.length;
+      toc.hidden =
+        list.children.length === 0;
     }
   }
 
+
+  // ========================================
+  // 6. Start when the page is ready
+  // ========================================
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ready);
+    document.addEventListener(
+      'DOMContentLoaded',
+      initialize
+    );
   } else {
-    ready();
+    initialize();
   }
+
 })();
