@@ -1,0 +1,20 @@
+\title{Pseudo-Hermitian Geometry}
+\section{Preliminaries}
+Let $M^{2m+1}$ be a smooth orientable manifold. A *CR structure* is a complex rank-$m$ subbundle $H^{1,0}\subset TM\otimes\mathbb C$.
+
+\begin{align}
+H^{1,0}\cap H^{0,1}&=\{0\},\\
+[\Gamma(H^{1,0}),\Gamma(H^{1,0})]&\subseteq\Gamma(H^{1,0}).\label{eq:integrable}
+\end{align}
+
+\begin{remark}
+The horizontal distribution is $H=\Re(H^{1,0}\oplus H^{0,1})$.
+\end{remark}
+
+\section{Levi Form}
+The Levi form is defined by
+\begin{equation}
+L_\theta(X,Y)=d\theta(X,J_bY).\label{eq:levi}
+\end{equation}
+
+The Sasakian case is discussed in [[Sas]].

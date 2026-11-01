@@ -1,0 +1,18 @@
+\title{Sasakian Manifolds}
+\section{Introduction}
+A pseudo-Hermitian manifold $(M,H,J,\theta)$ is called *Sasakian* if its pseudo-Hermitian torsion vanishes.
+
+See also [[PseuHerm|Pseudo-Hermitian Geometry]].
+
+\begin{definition}
+A pseudo-Hermitian manifold is **Sasakian** if $\tau=0$.
+\end{definition}
+
+\begin{remark}
+The Reeb vector field $\xi$ satisfies
+\begin{equation}
+\theta(\xi)=1,\qquad \iota_\xi d\theta=0.\label{eq:reeb}
+\end{equation}
+\end{remark}
+
+By equation $\eqref{eq:reeb}$, the Reeb vector field is transverse to $H$.

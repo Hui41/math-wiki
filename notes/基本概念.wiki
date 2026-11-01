@@ -1,0 +1,41 @@
+\title{基本概念：调和映射}
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{练习}
+\def\rr{{\mathbb R}}
+\def\ss{{\mathbb S}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+设 $(M,g)$ 和 $(N,h)$ 为两个黎曼流形，$\phi\colon M\to N$ 为光滑映射，其能量为
+
+\begin{equation}\label{energy}
+E(\phi)=\int_M \frac12 |d\phi|^2\,dv_g.
+\end{equation}
+
+\begin{exercise}
+验证 $|d\phi|^2=\la \phi^*h,g\ra$。
+\end{exercise}
+
+\begin{remark}
+显然 $E(\phi)\geq 0$。
+\end{remark}
+
+\begin{proposition}[第一变分公式]
+\begin{equation}
+\left.\frac{dE(\phi_t)}{dt}\right|_{t=0}=-\int_M\la v,\tau(\phi)\ra\,dv_g.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+这里可以继续写你的完整证明。参见公式 \eqref{energy}。
+\end{proof}
+
+\begin{example}
+若 $N=\rr$，调和映射就是调和函数。
+\end{example}
+
+\section*{参考文献}
+\begin{references}
+\bibitem[EL83]{EL83}
+James Eells and Luc Lemaire. {\em Selected Topics in Harmonic Maps}, 1983.
+\end{references}
