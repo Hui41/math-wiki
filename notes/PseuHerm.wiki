@@ -165,8 +165,7 @@ torsion $\tau $ given by
 \begin{equation}
 \tau (X)=T_{\nabla }(\xi ,X)  \label{1.7}
 \end{equation}
-for any $X\in TM$. Then $(M,H^{1,0} ,\theta )$ is said to be \emph{Sasakian
-} if $\tau =0$.
+for any $X\in TM$. Then $(M,H^{1,0} ,\theta )$ is said to be \emph{Sasakian} if $\tau =0$.
 
 For the pseudo-Hermitian manifold $(M,H^{1,0} ,\theta )$, we choose a
 local orthonormal frame field $\{e_{A}\}_{A=0}^{2m}=\{\xi
