@@ -50,6 +50,7 @@ The fundamental solution in $\rr^d$ is given by
 	\begin{equation}
 		\Gamma(x, y)=\Gamma(|x-y|):= \begin{cases}\frac{1}{2 \pi} \log |x-y| & \text { for } d=2 \\ \frac{1}{d(2-d) \omega_{d}}|x-y|^{2-d} & \text { for } d>2\end{cases}
 	\end{equation}
+Here $\omega _d $ is the volume of unit ball in $\rr^d$.
 \end{definition}
 
 \begin{theorem}
