@@ -3,123 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta name="robots" content="noindex,nofollow">
-
+  <meta name="color-scheme" content="light dark">
   <title><!-- TITLE --> · Mathematical Notes</title>
-
-  <!-- Website favicon -->
-  <link rel="icon"
-        type="image/x-icon"
-        href="/assets/favicon.ico">
-
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/assets/wiki.css">
-
-  <!-- MathJax configuration -->
   <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
     window.MathJax = {
       tex: {
-        inlineMath: [
-          ['\\(', '\\)'],
-          ['$', '$']
-        ],
-
-        displayMath: [
-          ['\\[', '\\]'],
-          ['$$', '$$']
-        ],
-
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
         processEscapes: true,
         tags: 'ams',
-
-        packages: {
-          '[+]': ['ams']
-        },
-
+        packages: {'[+]': ['ams']},
         macros: {
           dbb: '\\bar{\\partial}_b',
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-
           /* PAGE_MACROS */
         }
       },
-
-      options: {
-        skipHtmlTags: [
-          'script',
-          'noscript',
-          'style',
-          'textarea',
-          'pre',
-          'code'
-        ]
-      }
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
-
-  <script defer
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-
 <body>
-
-  <!-- Top navigation -->
-  <header>
-    <a class="logo" href="/notes/">
-      ∑ &nbsp; Mathematical Notes
-    </a>
-
-    <span class="right">Personal wiki</span>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
   </header>
-
   <div class="layout">
-
-    <!-- Sidebar -->
-    <aside>
-
-      <a href="/notes/">Index</a>
-
-      <input
-        id="search"
-        type="search"
-        placeholder="Search notes…"
-      >
-
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
       <div id="results"></div>
-
-      <div class="aside-help">
-        Links: <code>[[Sas]]</code>
-        <br>
-        Inline formulas: <code>$...$</code>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
       </div>
-
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
     </aside>
-
-    <!-- Main content -->
     <main>
-
-      <nav>
-        <!-- NAV -->
-      </nav>
-
+      <nav><!-- NAV --></nav>
       <h1><!-- TITLE --></h1>
-
-      <article>
-        <!-- CONTENT -->
-      </article>
-
-      <footer>
-        Source-controlled math notes · GitHub Pages
-      </footer>
-
+      <article><!-- CONTENT --></article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>
-
   </div>
-
   <script src="/assets/wiki.js"></script>
-
 </body>
 </html>
