@@ -634,9 +634,11 @@
 
     const style = document.createElement("style");
     style.textContent = `
-  #math-footnote {
-  margin-top: 28px;
-  padding: 8px 0;
+  
+#math-footnote {
+  margin-top: auto;
+  margin-bottom: 12px;
+  padding: 0;
   border: none;
   color: inherit;
   opacity: 0.65;
@@ -646,8 +648,14 @@
   text-align: left;
   }
 
-  #math-footnote p {
+#math-footnote p {
   margin: 0;
+  }
+
+  main article:has(#math-footnote) {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 210px);
   }
     `;
     document.head.appendChild(style);
