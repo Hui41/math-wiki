@@ -624,12 +624,11 @@
     note.id = "math-footnote";
 
     note.innerHTML = String.raw`
-      <div class="math-footnote-label">Mathematical note</div>
       <p>
-        If \(ax^2-bx-c\leq 0\) with \(a,b,c>0\), then
+        If  \(a,b,c>0\), then
       </p>
       \[
-        x\leq\max\left\{
+       ax^2-bx-c\leq 0 \Rightarrow x\leq\max\left\{
         \frac{2b}{a},\,2\sqrt{\frac ca}
         \right\}.
       \]
