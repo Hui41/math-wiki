@@ -634,29 +634,21 @@
 
     const style = document.createElement("style");
     style.textContent = `
-      #math-footnote {
-        margin-top: 65px;
-        padding: 20px 8px 6px;
-        border-top: 1px solid currentColor;
-        color: inherit;
-        font-size: 0.88em;
-        line-height: 1.7;
-      }
+  #math-footnote {
+  margin-top: 28px;
+  padding: 8px 0;
+  border: none;
+  color: inherit;
+  opacity: 0.65;
+  font-size: 0.82em;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+  }
 
-      .math-footnote-label {
-        font-size: 0.82em;
-        font-style: italic;
-        opacity: 0.65;
-        margin-bottom: 12px;
-      }
-
-      #math-footnote p {
-        margin: 8px 0;
-      }
-
-      #math-footnote mjx-container[display="true"] {
-        margin: 12px 0;
-      }
+  #math-footnote p {
+  margin: 0;
+  }
     `;
     document.head.appendChild(style);
 
