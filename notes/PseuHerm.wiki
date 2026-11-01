@@ -27,7 +27,7 @@
 \newcommand{\ip}[2]{\langle #1,#2\rangle}
 
 
-\title{Pseudo-Hermitian Geometry2}
+\title{Pseudo-Hermitian Geometry}
 
 \section{Preliminaries}
 
