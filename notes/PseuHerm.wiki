@@ -374,11 +374,7 @@ R_{i\bar{j}}
 $$
 \end{definition}
 
-
-
-
-
-    Let us set
+Let us set
 $$
 R_{i\bar{j}k\bar{l}}
 =
