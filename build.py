@@ -22,43 +22,64 @@ LOOKUP={p['slug']:p for p in PAGES}
 def href(slug):
     return BASE+'/notes/'+quote(slug,safe='')+'/'
 
-def macros_from(src):
-    """Recognize simple parameter-free TeX macro declarations."""
-    macros={}
-    def balanced(s,i):
-        if i>=len(s) or s[i]!='{': return None
-        depth=0
-        for j in range(i,len(s)):
-            if s[j]=='{': depth+=1
-            elif s[j]=='}':
-                depth-=1
-                if depth==0:return s[i+1:j],j+1
+def balanced(s, i):
+    """Read a braced group, honoring nested braces."""
+    if i >= len(s) or s[i] != '{':
         return None
-    chunks=[]
+    depth = 0
+    for j in range(i, len(s)):
+        if s[j] == '{': depth += 1
+        elif s[j] == '}':
+            depth -= 1
+            if depth == 0: return s[i+1:j], j+1
+    return None
+
+
+def macros_from(src):
+    """Convert simple TeX declarations to MathJax macros (0-9 arguments)."""
+    macros = {}
+    chunks = []
     for line in src.splitlines():
-        z=re.match(r'^\s*\\def\\([A-Za-z]+)\s*',line)
+        z = re.match(r'^\s*\\DeclareMathOperator(\*?)\s*\{\\([A-Za-z]+)\}\s*', line)
         if z:
-            v=balanced(line,z.end())
-            if v and not line[v[1]:].strip():
-                val=v[0]
-                if val.startswith('{') and val.endswith('}') and balanced(val,0) and balanced(val,0)[1]==len(val):val=val[1:-1]
-                macros[z.group(1)]=val
+            value = balanced(line, z.end())
+            if value and not line[value[1]:].strip():
+                op = r'\operatorname' + ('*' if z.group(1) else '') + '{' + value[0] + '}'
+                macros[z.group(2)] = op
                 continue
-        z=re.match(r'^\s*\\newcommand\{\\([A-Za-z]+)\}\s*',line)
+        z = re.match(r'^\s*\\(newcommand|renewcommand|providecommand)\s*\{\\([A-Za-z]+)\}\s*(?:\[([0-9])\])?\s*', line)
         if z:
-            v=balanced(line,z.end())
-            if v and not line[v[1]:].strip():
-                macros[z.group(1)]=v[0]
+            value = balanced(line, z.end())
+            if value and not line[value[1]:].strip():
+                n = int(z.group(3) or 0)
+                macros[z.group(2)] = [value[0], n] if n else value[0]
+                continue
+        z = re.match(r'^\s*\\def\\([A-Za-z]+)((?:#\d)*)\s*', line)
+        if z:
+            value = balanced(line, z.end())
+            if value and not line[value[1]:].strip():
+                v = value[0]
+                outer = balanced(v, 0)
+                if outer and outer[1] == len(v): v = outer[0]
+                n = len(re.findall(r'#\d', z.group(2)))
+                macros[z.group(1)] = [v, n] if n else v
                 continue
         chunks.append(line)
-    return '\n'.join(chunks),macros
+    return '\n'.join(chunks), macros
 
 def compile_page(p):
     src=p['src']
     src,macros=macros_from(src)
     src=re.sub(r'^\\title\{[^\n]*\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\\theoremstyle\{[^\n]*\}\s*$', '',src,flags=re.M)
-    src=re.sub(r'^\\newtheorem\{([a-zA-Z]+)\}(?:\[[^\]]+\])?\{([^\n{}]+)\}\s*$', '',src,flags=re.M)
+    custom_names = dict(re.findall(r'^\\newtheorem\{([a-zA-Z]+)\}(?:\[[^\]]+\])?\{([^\n{}]+)\}\s*$', src, flags=re.M))
+    src = re.sub(r'^\\newtheorem\{[a-zA-Z]+\}(?:\[[^\]]+\])?\{[^\n{}]+\}\s*$', '', src, flags=re.M)
+    lang_marker = re.search(r'^\\wikilang\{(en|zh)\}\s*$', src, re.M)
+    if lang_marker:
+        lang = lang_marker.group(1)
+    else:
+        lang = 'zh' if re.search(r'[\u4e00-\u9fff]', re.sub(r'\\(?:title|newtheorem)\{[^\n]*', '', src)) else 'en'
+    src = re.sub(r'^\\wikilang\{(?:en|zh)\}\s*$', '', src, flags=re.M)
     for cmd,mark in [('section','#'),('subsection','##'),('subsubsection','###')]:
         src=re.sub(r'^\\'+cmd+r'\*?\{([^\n{}]+)\}\s*$',lambda m:mark+' '+m.group(1),src,flags=re.M)
     # Wiki's hierarchical navigation is not LaTeX math. Render a local page tree.
@@ -94,25 +115,38 @@ def compile_page(p):
     src=re.sub(r'\\begin\{('+mathenvs+r')\}.*?\\end\{\1\}',lambda m:'\n\n'+save(m.group(0))+'\n\n',src,flags=re.S)
     src=re.sub(r'(?<!\\)\$(?!\$)(.+?)(?<!\\)\$(?!\$)',lambda m:save('\\('+m.group(1)+'\\)'),src,flags=re.S)
     src=re.sub(r'\\\((.*?)\\\)',lambda m:save('\\('+m.group(1)+'\\)'),src,flags=re.S)
-    names={'definition':'定义','theorem':'定理','lemma':'引理','proposition':'命题','corollary':'推论','remark':'注','example':'例','exercise':'练习','proof':'证明'}
-    # Parse theorem blocks from inner to outer (basic support for nested examples).
+    names_en = {'definition':'Definition','theorem':'Theorem','lemma':'Lemma','proposition':'Proposition','corollary':'Corollary','remark':'Remark','example':'Example','exercise':'Exercise','proof':'Proof'}
+    names_zh = {'definition':'定义','theorem':'定理','lemma':'引理','proposition':'命题','corollary':'推论','remark':'注','example':'例','exercise':'练习','proof':'证明'}
+    names = names_en if lang == 'en' else names_zh
+    names = {**names, **custom_names}
+    # Ordinary prose and theorem headings are HTML-escaped; formulas were tokenized above.
     for name,label in names.items():
-        pattern=re.compile(r'\\begin\{'+name+r'\}(?:\[([^\]]*)\])?(.*?)\\end\{'+name+r'\}',re.S)
+        pattern=re.compile(r'\\begin\{'+re.escape(name)+r'\}(?:\[([^\]]*)\])?(.*?)\\end\{'+re.escape(name)+r'\}',re.S)
         def block(m):
-            title=label+(('（'+m.group(1)+'）') if m.group(1) else '')
-            return '\n\n<div class="theorem '+name+'">\n<header>'+html.escape(title)+'</header>\n<section>\n'+m.group(2).strip()+'\n</section>\n</div>\n\n'
+            title=label+((' ('+m.group(1)+')') if lang == 'en' else ('（'+m.group(1)+'）') if m.group(1) else '') if m.group(1) else label
+            cls = name if name in names_en else 'definition'
+            return '\n\n<div class="theorem '+cls+'">\n<header>'+html.escape(title)+'</header>\n<section>\n'+m.group(2).strip()+'\n</section>\n</div>\n\n'
         src=pattern.sub(block,src)
-    # Bibliography: preserve author-entered keys and make citations clickable.
+    # Bibliography: simple local references with clickable citation labels.
+    citation_labels = {}
     def refs(m):
         items=re.split(r'\\bibitem(?:\[([^\]]*)\])?\{([^{}]+)\}',m.group(1))
         out=[]
         for i in range(1,len(items),3):
             display,key,body=items[i:i+3]
+            citation_labels[key] = display or key
             body=re.sub(r'\{\\em\s+([^{}]+)\}',lambda x:'<em>'+html.escape(x.group(1))+'</em>',body)
-            out.append('<li id="ref-'+html.escape(key,quote=True)+'">'+(html.escape(display) if display else html.escape(key))+': '+body.strip()+'</li>')
+            out.append('<li id="ref-'+html.escape(key,quote=True)+'">['+html.escape(display or key)+'] '+body.strip()+'</li>')
         return '\n\n<ol class="references">'+''.join(out)+'</ol>\n\n'
     src=re.sub(r'\\begin\{references\}(.*?)\\end\{references\}',refs,src,flags=re.S)
-    src=re.sub(r'\\cite\{([^{}]+)\}',lambda m:'<a href="#ref-'+html.escape(m.group(1),quote=True)+'">['+html.escape(m.group(1))+']</a>',src)
+    def citation(m):
+        links=[]
+        for key in m.group(1).split(','):
+            key=key.strip()
+            label=citation_labels.get(key, key)
+            links.append('<a href="#ref-'+html.escape(key,quote=True)+'">'+html.escape(label)+'</a>')
+        return '['+', '.join(links)+']'
+    src=re.sub(r'\\cite\{([^{}]+)\}',citation,src)
     src=re.sub(r'\\(?:emph|textit)\{([^{}]*)\}',lambda m:'*'+m.group(1)+'*',src)
     src=re.sub(r'\\textbf\{([^{}]*)\}',lambda m:'**'+m.group(1)+'**',src)
     src=re.sub(r'^\s*\\begin\{enumerate\}\s*$', '',src,flags=re.M)
