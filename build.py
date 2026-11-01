@@ -152,9 +152,34 @@ def compile_page(p):
     src=re.sub(r'^\s*\\begin\{enumerate\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\s*\\end\{enumerate\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\s*\\item\s+', '1. ',src,flags=re.M)
-    # markdown-it treats HTML blocks verbatim; render body of theorem sections independently.
-    src=re.sub(r'(<section>\n)(.*?)(\n</section>)',lambda m:m.group(1)+MD.render(m.group(2))+m.group(3),src,flags=re.S)
-    rendered=MD.render(src)
+    
+# Render theorem content after removing LaTeX indentation.
+
+def render_theorem_section(m):
+    opening = m.group(1)
+    content = m.group(2)
+    closing = m.group(3)
+
+    # Remove LaTeX-style indentation.
+    lines = content.splitlines()
+    normalized = "\n".join(
+        line.lstrip(" \t") for line in lines
+    ).strip()
+
+    # Convert Markdown to HTML.
+    body_html = MD.render(normalized)
+
+    return opening + body_html + closing
+
+src = re.sub(
+    r'(<section>\n)(.*?)(\n</section>)',
+    render_theorem_section,
+    src,
+    flags=re.S
+)
+
+rendered = MD.render(src)
+
     for key,tex in tokens.items():rendered=rendered.replace(key,html.escape(tex,quote=False))
     return rendered,macros
 
