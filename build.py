@@ -135,7 +135,7 @@ metadata=[dict(title=p['title'],slug=p['slug'],text=re.sub(r'\\[a-zA-Z]+',' ',p[
 for p in PAGES:
     content,macros=compile_page(p)
     destination=OUT/'notes'/p['slug']; destination.mkdir(parents=True)
-    doc=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->',html.escape(p['title'])).replace('<!-- CONTENT -->',content).replace('<!-- NAV -->','<a href="/notes/">All notes</a>')
+    doc=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->',html.escape(p['title'])).replace('<!-- CONTENT -->',content).replace('<!-- NAV -->','<a href="'+BASE+'/notes/">All notes</a>')
     doc=doc.replace('/* PAGE_MACROS */',json.dumps(macros,ensure_ascii=False)[1:-1])
     (destination/'index.html').write_text(doc,encoding='utf-8')
 links=''.join('<li><a href="'+href(p['slug'])+'">'+html.escape(p['title'])+'</a></li>' for p in PAGES)
