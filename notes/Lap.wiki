@@ -44,7 +44,8 @@ See \cite{axl2013,gtr2001}.
 	\end{enumerate}
 \end{example}
 
-\begin{definition}[fundamental solution]
+\begin{definition}
+The fundamental solution in $\rr^d$ is given by
 	\begin{equation}
 		\Gamma(x, y)=\Gamma(|x-y|):= \begin{cases}\frac{1}{2 \pi} \log |x-y| & \text { for } d=2 \\ \frac{1}{d(2-d) \omega_{d}}|x-y|^{2-d} & \text { for } d>2\end{cases}
 	\end{equation}
