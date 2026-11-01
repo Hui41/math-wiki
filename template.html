@@ -1,62 +1,122 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta name="robots" content="noindex,nofollow">
+
   <title><!-- TITLE --> · Mathematical Notes</title>
+
   <link rel="stylesheet" href="/assets/wiki.css">
+
+  <!-- MathJax configuration -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [
-      ['\\(', '\\)'],
-      ['$', '$']
-    ],
-    displayMath: [
-      ['\\[', '\\]'],
-      ['$$', '$$']
-    ],
-    processEscapes: true,
-    tags: 'ams'
-        packages: {'[+]': ['ams']},
+          ['\\(', '\\)'],
+          ['$', '$']
+        ],
+
+        displayMath: [
+          ['\\[', '\\]'],
+          ['$$', '$$']
+        ],
+
+        processEscapes: true,
+
+        tags: 'ams',
+
+        packages: {
+          '[+]': ['ams']
+        },
+
         macros: {
           dbb: '\\bar{\\partial}_b',
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
+
           /* PAGE_MACROS */
         }
       },
+
       options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        skipHtmlTags: [
+          'script',
+          'noscript',
+          'style',
+          'textarea',
+          'pre',
+          'code'
+        ]
       }
     };
   </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </head>
+
 <body>
+
+  <!-- Top navigation -->
   <header>
-    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <a class="logo" href="/notes/">
+      ∑ &nbsp; Mathematical Notes
+    </a>
+
     <span class="right">Personal wiki</span>
   </header>
+
   <div class="layout">
+
+    <!-- Sidebar -->
     <aside>
+
       <a href="/notes/">Index</a>
-      <input id="search" type="search" placeholder="Search notes…">
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Search notes…"
+      >
+
       <div id="results"></div>
+
       <div class="aside-help">
-        Links: <code>[[Sas]]</code><br>
-        Formulas: <code>$...$</code>
+        Links: <code>[[Sas]]</code>
+        <br>
+        Inline formulas: <code>$...$</code>
       </div>
+
     </aside>
+
+    <!-- Main content -->
     <main>
-      <nav><!-- NAV --></nav>
+
+      <nav>
+        <!-- NAV -->
+      </nav>
+
       <h1><!-- TITLE --></h1>
-      <article><!-- CONTENT --></article>
-      <footer>Source-controlled math notes · GitHub Pages</footer>
+
+      <article>
+        <!-- CONTENT -->
+      </article>
+
+      <footer>
+        Source-controlled math notes · GitHub Pages
+      </footer>
+
     </main>
+
   </div>
+
   <script src="/assets/wiki.js"></script>
+
 </body>
 </html>
