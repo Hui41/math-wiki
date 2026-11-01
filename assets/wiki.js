@@ -432,3 +432,174 @@
     initialize();
   }
 })();
+
+
+/* ==========================================
+   Math Wiki: Index cleanup & Back to Top
+   ========================================== */
+
+(() => {
+  "use strict";
+
+  function initializeExtras() {
+
+    // 1. Remove subtitle on the All Notes page.
+
+    const isIndexPage =
+      /\/notes\/(?:index\.html)?$/.test(
+        window.location.pathname
+      );
+
+    if (isIndexPage) {
+      const article = document.querySelector(
+        "main article"
+      );
+
+      if (article) {
+        const first = article.firstElementChild;
+
+        if (
+          first &&
+          first.tagName === "P" &&
+          first.textContent.trim() ===
+            "Mathematical notes index"
+        ) {
+          first.remove();
+        }
+      }
+    }
+
+    // 2. Back-to-top button.
+
+    if (document.getElementById("back-to-top")) {
+      return;
+    }
+
+    const button = document.createElement("button");
+
+    button.id = "back-to-top";
+    button.type = "button";
+    button.textContent = "↑";
+    button.title = "Back to top";
+    button.setAttribute(
+      "aria-label",
+      "Back to top"
+    );
+
+    document.body.appendChild(button);
+
+    // 3. Button styles, including dark mode.
+
+    const style = document.createElement("style");
+
+    style.textContent = `
+      #back-to-top {
+        position: fixed;
+        right: 26px;
+        bottom: 26px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid #b5cbbb;
+        background: #e5f0e7;
+        color: #285a45;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        z-index: 9999;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(10px);
+
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          visibility 0.2s;
+      }
+
+      #back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      #back-to-top:hover {
+        background: #d4e8d9;
+      }
+
+      [data-theme="dark"] #back-to-top {
+        background: #294839;
+        color: #e4f3e8;
+        border-color: #577361;
+      }
+
+      [data-theme="dark"] #back-to-top:hover {
+        background: #385a46;
+      }
+
+      @media (max-width: 700px) {
+        #back-to-top {
+          right: 16px;
+          bottom: 18px;
+          width: 42px;
+          height: 42px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #back-to-top {
+          transition: none;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    // 4. Show only after scrolling down.
+
+    function updateVisibility() {
+      button.classList.toggle(
+        "visible",
+        window.scrollY > 300
+      );
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateVisibility,
+      { passive: true }
+    );
+
+    updateVisibility();
+
+    // 5. Smoothly return to the top.
+
+    button.addEventListener("click", () => {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion
+          ? "instant"
+          : "smooth"
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeExtras
+    );
+  } else {
+    initializeExtras();
+  }
+
+})();
+
