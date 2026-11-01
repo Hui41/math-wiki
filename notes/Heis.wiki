@@ -1,4 +1,29 @@
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Span}{span}
 
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
+\def\db{{\partial_b }}
+\def\dbb{{\bar{\partial}_b }}
+\def\lap{{\Delta}}
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\title{Heisenberg Groups}
 
 \section{Heisenberg Groups}
 
