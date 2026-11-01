@@ -152,34 +152,19 @@ def compile_page(p):
     src=re.sub(r'^\s*\\begin\{enumerate\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\s*\\end\{enumerate\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\s*\\item\s+', '1. ',src,flags=re.M)
-    
-# Render theorem content after removing LaTeX indentation.
+    # Theorem bodies are parsed separately because Markdown does not parse
+    # Markdown inside raw HTML blocks. LaTeX-style indentation (four spaces)
+    # would otherwise turn prose into code and prevent MathJax rendering.
+    def render_theorem_section(match):
+        lines = match.group(2).splitlines()
+        normalized = '\n'.join(line.lstrip(' \t') for line in lines).strip()
+        return match.group(1) + MD.render(normalized) + match.group(3)
 
-def render_theorem_section(m):
-    opening = m.group(1)
-    content = m.group(2)
-    closing = m.group(3)
-
-    # Remove LaTeX-style indentation.
-    lines = content.splitlines()
-    normalized = "\n".join(
-        line.lstrip(" \t") for line in lines
-    ).strip()
-
-    # Convert Markdown to HTML.
-    body_html = MD.render(normalized)
-
-    return opening + body_html + closing
-
-src = re.sub(
-    r'(<section>\n)(.*?)(\n</section>)',
-    render_theorem_section,
-    src,
-    flags=re.S
-)
-
-rendered = MD.render(src)
-
+    src = re.sub(
+        r'(<section>\n)(.*?)(\n</section>)',
+        render_theorem_section, src, flags=re.S
+    )
+    rendered=MD.render(src)
     for key,tex in tokens.items():rendered=rendered.replace(key,html.escape(tex,quote=False))
     return rendered,macros
 
