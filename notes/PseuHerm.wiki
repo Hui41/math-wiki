@@ -117,7 +117,7 @@ which is called the Webster metric. It is convenient to extend the complex
 structure $J_{b}$ on $H $ to an endomorphism $J$ of $T(M)$ by requiring
 that 
 \begin{equation}
-J\mid _{H }=J_{b}\text{ \ and \ }J\mid _{V_{\xi }}=0 , \label{1.6}
+J\mid _{H }=J_{b}\text{  and  }J\mid _{V_{\xi }}=0 , \label{1.6}
 \end{equation} 
 where $\mid $ denotes the fiberwise restriction.
  Define the $2$-form $\Omega$ by 
@@ -165,8 +165,7 @@ torsion $\tau $ given by
 \begin{equation}
 \tau (X)=T_{\nabla }(\xi ,X)  \label{1.7}
 \end{equation}
-for any $X\in TM$. Then $(M,H^{1,0} ,\theta )$ is said to be \emph{Sasakian
-} if $\tau =0$.
+for any $X\in TM$. Then $(M,H^{1,0} ,\theta )$ is said to be \emph{Sasakian} if $\tau =0$.
 
 For the pseudo-Hermitian manifold $(M,H^{1,0} ,\theta )$, we choose a
 local orthonormal frame field $\{e_{A}\}_{A=0}^{2m}=\{\xi
