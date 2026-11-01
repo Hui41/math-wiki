@@ -76,7 +76,7 @@ See \cite{axl2013,gtr2001}.
 \begin{theorem}[Mean value property]
 	For any harmonic function $u$, we have 
 	$$
-	u(x)=\bbint_{\partial B(x, r)} u d S=\bbint_{B(x, r)} u d y.
+	u(x)=\fint_{\partial B(x, r)} u d S=\fint_{B(x, r)} u d y.
 	$$
 \end{theorem}
 
@@ -141,7 +141,7 @@ According to gradient estimates \cite{gtr2001}:
 \begin{theorem}
 	Suppose $u$ is harmonic on unit ball, denote 
 	$$
-	H(r)=\bbint_{\partial B(x, r)} u^2 d S, \quad  D(r)=r^2 \bbint_{B(x, r)} |\nabla u|^2 d y.
+	H(r)=\fint_{\partial B(x, r)} u^2 d S, \quad  D(r)=r^2 \fint_{B(x, r)} |\nabla u|^2 d y.
 	$$ 
 	Then $H(r),D(r), \frac{D(r)}{H(r)}$ are monotone increasing.
 \end{theorem}
