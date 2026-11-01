@@ -53,7 +53,7 @@ See \cite{axl2013,gtr2001}.
 \begin{theorem}
 	Assume $u \in C^{2}(\bar{\Omega}), y\in \Omega$. Then 
 	\begin{equation}
-		u(y)=\int_{\partial \Omega}\left\{u(x) \frac{\partial \Gamma}{\partial v_{x}}(x, y)-\Gamma(x, y) \frac{\partial u}{\partial v}(x)\right\} d o(x)+\int_{\Omega} \Gamma(x, y) \Delta u(x) \mathrm{d} x
+		u(y)=\int_{\partial \Omega}\left\{u(x) \frac{\partial \Gamma}{\partial v_{x}}(x, y)-\Gamma(x, y) \frac{\partial u}{\partial v}(x)\right\} d S(x)+\int_{\Omega} \Gamma(x, y) \Delta u(x) \mathrm{d} x
 	\end{equation}
 \end{theorem}
 
