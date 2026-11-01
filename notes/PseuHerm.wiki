@@ -117,7 +117,7 @@ which is called the Webster metric. It is convenient to extend the complex
 structure $J_{b}$ on $H $ to an endomorphism $J$ of $T(M)$ by requiring
 that 
 \begin{equation}
-J\mid _{H }=J_{b}\text{  and  }J\mid _{V_{\xi }}=0 , \label{1.6}
+J\mid _{H }=J_{b}\text{ ~ and ~ }J\mid _{V_{\xi }}=0 , \label{1.6}
 \end{equation} 
 where $\mid $ denotes the fiberwise restriction.
  Define the $2$-form $\Omega$ by 
@@ -240,8 +240,7 @@ Let $(M^{2m+1},H,J,\theta )$ be a pseudo-Hermitian manifold with
 Tanaka-Webster connection $\nabla $. Let $X$ and $\rho $ be a vector field
 and $1$-form on $M$ respectively. Then 
 \begin{equation*}
-\di X=\sum_{A=0}^{2m}g_{\theta }(\nabla _{e_{A}}X,e_{A})\text{ \ and \ 
-}\delta \rho =-\sum_{A=0}^{2m}(\nabla _{e_{A}}\rho )(e_{A}),
+\di X=\sum_{A=0}^{2m}g_{\theta }(\nabla _{e_{A}}X,e_{A})\text{ ~ and ~}\delta \rho =-\sum_{A=0}^{2m}(\nabla _{e_{A}}\rho )(e_{A}),
 \end{equation*} 
 where $\{e_{A}\}_{A=0}^{2m}=\{\xi ,e_{1},...,e_{2m}\}$ is an orthonormal
 frame field on $M$. Here $\di(\cdot )$ and $\delta (\cdot )$ denote
