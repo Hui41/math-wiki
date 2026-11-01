@@ -9,9 +9,16 @@
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']],
-        tags: 'ams',
+        inlineMath: [
+      ['\\(', '\\)'],
+      ['$', '$']
+    ],
+    displayMath: [
+      ['\\[', '\\]'],
+      ['$$', '$$']
+    ],
+    processEscapes: true,
+    tags: 'ams'
         packages: {'[+]': ['ams']},
         macros: {
           dbb: '\\bar{\\partial}_b',
