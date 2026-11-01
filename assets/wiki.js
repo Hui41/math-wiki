@@ -604,10 +604,11 @@
 })();
 
 
-/* Mathematical footnote on the All Notes homepage */
+
+/* Replace homepage footer with a mathematical note */
 
 (() => {
-  function addMathFootnote() {
+  function updateHomeFooter() {
     const isHome = /\/notes\/(?:index\.html)?$/.test(
       window.location.pathname
     );
@@ -617,57 +618,47 @@
     const article = document.querySelector("main article");
     if (!article) return;
 
-    // Prevent duplicate insertion.
-    if (document.getElementById("math-footnote")) return;
+    // Remove any previously inserted footnote.
+    document.getElementById("math-footnote")?.remove();
 
-    const note = document.createElement("div");
-    note.id = "math-footnote";
+    // Find the existing footer.
+    const footer = article.querySelector("footer") ||
+                   document.querySelector("main footer");
 
-    note.innerHTML = String.raw`
-      <p>
+    if (!footer) return;
+
+    footer.innerHTML = String.raw`
+      <span>
         If \(ax^2-bx-c\leq 0\) with \(a,b,c>0\), then
-        \(x\leq\max\left\{\frac{2b}{a}, 2\sqrt{\frac ca}\right\}\).
-      </p>
+        \(x\leq\max\left\{
+          \frac{2b}{a},
+          2\sqrt{\frac ca}
+        \right\}\).
+      </span>
     `;
 
-    article.appendChild(note);
+    footer.style.fontStyle = "italic";
+    footer.style.fontSize = "0.85em";
 
-    const style = document.createElement("style");
-    style.textContent = `
-  
-#math-footnote {
-  margin-top: auto;
-  margin-bottom: 12px;
-  padding: 0;
-  border: none;
-  color: inherit;
-  opacity: 0.65;
-  font-size: 0.82em;
-  font-style: italic;
-  line-height: 1.5;
-  text-align: left;
-  }
-
-#math-footnote p {
-  margin: 0;
-  }
-
-  main article:has(#math-footnote) {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 210px);
-  }
-    `;
-    document.head.appendChild(style);
-
-    // Typeset the formula after MathJax is ready.
-    if (window.MathJax && MathJax.startup) {
+    // Render the mathematics with MathJax.
+    if (window.MathJax?.typesetPromise) {
+      MathJax.typesetPromise([footer]);
+    } else if (window.MathJax?.startup?.promise) {
       MathJax.startup.promise.then(() => {
-        return MathJax.typesetPromise([note]);
-      }).catch(error => console.error(error));
+        MathJax.typesetPromise([footer]);
+      });
     }
   }
 
-  window.addEventListener("load", addMathFootnote);
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      updateHomeFooter
+    );
+  } else {
+    updateHomeFooter();
+  }
 })();
+
+
 
