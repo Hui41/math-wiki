@@ -1,8 +1,23 @@
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Span}{span}\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
 
 
 
-
-\section{Laplace's equation}
+\title{Laplace's equation}
 
 See \cite{axl2013,gtr2001}. 
 \begin{problem}
