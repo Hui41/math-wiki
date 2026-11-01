@@ -23,6 +23,7 @@
 \title{Laplace's equation}
 
 See \cite{axl2013,gtr2001}. 
+
 \textbf{Problem}.
 	Consider
 	\begin{equation}
@@ -69,7 +70,7 @@ The fundamental solution in $\rr^d$ is given by
 	$$
 	The solution can be expressed by 
 	$$
-	u(y):= \begin{cases}\frac{R^{2}-|y|^{2}}{d \omega_{d} R} \int_{\partial B_R(0)} \frac{\varphi(x)}{|x-y|^{d}} d o(x) & \text { for } y \in B_R(0) \\ \varphi(y) & \text { for } y \in \partial B_R(0)\end{cases}.
+	u(y):= \begin{cases}\frac{R^{2}-|y|^{2}}{d \omega_{d} R} \int_{\partial B_R(0)} \frac{\varphi(x)}{|x-y|^{d}} d S(x) & \text { for } y \in B_R(0) \\ \varphi(y) & \text { for } y \in \partial B_R(0)\end{cases}.
 	$$
 \end{theorem}
 
