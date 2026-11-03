@@ -14,6 +14,7 @@
 \def\rr{{\mathbb R}}
 \def\cc{{\mathbb C}}
 \def\qq{{\mathbb Q}}
+\def\ss{{\mathbb S}}
 \def\oo{{\infty}}
 \def\db{{\partial_b }}
 \def\dbb{{\bar{\partial}_b }}
@@ -28,11 +29,8 @@
 
 \title{Liouville 定理}
 
+\section{Liouville定理}
 
-
-
-
-\section{Liouville定理}\label{secLiou}
 经典的Liouville 定理指出, 复平面 $\cc$  上的有界整函数必为常数, 该结论对定义在整个 $\rr^n$ 上的有界调和函数同样成立.  调和映射作为调和函数的推广, 其中一个典型的研究课题就是有关Liouville定理的推广. 本文的核心内容之一是研究一些广义调和映射理论中的Liouville定理. 为此, 本节将回顾该领域的一些经典结论. 尽管下文对各种 Liouville 型定理进行了分类, 但它们之间是存在联系的,
 并非彼此孤立.
 
