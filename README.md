@@ -36,22 +36,8 @@ python -m http.server 8000 --directory _site
 
 Open `http://localhost:8000/notes/`. Run the server rather than opening `index.html` as a `file://` URL.
 
-## Publish as a GitHub Pages project site
-
-This version supports a project URL `/math-wiki/` and preserves the existing personal homepage.
-
-1. Create a new public GitHub repository `Hui41/math-wiki` (do not put this in `Hui41.github.io`).
-2. Upload the **contents** of this folder to the root of that repository, including `.github/workflows/pages.yml` (hidden directories may require Git CLI or VS Code rather than Finder drag-and-drop). Do not upload `.venv` or `_site`.
-3. In GitHub repository Settings > Pages, set Build and deployment > Source to **GitHub Actions**.
-4. The bundled workflow runs `WIKI_BASE_PATH=/math-wiki python build.py`, then publishes `_site`.
-5. After a successful workflow, open `https://hui41.github.io/math-wiki/notes/`.
-
-If you name the repository something other than `math-wiki`, change `WIKI_BASE_PATH` in `.github/workflows/pages.yml` to match its URL path exactly.
 
 ## Local preview
 
 Run `python build.py` with no `WIKI_BASE_PATH` to keep links rooted at `/` for `http://localhost:8000/notes/`. The GitHub workflow applies the prefix only during deployment.
 
-## Privacy
-
-`noindex` and not linking from your public homepage do **not** make public Pages private. GitHub repository source and public pages are accessible to anyone who knows or discovers the link. For research results that require confidentiality, use private storage with an authentication-gated viewing service.
