@@ -1,0 +1,242 @@
+
+
+
+
+
+\title{Liouville 定理}
+
+
+
+
+
+\section{Liouville定理}\label{secLiou}
+经典的Liouville 定理指出, 复平面 $\cc$  上的有界整函数必为常数, 该结论对定义在整个 $\rr^n$ 上的有界调和函数同样成立.  调和映射作为调和函数的推广, 其中一个典型的研究课题就是有关Liouville定理的推广. 本文的核心内容之一是研究一些广义调和映射理论中的Liouville定理. 为此, 本节将回顾该领域的一些经典结论. 尽管下文对各种 Liouville 型定理进行了分类, 但它们之间是存在联系的,
+并非彼此孤立.
+
+\subsubsection{整体像有界条件}
+首先, 若调和映射 $f$ 的整体像 $f(M)$ 在 $N$ 中足够“小” (比如 $f(M)$ 有界),  往往可导出 Liouville 型定理, 经典的 Liouville 定理即属此情形.
+通过梯度估计得方法,  Yau 将Liouville定理推广到了Ricci曲率非负的完备黎曼流形上.
+
+\begin{theorem}[\cite{Yau1975Harmonic}]
+    设 $(M,g)$ 为完备黎曼流形且 Ricci曲率非负. 则 $M$ 上  任意有界调和函数 $f$  必为常数.
+\end{theorem}
+\begin{remark}
+    事实上, Yau 证明了更强版本的Liouville型定理, 其只要求 $f$  有下界即可.
+\end{remark}
+之后, Cheng 又将Liouville定理推广到了调和映射的情形: 
+    \begin{theorem}[\cite{Cheng1980Liouville}]\label{ChengLiou}
+        设 $(M,g)$ 为完备黎曼流形且 Ricci曲率非负,  $N$ 为单连通黎曼流形且截面曲率非正. 若 调和映射 $f:M \to N$ 的像落在一个紧集内, 则 $f$ 为常数.    
+    \end{theorem}
+此外, Hildebrandt,   Jost 和 Widman 证明了如下结论:
+\begin{theorem}[\cite{HJW1981harm}]
+    假设 $(M,g)$ 为一个简单黎曼流形或紧的黎曼流形,  $(N,h)$ 为一个黎曼流形, 且其截面曲率有上界 $k \geq 0$.  设$u:M \to N$ 为调和映射.  若 $u(M) \subset B_r(q) \subset N$, 则 $u$ 为常数. 
+    这里的 $B_r(q)$ 为 $N$ 中以 $q$ 为中心的测地球, 满足: 半径 $r < \frac{\pi }{2 \sqrt{k}}$, 且不含 $q$ 的割点. (通常称这样的 测地球 为\textbf{正则测地球}.)        
+\end{theorem}    
+
+\subsubsection{能量有限条件} 
+除了假定图像足够``小''之外, 另一个常见条件是假定映射的能量有限.  这方面的一个经典工作出自 Schoen 与 Yau:  
+\begin{theorem}[\cite{SYau1976ener}]
+    设 $(M,g) $ 为一个完备黎曼流形且Ricci曲率非负, $(N,h)$  为一个截面曲率非正的黎曼流形. 若 $f:M \to N$ 为调和映射且能量有限, 则 $f$ 为常数.   
+\end{theorem}
+
+此外, 在文献 \cite{Garber1979sigma} 中, Garber, Ruijsenaars, Seiler 和 Burns 证明了: 若 $u:\rr^m \to \ss^m , m \geq 3$ 为调和映射且能量有限, 则 $u$ 为常数. 之后,  Hildebrandt 和 Sealey 做了一些推广: 
+Hildebrandt证明了起始流形的度量可以替换为整体共形平坦的度量; 
+Sealey 证明了起始流形可以替换为Poincar\'e球 $\mathbb{D}^m$; 参见 \cite{Hil1982liou},\cite{sealeysome1982}.
+
+\subsubsection{Jin型定理}
+前面所述两种条件是推出Liouville型定理最常见的假设.
+1992年, Jin (金志人) 提出了另一种推导 Liouville 定理的条件, 即要求调和映射在无穷远处具有特定的渐近性质. 具体来说, 考虑调和映射 $u:(\rr^m,fg_{can}) \to (N,h)$, 其中 $f$ 为正的光滑函数, $g_{can}$ 为经典的欧式度量. 假设 $\lim_{|x| \to \infty } u(x)=q_0 \in N$,  则当共形因子 $f$ 满足一定条件时, $u$ 必为常数. 特别地, 当 $f \equiv 1$ 时,  有
+\begin{theorem}[\cite{jin_liouville_nodate}]
+    设 $u:(\rr^m,g_{can}) \to (N,h)$ 为一个调和映射, 且 
+    $$\lim_{|x| \to \infty } u(x)=q_0 \in N.$$
+     那么 $u$ 为常数. 
+\end{theorem}      
+其证明方法主要分两步: 第一步, 导出$u$在测地球上的能量增长下界; 第二步, 利用渐进条件得到能量的增长上界. 结合二者得到矛盾, 除非 $u$ 为常数. 
+
+
+\subsubsection{$L^p$-Liouville型定理}    
+Yau 还证明了下述的 $L^p$ 调和函数的Liouville定理. 注意, 这个定理对流形没有加任何曲率条件.
+\begin{theorem}[\cite{Yau1976func}]
+    设 $(M,g)$ 为完备黎曼流形, $f$ 为 $M$ 上的 $L^p$ 调和函数, 其中 $1<p< \infty $. 则 $f$ 为常数.      
+\end{theorem}
+\begin{remark}
+    此后, Karp 给出了量化版的$L^p$ 调和函数的Liouville定理(参见 \cite{Karp1982subh}). 他证明了若 $f$ 为非常值的调和函数, 那么 
+$$ \limsup _{r \to \infty } \frac{1}{r^2 \ln r} \int_{B_{r}(x_0)}|f|^p dv_g =+\infty $$
+且 
+$$ \liminf _{r \to \infty } \frac{1}{r^2} \int_{B_{r}(x_0)}|f|^p dv_g =+\infty ,$$
+其中 $1<p<\infty $, $x_0 \in M$ 为任意一点.  
+\end{remark}
+
+关于指数范围在 $0<p \leq 1$ 的情况, 可参见  \cite{LiSch1984Lp}, \cite{Yau1976func} 以及 \cite{GW1974int}.
+
+另外, Yau的结果可以推广为增长性条件下的Liouville型结果(参见 \cite[第4章]{PRS2008van}).
+
+
+\subsubsection{Kendall型定理}
+
+Kendall 利用概率论和位势论的方法证明了如下的Liouville型定理: 
+\begin{theorem}[ {\cite[定理6]{Ken1988mart}}]
+    假设黎曼流形 $(M,g)$ 上不存在非常值的有界调和函数. 设 $u:M \to B_r(q)\subset  N$ 为调和映射, 其中 $B_r(q)$ 为一个正则测地球. 则 $u$ 为常数.   
+\end{theorem}
+\begin{remark}
+    文献 \cite{Ken1988mart} 中的证明似有错误, 正确的证明可参见 \cite{Huiken1991cor}.
+\end{remark}
+Kendall 这一结果的特色在于, 将一个非线性问题(调和映射方程组)转化为了一个线性问题(调和函数方程).
+
+\subsubsection{Gordon型定理}
+称 $D \subset N$ 为 \textbf{凸支撑}的 (convex supporting), 若 $D$ 的每个紧子集都有一个开邻域, 其上存在一个严格凸函数. Gordon 证明了如下结果: 
+\begin{theorem}[\cite{Gord1972conv}]
+    假设 $(M,g)$ 为紧的黎曼流形, $(N,h)$ 为一个黎曼流形. 设 $u:M \to N$ 为一个调和映射. 若 $u(M)$ 包含于 $N$ 的 某个凸支撑子集中, 则 $u$ 必为常数.     
+\end{theorem} 
+
+注意, 上述定理与 $M$ 的黎曼度量无关. 比如, 令 $M=\ss^{m}$, $m \geq 2$, $N$ 为一个 Cartan-Hadamard 流形(其上的距离函数的平方就是一个整体定义的严格凸函数).  已知当 $\ss^m$ 配备标准的球面度量时, 由其Ricci曲率的正定性以及$N$的截面曲率非正性可得: 任一调和映射 $u:\ss^m \to N$ 必为常数. 而 Gordon 的定理告诉我们, 在 $\ss^m$ 上配以任意黎曼度量, 结论依然成立.      
+
+
+\subsubsection{Liouville定理失效的情形}
+根据著名的单值化定理, 任何一个单连通的 黎曼面必定双全纯同胚于以下三者之一: 复平面 $\cc$、 单位开圆盘 $\mathbb{D}$ 或 球面 $\mathbb{S}^2$.   其中 复平面 $\cc$ 上有经典的Liouville 定理, 而 $\mathbb{S}^2$ 是紧的, 所以只剩 $\mathbb{D}$ 的情况值得进一步分析. 若在 $\mathbb{D}$ 上配以 Poincaré 度量 $g$, 则它为常曲率等于 $-1$ 的空间形式. 此时, 根据Dirichlet能量的共形不变性可知, $(\mathbb{D},g)$ 上存在许多非常值的有界调和函数. 实际上, 利用Poisson积分表示法, 可以证明高维($n \geq 2$)的常曲率等于 $-1$ 的空间形式上也有大量非平凡有界调和函数. (类似的结果在更广的非紧型的黎曼对称空间上成立, 参见 \cite{Anderson1983Diri}, \cite{Koranyi1972sym}. 注意到, 非紧型的黎曼对称空间的曲率是非正的, 参见 \cite[定理8.6]{KN1969found}.)
+
+根据上面简单的观察, 人们很早就猜测: 当完备黎曼流形 $M$  的截面曲率 $K_M$ 满足 $-a^2 \leq K_M \leq -b^2<0$ (其中 $a,b$ 为两个非零常数) 时, 则 $M$ 上存在许多非平凡的有界调和函数. 这个猜测直到1983年才被 Anderson 和 Sullivan 各自独立地证明. 简单来说, 他们的方法是 把 $M$ 在无穷远处并上一个``边界'' $S^{n-1}(\infty )$, 得到一个紧的拓扑空间$\overline{M}=M \cup S^{n-1}(\infty )$, 然后在 $\overline{M}$ 上研究Dirichlet 问题的可解性(参见 \cite[第二章]{QiuSun2004weifen}).  他们证明了
+\begin{theorem}[\cite{Anderson1983Diri}, \cite{Sull1983diri}]
+    设 \( M^n \) 是完备单连通的黎曼流形，其截面曲率 \( K_M \) 满足 \( -a^2 \leqslant K_M \leqslant -b^2 \)(其中 \( a^2 \geqslant b^2 \) 是任意正常数). 则对任意 \( \rho \in C^0(S^{n-1}(\infty)) \), 拉普拉斯算子 \( \Delta \) 的渐近Dirichlet问题存在唯一解.
+\end{theorem}
+于是, 在这样的流形上存在大量非平凡的有界调和函数.
+
+对于流形 $M$ 存在极点 $o$ (即 $o$ 处的指数映射为微分同胚)的情况, 在一些曲率条件下,   Greene, Wu 和 Choi 做了一些相关研究 (参见 \cite{Choi1984asy}, \cite{Wu1983func}, \cite{GW1979func}). 特别地,  Greene 和 Wu 提出了如下猜想:
+
+\textbf{猜想:} 参见 {\cite[第3页]{GW1979func}}
+    设 \( M \) 是单连通的完备黎曼流形, 其截面曲率非正,  \( o  \) 是 $M$ 上 一个极点. 若存在紧子集 \( S \subseteq M \)、常数 \( c > 0 \), 以及 \( r = \mathrm{dist}(o, \cdot) \), 使得对所有 \( x \in M \setminus S \) 满足
+\[
+K_M(x) \leq -c \, r(x)^{-2}.
+\]
+则 \( M \) 上存在非平凡的有界调和函数.
+
+
+
+% \section*{参考文献}
+% \begin{references}
+%     \bibitem{Yau1975Harmonic}
+% Shing~Tung Yau.
+% \newblock Harmonic functions on complete {R}iemannian manifolds.
+% \newblock {\em Comm. Pure Appl. Math.}, 28:201--228, 1975.
+
+% \bibitem{Cheng1980Liouville}
+% Shiu~Yuen Cheng.
+% \newblock Liouville theorem for harmonic maps.
+% \newblock In {\em Geometry of the {L}aplace operator ({P}roc. {S}ympos. {P}ure {M}ath., {U}niv. {H}awaii, {H}onolulu, {H}awaii, 1979)}, volume XXXVI of {\em Proc. Sympos. Pure Math.}, pages 147--151. Amer. Math. Soc., Providence, RI, 1980.
+
+% \bibitem{HJW1981harm}
+% S.~Hildebrandt, J.~Jost, and K.-O. Widman.
+% \newblock Harmonic mappings and minimal submanifolds.
+% \newblock {\em Invent. Math.}, 62(2):269--298, 1980/81.
+
+
+% \bibitem{SYau1976ener}
+% Richard Schoen and Shing~Tung Yau.
+% \newblock Harmonic maps and the topology of stable hypersurfaces and manifolds with non-negative {R}icci curvature.
+% \newblock {\em Comment. Math. Helv.}, 51(3):333--341, 1976.
+
+% \bibitem{Garber1979sigma}
+% Wolf-Dieter Garber, Simon N.~M. Ruijsenaars, Erhard Seiler, and Dan Burns.
+% \newblock On finite action solutions of the nonlinear {$\sigma $}-model.
+% \newblock {\em Ann. Physics}, 119(2):305--325, 1979.
+
+% \bibitem{sealeysome1982}
+% H.~C.~J. Sealey.
+% \newblock Some conditions ensuring the vanishing of harmonic differential forms with applications to harmonic maps and {Y}ang-{M}ills theory.
+% \newblock {\em Math. Proc. Cambridge Philos. Soc.}, 91(3):441--452, 1982.
+
+% \bibitem{Hil1982liou}
+% Stefan Hildebrandt.
+% \newblock Liouville theorems for harmonic mappings, and an approach to {B}ernstein theorems.
+% \newblock In {\em Seminar on {D}ifferential {G}eometry}, volume No. 102 of {\em Ann. of Math. Stud.}, pages 107--131. Princeton Univ. Press, Princeton, NJ, 1982.
+
+% \bibitem{jin_liouville_nodate}
+% Zhi~Ren Jin.
+% \newblock Liouville theorems for harmonic maps.
+
+
+% \newblock {\em Invent. Math.}, 108(1):1--10, 1992.
+
+% \bibitem{Yau1976func}
+% Shing~Tung Yau.
+% \newblock Some function-theoretic properties of complete {R}iemannian manifold and their applications to geometry.
+% \newblock {\em Indiana Univ. Math. J.}, 25(7):659--670, 1976.
+
+% \bibitem{Karp1982subh}
+% Leon Karp.
+% \newblock Subharmonic functions on real and complex manifolds.
+% \newblock {\em Math. Z.}, 179(4):535--554, 1982.
+
+% \bibitem{LiSch1984Lp}
+% Peter Li and Richard Schoen.
+% \newblock {$L^p$} and mean value properties of subharmonic functions on {R}iemannian manifolds.
+% \newblock {\em Acta Math.}, 153(3-4):279--301, 1984.
+
+% \bibitem{GW1974int}
+% R.~E. Greene and H.~Wu.
+% \newblock Integrals of subharmonic functions on manifolds of nonnegative curvature.
+% \newblock {\em Invent. Math.}, 27:265--298, 1974.
+
+% \bibitem{Ken1988mart}
+% Wilfrid~S. Kendall.
+% \newblock Martingales on manifolds and harmonic maps.
+% \newblock In {\em Geometry of random motion ({I}thaca, {N}.{Y}., 1987)}, volume~73 of {\em Contemp. Math.}, pages 121--157. Amer. Math. Soc., Providence, RI, 1988.
+
+% \bibitem{Huiken1991cor}
+% Hui Huang and Wilfrid~S. Kendall.
+% \newblock Correction note to: ``{M}artingales on manifolds and harmonic maps'' [in {\it {g}eometry of random motion ({i}thaca, {ny}, 1987)}, 121--157, {C}ontemp.\ {M}ath., 73, {A}mer.\ {M}ath.\ {S}oc., {P}rovidence, {RI}, 1988; {MR}0954635 (90d:58163)] by {K}endall.
+% \newblock {\em Stochastics Stochastics Rep.}, 37(4):253--257, 1991.
+
+% \bibitem{Gord1972conv}
+% William~B. Gordon.
+% \newblock Convex functions and harmonic maps.
+% \newblock {\em Proc. Amer. Math. Soc.}, 33:433--437, 1972.
+
+
+% \bibitem{KN1969found}
+% Shoshichi Kobayashi and Katsumi Nomizu.
+% \newblock {\em Foundations of differential geometry. {V}ol. {II}}, volume No. 15 of {\em Interscience Tracts in Pure and Applied Mathematics}.
+% \newblock Interscience Publishers John Wiley \& Sons, Inc., New York-London-Sydney, 1969.
+
+% \bibitem{Koranyi1972sym}
+% Adam Koranyi.
+% \newblock Harmonic functions on symmetric spaces.
+% \newblock In {\em Symmetric spaces ({S}hort {C}ourses, {W}ashington {U}niv., {S}t. {L}ouis, {M}o., 1969--1970)}, volume Vol. 8 of {\em Pure Appl. Math.}, pages 379--412. Dekker, New York, 1972.
+
+% \bibitem{Anderson1983Diri}
+% Michael~T. Anderson.
+% \newblock The {D}irichlet problem at infinity for manifolds of negative curvature.
+% \newblock {\em J. Differential Geom.}, 18(4):701--721, 1983.
+
+% \bibitem{QiuSun2004weifen}
+% 丘成桐~{,} 孙理察.
+% \newblock {\em 微分几何讲义}.
+% \newblock 高等教育出版社, 2004.
+
+% \bibitem{Sull1983diri}
+% Dennis Sullivan.
+% \newblock The {D}irichlet problem at infinity for a negatively curved manifold.
+% \newblock {\em J. Differential Geom.}, 18(4):723--732, 1983.
+
+% \bibitem{Choi1984asy}
+% Hyeong~In Choi.
+% \newblock Asymptotic {D}irichlet problems for harmonic functions on {R}iemannian manifolds.
+% \newblock {\em Trans. Amer. Math. Soc.}, 281(2):691--716, 1984.
+
+% \bibitem{Wu1983func}
+% Hung~Hsi Wu.
+% \newblock Function theory on noncompact {K}\"ahler manifolds.
+% \newblock In {\em Complex differential geometry}, volume~3 of {\em DMV Sem.}, pages 67--155. Birkh\"auser, Basel, 1983.
+
+% \bibitem{GW1979func}
+% R.~E. Greene and H.~Wu.
+% \newblock {\em Function theory on manifolds which possess a pole}, volume 699 of {\em Lecture Notes in Mathematics}.
+% \newblock Springer, Berlin, 1979.
+
+% \bibitem{PRS2008van}
+% Stefano Pigola, Marco Rigoli, and Alberto~G. Setti.
+% \newblock {\em Vanishing and finiteness results in geometric analysis}, volume 266 of {\em Progress in Mathematics}.
+% \newblock Birkh\"auser Verlag, Basel, 2008.
+% \newblock A generalization of the Bochner technique.
+% \end{references}
+
