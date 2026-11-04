@@ -28,7 +28,7 @@
 
 The classical Liouville theorem states that every bounded entire function on the complex plane $\cc$ is constant. The same conclusion also holds for bounded harmonic functions defined on the whole Euclidean space $\rr^n$. As harmonic maps generalize harmonic functions, one of the classical topics in the theory of harmonic maps is the extension of Liouville-type theorems to this setting. One of the main themes of this paper is to establish Liouville-type theorems for several classes of generalized harmonic maps. For this purpose, in this section we recall some classical results in this direction. Although the Liouville-type theorems below are classified according to different assumptions, these results are related to one another and should not be regarded as completely independent.
 
- \section{Boundedness of the image}
+\section{Boundedness of the image}
 
 We first consider the case where the global image $f(M)$ of a harmonic map $f$ is sufficiently ``small'' in $N$, for instance, when $f(M)$ is bounded. Such an assumption often leads to a Liouville-type theorem, and the classical Liouville theorem itself belongs to this category. By means of gradient estimates, Yau extended the classical Liouville theorem to complete Riemannian manifolds with nonnegative Ricci curvature.
 
@@ -61,7 +61,7 @@ r<\frac{\pi}{2\sqrt{k}}
 and containing no cut point of $q$. Such a geodesic ball is usually called a \textbf{regular geodesic ball}.
 \end{theorem}
 
- \section{Finite energy}
+\section{Finite energy}
 
 Besides assuming that the image of the map is sufficiently ``small'', another common assumption is the finiteness of the energy. A classical result in this direction is due to Schoen and Yau.
 
@@ -103,7 +103,7 @@ Then $u$ is constant.
 
 The proof consists essentially of two steps. First, one derives a lower bound for the growth of the energy of $u$ on geodesic balls. Second, the asymptotic condition is used to obtain an upper bound for the energy growth. Combining these two estimates yields a contradiction unless $u$ is constant.
 
- \section{$L^p$-Liouville-type theorems}
+\section{$L^p$-Liouville-type theorems}
 
 Yau also proved the following Liouville theorem for $L^p$ harmonic functions. Notice that no curvature assumption on the manifold is required.
 
@@ -139,7 +139,7 @@ For the range $0<p\leq 1$, we refer to \cite{LiSch1984Lp,Yau1976func,GW1974int}.
 
 Yau's result can also be generalized to Liouville-type theorems under suitable growth conditions; see \cite[Chapter~4]{PRS2008van}.
 
- \section{Kendall-type theorems}
+\section{Kendall-type theorems}
 
 Using methods from probability theory and potential theory, Kendall proved the following Liouville-type theorem.
 
@@ -157,7 +157,7 @@ The proof given in \cite{Ken1988mart} appears to contain an error. A correct pro
 
 A distinctive feature of Kendall's result is that it reduces a nonlinear problem, namely the harmonic map system, to a linear one involving harmonic functions.
 
- \section{Gordon-type theorems}
+\section{Gordon-type theorems}
 
 A subset $D\subset N$ is called \textbf{convex supporting} if every compact subset of $D$ has an open neighborhood on which there exists a strictly convex function. Gordon proved the following result.
 
@@ -175,7 +175,7 @@ u:\ss^m\to N
 \]
 is constant. Gordon's theorem shows that the same conclusion remains valid when $\ss^m$ is equipped with an arbitrary Riemannian metric.
 
- \section{Cases where Liouville theorems fail}
+\section{Cases where Liouville theorems fail}
 
 By the classical uniformization theorem, every simply connected Riemann surface is biholomorphic to exactly one of the following three spaces:
 \[
@@ -227,6 +227,8 @@ K_M(x)\leq -c\,r(x)^{-2}
 \]
 for all $x\in M\setminus S$. Then $M$ admits a nontrivial bounded harmonic function.
 
+
+\section{References}
 \begin{references}{GRSB79}
 
 \bibitem[And83]{Anderson1983Diri}
