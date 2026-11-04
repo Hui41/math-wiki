@@ -278,7 +278,7 @@ S.~Hildebrandt, J.~Jost, and K.-O. Widman.
 
 \bibitem[HK91]{Huiken1991cor}
 Hui Huang and Wilfrid~S. Kendall.
-\newblock Correction note to: ``{M}artingales on manifolds and harmonic maps'' [in {\it {g}eometry of random motion ({i}thaca, {ny}, 1987)}, 121--157, {C}ontemp.\ {M}ath., 73, {A}mer.\ {M}ath.\ {S}oc., {P}rovidence, {RI}, 1988; {MR}0954635 (90d:58163)] by {K}endall.
+\newblock Correction note to: ``{M}artingales on manifolds and harmonic maps'' [in {\it {g}eometry of random motion ({i}thaca, {ny}, 1987)}, 121--157, {C}ontemp. {M}ath., 73, {A}mer. {M}ath. {S}oc., {P}rovidence, {RI}, 1988; {MR}0954635 (90d:58163)] by {K}endall.
 \newblock {\em Stochastics Stochastics Rep.}, 37(4):253--257, 1991.
 
 \bibitem[Jin92]{jin_liouville_nodate}
@@ -298,8 +298,8 @@ Wilfrid~S. Kendall.
 
 \bibitem[KN69]{KN1969found}
 Shoshichi Kobayashi and Katsumi Nomizu.
-\newblock {\em Foundations of differential geometry. {V}ol. {II}}, volume No. 15 of {\em Interscience Tracts in Pure and Applied Mathematics}.
-\newblock Interscience Publishers John Wiley \& Sons, Inc., New York-London-Sydney, 1969.
+\newblock {\em Foundations of differential geometry. Vol. II}, volume No. 15 of {\em Interscience Tracts in Pure and Applied Mathematics}.
+\newblock Interscience Publishers John Wiley & Sons, Inc., New York-London-Sydney, 1969.
 
 \bibitem[Kor72]{Koranyi1972sym}
 Adam Koranyi.
