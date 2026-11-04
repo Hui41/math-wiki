@@ -1,0 +1,294 @@
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Span}{span}\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{Id}
+
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
+\def\db{{\partial_b }}
+\def\dbb{{\bar{\partial}_b }}
+\def\lap{{\Delta}}
+
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dd}{\,\mathrm{d}v_g}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+	
+
+\title{H-type foliation}
+
+\section{Hladky connection}\label{seHla}
+\begin{definition}
+	The Hladky connection $\nabla $ on a sub-Riemannian manifold $(M,\mathcal{H},g)$  is given by 
+	\begin{equation}\label{conn6}
+   \nabla _{X}Y= \begin{cases}
+        (D_XY)_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{H}}+B_{X}Y &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{V}} +C_XY&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+        (D_XY)_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{V}},
+    \end{cases} 
+\end{equation}
+where $D$ is the Levi-Civita connection of $g$, and 
+ tensors $B$ and $C$ are defined by   
+$$ \la B_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{V}}}}g)(Y_{\mathcal{H}},Z_{\mathcal{H}})$$
+and
+$$ \la C_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{H}}}}g)(Y_{\mathcal{V}},Z_{\mathcal{V}}).$$ 
+\end{definition}
+
+The torsion $T$ of $\nabla $  satisfies 
+\begin{equation}\label{tor7}
+	 T(X,Y)=\begin{cases}
+	    -[X,Y]_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{H}}\\
+	    B_XY-C_YX &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+	      C_XY-B_YX&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+	      -[X,Y]_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{V}}
+	\end{cases}   
+\end{equation} 
+
+
+
+\begin{remark}\label{re2}
+		Note that Hladky connection $\nabla $ and Levi-Civita connection $D$  are related by  
+	\begin{equation}\label{027}
+		 \nabla_X Y=D_X Y+\frac{1}{2} T(X, Y)-\frac{1}{2} J_X Y-\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M) . 
+	\end{equation}
+	See also \cite{Baudoin2025sub}. Here $J$ is defined by  
+	$$ \la J_Z X, Y \ra = \la Z, T(X,Y) \ra, \quad \forall X, Y,Z \in \mathfrak{X}( M).$$
+	Since the Hladky connection is metric, \(\nabla g=0\), differentiating gives
+	\[
+\left\langle (\nabla_W J)_Z X, Y \right\rangle
+=
+\left\langle Z, (\nabla_W T)(X,Y) \right\rangle \quad \forall X, Y,Z,W \in \mathfrak{X}( M).
+\]
+
+	Setting 
+	\begin{equation}\label{A1}
+		 A_XY:= -\frac{1}{2} T(X, Y)+\frac{1}{2} J_X Y+\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M),
+	\end{equation}
+	which implies 
+	\begin{equation}\label{A2}
+		A_{\mathcal{H}}\mathcal{H} \subset \mathcal{V},\quad A_{\mathcal{V}}\mathcal{V} \subset \mathcal{H}. 
+	\end{equation}
+	Then $D=\nabla +A$, and 
+	\begin{equation}\label{Dnab}
+		\begin{aligned}
+			R^g(X, Y )Z=& R(X,Y)Z+ (\nabla _XA)_{Y}Z-(\nabla _YA)_XZ\\
+			&+A_{T(X,Y)}Z+A_X A_Y Z-A_Y A_X Z  .
+		\end{aligned} 
+	\end{equation} 
+\end{remark}
+
+Having introduced the basic notions associated with the Hladky connection, we next recall some important classes of sub-Riemannian manifolds that provide natural geometric settings.
+
+\begin{example}[Riemannian foliations]   
+	Let  $(M^{m+k},\mathcal{F}^k)$ be a foliated manifold,
+	 where $\mathcal{F}^k$ is  a $k$-dimensional foliation. Let $g$ be a Riemannian metric on $M$ and decompose the tangent bundle 
+	 $$ TM=T\mathcal{F} \oplus \mathcal{H} $$ 
+	 accordingly, where $\mathcal{H}$ is  complementary to $T\mathcal{F} $. The metric $g$ is said to be bundle-like if the Lie derivate of $g_{\mathcal{H}}$ along vertical direction vanishes. 
+	 Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.    
+	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a [[Riemannian foliation]], see  \cite{CDHL2026hor} or \cite{gromollMetricFoliationsCurvature2009a} for more details. 
+	When $\mathcal{H}$ is bracket generating, $(M^{m+k},\mathcal{H}^m,g)$ is a sub-Riemannian manifold.  
+\end{example}
+
+\begin{definition}[cf. \cite{Bau2022Htype}]
+Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. If its leaves are totally geodesic, then $(M^{m+k},\mathcal{H}^m,g)$ is called a \emph{totally geodesic foliation}.
+\end{definition}
+
+\begin{proposition}
+	Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. Then it's a totally geodesic foliation if and only if 
+	$$ C=0. $$
+\end{proposition}
+\begin{proof}
+	For $Y,Z \in \mathfrak{X}_{\mathcal{V}}$ and $X \in \mathfrak{X}_{\mathcal{H}}$, we have 
+\begin{equation}
+		 \begin{aligned}
+			2\la C_{X}Y,Z \ra=& X \la Y,Z \ra -\la [X,Y],Z \ra-\la Y,[X,Z ]\ra\\
+			=& \la \nabla _Y X ,Z \ra +\la  Y ,\nabla _Z X\ra\\
+			=&- \la \nabla _Y Z+\nabla _Z Y,X \ra.
+		\end{aligned}   
+\end{equation}
+The integrability of $\mathcal{V}$ implies 
+  $$  \begin{aligned}
+			- \la \nabla _Y Z+\nabla _Z Y,X \ra=& - \la 2\nabla _Y Z+[Z, Y],X \ra\\
+			=& - \la 2\nabla _Y Z,X \ra,
+		\end{aligned}  $$
+from which the conclusion follows.
+\end{proof}
+
+
+\begin{remark}
+	If $(M^{m+k},\mathcal{H}^m,g)$ is a Riemannian foliation with totally geodesic leaves, then the Hladky connection coincides with the generalized Bott connection.
+\end{remark}
+
+
+\section{H-type foliation}
+
+
+H-type foliations were introduced by Baudoin, Grong, Rizzi and Vega-Molino as a geometric framework extending several important classes of sub-Riemannian structures, including H-type groups, \(K\)-contact manifolds and \(3K\)-contact manifolds; see \cite{Bau2022Htype}.
+ 
+Let
+\((M,\mathcal H,g)\) be a totally geodesic Riemannian foliation with orthogonal splitting
+\[
+    TM=\mathcal H\oplus\mathcal V,
+\]
+and let \(\nabla\) be the associated Bott connection with torsion \(T\). For
+\(Z\in\mathcal V\), define \(J_Z:\mathcal H\to\mathcal H\) by
+\[
+    \langle J_ZX,Y\rangle
+    =
+    \langle Z,T(X,Y)\rangle,
+    \qquad X,Y\in\mathcal H.
+\]
+The foliation is said to be of H-type if
+\[
+    \langle J_ZX,J_ZY\rangle
+    =
+    |Z|^2\langle X,Y\rangle,
+\]
+or equivalently,
+\[
+    J_Z^2=-|Z|^2\operatorname{Id}_{\mathcal H}.
+\]
+Thus each vertical direction induces, after normalization, an orthogonal complex structure on the horizontal bundle. In particular, the horizontal distribution is bracket generating of step two, and the maps \(J_Z\) encode quantitatively the non-integrability of \(\mathcal H\).
+
+
+\begin{definition}[\cite{Bau2022Htype}]
+	Let $(M^{m+k},\mathcal{H}^m,g)$ be a  totally geodesic foliation. Then $(M^{m+k},\mathcal{H}^m,g)$ is called H-type foliation if 
+	\begin{equation}\label{eq24}
+		J_Z^2=-|Z|^2 \id_{\mathcal{H}}, \quad \forall Z \in \mathfrak{X}_{\mathcal{V}}.
+	\end{equation}
+\end{definition}
+By skew-symmetry of $J_Z$,  the H-type condition \eqref{eq24} is equivalent to 
+\begin{equation}\label{66}
+	 \la J_Z X,J_Z Y  \ra=|Z|^2\la X,,Y  \ra, \quad \forall X,Y \in \mathfrak{X}_{\mathcal{H}}, \,\forall  Z \in \mathfrak{X}_{\mathcal{V}}. 
+\end{equation}
+It follows that, for any $v=v^{\alpha }e_{\alpha }$, we have   
+$$ \begin{aligned}
+	Q_{\alpha \beta}v^{\alpha }v^{\beta }=& T_{ij}^{\alpha }T_{ij}^{\beta }v^{\alpha }v^{\beta }\\
+	=&
+	\la J_{v} e_i, e_j \ra \la J_{v} e_i, e_j \ra=\la J_{v} e_i,\la J_{v} e_i, e_j \ra\cdot  e_j \ra \\
+	=& \la J_v e_i, J_v e_i \ra \\
+	=&m |v|^2.
+\end{aligned}  $$
+Also, \eqref{66} implies that
+\[
+    |J_ZX|=|Z|\,|X|.
+\]
+Hence, with respect to any adapted orthonormal frame,
+\[
+    |T_{ij}^{\alpha}|
+    =
+    |\langle J_{e_\alpha}e_i,e_j\rangle|
+    \le 1.
+\]
+In particular, the horizontal-horizontal torsion is uniformly bounded
+on every H-type foliation.
+Moreover, according to the Theorem 2.19 in \cite{Bau2022Htype}, $\delta_{\mathcal{H}}^{\nabla}T=0$.
+
+
+
+\section{H-type groups}
+
+H-type foliations may be viewed as a geometric generalization of the classical H-type groups introduced by Kaplan (cf. \cite{Kapl1980Htype} or \cite{Bau2022Htype}). 
+
+Recall that an H-type group is a connected simply connected two-step nilpotent Lie group \(G\) whose Lie algebra admits an orthogonal decomposition
+\[
+    \mathfrak g=\mathfrak h\oplus\mathfrak z,
+\]
+where \(\mathfrak z\) is the center of \(\mathfrak g\), such that
+\[
+    [\mathfrak h,\mathfrak h]\subset\mathfrak z,
+    \qquad
+    [\mathfrak g,\mathfrak z]=0.
+\]
+For \(Z\in\mathfrak z\), define \(J_Z:\mathfrak h\to\mathfrak h\) by
+\[
+    \langle J_ZX,Y\rangle
+    =
+    \langle Z,[X,Y]\rangle .
+\]
+The H-type condition is
+\[
+    J_Z^2=-|Z|^2\operatorname{Id}_{\mathfrak h},
+    \qquad Z\in\mathfrak z.
+\]
+The left translations of \(\mathfrak h\) and \(\mathfrak z\) determine, respectively, the horizontal and vertical distributions \(\mathcal H\) and \(\mathcal V\), and the cosets of the center form the leaves of a totally geodesic Riemannian foliation. In particular, H-type groups constitute basic examples of H-type foliations; see \cite{Bau2022Htype}.
+
+A useful feature of this model is that the canonical Bott, equivalently Hladky, connection associated with the splitting
+\[
+    TG=\mathcal H\oplus\mathcal V
+\]
+is flat. Indeed, with respect to any left-invariant adapted frame
+\(\{e_i,e_\alpha\}\), the two-step nilpotent structure gives
+\[
+    \nabla_{e_A}e_B=0,
+\]
+and consequently
+\[
+    R^\nabla\equiv0,
+    \qquad
+    \ricci_{\mathcal H}^{\nabla}\equiv0.
+\]
+Thus the horizontal Ricci curvature assumption in
+Corollary~\ref{cor4.6} is automatically satisfied. Notice, however,
+that the sub-Riemannian geometry is still nontrivial, since
+\[
+    T(X,Y)=-[X,Y],
+    \qquad X,Y\in\mathcal H,
+\]
+is generally nonzero. The H-type condition gives strong algebraic
+control of this torsion through the maps \(J_Z\). Hence H-type groups
+provide a large family of examples in which the adapted connection is
+flat while the non-integrability of the horizontal distribution is
+entirely encoded by the torsion.
+
+
+\section*{References}
+\begin{references}
+\bibitem[Bau26]{Baudoin2025sub}
+Fabrice Baudoin.
+\newblock Sub-laplacian comparison theorems on {R}iemannian foliations with minimal leaves and applications.
+\newblock {\em Communications on Pure and Applied Analysis}, 2026.
+
+\bibitem[BGRVM22]{Bau2022Htype}
+Fabrice Baudoin, Erlend Grong, Luca Rizzi, and Gianmarco Vega-Molino.
+\newblock H-type foliations.
+\newblock {\em Differential Geom. Appl.}, 85:Paper No. 101952, 25, 2022.
+
+\bibitem[CDHL26]{CDHL2026hor}
+Tian Chong, Yuxin Dong, Xin Huang, and Hui Liu.
+\newblock On critical maps of the horizontal energy functional between {R}iemannian foliations.
+\newblock {\em J. Geom. Anal.}, 36(1):Paper No. 21, 44, 2026.
+
+\bibitem[GW09]{gromollMetricFoliationsCurvature2009a}
+Detlef Gromoll and Gerard Walschap.
+\newblock {\em Metric foliations and curvature}, volume 268 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Verlag, Basel, 2009.
+
+\bibitem[Kap80]{Kapl1980Htype}
+Aroldo Kaplan.
+\newblock Fundamental solutions for a class of hypoelliptic {PDE} generated by composition of quadratic forms.
+\newblock {\em Trans. Am. Math. Soc.}, 258:147--153, 1980.
+\end{references}
+
+
+
+
+
+
+
+
+
+
+
