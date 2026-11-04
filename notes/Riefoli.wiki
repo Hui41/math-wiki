@@ -162,8 +162,8 @@ for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for co
 \end{proof}
 
 
-\section*{References}
 
+\begin{references}
 \bibitem[GW09]{gromollMetricFoliationsCurvature2009a}
 Detlef Gromoll and Gerard Walschap.
 \newblock {\em Metric foliations and curvature}, volume 268 of {\em Progress in Mathematics}.
@@ -180,7 +180,7 @@ Bruce~L. Reinhart.
 \newblock Foliated manifolds with bundle-like metrics.
 \newblock {\em Ann. of Math. (2)}, 69:119--132, 1959.
 
-
+\end{references}
 
 
 
