@@ -22,7 +22,8 @@
 \DeclareMathOperator{\ricci}{Ric}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\id}{Id}
 
@@ -35,17 +36,10 @@
 \def\dbb{{\bar{\partial}_b }}
 \def\lap{{\Delta}}
 
-
-
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
 \newcommand{\dd}{\,\mathrm{d}v_g}
 \newcommand{\ip}[2]{\langle #1,#2\rangle}
-	
-\allowdisplaybreaks
-	
-	
-\begin{document}
 
 \title{Riemannian foliations}
 
