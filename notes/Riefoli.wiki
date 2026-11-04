@@ -162,6 +162,25 @@ for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for co
 \end{proof}
 
 
+\section*{References}
+
+\bibitem[GW09]{gromollMetricFoliationsCurvature2009a}
+Detlef Gromoll and Gerard Walschap.
+\newblock {\em Metric foliations and curvature}, volume 268 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Verlag, Basel, 2009.
+
+\bibitem[Mol88]{molinoRiemannianFoliations1988}
+Pierre Molino.
+\newblock {\em Riemannian foliations}, volume~73 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Boston, Inc., Boston, MA, 1988.
+\newblock Translated from the French by Grant Cairns, With appendices by Cairns, Y. Carri\`ere, \'E. Ghys, E. Salem and V. Sergiescu.
+
+\bibitem[Rei59]{reinhartFoliatedManifoldsBundleLike1959}
+Bruce~L. Reinhart.
+\newblock Foliated manifolds with bundle-like metrics.
+\newblock {\em Ann. of Math. (2)}, 69:119--132, 1959.
+
+
 
 
 
