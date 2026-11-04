@@ -213,9 +213,7 @@ Consequently, such manifolds admit many nontrivial bounded harmonic functions.
 
 For manifolds $M$ possessing a pole $o$, that is, a point $o$ at which the exponential map is a diffeomorphism, Greene, Wu, and Choi studied related problems under various curvature assumptions; see \cite{Choi1984asy,Wu1983func,GW1979func}. In particular, Greene and Wu proposed the following conjecture.
 
-\medskip
 
-\noindent
 \textbf{Conjecture.} See \cite[p.~3]{GW1979func}.  
 Let $M$ be a simply connected complete Riemannian manifold with nonpositive sectional curvature, and let $o$ be a pole of $M$. Suppose that there exist a compact subset $S\subseteq M$, a constant $c>0$, and
 \(
