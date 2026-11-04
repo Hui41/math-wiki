@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Small LaTeX-friendly wiki renderer (not a full TeX engine)."""
+import unicodedata
 from pathlib import Path
 from urllib.parse import quote
 import html, json, re, shutil, os
@@ -127,18 +128,88 @@ def compile_page(p):
             cls = name if name in names_en else 'definition'
             return '\n\n<div class="theorem '+cls+'">\n<header>'+html.escape(title)+'</header>\n<section>\n'+m.group(2).strip()+'\n</section>\n</div>\n\n'
         src=pattern.sub(block,src)
-    # Bibliography: simple local references with clickable citation labels.
+
+    # Bibliography: LaTeX text commands and clickable references.
     citation_labels = {}
+
+    accents = {
+        "'": "\u0301",
+        '"': "\u0308",
+        "`": "\u0300",
+        "^": "\u0302",
+        "~": "\u0303",
+        "=": "\u0304",
+        ".": "\u0307",
+    }
+
+    def latex_bib_text(body):
+        body = html.escape(body, quote=False)
+
+        # Remove LaTeX bibliography separators.
+        body = re.sub(r'\\newblock\b\s*', ' ', body)
+
+        # Convert LaTeX accents to Unicode.
+        def replace_accent(m):
+            letter = m.group(2) or m.group(3)
+            return unicodedata.normalize(
+                "NFC",
+                letter + accents[m.group(1)]
+            )
+
+        body = re.sub(
+            r'\\([\'"`^~=.])\s*(?:\{([A-Za-z])\}|([A-Za-z]))',
+            replace_accent,
+            body
+        )
+
+        # Preserve italics in bibliography.
+        body = re.sub(
+            r'\{\\em\s+([^{}]+)\}',
+            lambda m: '<em>' + m.group(1) + '</em>',
+            body
+        )
+
+        # Replace LaTeX nonbreaking spaces.
+        body = body.replace('~', '\u00a0')
+
+        # Normalize whitespace.
+        body = re.sub(r'[ \t\r\n]+', ' ', body).strip()
+
+        return body
+
     def refs(m):
-        items=re.split(r'\\bibitem(?:\[([^\]]*)\])?\{([^{}]+)\}',m.group(1))
-        out=[]
-        for i in range(1,len(items),3):
-            display,key,body=items[i:i+3]
+        items = re.split(
+            r'\\bibitem(?:\[([^\]]*)\])?\{([^{}]+)\}',
+            m.group(1)
+        )
+        out = []
+
+        for i in range(1, len(items), 3):
+            display, key, body = items[i:i+3]
             citation_labels[key] = display or key
-            body=re.sub(r'\{\\em\s+([^{}]+)\}',lambda x:'<em>'+html.escape(x.group(1))+'</em>',body)
-            out.append('<li id="ref-'+html.escape(key,quote=True)+'">['+html.escape(display or key)+'] '+body.strip()+'</li>')
-        return '\n\n<ol class="references">'+''.join(out)+'</ol>\n\n'
-    src=re.sub(r'\\begin\{references\}(.*?)\\end\{references\}',refs,src,flags=re.S)
+            body = latex_bib_text(body)
+
+            out.append(
+                '<li id="ref-' +
+                html.escape(key, quote=True) +
+                '">[' +
+                html.escape(display or key) +
+                '] ' + body + '</li>'
+            )
+
+        return (
+            '\n\n<ol class="references">' +
+            ''.join(out) +
+            '</ol>\n\n'
+        )
+
+    src = re.sub(
+        r'\\begin\{references\}(.*?)\\end\{references\}',
+        refs,
+        src,
+        flags=re.S
+    )
+
     def citation(m):
         links=[]
         for key in m.group(1).split(','):
