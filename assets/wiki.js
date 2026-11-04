@@ -366,9 +366,14 @@
           original
         );
 
-      const displayed = alreadyNumbered
+      const isReferences =
+        original.trim().toLowerCase() === "references";
+      
+      const displayed = isReferences
         ? original
-        : number + ". " + original;
+        : alreadyNumbered
+          ? original
+          : number + ". " + original;
 
       heading.textContent = displayed;
 
