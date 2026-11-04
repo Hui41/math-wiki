@@ -162,12 +162,31 @@ def compile_page(p):
             body
         )
 
+
+        # Remove BibTeX capitalization-protection braces.
+        # For example: {D}irichlet -> Dirichlet
+        body = re.sub(
+            r'\{([A-Za-z])\}',
+            r'\1',
+            body
+        )
+
         # Preserve italics in bibliography.
+        # Support nested braces such as:
+        # {\em Geometry of the {L}aplace operator}
         body = re.sub(
             r'\{\\em\s+([^{}]+)\}',
             lambda m: '<em>' + m.group(1) + '</em>',
             body
         )
+
+        # Remove remaining simple protection braces.
+        body = re.sub(
+            r'\{([^{}]*)\}',
+            r'\1',
+            body
+        )
+
 
         # Replace LaTeX nonbreaking spaces.
         body = body.replace('~', '\u00a0')
