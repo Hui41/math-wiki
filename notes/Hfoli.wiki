@@ -29,7 +29,7 @@
 
 \title{H-type foliation}
 
-\section{Hladky connection}\label{seHla}
+\section{Hladky connection}
 \begin{definition}
 	The Hladky connection $\nabla $ on a sub-Riemannian manifold $(M,\mathcal{H},g)$  is given by 
 	\begin{equation}\label{conn6}
@@ -134,8 +134,6 @@ from which the conclusion follows.
 
 
 \section{H-type foliation}
-
-
 H-type foliations were introduced by Baudoin, Grong, Rizzi and Vega-Molino as a geometric framework extending several important classes of sub-Riemannian structures, including H-type groups, \(K\)-contact manifolds and \(3K\)-contact manifolds; see \cite{Bau2022Htype}.
  
 Let
