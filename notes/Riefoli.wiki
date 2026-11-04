@@ -1,0 +1,301 @@
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{question}{Question}[section]
+\renewcommand*{\thequestion}{\Alph{question}}
+
+
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Span}{span}\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{Id}
+
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
+\def\db{{\partial_b }}
+\def\dbb{{\bar{\partial}_b }}
+\def\lap{{\Delta}}
+
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dd}{\,\mathrm{d}v_g}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+	
+\allowdisplaybreaks
+	
+	
+\begin{document}
+
+\title{Riemannian foliations}
+
+\section{Foliations}
+
+
+ Let $\mathcal{V}$ be an integrable $k$-dimensional distribution on a smooth manifold $M^{m+k}$ of dimension $m+k$. The collection $\mathcal{F}^k$ of integral submanifolds of $\mathcal{V}$ is called a $k$-dimensional foliation or a foliation of codimension $m$ on $M$. The pair $\left(M^{m+k}, \mathcal{F}^k\right)$ is said to be a \textbf{foliated manifold}. Clearly $\mathcal{F}^k$ gives a partition of $M$ into disjoint $k$ dimensional immersed submanifolds $\mathcal{L}_\alpha$, which are called the leaves of $\mathcal{F}^k$. The space of leaves, denoted by $\mathcal{B}$, is the quotient space of the equivalence relation: $x \sim y$ if $x$ and $y$ lie on the same leaf. Notice that, in the case of an arbitrary foliation, $\mathcal{B}$ is possibly not Hausdorff. By Frobenius theorem, every point of $M$ has a foliated coordinate chart $(U, \varphi)$ with coordinates $\left(x_1, \ldots, x_m, y_1, \ldots, y_k\right)$ such that 
+ $$\operatorname{span}\left\{\frac{\partial}{\partial y_\alpha}\right\}_{1 \leq \alpha  \leq k}=\left.\mathcal{V}\right|_U.$$ 
+ Let $D_\rho^{m+k}$ denote the open neighborhood of the origin in $\mathbb{R}^{m+k}$ given by
+$$
+\begin{aligned}
+    D_\rho^{m+k} & =\left\{\left(x_1, \ldots, x_m, y_1, \ldots, y_k\right) \in \mathbb{R}^{m+k} ~|~ | x_i|<\rho,| y_\alpha |<\rho\right\} \\
+    & =D_\rho^m \times D_\rho^k
+\end{aligned}
+$$
+for some $\rho>0$. Without loss of generality, one may assume that $\varphi(U)=D_\rho^{m+k}$. Clearly $\left.\mathcal{F}^k\right|_U$ induces a local submersion $\pi_U: U \rightarrow \mathcal{B}_U=\left(\left.\mathcal{F}^k\right|_U\right) / \sim$, which corresponds to the natural projection
+\begin{equation}
+    \begin{aligned}
+        \operatorname{Pr}_m: D_\rho^{m+k} & \rightarrow D_\rho^m \\
+        \left(x_1, \ldots, x_m, y_1, \ldots, y_k\right) & \longmapsto\left(x_1, \ldots, x_m\right) .
+    \end{aligned}
+\end{equation}
+If $\mathcal{F}^k$ induces a global submersion from $M$ to a smooth base manifold $\mathcal{B}$, it is often called a \textbf{simple foliation}. When the foliation consists of 0-dimensional points, $(M, \mathcal{F})$ coincides with $M$, in which case we say the foliation $(M, \mathcal{F})$ is a \textbf{point foliation}.
+
+\section{Transverse structures}
+ Let $\left(M^{m+k}, \mathcal{F}^k\right)$ be a foliated manifold with $k$-dimensional integrable subbundle $\mathcal{V}$. There is an exact sequence of vector bundles
+\begin{equation}
+    0 \longrightarrow \mathcal{V} \longrightarrow T M \xrightarrow{\pi_Q} Q \longrightarrow 0
+\end{equation}
+where the quotient bundle $Q=T M / \mathcal{V}$ is called the \textbf{normal bundle} of the foliation. A vector field $X$ on $M$ is said to be \textbf{foliated} with respect to $\mathcal{F}^k$ if $[V, X]$ is tangent to the leaves of $\mathcal{F}^k$ for any vector field $V$ tangent to the leaves of $\mathcal{F}$. Equivalently, the local 1-parameter group of $X$ preserves the foliation. It is easy to show that in a foliated coordinate chart $\left(U ; x_1, \ldots, x_m, y_1, \ldots, y_k\right)$, a foliated vector field $X$ can be expressed as
+\begin{equation}
+    X=\sum_{\alpha=1}^k A^{\alpha }\left(x_1, \ldots, x_m, y_1, \ldots, y_k\right) \frac{\partial}{\partial y_\alpha}+\sum_{i=1}^m B^{i}\left(x_1, \ldots, x_m\right) \frac{\partial}{\partial x_i},
+\end{equation}
+where $A^\alpha$ and $B^i$ are smooth functions of the listed variables. Clearly $\left.X\right|_U$ projects to a vector field on $\mathcal{B}_U$, given by
+$$
+\bar{X}=\sum_{i=1}^m B^{i}\left(x_1, \ldots, x_m\right) \frac{\partial}{\partial x_i}.
+$$
+Hence foliated vector fields are locally \textbf{projectable vector fields}.
+
+We now endow the foliated manifold $\left(M^{m+k}, \mathcal{F}^k\right)$ with a Riemannian metric
+$g$. Then the tangent bundle of $M$ admits an orthogonal decomposition
+\begin{equation}\label{eq01}
+    T M=\mathcal{H} \oplus \mathcal{V},
+\end{equation}
+where $\mathcal{H}=\mathcal{V}^{\perp}$ is the orthogonal complement of $\mathcal{V}$ with respect to $g$. The subbundles $\mathcal{H}$ and $\mathcal{V}$ are called the horizontal and vertical bundles of $\mathcal{F}$, respectively. Let $\mathfrak{X}(M)$ represent the space of smooth vector fields on $M$. The sets of smooth sections of $\mathcal{H}$ and $\mathcal{V}$ are denoted by $\mathfrak{X}_{\mathcal{H}}$ and $\mathfrak{X}_{\mathcal{V}}$, respectively. An element in $\mathfrak{X}_{\mathcal{H}}$ (respectively $\mathfrak{X}_{\mathcal{V}}$ ) is known as a horizontal (respectively vertical) vector field. Obviously, restricting $\pi_Q$ to $\mathcal{H}$ gives a bundle isomorphism $\tau: \mathcal{H} \rightarrow Q$. According to the decomposition $\eqref{eq01}$, we also have the following natural projections
+\begin{equation}
+    \pi_{\mathcal{H}}: T M \rightarrow \mathcal{H}, \quad \pi_{\mathcal{V}}: T M \rightarrow \mathcal{V},
+\end{equation}
+which are called the horizontal and vertical projections respectively. Defining
+\begin{equation}
+    g_{\mathcal{H}}=g\left(\pi_{\mathcal{H}}, \pi_{\mathcal{H}}\right), \quad g_{\mathcal{V}}=g\left(\pi_{\mathcal{V}}, \pi_{\mathcal{V}}\right),
+\end{equation}
+one may express $g$ as
+\begin{equation}
+    g=g_{\mathcal{H}}+g_{\mathcal{V}} .
+\end{equation}
+
+Following \cite{reinhartFoliatedManifoldsBundleLike1959}, a Riemannian metric $g$ on $(M, \mathcal{F})$ is said to be \textbf{bundle-like} if the Lie derivative 
+$$\mathcal{L}_V g_{\mathcal{H}}=0$$ 
+for any vertical vector field $V$. Equivalently, on each foliated coordinate chart $U$ with the local submersion $\pi_U: U \rightarrow \mathcal{B}_U$, there exists a Riemannian metric $h$ on $\mathcal{B}_U$ for which the local submersion $\pi_U:(U, g) \rightarrow$ $\left(\mathcal{B}_U, h\right)$ becomes a Riemannian submersion. In this case, we say that $(M, \mathcal{F}, g)$ is a \textbf{Riemannian foliation}. 
+\begin{remark}
+    Traditionally the terminology  ``Riemannian foliation" refers only to a foliation endowed with a transverse Riemannian metric on the quotient bundle. It is a known fact (cf. \cite{molinoRiemannianFoliations1988}) that, if $g$ is a bundle-like metric on $(M, \mathcal{F})$, then it induces an associated transverse Riemannian metric $g_Q$ on $Q$ from $g_{\mathcal{H}}$ through the isomorphism $\tau: \mathcal{H} \rightarrow Q$. Conversely, if the quotient bundle $Q$ has a transverse Riemannian metric $g_Q$, then there is also a bundle-like metric $g$ that produces the same transverse metric on $Q$. Thus, in this paper, the triple $(M, \mathcal{F}, g)$ is referred to as a Riemannian foliation when $g$ is a bundle-like metric. In particular, if $\mathcal{F}$ is a simple foliation, it corresponds to a global Riemannian submersion from $(M, g)$ to a base manifold $\mathcal{B}$.
+\end{remark}
+
+
+Let $\left(M^{m+k}, \mathcal{F}^k , g\right)$ be a Riemannian foliation and let $\nabla$ be the Levi-Civita connection of $g$. Following \cite{gromollMetricFoliationsCurvature2009a}, we introduce two $\mathcal{V}$-valued fundamental tensor fields $\mathcal{W}$ and $\mathcal{T}$ on $M$ that measure the complexity of the Riemannian foliation (notice that our notations differ from those in \cite{gromollMetricFoliationsCurvature2009a}). The $\mathcal{W}$-tensor is the tensor field $\mathcal{W}: \mathcal{H} \times \mathcal{V} \rightarrow \mathcal{V}$ defined by
+\begin{equation}\label{wten}
+    \mathcal{W}_X U=-\pi_{\mathcal{V}}\left(\nabla_U X\right), \quad X \in \mathfrak{X}_{\mathcal{H}}, \quad U \in \mathfrak{X}_{\mathcal{V}},
+\end{equation}
+and the $\mathcal{T}$-tensor is the tensor field $\mathcal{T}: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{V}$ given by
+\begin{equation}\label{ttensor}
+    \mathcal{T}_X Y=\pi_{\mathcal{V}}\left(\nabla_X Y\right)=\frac{1}{2} \pi_{\mathcal{V}}([X, Y]), X, Y \in \mathfrak{X}_{\mathcal{H}} .
+\end{equation}		
+The second equality in $\eqref{ttensor}$ is shown in \cite{gromollMetricFoliationsCurvature2009a} by using the Koszul formula (see the proof of Theorem 1.2.1 in \cite{gromollMetricFoliationsCurvature2009a}). This implies that $\mathcal{T}$ is anti-symmetric with respect to $X$ and $Y$. Notice that $\mathcal{W}_X$ is just the Weingarten transformation of a leaf in the direction $X$. If we define an $\mathcal{H}$-valued tensor $\mathcal{S}: \mathcal{V} \times \mathcal{V} \rightarrow \mathcal{H}$ by
+\begin{equation}\label{eq10}
+    \mathcal{S}(U, V)=\pi_{\mathcal{H}}\left(\nabla_U V\right), \quad U, V \in \mathfrak{X}_{\mathcal{V}}
+\end{equation}
+then
+\begin{equation}\label{eq11}
+    g\left(\mathcal{W}_X U, V\right)=g(\mathcal{S}(U, V), X) .
+\end{equation}		
+Consequently $\mathcal{W} \equiv 0$, or equivalently $\mathcal{S} \equiv 0$ if and only if the leaves are totally geodesic, in which case the Riemannian foliation is referred to as totally geodesic. Clearly $\mathcal{T} \equiv 0$ if and only if the horizontal distribution $\mathcal{H}$ is integrable.
+
+One may extend $\mathcal{W}, \mathcal{S}$ and $\mathcal{T}$ to the entire tangent bundle $T M$ by defining
+\begin{equation}\label{eq12}
+    \begin{aligned}
+        \mathcal{W}_X Y & =\mathcal{W}_{\pi_{\mathcal{H}}(X)} \pi_{\mathcal{V}}(Y), \quad \mathcal{S}(X, Y)=\mathcal{S}\left(\pi_{\mathcal{V}}(X), \pi_{\mathcal{V}}(Y)\right) \\
+        \mathcal{T}_X Y & =\mathcal{T}_{\pi_{\mathcal{H}}(X)} \pi_{\mathcal{H}}(Y)
+    \end{aligned}
+\end{equation}
+for any $X, Y \in T M$. Then $\mathcal{W}, \mathcal{S}$ and $\mathcal{T}$ become smooth tensor fields on $M$. The mean curvature vector field of the foliation is a global horizontal vector field $\kappa$ defined by
+\begin{equation}
+\kappa=\operatorname{tr}_g \mathcal{S}.
+\end{equation}
+
+According to \cite{gromollMetricFoliationsCurvature2009a}, the tensor fields $\mathcal{W}$ and $\mathcal{T}$ essentially determine the geometry of the Riemannian foliation. From the geometry of submanifolds, we know that $\mathcal{W}_X$ is self-adjoint with respect to $g$ for any $X \in T M$. The adjoint of $\mathcal{T}_X$ for any $X \in T M$ is defined by (\cite{gromollMetricFoliationsCurvature2009a})
+\begin{equation}\label{eq14}
+    g\left(\mathcal{T}_X^* Y, Z\right)=g\left(Y, \mathcal{T}_X Z\right), \quad Y, Z \in T M .
+\end{equation}
+Using $\eqref{ttensor}$, $\eqref{eq12}$ and $\eqref{eq14}$, it is easy to see that $\mathcal{T}^*$ is an $\mathcal{H}$-valued tensor field on $M$.
+
+For local computations, it is convenient to choose a local orthonormal frame field $\left\{e_A\right\}_{A=1}^{m+k}$ in $\left(M^{m+k}, \mathcal{F}^k , g\right)$ such that
+$$
+\operatorname{span}\left\{e_i\right\}_{i=1}^m=\mathcal{H}, \quad \operatorname{span}\left\{e_\alpha\right\}_{\alpha=m+1}^{m+k}=\mathcal{V} .
+$$
+Such a frame field is referred to as an \textbf{adapted frame field} for the foliation. Using an adapted frame field, the mean curvature vector can be expressed by
+\begin{equation}
+    \kappa=\sum_{\alpha=m+1}^{m+k} \mathcal{S}\left(e_\alpha, e_\alpha\right)=\sum_{\alpha=m+1}^{m+k} \pi_{\mathcal{H}}\left(\nabla_{e_\alpha} e_\alpha\right).
+\end{equation}
+Recall that a \textbf{basic vector field} in $(M, \mathcal{F} , g)$ is one that is both horizontal and foliated. From the above discussion, we know that there is a local Riemannian submersion $\pi_U:(U, g) \rightarrow\left(\mathcal{B}_U, h\right)$ around each point $p$ in $M$. If $\bar{X}$ is a vector field on $\mathcal{B}_U$, then there exists a unique basic lift of $\bar{X}$, which is a smooth vector field $X$ on $U$ such that $X$ is horizontal and $d \pi_U(X)=\bar{X}$. Let $\left\{\bar{e}_i\right\}_{i=1}^m$ be a local orthonormal frame field around $\bar{p}=\pi_U(p)$ in $\left(\mathcal{B}_U, b\right)$, and let $\left\{e_i\right\}_{i=1}^m$ be the basic lift of $\left\{\bar{e}_i\right\}_{i=1}^m$ with respect to $\pi_U$. Then $\left\{e_i\right\}_{i=1}^m$ is a local orthonormal frame field of $\mathcal{H}$ in $U$.
+
+\begin{lemma}[\cite{gromollMetricFoliationsCurvature2009a}]\label{lem1}
+    Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X, Y \in \mathfrak{X}(M)$ are basic, then so is $\pi_{\mathcal{H}}\left(\nabla_X Y\right)$. In fact, if $\bar{X}=d \pi_U(X)$ and $\bar{Y}=d \pi_U(Y)$ for the local Riemannian submersion $\pi_U$ : $(U, g) \rightarrow\left(\mathcal{B}_U, h\right)$, then $d \pi_U\left(\nabla_X Y\right)=(\nabla^{\mathcal{B}}_{\bar{X}} \bar{Y}) \circ \pi$, where $\nabla^{\mathcal{B}}$ denotes the Levi-Civita connection of $\left(\mathcal{B}_U, h\right)$.
+\end{lemma}
+
+One can always find an orthonormal frame field $\left\{\bar{e}_i\right\}_{i=1}^m$ in the Riemannian manifold $\left(\mathcal{B}_U, h\right)$ such that $\left(\nabla^{\mathcal{B}} \bar{e}_i\right)_{\bar{p}}=0$. It follows from Lemma \ref{lem1} that around any point $p \in M$, there exists an adapted frame field $\left\{e_A\right\}_{A=1}^{m+k}$ such that $e_i\, (1 \leq$ $i \leq m)$ is basic, and
+\begin{equation}
+    \pi_{\mathcal{H}}\left(\nabla_X e_i\right)_p=0, \quad 1 \leq i \leq m,
+\end{equation}
+for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for computations in Riemannian foliations. We shall also need the following lemma. For the convenience of the readers, we present its simple proof given by \cite{gromollMetricFoliationsCurvature2009a}.
+
+\begin{lemma}[\cite{gromollMetricFoliationsCurvature2009a}]\label{le:td}
+    Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X \in \mathfrak{X}_{\mathcal{H}}$ is basic and $Y \in \mathfrak{X}_{\mathcal{V}}$, then $\mathcal{T}_X^* Y=-\pi_{\mathcal{H}}\left(\nabla_Y X\right)$.
+\end{lemma}
+\begin{proof}
+    Since $X$ is basic and $Y \in \mathfrak{X}_{\mathcal{V}}$, we have $[X, Y] \in \mathfrak{X}_{\mathcal{V}}$. For any $Z \in \mathfrak{X}_{\mathcal{H}}$, we deduce by using $\eqref{ttensor}$ and $\eqref{eq14}$ that
+    $$
+    \begin{aligned}
+        \left\langle\mathcal{T}_X^* Y, Z\right\rangle & =\left\langle Y, \mathcal{T}_X Z\right\rangle=\left\langle Y, \nabla_X Z\right\rangle \\
+        & =X\langle Y, Z\rangle-\left\langle\nabla_X Y, Z\right\rangle \\
+        & =-\left\langle\nabla_Y X, Z\right\rangle-\langle[X, Y], Z\rangle \\
+        & =-\left\langle\nabla_Y X, Z\right\rangle .
+    \end{aligned}
+    $$
+    This proves the lemma.
+\end{proof}
+
+Before concluding this section, we would like to give some examples of Riemannian foliations.
+
+\begin{example}\label{exam3}
+    Let $\mathbb{R}^{m+k}$ be the $(m+k)$-dimensional Euclidean space with the canonical Euclidean metric $g_{c a n}$ and $\pi: \mathbb{R}^{m+k} \rightarrow \mathbb{R}^m$ be the natural projection. Set $\mathcal{F}=\{\pi^{-1}(q)=\mathbb{R}^k: \forall q \in \mathbb{R}^m\}$. Then $(\mathbb{R}^{m+k}, \mathcal{F} , g_{c a n})$ is a Riemannian foliation with $\mathcal{W} \equiv 0$ and $\mathcal{T} \equiv 0$.
+\end{example}
+
+\begin{example}\label{exam4}
+Let us consider a mixed conformal transformation of
+the Euclidean metric $g_{can}$ in Example \ref{exam3} as follows:
+\[
+g=\phi (x)g_{can}^{h}+\eta (x,y)g_{can}^{v}
+\]
+with $\phi ,\eta >0$, where $g_{can}^{h}$ and $g_{can}^{v}$ are the
+canonical metrics of $
+\mathbb{R}
+^{m}$ and $
+\mathbb{R}
+^{k}$ respectively. It is easy to see that the natural projection $\pi :(
+\mathbb{R}
+^{m+k},
+\mathbb{R}
+^{k},g)\rightarrow 
+\mathbb{R}
+^{m}$ is a simple Riemannian foliation.	
+\end{example}		
+
+
+Let $\mathcal{H}$ be a distribution on $M$. A Lipschitz curve $\gamma:[0, l] \rightarrow M$ is called horizontal if $\gamma^{\prime}(t) \in \mathcal{H}_{\gamma(t)}$ a.e. in $[0, l]$. We say that $\mathcal{H}$ satisfies the Hörmander's condition of order $r$, if sections of $\mathcal{H}$ together with their Lie brackets up to order $r$ span $T_x M$ at each point $x$. If $\mathcal{H}$ satisfies the Hörmander's condition, we know from the theorem of Chow-Rashevsky (\cite{chowUeberSystemeLiearren1940},  \cite{rashevskii1938two}) that there always exist horizontal curves joining any two points $p_1$ and $p_2$ in $M$.
+
+\begin{example}\label{ex:sasa}
+    From \cite{blairRiemannianGeometryContact2010a} and   \cite{dragomirDifferentialGeometryAnalysis2006}, we know that any Sasakian
+    manifold admits a Riemannian foliation, whose leaves are integral curves of
+    the Reeb vector field. The horizontal distribution of any Sasakian manifold
+    satisfies the H\"{o}rmander's condition. The odd dimensional sphere $
+    (S^{2m+1},g)\subset (
+    \mathbb{C}
+    ^{m+1},g_{can})\ $with induced CR structure
+     and standard metric is one of the
+    simplest Sasakian manifolds. 
+    Another important example is the Heisenberg group $H_{m}=
+\mathbb{C}^{m}\times \rr$. It is a Lie group with the following group law:
+\[
+(z,t)\cdot (w,s)=(z+w,t+s+2\operatorname{Im}(\sum_{j=1}z^{j}\overline{w}^{j})),
+\]%
+where $(z,t)=(z^{1},...,z^{m},t)$, $(w,s)=(w^{1},...,w^{m},s)\in 
+\mathbb{C}
+^{m}\times \rr$. Write $z^{j}=x^{j}+\sqrt{-1}y^{j}$ for $j=1,...,m$. Then $%
+(x^{1},...,x^{m},y^{1},...,y^{m},t)$ is a real global coordinate system of $%
+H_{m}$. Set%
+\[
+\eta =\frac{1}{2}dt+\sum_{j=1}^{m}\left( x^{j}dy^{j}-y^{j}dx^{j}\right) .
+\]%
+The canonical Riemannian metric (Webster metric) on $H_{m}$ is given by 
+\[
+g=\sum_{j=1}^{m}\left( (dx^{j})^{2}+(dy^{j})^{2}\right) +\eta \otimes \eta .
+\]%
+The natural projection $\pi :H_{m}=%
+\mathbb{C}
+^{m}\times \rr\rightarrow 
+\mathbb{C}
+^{m}=%
+\mathbb{R}
+^{2m}$ is a Riemannian submersion with totally geodesic leaves, where $%
+\mathbb{R}
+^{2m}$ is endowed with the canonical Euclidean metric $g_{can}$. The
+vertical vector field $\xi =\partial /\partial t$ is a Killing vector field
+on $H_{m}$ whose $1$-parameter transformation group $\{\exp (t\xi )\}_{t\in 
+\mathbb{R}
+}$ preserves the foliation (cf. \cite{dragomirDifferentialGeometryAnalysis2006},  \cite{gromollMetricFoliationsCurvature2009a}). Set $K_{m}=H_{m}\diagup
+\{\exp (k \xi)\}_{k\in 
+\mathbb{Z}
+}=
+\mathbb{C}
+^{m}\times S^{1}$. Then the induced projection $\pi :K_{m}\rightarrow 
+\mathbb{C}
+^{m}$ is also a Riemannian submersion with totally geodesic leaves.
+\end{example}
+
+\begin{example}\label{ex:tang}
+     Let $(M^m,g)$ be a Riemannian manifold and $\nabla $ be
+    its Levi-Civita connection. Let $\pi :TM\rightarrow M$ denote the natural
+    projection from the tangent bundle $TM$ to $M$. The kernel of $d\pi $ gives
+    a vertical distribution $\mathcal{V}$ on $TM$, that is, $\mathcal{V}%
+    _{(p,u)}=\ker (d\pi | _{(p,u)})$ for any $(p,u)\in TM$. In terms of the
+    connection $\nabla $, a horizontal distribution $\mathcal{H}$ on $TM$ can be
+    defined in the usual way. As a result, we have a direct sum%
+    \[
+    T_{(p,u)}(TM)=\mathcal{H}_{(p,u)}\oplus \mathcal{V}_{(p,u)} 
+    \]%
+    for any $(p,u)\in TM$. It is known that $g$ determines a natural Riemannian
+    metric $\widehat{g}$ on $TM$, called Sasaki metric, such that $\mathcal{H}=%
+    \mathcal{V}^{\bot }$ with respect to $\widehat{g}$ and $\pi :(TM,\widehat{g}%
+    )\rightarrow (M,g)$ is a Riemannian submersion with totally geodesic leaves $%
+    \{\pi ^{-1}(p)=T_{p}M$, $p\in M\}$ (cf. \cite{sasakiDifferentialGeometryTangent1958}, \cite{yanoTangentCotangentBundles1973},  \cite{gudmundssonGeometryTangentBundles2002}).
+Next, let $T_{1}M$ denote the unit tangent sphere
+bundle, consisting of the unit tangent vectors on $(M,g)$. Then $T_{1}M$ has
+a Riemannian metric $g_{S}$ induced from the Sasaki metric $\widehat{g}$
+(cf. \cite{Boeckx1997CharacteristicRO,boeckxUnitTangentSphere2001}). The natural projection $\pi
+_{1}:(T_{1}M,g_{S})\rightarrow (M,g)$ is also a Riemannian submersion with
+totally geodesic leaves $\{\pi _{1}^{-1}(p)=S^{m-1}(T_{p}M)$, $p\in M\}$. In
+terms of the results on the Lie bracket of horizontal vector fields on $TM$
+(cf. \cite{dombrowskiGeometryTangentBundle1962}, \cite{gudmundssonGeometryTangentBundles2002}) and the Lie bracket of horizontal vector fields on $%
+T_{1}M$ (cf. \cite{boeckxUnitTangentSphere2001}), it is possible to construct examples of tangent
+bundles and unit tangent bundles whose horizontal distributions satisfy the H%
+\"{o}rmander's condition.
+\end{example}
+~
+
+
+
+
+
+
+
+
+\end{document}
