@@ -229,14 +229,37 @@ def compile_page(p):
         flags=re.S
     )
 
+
     def citation(m):
-        links=[]
-        for key in m.group(1).split(','):
-            key=key.strip()
-            label=citation_labels.get(key, key)
-            links.append('<a href="#ref-'+html.escape(key,quote=True)+'">'+html.escape(label)+'</a>')
-        return '['+', '.join(links)+']'
-    src=re.sub(r'\\cite\{([^{}]+)\}',citation,src)
+        note = m.group(1)
+        keys = m.group(2)
+
+        links = []
+        for key in keys.split(','):
+            key = key.strip()
+            label = citation_labels.get(key, key)
+
+            links.append(
+                '<a href="#ref-' +
+                html.escape(key, quote=True) +
+                '">' +
+                html.escape(label) +
+                '</a>'
+            )
+
+        if note is not None and note.strip():
+            # Convert LaTeX nonbreaking spaces.
+            note = note.strip().replace('~', '\u00a0')
+            links.append(html.escape(note))
+
+        return '[' + ', '.join(links) + ']'
+
+    src = re.sub(
+        r'\\cite(?:\[([^\]]*)\])?\{([^{}]+)\}',
+        citation,
+        src
+    )
+
     src=re.sub(r'\\(?:emph|textit)\{([^{}]*)\}',lambda m:'*'+m.group(1)+'*',src)
     src=re.sub(r'\\textbf\{([^{}]*)\}',lambda m:'**'+m.group(1)+'**',src)
     src=re.sub(r'^\s*\\begin\{enumerate\}\s*$', '',src,flags=re.M)
