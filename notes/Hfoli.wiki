@@ -5,7 +5,8 @@
 \DeclareMathOperator{\ricci}{Ric}
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\id}{Id}
 
