@@ -97,7 +97,7 @@ Having introduced the basic notions associated with the Hladky connection, we ne
 	 $$ TM=T\mathcal{F} \oplus \mathcal{H} $$ 
 	 accordingly, where $\mathcal{H}$ is  complementary to $T\mathcal{F} $. The metric $g$ is said to be bundle-like if the Lie derivate of $g_{\mathcal{H}}$ along vertical direction vanishes. 
 	 Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.    
-	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a [[Riemannian foliation]], see  \cite{CDHL2026hor} or \cite{gromollMetricFoliationsCurvature2009a} for more details. 
+	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a Riemannian foliation, see  [[Riefoli]] for more details. 
 	When $\mathcal{H}$ is bracket generating, $(M^{m+k},\mathcal{H}^m,g)$ is a sub-Riemannian manifold.  
 \end{example}
 
