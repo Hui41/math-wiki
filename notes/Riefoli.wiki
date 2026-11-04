@@ -104,7 +104,7 @@ for any vertical vector field $V$. Equivalently, on each foliated coordinate cha
     Traditionally the terminology  ``Riemannian foliation" refers only to a foliation endowed with a transverse Riemannian metric on the quotient bundle. It is a known fact (cf. \cite{molinoRiemannianFoliations1988}) that, if $g$ is a bundle-like metric on $(M, \mathcal{F})$, then it induces an associated transverse Riemannian metric $g_Q$ on $Q$ from $g_{\mathcal{H}}$ through the isomorphism $\tau: \mathcal{H} \rightarrow Q$. Conversely, if the quotient bundle $Q$ has a transverse Riemannian metric $g_Q$, then there is also a bundle-like metric $g$ that produces the same transverse metric on $Q$. Thus, in this paper, the triple $(M, \mathcal{F}, g)$ is referred to as a Riemannian foliation when $g$ is a bundle-like metric. In particular, if $\mathcal{F}$ is a simple foliation, it corresponds to a global Riemannian submersion from $(M, g)$ to a base manifold $\mathcal{B}$.
 \end{remark}
 
-
+\section{Fundamental tensors}
 Let $\left(M^{m+k}, \mathcal{F}^k , g\right)$ be a Riemannian foliation and let $\nabla$ be the Levi-Civita connection of $g$. Following \cite{gromollMetricFoliationsCurvature2009a}, we introduce two $\mathcal{V}$-valued fundamental tensor fields $\mathcal{W}$ and $\mathcal{T}$ on $M$ that measure the complexity of the Riemannian foliation (notice that our notations differ from those in \cite{gromollMetricFoliationsCurvature2009a}). The $\mathcal{W}$-tensor is the tensor field $\mathcal{W}: \mathcal{H} \times \mathcal{V} \rightarrow \mathcal{V}$ defined by
 \begin{equation}\label{wten}
     \mathcal{W}_X U=-\pi_{\mathcal{V}}\left(\nabla_U X\right), \quad X \in \mathfrak{X}_{\mathcal{H}}, \quad U \in \mathfrak{X}_{\mathcal{V}},
@@ -152,14 +152,16 @@ Such a frame field is referred to as an \textbf{adapted frame field} for the fol
 Recall that a \textbf{basic vector field} in $(M, \mathcal{F} , g)$ is one that is both horizontal and foliated. From the above discussion, we know that there is a local Riemannian submersion $\pi_U:(U, g) \rightarrow\left(\mathcal{B}_U, h\right)$ around each point $p$ in $M$. If $\bar{X}$ is a vector field on $\mathcal{B}_U$, then there exists a unique basic lift of $\bar{X}$, which is a smooth vector field $X$ on $U$ such that $X$ is horizontal and $d \pi_U(X)=\bar{X}$. Let $\left\{\bar{e}_i\right\}_{i=1}^m$ be a local orthonormal frame field around $\bar{p}=\pi_U(p)$ in $\left(\mathcal{B}_U, b\right)$, and let $\left\{e_i\right\}_{i=1}^m$ be the basic lift of $\left\{\bar{e}_i\right\}_{i=1}^m$ with respect to $\pi_U$. Then $\left\{e_i\right\}_{i=1}^m$ is a local orthonormal frame field of $\mathcal{H}$ in $U$.
 
 \begin{lemma}[\cite{gromollMetricFoliationsCurvature2009a}]\label{lem1}
-    Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X, Y \in \mathfrak{X}(M)$ are basic, then so is $\pi_{\mathcal{H}}\left(\nabla_X Y\right)$. In fact, if $\bar{X}=d \pi_U(X)$ and $\bar{Y}=d \pi_U(Y)$ for the local Riemannian submersion $\pi_U$ : $(U, g) \rightarrow\left(\mathcal{B}_U, h\right)$, then $d \pi_U\left(\nabla_X Y\right)=(\nabla^{\mathcal{B}}_{\bar{X}} \bar{Y}) \circ \pi$, where $\nabla^{\mathcal{B}}$ denotes the Levi-Civita connection of $\left(\mathcal{B}_U, h\right)$.
+    Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X, Y \in \mathfrak{X}(M)$ are basic, then so is $\pi_{\mathcal{H}}\left(\nabla_X Y\right)$. In fact, if $\bar{X}=d \pi_U(X)$ and $\bar{Y}=d \pi_U(Y)$ for the local Riemannian submersion $\pi_U$ : $(U, g) \rightarrow\left(\mathcal{B}_U, h\right)$, then 
+    $$d \pi_U\left(\nabla_X Y\right)=(\nabla^{\mathcal{B}}_{\bar{X}} \bar{Y}) \circ \pi,$$
+     where $\nabla^{\mathcal{B}}$ denotes the Levi-Civita connection of $\left(\mathcal{B}_U, h\right)$.
 \end{lemma}
 
 One can always find an orthonormal frame field $\left\{\bar{e}_i\right\}_{i=1}^m$ in the Riemannian manifold $\left(\mathcal{B}_U, h\right)$ such that $\left(\nabla^{\mathcal{B}} \bar{e}_i\right)_{\bar{p}}=0$. It follows from Lemma \ref{lem1} that around any point $p \in M$, there exists an adapted frame field $\left\{e_A\right\}_{A=1}^{m+k}$ such that $e_i\, (1 \leq$ $i \leq m)$ is basic, and
 \begin{equation}
     \pi_{\mathcal{H}}\left(\nabla_X e_i\right)_p=0, \quad 1 \leq i \leq m,
 \end{equation}
-for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for computations in Riemannian foliations. We shall also need the following lemma. For the convenience of the readers, we present its simple proof given by \cite{gromollMetricFoliationsCurvature2009a}.
+for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for computations in Riemannian foliations. 
 
 \begin{lemma}[\cite{gromollMetricFoliationsCurvature2009a}]\label{le:td}
     Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X \in \mathfrak{X}_{\mathcal{H}}$ is basic and $Y \in \mathfrak{X}_{\mathcal{V}}$, then $\mathcal{T}_X^* Y=-\pi_{\mathcal{H}}\left(\nabla_Y X\right)$.
@@ -174,116 +176,8 @@ for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for co
         & =-\left\langle\nabla_Y X, Z\right\rangle .
     \end{aligned}
     $$
-    This proves the lemma.
 \end{proof}
 
-Before concluding this section, we would like to give some examples of Riemannian foliations.
-
-\begin{example}\label{exam3}
-    Let $\mathbb{R}^{m+k}$ be the $(m+k)$-dimensional Euclidean space with the canonical Euclidean metric $g_{c a n}$ and $\pi: \mathbb{R}^{m+k} \rightarrow \mathbb{R}^m$ be the natural projection. Set $\mathcal{F}=\{\pi^{-1}(q)=\mathbb{R}^k: \forall q \in \mathbb{R}^m\}$. Then $(\mathbb{R}^{m+k}, \mathcal{F} , g_{c a n})$ is a Riemannian foliation with $\mathcal{W} \equiv 0$ and $\mathcal{T} \equiv 0$.
-\end{example}
-
-\begin{example}\label{exam4}
-Let us consider a mixed conformal transformation of
-the Euclidean metric $g_{can}$ in Example \ref{exam3} as follows:
-\[
-g=\phi (x)g_{can}^{h}+\eta (x,y)g_{can}^{v}
-\]
-with $\phi ,\eta >0$, where $g_{can}^{h}$ and $g_{can}^{v}$ are the
-canonical metrics of $
-\mathbb{R}
-^{m}$ and $
-\mathbb{R}
-^{k}$ respectively. It is easy to see that the natural projection $\pi :(
-\mathbb{R}
-^{m+k},
-\mathbb{R}
-^{k},g)\rightarrow 
-\mathbb{R}
-^{m}$ is a simple Riemannian foliation.	
-\end{example}		
-
-
-Let $\mathcal{H}$ be a distribution on $M$. A Lipschitz curve $\gamma:[0, l] \rightarrow M$ is called horizontal if $\gamma^{\prime}(t) \in \mathcal{H}_{\gamma(t)}$ a.e. in $[0, l]$. We say that $\mathcal{H}$ satisfies the Hörmander's condition of order $r$, if sections of $\mathcal{H}$ together with their Lie brackets up to order $r$ span $T_x M$ at each point $x$. If $\mathcal{H}$ satisfies the Hörmander's condition, we know from the theorem of Chow-Rashevsky (\cite{chowUeberSystemeLiearren1940},  \cite{rashevskii1938two}) that there always exist horizontal curves joining any two points $p_1$ and $p_2$ in $M$.
-
-\begin{example}\label{ex:sasa}
-    From \cite{blairRiemannianGeometryContact2010a} and   \cite{dragomirDifferentialGeometryAnalysis2006}, we know that any Sasakian
-    manifold admits a Riemannian foliation, whose leaves are integral curves of
-    the Reeb vector field. The horizontal distribution of any Sasakian manifold
-    satisfies the H\"{o}rmander's condition. The odd dimensional sphere $
-    (S^{2m+1},g)\subset (
-    \mathbb{C}
-    ^{m+1},g_{can})\ $with induced CR structure
-     and standard metric is one of the
-    simplest Sasakian manifolds. 
-    Another important example is the Heisenberg group $H_{m}=
-\mathbb{C}^{m}\times \rr$. It is a Lie group with the following group law:
-\[
-(z,t)\cdot (w,s)=(z+w,t+s+2\operatorname{Im}(\sum_{j=1}z^{j}\overline{w}^{j})),
-\]%
-where $(z,t)=(z^{1},...,z^{m},t)$, $(w,s)=(w^{1},...,w^{m},s)\in 
-\mathbb{C}
-^{m}\times \rr$. Write $z^{j}=x^{j}+\sqrt{-1}y^{j}$ for $j=1,...,m$. Then $%
-(x^{1},...,x^{m},y^{1},...,y^{m},t)$ is a real global coordinate system of $%
-H_{m}$. Set%
-\[
-\eta =\frac{1}{2}dt+\sum_{j=1}^{m}\left( x^{j}dy^{j}-y^{j}dx^{j}\right) .
-\]%
-The canonical Riemannian metric (Webster metric) on $H_{m}$ is given by 
-\[
-g=\sum_{j=1}^{m}\left( (dx^{j})^{2}+(dy^{j})^{2}\right) +\eta \otimes \eta .
-\]%
-The natural projection $\pi :H_{m}=%
-\mathbb{C}
-^{m}\times \rr\rightarrow 
-\mathbb{C}
-^{m}=%
-\mathbb{R}
-^{2m}$ is a Riemannian submersion with totally geodesic leaves, where $%
-\mathbb{R}
-^{2m}$ is endowed with the canonical Euclidean metric $g_{can}$. The
-vertical vector field $\xi =\partial /\partial t$ is a Killing vector field
-on $H_{m}$ whose $1$-parameter transformation group $\{\exp (t\xi )\}_{t\in 
-\mathbb{R}
-}$ preserves the foliation (cf. \cite{dragomirDifferentialGeometryAnalysis2006},  \cite{gromollMetricFoliationsCurvature2009a}). Set $K_{m}=H_{m}\diagup
-\{\exp (k \xi)\}_{k\in 
-\mathbb{Z}
-}=
-\mathbb{C}
-^{m}\times S^{1}$. Then the induced projection $\pi :K_{m}\rightarrow 
-\mathbb{C}
-^{m}$ is also a Riemannian submersion with totally geodesic leaves.
-\end{example}
-
-\begin{example}\label{ex:tang}
-     Let $(M^m,g)$ be a Riemannian manifold and $\nabla $ be
-    its Levi-Civita connection. Let $\pi :TM\rightarrow M$ denote the natural
-    projection from the tangent bundle $TM$ to $M$. The kernel of $d\pi $ gives
-    a vertical distribution $\mathcal{V}$ on $TM$, that is, $\mathcal{V}%
-    _{(p,u)}=\ker (d\pi | _{(p,u)})$ for any $(p,u)\in TM$. In terms of the
-    connection $\nabla $, a horizontal distribution $\mathcal{H}$ on $TM$ can be
-    defined in the usual way. As a result, we have a direct sum%
-    \[
-    T_{(p,u)}(TM)=\mathcal{H}_{(p,u)}\oplus \mathcal{V}_{(p,u)} 
-    \]%
-    for any $(p,u)\in TM$. It is known that $g$ determines a natural Riemannian
-    metric $\widehat{g}$ on $TM$, called Sasaki metric, such that $\mathcal{H}=%
-    \mathcal{V}^{\bot }$ with respect to $\widehat{g}$ and $\pi :(TM,\widehat{g}%
-    )\rightarrow (M,g)$ is a Riemannian submersion with totally geodesic leaves $%
-    \{\pi ^{-1}(p)=T_{p}M$, $p\in M\}$ (cf. \cite{sasakiDifferentialGeometryTangent1958}, \cite{yanoTangentCotangentBundles1973},  \cite{gudmundssonGeometryTangentBundles2002}).
-Next, let $T_{1}M$ denote the unit tangent sphere
-bundle, consisting of the unit tangent vectors on $(M,g)$. Then $T_{1}M$ has
-a Riemannian metric $g_{S}$ induced from the Sasaki metric $\widehat{g}$
-(cf. \cite{Boeckx1997CharacteristicRO,boeckxUnitTangentSphere2001}). The natural projection $\pi
-_{1}:(T_{1}M,g_{S})\rightarrow (M,g)$ is also a Riemannian submersion with
-totally geodesic leaves $\{\pi _{1}^{-1}(p)=S^{m-1}(T_{p}M)$, $p\in M\}$. In
-terms of the results on the Lie bracket of horizontal vector fields on $TM$
-(cf. \cite{dombrowskiGeometryTangentBundle1962}, \cite{gudmundssonGeometryTangentBundles2002}) and the Lie bracket of horizontal vector fields on $%
-T_{1}M$ (cf. \cite{boeckxUnitTangentSphere2001}), it is possible to construct examples of tangent
-bundles and unit tangent bundles whose horizontal distributions satisfy the H%
-\"{o}rmander's condition.
-\end{example}
-~
 
 
 
@@ -292,4 +186,12 @@ bundles and unit tangent bundles whose horizontal distributions satisfy the H%
 
 
 
-\end{document}
+
+
+
+
+
+
+
+
+
