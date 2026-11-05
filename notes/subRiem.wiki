@@ -1,0 +1,225 @@
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\Cl}{Cl}
+
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
+\def\db{{\partial_b }}
+\def\dbb{{\bar{\partial}_b }}
+\def\lap{{\Delta}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dd}{\,\mathrm{d}v_g}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+	
+\title{Sub-Riemannian geoemtry}
+
+\section{Sub-Riemannian manifolds}
+Let $M^{m+k}$ be a $(m+k)$-dimensional smooth manifold and $\mathcal{H}^m$ be  a  subbundle of $TM$ of rank $m$. Assume that $\mathcal{H}$ satisfies step-$r$ bracket generating condition for some $r \geq 1$.
+This means that, at each point \( x \in M \), the sections of \( \mathcal{H} \), along with all their Lie brackets up to order \( r \), generate the tangent space \( T_xM \).
+Then the triple $(M^{m+k},\mathcal{H}^m,g_{\mathcal{H}})$ is called a sub-Riemannian manifold, where $g_{\mathcal{H}}$ is a fiberwise metric on $\mathcal{H}$. The subbundle $\mathcal{H}$ is also called the \textit{horizontal distribution}. Note that one can easily extend $g_{\mathcal{H}}$ to a Riemannian metric $g$ on $TM$ (see, e.g., \cite{dongEellsSampsonType2021a}). Throughout the paper, we fix such a metric $g$ such that $g|_{\mathcal{H}}=g_{\mathcal{H}}$ and denote the corresponding sub-Riemannian manifold by $(M^{m+k},\mathcal{H}^{m},g)$. 
+The term ``complete'' as it applies to $(M, \mathcal{H}, g)$ will refer to the Riemannian metric $g$ being complete.
+Now $TM$ admits a direct sum decomposition
+$$ TM=\mathcal{H} \oplus \mathcal{V}, $$       
+where \( \mathcal{V} \) denotes the \textit{vertical distribution}, namely the orthogonal complement of \( \mathcal{H} \) with respect to the metric \( g \).  
+Then 
+we have the natural projections
+$$ \pi _{\mathcal{H}}:TM \to \mathcal{H}, \quad  \pi _{\mathcal{V}}:TM \to \mathcal{V}.$$
+We denote by $\mathfrak{X},\mathfrak{X}_{\mathcal{H}},\mathfrak{X}_{\mathcal{V}}$ the spaces of all smooth sections of  $TM$,  $\mathcal{H}$ and  $\mathcal{V}$, respectively. 
+
+
+
+When dealing with $L^p$-vanishing results on sub-Riemannian manifolds, the  notion of  generalized Sobolev spaces  introduced by  Rothschild and Stein \cite{Rothstein1976hyp} is useful. Let $(M^{m+k},\mathcal{H}^m,g)$ be a sub-Riemannian manifold, and $U \subset M$ be a coordinate neighborhood on which a horizontal  frame   $\{e_1,\dots,e_m\}$ is defined. The generalized Sobolev spaces
+is defined as 
+$$ S_{l}^{p}(U)=\left\{ u \in L^p(U)|e_{i_1} \cdots e_{i_s}(u) \in L^p(U), 1 \leq i_{1} \leq \cdots \leq i_s \leq m, 0 \leq s \leq l \right\}. $$
+These notions can be easily extended to any relatively compact domain. 
+
+Next, we recall some examples of sub-Riemannian manifolds.
+
+\begin{example}[Riemannian foliations]   
+	Let  $(M^{m+k},\mathcal{F}^k)$ be a foliated manifold,
+	 where $\mathcal{F}^k$ is  a $k$-dimensional foliation. Let $g$ be a Riemannian metric on $M$ and decompose the tangent bundle 
+	 $$ TM=T\mathcal{F} \oplus \mathcal{H} $$ 
+	 accordingly, where $\mathcal{H}$ is  complementary to $T\mathcal{F} $. The metric $g$ is said to be bundle-like if the Lie derivate of $g_{\mathcal{H}}$ along vertical direction vanishes. 
+	 Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.    
+	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a \textit{Riemannian foliation}, see  \cite{CDHL2026hor} or \cite{gromollMetricFoliationsCurvature2009a} for more details. 
+	When $\mathcal{H}$ is bracket generating, $(M^{m+k},\mathcal{H}^m,g)$ is a sub-Riemannian manifold.  
+\end{example}
+
+Carnot groups are typical examples in sub-Riemannian geometry. Moreover, they can be endowed with a bundle-like metric structure, see \cite{Baudoin2025sub}.
+\begin{example}[Carnot groups]\label{exCar}
+	 A Carnot group is a simply connected Lie group $G$  whose Lie algebra $\mathfrak{g}$ admits a stratified decomposition: 
+	$$ \mathfrak{g}=V_1 \oplus V_2 \oplus \cdots \oplus V_r \quad (r \geq 1) $$
+	such that $[V_1,V_j]=V_{j+1}$ for $1 \leq j \leq r-1$ and $[V_1,V_r]=\{0\}$.   This gives a Lie algebra grading 
+	\begin{equation}\label{31}
+		[V_i,V_j] \subset V_{i+j}, 
+	\end{equation}
+	where $V_j:=\{0\}$ for $j >r$.  Define a distribution $\mathcal{H}$ on $G$ by 
+	$$ \mathcal{H}_x=dL_{x}(V_1) \subset T_xG, \quad \forall  x \in G .$$ 
+	Here $L_x$ is the left translation of $G$ relative to  $x$.   
+	Let $g_{\mathcal{H}}$ be a left-invariant metric on $\mathcal{H}$.  We can extend $g_{\mathcal{H}}$ to a Riemannian metric $g$  such that  $V_i \perp V_j$ for $i \neq j$. Then $(G,\mathcal{H},g)$ is a step-$r$  sub-Riemannian manifold. Thus 
+	we have  decomposition:
+	$$ TG=\mathcal{H} \oplus \mathcal{V} .$$
+	Since $[\mathcal{V}, \mathcal{V}] \subset  \mathcal{V}$, $\mathcal{V}$  is the vertical bundle of a foliation $\mathcal{F}$  on $G$.  
+\end{example}
+
+\begin{example}[Contact  manifolds, cf. \cite{Bla2010rie}]\label{excont}
+	Let $M^{2m+1}$  be a contact  manifold with  structure tensors $( \phi  , \mathsf{T}  , \theta   , g)$. 
+	Precisely speaking, $\theta $ is a contact form (i.e., $\theta \wedge (d \theta)^m \neq 0$), $\mathsf{T}$ is the Reeb vector field, $\phi $ is a $(1,1)$-tensor and $g$ is a Riemannian metric  such that  
+	\begin{equation}\label{2}
+		 \begin{cases}
+			\phi ^2=-I+\theta \otimes \mathsf{T}, \quad \phi (\mathsf{T})=0, \quad \theta (\mathsf{T})=1; &\text{}\\
+			g(\phi X,\phi Y) = g(X,Y)-\theta (X)\theta (Y), &\text{} \forall X,Y \in TM;\\
+			g(X,\phi Y)=d \theta (X,Y),&\text{} \forall X,Y \in TM.
+		\end{cases}  
+	\end{equation}   
+	The vertical and horizontal distributions are given by $\mathcal{V}:=\Span_{\rr} \{\mathsf{T}\} $ and $\mathcal{H}:=\ker \theta  $. It follows from the last equality of \eqref{2} that $\mathcal{H}$ is step-$2$ bracket generating, hence $(M^{2m+1},\mathcal{H}^{2m},g)$ is a sub-Riemannian manifold.   
+\end{example}
+
+\begin{example}[Pseudo-Hermitian manifolds]
+	Let $M$ be a real $(2m+p)$-dimensional oriented manifold. A \textit{CR structure} of type $(m,p)$ is a complex subbundle   $H^{1,0}$  of   $TM \otimes \cc$, of complex rank $m$,   satisfying the (formally) integrable condition. The pair $(M,H^{1,0})$ is  called a  \textit{CR manifold of type $(m,p)$}.  Set $H^{0,1}=\overline{H^{1,0}}$.
+	Alternatively,  the CR structure can  be described by a pair $(\mathcal{H},J_b)$, where $\mathcal{H} $ is the real bundle $\Re\{H^{1,0} \oplus H^{0,1}\}$  and $J_b$ is its almost complex structure defined by $J_b(X+\overline{X})=\sqrt{-1}(X-\overline{X})$ for all $X \in H^{1,0}$.   
+	
+	Let us consider the special case that $(M,H^{1,0})$ is   a  CR manifold of type $(m,1)$, which is also referred as \textit{hypersurface type} (see \cite[\S 1.1]{DT2006differential} for details).      
+	Since $M$ is oriented, there is a $1$-form $\theta $ which annihilates $\mathcal{H}$. Define the Levi form $L_{\theta }$  by 
+	$$ L_\theta (X,Y)=d \theta (X,J_b Y), \quad \forall  X,Y \in \mathfrak{X}_{\mathcal{H}} . $$    
+	When  $L_\theta $ is positive definite on $\mathcal{H}$, the CR manifold $(M,H^{1,0})$ is  said to be  \textit{strictly pseudoconvex} and  the triple $(M^{2m+1},\mathcal{H},\theta )$ is called a \textit{pseudo-Hermitian manifold}. This also implies that $\mathcal{H}$ is step-$2$  bracket generating.    Clearly, $\theta $ is a contact form and there is a unique Reeb vector field $\mathsf{T} $  satisfying 
+	$$ \theta (\mathsf{T} )=1, \quad i_{\mathsf{T}}(d \theta) =0. $$  
+	The collection of all its integral curves forms an oriented one-dimensional foliation $\mathcal{V}$  on $M$, which is called the \textit{Reeb foliation}.
+	Define $J$ as  the extension of  $J_b$ to $TM$  satisfying $J(\mathsf{T})=0$. 
+	Then there is a canonical metric called \textit{Webster metric} on $M$, given by 
+	$$ g=L_{\theta }+\theta \otimes \theta . $$  
+	Now $\mathcal{V}$ is the orthogonal complementary of $\mathcal{H}$ with respect to $g$.   
+	Note that $g(JX,JY)=g(X,Y)$ for all $X,Y \in \mathfrak{X}_{\mathcal{H}}$. Obviously, $(M^{2m+1},\mathcal{H},g)$ is a sub-Riemannian manifold. There are two natural connections on a pseudo-Hermitian manifold, the Levi-Civita connection $\nabla $ and the Tanaka-Webster connection $\nabla ^{TW}$. It's known that $\nabla ^{TW}$ is   compatible with the CR structure and the metric. The \textit{pseudo-Hermitian torsion} of $\nabla ^{TW}$, denoted by  $\tau $, is given by 
+	$$ \tau (X)=T_{\nabla ^{TW}}(\mathsf{T},X) $$
+	for all $X \in \mathfrak{X}(M)$, where $T_{\nabla ^{TW}}$ is the torsion tensor of $\nabla ^{TW}$.   The pseudo-Hermitian manifold $(M^{2m+1},\mathcal{H},\theta )$ is called \textit{Sasakian} if $\tau =0$.    
+	 For more information about pseudo-Hermitian geometry we refer the reader to  \cite{DT2006differential} or \cite{CDRY2019onharm}.       
+\end{example}
+
+
+
+
+In  \cite{Bej1978Cr}, A. Bejancu introduced the notion of CR-submanifolds, which serve as an intermediate class between complex submanifolds and totally real submanifolds in  complex differential geometry.
+\begin{example}[CR-submanifolds, cf. \cite{bej1986}]\label{exCrsub}
+	Let $(M,g)$ be a submanifold of a Hermitian manifold $(\widetilde{M},J,\tilde{g})$, where $g$ is the induced metric on $M$ from $\tilde{g}$. 
+	The submanifold $M$ is called a \textit{CR-submanifold} in $\widetilde{M}$ if there is a $C^{\infty}$ distribution $\mathcal{H}$ on $M$ satisfying the following conditions: 
+	(i) $J(\mathcal{H}_x)= \mathcal{H}_x$ for each $x \in M$; (ii) $J(\mathcal{V}_x) \subset T_{x}^{\perp}M$ for each $x\in M$, 
+	where $\mathcal{V}$ is the orthogonal complement  of $\mathcal{H}$ in $TM$ according to $g$, 
+	and $T^{\perp}M$ is the normal bundle of $M$ in $\widetilde{M}$. Let $2m$ and $p$ denote the ranks of $\mathcal{H}$ and $\mathcal{V}$ respectively. 
+	Then it follows from \cite[Theorem 4.1]{BlCh1979cr} that $(M,\mathcal{H},J|_{\mathcal{H}})$ is a CR manifold of type $(m,p)$. We remark, however, that the induced metric $g$ (in the case  $p=1$) doesn't coincide with the Webster metric in general. If  $\mathcal{H}$ satisfies bracket generating condition, then $(M,\mathcal{H},g)$ is a sub-Riemannian manifold.   
+\end{example}
+
+\section{Bott connection}
+It would be convenient to introduce a suitable linear connection compatible with
+the sub-Riemannian structure on $(M,H,g_H;g)$ in some sense. The generalized Bott
+connection is one of such connections given by
+\[
+\nabla^{\mathfrak B}_X Y
+=
+\begin{cases}
+\pi_H\bigl(\nabla^R_XY\bigr),
+& X,Y\in\Gamma(H),\\[4pt]
+\pi_H\bigl([X,Y]\bigr),
+& X\in\Gamma(V),\ Y\in\Gamma(H),\\[4pt]
+\pi_V\bigl([X,Y]\bigr),
+& X\in\Gamma(H),\ Y\in\Gamma(V),\\[4pt]
+\pi_V\bigl(\nabla^R_XY\bigr),
+& X,Y\in\Gamma(V).
+\end{cases}
+\]
+
+where $\nabla^R$ denotes the Riemannian connection of $g$. Clearly,
+$\nabla^{B}$ preserves the decomposition, and it also satisfies
+\[
+\nabla^{B}_X g_H=0
+\qquad\text{and}\qquad
+\nabla^{B}_Y g_V=0
+\]
+for any $X\in H$ and $Y\in V$. However, $\nabla^{B}$ does \textit{not} preserve the Riemannian metric $g$ in general.
+
+\begin{lemma}
+For any \(X,Y\in\Gamma(TM)\), we have
+\[
+T(X,Y)
+=
+-\pi_V\bigl([\pi_H(X),\pi_H(Y)]\bigr)
+-\pi_H\bigl([\pi_V(X),\pi_V(Y)]\bigr).
+\]
+\end{lemma}
+
+
+\section*{References} 
+\begin{reference}
+\bibitem[Bau26]{Baudoin2025sub}
+Fabrice Baudoin.
+\newblock Sub-laplacian comparison theorems on {R}iemannian foliations with minimal leaves and applications.
+\newblock {\em Communications on Pure and Applied Analysis}, 2026.
+
+\bibitem[BC79]{BlCh1979cr}
+David~E. Blair and Bang-Yen Chen.
+\newblock On {CR}-submanifolds of {H}ermitian manifolds.
+\newblock {\em Israel J. Math.}, 34(4):353--363, 1979.
+
+\bibitem[Bej78]{Bej1978Cr}
+Aurel Bejancu.
+\newblock {${\rm CR}$} submanifolds of a {K}aehler manifold. {I}.
+\newblock {\em Proc. Amer. Math. Soc.}, 69(1):135--142, 1978.
+
+\bibitem[Bej86]{bej1986}
+Aurel Bejancu.
+\newblock {\em Geometry of {CR}-submanifolds}, volume~23 of {\em Mathematics and its Applications (East European Series)}.
+\newblock D. Reidel Publishing Co., Dordrecht, 1986.
+
+\bibitem[Bla10]{Bla2010rie}
+David~E. Blair.
+\newblock {\em Riemannian geometry of contact and symplectic manifolds}, volume 203 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Boston, Ltd., Boston, MA, second edition, 2010.
+
+\bibitem[CDHL26]{CDHL2026hor}
+Tian Chong, Yuxin Dong, Xin Huang, and Hui Liu.
+\newblock On critical maps of the horizontal energy functional between {R}iemannian foliations.
+\newblock {\em J. Geom. Anal.}, 36(1):Paper No. 21, 44, 2026.
+
+\bibitem[CDRY19]{CDRY2019onharm}
+Tian Chong, Yuxin Dong, Yibin Ren, and Guilin Yang.
+\newblock On harmonic and pseudoharmonic maps from pseudo-{H}ermitian manifolds.
+\newblock {\em Nagoya Math. J.}, 234:170--210, 2019.
+
+\bibitem[Don21]{dongEellsSampsonType2021a}
+Yuxin Dong.
+\newblock Eells-{S}ampson type theorems for subelliptic harmonic maps from sub-{R}iemannian manifolds.
+\newblock {\em J. Geom. Anal.}, 31(4):3608--3655, 2021.
+
+\bibitem[DT06]{DT2006differential}
+Sorin Dragomir and Giuseppe Tomassini.
+\newblock {\em Differential geometry and analysis on {CR} manifolds}, volume 246 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Boston, Inc., Boston, MA, 2006.
+
+\bibitem[GW09]{gromollMetricFoliationsCurvature2009a}
+Detlef Gromoll and Gerard Walschap.
+\newblock {\em Metric foliations and curvature}, volume 268 of {\em Progress in Mathematics}.
+\newblock Birkh\"auser Verlag, Basel, 2009.
+
+\bibitem[RS76]{Rothstein1976hyp}
+Linda~Preiss Rothschild and E.~M. Stein.
+\newblock Hypoelliptic differential operators and nilpotent groups.
+\newblock {\em Acta Math.}, 137(3-4):247--320, 1976.
+
+\end{reference}
+
+
+
+
