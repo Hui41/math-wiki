@@ -162,7 +162,7 @@ T(X,Y)
 
 
 \section*{References} 
-\begin{reference}
+\begin{references}
 \bibitem[Bau26]{Baudoin2025sub}
 Fabrice Baudoin.
 \newblock Sub-laplacian comparison theorems on {R}iemannian foliations with minimal leaves and applications.
@@ -218,7 +218,7 @@ Linda~Preiss Rothschild and E.~M. Stein.
 \newblock Hypoelliptic differential operators and nilpotent groups.
 \newblock {\em Acta Math.}, 137(3-4):247--320, 1976.
 
-\end{reference}
+\end{references}
 
 
 
