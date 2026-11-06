@@ -110,3 +110,49 @@ footer { border-top: 1px solid var(--border); margin-top: 62px; padding: 22px 0;
   .site-header { padding: 10px 14px; }
   .logo { font-size: 16px; }
 }
+
+
+/* Numbering styles for enumerate */
+
+.wiki-enumerate {
+  list-style: none;
+  counter-reset: item;
+  padding-left: 2.8em;
+}
+
+.wiki-enumerate > li {
+  counter-increment: item;
+  position: relative;
+  margin-bottom: 0.5em;
+}
+
+.wiki-enumerate > li::before {
+  position: absolute;
+  right: calc(100% + 0.5em);
+  white-space: nowrap;
+}
+
+.wiki-enumerate.decimal > li::before {
+  content: counter(item) ".";
+}
+
+.wiki-enumerate.decimal-paren > li::before {
+  content: "(" counter(item) ")";
+}
+
+.wiki-enumerate.roman > li::before {
+  content: "(" counter(item, lower-roman) ")";
+}
+
+.wiki-enumerate.Roman > li::before {
+  content: "(" counter(item, upper-roman) ")";
+}
+
+.wiki-enumerate.alpha > li::before {
+  content: "(" counter(item, lower-alpha) ")";
+}
+
+.wiki-enumerate.Alpha > li::before {
+  content: "(" counter(item, upper-alpha) ")";
+}
+

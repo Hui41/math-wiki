@@ -73,18 +73,28 @@ We will take a viewpoint from <a href="/notes/PseuHerm/">Pseudo-Hermitian Geomet
 <section>
 <p>Let \((M^{2m+1},g)\) be a Riemannian manifold, \(\nabla\) the Levi-Civita connection, and \(R\) its curvature tensor.
 Then the following conditions are equivalent:</p>
-<ol>
-<li>\((M, g)\) is a Sasakian manifold.</li>
-<li>The associated cone manifold \((C(M), \tilde{g})= (M \times \rr^+,r^2g+dr^2)\) is a Kähler manifold. Therefore, Sasakian manifolds are the ``odd-dimensional'' generalization of Kähler manifolds.</li>
-<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that the \((1,1)\)-type tensor field \(\Phi\) defined by \(\Phi(X) = \nabla_X T\) satisfies
-\(
+<ol class="wiki-enumerate roman">
+<li>
+<p>\((M, g)\) is a Sasakian manifold.</p>
+</li>
+<li>
+<p>The associated cone manifold \((C(M), \tilde{g})= (M \times \rr^+,r^2g+dr^2)\) is a Kähler manifold. Therefore, Sasakian manifolds are the ``odd-dimensional'' generalization of Kähler manifolds.</p>
+</li>
+<li>
+<p>There exists a unit-length Killing vector field \(T\) on \(M\) such that the \((1,1)\)-type tensor field \(\Phi\) defined by \(\Phi(X) = \nabla_X T\) satisfies</p>
+<p>\[
         (\nabla_X \Phi)(Y) = g(T, Y)X - g(X, Y)T , \quad \forall X,Y \in T(M).
-        \)</li>
-<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that the curvature satisfies
-\(
+        \]</p>
+</li>
+<li>
+<p>There exists a unit-length Killing vector field \(T\) on \(M\) such that the curvature satisfies</p>
+<p>\[
         R(X, T)Y = g(T, Y)X - g(X, Y)T, \quad \forall X,Y \in T(M).
-        \)</li>
-<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that every section containing \(T\) has sectional curvature equal to \(1\).</li>
+        \]</p>
+</li>
+<li>
+<p>There exists a unit-length Killing vector field \(T\) on \(M\) such that every section containing \(T\) has sectional curvature equal to \(1\).</p>
+</li>
 </ol>
 </section>
 </div>
@@ -94,20 +104,12 @@ Then the following conditions are equivalent:</p>
 <p>Let \((M,g)\) be a Sasakian manifold and \(T\) the Killing vector field satisfying the above proposition.
 Then the tangent bundle admits the decomposition with respect to \(g\):</p>
 <p>\[ T(M)=H \otimes V_{T }. \]</p>
-<p>Define the \((1,1)\)-tensor field \(J_b=\Phi |_H\) on \(H\). Then by (i) of the above proposition, it is easy to verify that \(J_b^2=-\id\). Note that the complex structure \(J_c\) on \((C(M),\tilde{g})\) is given by</p>
+<p>Define the \((1,1)\)-tensor field \(J_b=\Phi |_H\) on \(H\). Then by (iii) of the above proposition, it is easy to verify that \(J_b^2=-\id\). Note that the complex structure \(J_c\) on \((C(M),\tilde{g})\) is given by</p>
 <p>\[ J_c(Y)=\begin{cases}
     \Phi (Y)-g(T ,Y) r \frac{\partial }{\partial r} &amp;\text{ if }~ Y \in T(M);\\
     T  &amp;\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  \]</p>
-<p>Then, using the integrability of \(J_c\) and the fact that \(T\) is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that \((M,H,J_b)\) is precisely the pseudo-Hermitian manifold with \(\tau\) equal to zero.</p>
-</section>
-</div>
-<p>The Kähler metric is discussed in
-Poincaré geometry.</p>
-<div class="theorem remark">
-<header>Remark</header>
-<section>
-<p>This is a theorem of Hôpital.</p>
+<p>Then, using the integrability of \(J_c\) and the fact that \(T\) is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that \((M,H,J_b)\) is precisely the pseudo-Hermitian manifold with \(\tau=0\).</p>
 </section>
 </div>
 <h1>Space forms</h1>

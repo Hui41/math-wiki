@@ -37,17 +37,17 @@ The following proposition gives different characterizations of Sasakian manifold
 \begin{proposition}
    Let $(M^{2m+1},g)$ be a Riemannian manifold, $\nabla$ the Levi-Civita connection, and $R$ its curvature tensor.
   Then the following conditions are equivalent: 
-   \begin{enumerate}
+   \begin{enumerate}[(i)]
         \item $(M, g)$ is a Sasakian manifold.
         \item The associated cone manifold $(C(M), \tilde{g})= (M \times \rr^+,r^2g+dr^2)$ is a K\"ahler manifold. Therefore, Sasakian manifolds are the ``odd-dimensional'' generalization of K\"ahler manifolds.
         \item There exists a unit-length Killing vector field $T$ on $M$ such that the $(1,1)$-type tensor field $\Phi$ defined by $\Phi(X) = \nabla_X T$ satisfies
-        \(
+        \[
         (\nabla_X \Phi)(Y) = g(T, Y)X - g(X, Y)T , \quad \forall X,Y \in T(M).
-        \)
+        \]
         \item There exists a unit-length Killing vector field $T$ on $M$ such that the curvature satisfies
-        \(
+        \[
         R(X, T)Y = g(T, Y)X - g(X, Y)T, \quad \forall X,Y \in T(M).
-        \)
+        \]
         \item There exists a unit-length Killing vector field $T$ on $M$ such that every section containing $T$ has sectional curvature equal to $1$.
     \end{enumerate}
 \end{proposition}
@@ -56,19 +56,13 @@ The following proposition gives different characterizations of Sasakian manifold
 Let $(M,g)$ be a Sasakian manifold and $T$ the Killing vector field satisfying the above proposition.
 Then the tangent bundle admits the decomposition with respect to $g$:
 $$ T(M)=H \otimes V_{T }. $$
-Define the $(1,1)$-tensor field $J_b=\Phi |_H$ on $H$. Then by (i) of the above proposition, it is easy to verify that $J_b^2=-\id$. Note that the complex structure $J_c$ on $(C(M),\tilde{g})$ is given by
+Define the $(1,1)$-tensor field $J_b=\Phi |_H$ on $H$. Then by (iii) of the above proposition, it is easy to verify that $J_b^2=-\id$. Note that the complex structure $J_c$ on $(C(M),\tilde{g})$ is given by
 $$ J_c(Y)=\begin{cases}
     \Phi (Y)-g(T ,Y) r \frac{\partial }{\partial r} &\text{ if }~ Y \in T(M);\\
     T  &\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  $$
-Then, using the integrability of $J_c$ and the fact that $T$ is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that $(M,H,J_b)$ is precisely the pseudo-Hermitian manifold with $\tau$ equal to zero.
+Then, using the integrability of $J_c$ and the fact that $T$ is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that $(M,H,J_b)$ is precisely the pseudo-Hermitian manifold with $\tau=0$.
 \end{remark}
 
-The K\"ahler metric is discussed in
-Poincar\'e geometry.
-
-\begin{remark}
-This is a theorem of H\^opital.
-\end{remark}
 
 \section{Space forms}

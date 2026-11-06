@@ -13,11 +13,38 @@ MD=MarkdownIt('commonmark', {'html': True, 'linkify': True})
 NOTES=ROOT/'notes'
 files=sorted(NOTES.glob('*.wiki'))
 if not files: raise SystemExit('No .wiki notes in notes/')
+
+def convert_title_accents(text):
+    accents = {
+        "'": "\u0301",
+        '"': "\u0308",
+        "`": "\u0300",
+        "^": "\u0302",
+        "~": "\u0303",
+    }
+
+    def replace_accent(m):
+        letter = m.group(2) or m.group(3)
+        return unicodedata.normalize(
+            "NFC",
+            letter + accents[m.group(1)]
+        )
+
+    return re.sub(
+        r'\\([\'"`^~])\s*(?:\{([A-Za-z])\}|([A-Za-z]))',
+        replace_accent,
+        text
+    )
+
 PAGES=[]
 for file in files:
     body=file.read_text(encoding='utf-8')
     m=re.search(r'^\\title\{([^\n]*)\}',body,re.M)
-    PAGES.append(dict(slug=file.stem,title=m.group(1) if m else file.stem,src=body))
+    PAGES.append(dict(
+    slug=file.stem,
+    title=convert_title_accents(m.group(1)) if m else file.stem,
+    src=body
+    ))
 LOOKUP={p['slug']:p for p in PAGES}
 
 def href(slug):
@@ -286,9 +313,55 @@ def compile_page(p):
 
     src=re.sub(r'\\(?:emph|textit)\{([^{}]*)\}',lambda m:'*'+m.group(1)+'*',src)
     src=re.sub(r'\\textbf\{([^{}]*)\}',lambda m:'**'+m.group(1)+'**',src)
-    src=re.sub(r'^\s*\\begin\{enumerate\}\s*$', '',src,flags=re.M)
-    src=re.sub(r'^\s*\\end\{enumerate\}\s*$', '',src,flags=re.M)
-    src=re.sub(r'^\s*\\item\s+', '1. ',src,flags=re.M)
+    # Enumerate: preserve numbering across display equations.
+    # Enumerate with optional numbering styles.
+    def render_enumerate(match):
+        style = (match.group(1) or "").strip()
+        body = match.group(2)
+
+        styles = {
+            "(i)": "roman",
+            "(a)": "alpha",
+            "(I)": "Roman",
+            "(A)": "Alpha",
+            "(1)": "decimal-paren",
+        }
+
+        css_class = styles.get(style, "decimal")
+
+        parts = re.split(
+            r'(?m)^[ \t]*\\item(?:[ \t]+|(?=\n)|$)',
+            body
+        )
+
+        items = []
+
+        for part in parts[1:]:
+            content = part.strip()
+            if not content:
+                continue
+
+            content = MD.render(content)
+
+            items.append(
+                '<li>\n' + content + '</li>'
+            )
+
+        return (
+            '\n\n<ol class="wiki-enumerate ' +
+            css_class + '">\n' +
+            '\n'.join(items) +
+            '\n</ol>\n\n'
+        )
+
+    src = re.sub(
+        r'\\begin\{enumerate\}(?:\[([^\]]*)\])?'
+        r'(.*?)\\end\{enumerate\}',
+        render_enumerate,
+        src,
+        flags=re.S
+    )
+
     # Theorem bodies are parsed separately because Markdown does not parse
     # Markdown inside raw HTML blocks. LaTeX-style indentation (four spaces)
     # would otherwise turn prose into code and prevent MathJax rendering.

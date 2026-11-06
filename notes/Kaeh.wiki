@@ -1,0 +1,745 @@
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\trace}{tr} 
+\DeclareMathOperator{\di}{div}
+\DeclareMathOperator{\ricci}{Ric}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\hess}{Hess}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{Id}
+
+\def\zz{{\mathbb Z}}
+\def\rr{{\mathbb R}}
+\def\cc{{\mathbb C}}
+\def\qq{{\mathbb Q}}
+\def\oo{{\infty}}
+\def\db{{\partial_b }}
+\def\dbb{{\bar{\partial}_b }}
+\def\lap{{\Delta}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dd}{\,\mathrm{d}v_g}
+
+\title{K\"ahler geometry}
+\section{K\"ahler geometry}
+\section{General complex manifolds}
+Here we take KobayashiNomizu's convention, but difference a factor on forms (symmetric operation is the same!).
+Thus we take alt convention of John M Lee's, i.e.,
+	\begin{equation*}
+		\text { Alt } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right), \text { Sym } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}{ }^{\sigma} \alpha,
+	\end{equation*}
+	\begin{equation*}
+		\omega \wedge \eta=\frac{(k+l) !}{k ! l !} \operatorname{Alt}(\omega \otimes \eta), \quad  \alpha \beta= \operatorname{Sym}(\alpha \otimes \beta).
+	\end{equation*}
+		\begin{equation}
+		\Phi \wedge\Psi \wedge \eta=\frac{(r+s+t) !}{r ! s ! t !} \operatorname{Alt}(\Phi \otimes \Psi \otimes \eta).
+	\end{equation}
+		\begin{equation}
+		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! \operatorname{Alt}\left(\omega^{i_{1}} \otimes \omega^{i_{2}} \otimes \cdots \otimes \omega^{i_{r}}\right).
+	\end{equation}
+\begin{remark}
+	Compare with alt convention $\bar\wedge, \bar d$ of KobayashiNomizu's book:
+	\begin{equation}
+	\eta_{(k)}	\bar \wedge \omega_{(l)} =\operatorname{Alt}(\omega \otimes \eta), \quad \eta	\bar \wedge \omega =\frac{k!l!}{(k+l)!} \eta \wedge \omega, \quad \bar d \eta =\frac{1}{k+1} d \eta,
+	\end{equation}
+	and
+	\begin{equation}
+		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! 
+		\omega^{i_{1}}\bar \wedge \omega^{i_{2}} \bar \wedge \cdots \bar \wedge \omega^{i_{r}}.
+	\end{equation}
+\end{remark}
+
+Set on $\mathbb{C}^n$:
+\begin{equation}
+	z^k=x^k+i y^k, \quad x^k, y^k \in \mathbb{R}.
+\end{equation}
+\begin{equation}
+	Z=(z^1,...,z^n)=(x^1,...,x^n,y^1,...,y^n).
+\end{equation}
+Complex structure:
+\begin{equation}
+	J_0(Z)=(y^1,...,y^n, -x^1,...,-x^n),
+\end{equation}
+\begin{equation}
+	J_0= \begin{pmatrix}
+	0 & I_n\\
+	-I_n & 0
+\end{pmatrix}.
+\end{equation}
+\begin{equation}
+J\left(\partial / \partial x^j\right)=\partial / \partial y^j, \quad J\left(\partial / \partial y^j\right)=-\left(\partial / \partial x^j\right), \quad j=1, \ldots, n .
+\end{equation}
+\begin{equation}
+\partial / \partial z^j=\frac{1}{2}\left(\partial / \partial x^j-i\left(\partial / \partial y^j\right)\right), \quad \partial / \partial \bar{z}^j=\frac{1}{2}\left(\partial / \partial x^j+i\left(\partial / \partial y^j\right)\right) .
+\end{equation}
+Real representation of $GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})$:
+\begin{equation}
+	A+iB \to \begin{pmatrix}
+		A & B\\
+		-B & A
+	\end{pmatrix} .
+\end{equation}
+A natural one-to-one correspondence:
+\begin{equation}
+	\{ \text{the set of complex structures on} \, \mathbb{R}^{2n} \} \Leftrightarrow GL(2n;\mathbb{R})/GL(n;\mathbb{C})
+\end{equation}
+by sending $S\in GL(2n;\mathbb{R})/GL(n;\mathbb{C})$ into $SJ_0S^{-1}.$
+
+\noindent	
+The complex structure on dual space:
+\begin{equation}
+	\la JX,X^* \ra=\la X,JX^* \ra.
+\end{equation}	
+
+\begin{equation}
+V^{1,0}=\{X-i J X ; X \in V\}
+\end{equation}
+\begin{equation}
+V^{0,1}=\{X+i J X ; X \in V\}
+\end{equation}
+\begin{equation}
+\begin{array}{ll}
+V_{1,0}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &  \left.X \in V^{0,1}\right\}, \\
+V_{0,1}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &  \left.X \in V^{1,0}\right\} .
+\end{array}
+\end{equation}
+
+Hermitian inner product on a real vector space $V$:
+\begin{equation}
+	h(JX,JY)=h(X,Y), \quad X,Y \in V.
+\end{equation}
+A natural one-to-one correspondence
+\begin{equation}
+	\{ \text{the set of Hermitian inner products in}\, \mathbb{R}^{2n} \} \Leftrightarrow GL(n;\mathbb{C})/U(n)
+\end{equation}
+by sending $S$ to $h(X,Y)=h_0(SX,SY)$.
+
+After complex-extending $h$, we have
+\begin{enumerate}
+	\item $h(\bar{Z}, \bar{W})=\overline{h(Z, W)} \quad$ for $Z, W \in V^c$;
+\item $h(Z, \bar{Z})>0 \quad$ for all non-zero $Z \in V^c$;
+\item $h(Z, \bar{W})=0 \quad$ for $Z \in V^{1,0} $ and $ W \in V^{0,1}$.
+\end{enumerate}
+Define a skew-symmetric	element 
+$$ \boxed{\varphi(X,Y)=h(X,JY),}$$
+then $\varphi \in \Lambda^{1,1}V^*$	and $\varphi$ is $J$-invariant.
+
+Let $\{Z_j\}$ be a basis for $V^{1,0}$ and $\{\xi_J\}$ a basis for $V_{1,0}$.
+Set
+\begin{equation}
+	h_{j \bar k}=h(Z_j,Z_{\bar k}).
+\end{equation}
+Then
+\begin{enumerate}
+	\item $h_{j \bar k}=\bar{h}_{k \bar j}$
+	\item $\varphi=-i\sum_{j,k=1}^n h_{j \bar k}\xi^j \wedge \bar{\xi}^k$
+\end{enumerate}
+i.e.,
+\begin{equation}
+\varphi(Z, W)=-i \sum_{j, k=1}^n h_{j \bar k}\left(\xi^j(Z) \bar{\xi}^k(W)-\xi^j(W) \bar{\xi}^k(Z)\right) .
+\end{equation}
+
+The torsion of $J$:
+\begin{equation}
+	N(X,Y)=2\{ [JX, JY] - [X, Y] - J[X, JY] - J[JX, Y] \}, \quad X,Y \in \mathfrak{X}(M).
+\end{equation}
+\begin{equation}
+N_{j k}^i=2 \sum_{h=1}^{2 n}\left(J_i^h \partial_h J_k^i-J_k^h \partial_h J_j^i-J_h^i \partial_j J_k^h+J_h^i \partial_k J_j^h\right).
+\end{equation}
+The complex differential forms on an almost complex manifold $M$ of dimension $2n$:
+\begin{equation}
+d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mathfrak{C}^{p, q+1}+\mathfrak{C}^{p-1, q+2} .
+\end{equation}
+An infinitesimal automorphism is a vf. $X$ s.t. $L_XJ=0,$ equivalently,
+\begin{equation}
+  [X,JY]=J[X,Y], \quad \forall Y \in \mathfrak{X}(M)
+\end{equation}
+On any \textbf{complex manifold} $M$:
+\begin{enumerate}
+  \item  The Lie algebra of infinitesimal automorphisms of the complex structure $J$ is isomorphic with the Lie algebra of holomorphic vector fields, the isomorphism being given by
+$$X \to Z=\frac{1}{2}(X-iJX) .$$
+Note that we can write
+\begin{equation}
+	\frac{1}{2}(X-i J X)=\sum_{j=1}^n f^j\left(\partial / \partial z^j\right), \quad \frac{1}{2}(Y-i J Y)=\sum_{j=1}^n g^j\left(\partial / \partial z^j\right) ,
+	\end{equation}
+	\textbf{but $f^j, g^i$ are not necessarily holomorphic functions.} 
+\item $M$ admits an \textbf{almost complex affine connection} ($\nabla J=0$) such that its torsion $T$ is given by 
+    $$N=8T. $$
+\item $T(J X, J Y) -J(T(J X, Y))-J(T(X, J Y))-T(X, Y)=-\frac{1}{2} N(X, Y)$ 
+\item $R(X,Y)\circ J=J\circ R(X,Y)$
+\end{enumerate}
+On any almost Hermitian manifold $(M,J,g)$:
+\begin{equation}
+\begin{aligned}
+4 g\left(\left(\nabla_X J\right) Y, Z\right)= 2 d \Phi(X, J Y, J Z)-2 d \Phi(X, Y, Z)  +g(N(Y, Z), J X) ,
+\end{aligned}
+\end{equation}
+where the fundamental 2-form $\Phi(X,Y)=g(X,JY)$.
+
+\section{Some simple calculation}
+Set
+$$ Z_j=\frac{1}{2}(X_j-iY_j), \quad  \bar Z_j=\frac{1}{2}(X_j+iY_j),$$
+then
+$$ X_j=Z_j+\bar Z_j, \quad Y_j=i(Z_j-\bar Z_j). $$
+For any bilinear operator
+$$ A(X_j,X_j)+A(Y_j,Y_j) = 2\{A(Z_j,\bar Z_j) +A(\bar Z_j, Z_j)  \},$$
+$$ A(Z_j,\bar Z_j)=\frac{1}{4}\{ A(X_j,X_j)+A(Y_j,Y_j)   \}-\frac{i}{4}\{ A(X_j,Y_j)+A(Y_j,X_j)   \} ,$$
+$$ X_jX_j+Y_jY_j=2(Z_j \bar Z_j+\bar Z_j  Z_j)$$
+$$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
+
+
+
+\section{Hermitian metric on Kaehler manifolds}
+\begin{remark}[About Hermitian metric]
+    1. Hermitian fiber metric in this case is a map $h: \Gamma\left(T_J M\right) \times \Gamma\left(T_J M\right) \rightarrow C^{\infty}(M ; \mathbb{C})$ that satisfies all of the following:\\
+- $h$ is bilinear over $C^{\infty}(M ; \mathbb{R})$;\\
+- $h(J X, Y)=i h(X, Y)$;\\
+- $h(X, J Y)=-i h(X, Y)$;\\
+- $h(Y, X)=\overline{h(X, Y)}$;\\
+- $h(X, X)>0$ at points where $X \neq 0$.
+
+2. Write $h=g+i\omega$, where $g=Re(h), \omega =Im(h)$, then \\
+- $g$ is a Riemannian metric. (since $g(X, Y)=\frac{1}{2}(h(X, Y)+\overline{h(X, Y)})=\frac{1}{2}(h(X, Y)+h(Y, X))$.) \\
+- $\omega (X,Y)=g(X,JY), g(X,Y)=\omega (JX,Y)$ and $g, \omega $ are both $J$-invariant.
+
+3. Define a Hermitian metric $\la, \ra$ by
+\begin{equation}
+	\boxed{\la Z,W\ra=g(Z,\bar W).}
+\end{equation}
+\end{remark}
+\begin{proposition}
+	In local holomorphic coordinates,
+	\begin{equation}
+		\begin{aligned}
+		g & =g_{j \bar{k}} d z^j \otimes d \bar{z}^k+g_{\bar{j} k} d \bar{z}^j \otimes d z^k \\
+		& =2 g_{j \bar{k}}\left(\frac{d z^j \otimes d \bar{z}^k+d \bar{z}^k \otimes d z^j}{2}\right) \\
+		& =2 g_{j \bar{k}} d z^j d \bar{z}^k.
+		\end{aligned}
+		\end{equation} 
+\end{proposition}
+\begin{proposition}
+	If $X$ and $Y$ are real vector fields, written locally as $X=X^j \partial_j+X^{\bar{j}} \partial_{\bar{j}}$ and $Y=Y^j \partial_j+Y^{\bar{j}} \partial_j$, then
+	$$
+	g(X, Y)=g_{j \bar{k}}\left(X^j Y^{\bar{k}}+Y^j X^{\bar{k}}\right),
+	$$
+	and $g(X, X)=2 g_{j \bar{k}} X^j X^{\bar{k}}$. 
+\end{proposition}
+\begin{proposition}
+   Given the isomorphim $\xi: T_JM \to T'M$ by $\xi(X)=X-iJX$, then
+   $$ \la \xi(X), \xi(Y)\ra=2h(X,Y) .$$ 
+  ( We could have avoided this discrepancy by adding a factor of $\frac{1}{\sqrt 2}$  to the definition of $\xi $. ) 
+\end{proposition}
+\begin{proposition}
+	In holomorphic coordinates, for sections $Z, W$ of $T^{\prime} M$, we have
+	$$
+	\langle Z, W\rangle=g\left(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\right)=g_{j \bar{k}} Z^j W^{\bar{k}},
+	$$
+ On the other hand, if $X$ and $Y$ are real, decomposed as $X=Z+\bar{Z}$ and $Y=W+\bar{W}$ with $Z, W \in \Gamma\left(T^{\prime} M\right)$, then
+	
+	$$
+	\langle X, Y\rangle=g_{j \bar{k}}\left(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\right)
+	$$
+	
+	
+	In particular, for $X=Z+\bar{Z}$, this yields
+	
+	$$
+	|X|^2=|Z+\bar{Z}|^2=|Z|^2+|\bar{Z}|^2=2|Z|^2=2 g_{j \bar{k}} Z^j Z^{\bar{k}} .
+	$$
+\end{proposition}
+
+\begin{proposition}[Raising and lowering, the musical isomorphim]
+   Define for a complex $X$,  $X^b(Y)=g(X, Y), \forall Y \in T_{\mathbb{C}}M$. Then for $Z \in T'M$, we have 
+   $$Z_{\bar k} = g_{j \bar k}Z^{j}, \quad g^{j \bar k}Z_{\bar k} = Z^{j}.$$
+\end{proposition}
+
+
+\section{Kaehler metrics(\textit{kn})}
+The metric $g$ is Kaehlerian if $\Phi$ is closed. For a Kaehler manifold, we have
+\[
+R(JX, JY) = R(X, Y), \quad \operatorname{Ric}(JX, JY) = \operatorname{Ric}(X, Y) = \frac{1}{2} \operatorname{tr} \{ J \circ R(X, JY) \}.
+\]
+
+Set
+\[
+Z_{\alpha} = \frac{\partial}{\partial z^{\alpha}}, \quad Z_{\bar{\alpha}} = \bar{Z}_{\alpha} = \frac{\partial}{\partial \bar{z}^{\alpha}};
+\]
+\[
+g_{AB} = g(Z_A, Z_B), \quad A, B = 1, \dots, n, \bar{1}, \dots, \bar{n}.
+\]
+Thus $g_{\alpha \beta} = g_{\bar{\alpha} \bar{\beta}} = 0$, and
+\[
+\boxed{g = ds^2 = 2 \sum_{\alpha, \beta}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}.}
+\]
+Note that here $dz^{\alpha} d\bar{z}^{\beta}$ is the symmetric product, that's why factor 2. Also
+\[
+\boxed{\Phi = -i \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} \wedge d\bar{z}^{\beta}.}
+\]
+For $g$ to be Kaehlerian:
+\[
+\frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
+\]
+For an affine connection, set
+\[
+\nabla_{Z_B} Z_C = \sum \Gamma_{BC}^A Z_A.
+\]
+Then
+\[
+\bar \Gamma_{BC}^A = \Gamma_{\bar{B} \bar{C}}^{\bar{A}} \quad \text{with convention $\bar{\bar \alpha} = \alpha$.}.
+\]
+For $\nabla$ to be almost complex:
+\[
+\Gamma_{B \gamma}^{\bar\alpha} = \Gamma_{B \bar{\gamma}}^{\alpha} = 0.
+\]
+For an almost complex $\nabla$ to be torsion free:
+\[
+\Gamma_{\beta \gamma}^{\alpha} = \Gamma_{\gamma \beta}^{\alpha}, \quad \Gamma_{\bar{\beta} \bar\gamma}^{\bar{\alpha}} = \Gamma_{\bar\gamma \bar{\beta}}^{\bar{\alpha}},
+\]
+and other $\Gamma_{BC}^A = 0$.
+
+In particular, for a Kaehler manifold:
+\[
+\sum_{\alpha} g_{\alpha \bar{\epsilon}} \Gamma_{\beta \gamma}^{\alpha} = \frac{\partial g_{\bar\epsilon \beta}}{\partial z^{\gamma}}, \quad \sum_{\alpha} g_{\bar\alpha \epsilon} \Gamma_{\bar{\beta} \bar \gamma}^{\bar{\alpha}} = \frac{\partial g_{\epsilon \bar{\beta}}}{\partial \bar{z}^{\gamma}}.
+\]
+Set (as before)
+\[
+R(Z_C, Z_D) Z_B = \sum_A K_{BCD}^A Z_A,
+\]
+\[
+K_{ABCD} = g \left( R(Z_C, Z_D) Z_B, Z_A \right),
+\]
+then
+\[
+K_{ABCD} = \sum_E g_{AE} K^E_{BCD}.
+\]
+From 
+\[
+\Rightarrow K^{\alpha}_{\bar{\beta} CD} = K^{\bar{\alpha}}_{\beta CD} = 0,
+\]
+thus
+\[
+K^{\alpha}_{\bar{\beta} CD} = K^{\bar{\alpha}}_{\beta CD} = 0,
+\]
+and by symmetry of tensor $R$:
+\[
+K_{\alpha \beta CD} = K_{\bar \alpha \bar{\beta} CD} = 0,
+\]
+\[
+K^{A}_{B \gamma \delta} = K^{A}_{B \bar{\gamma} \bar \delta} = 0, \quad K_{AB \gamma \delta} = K_{AB \bar{\gamma} \bar \delta} = 0.
+\]
+Consequently, the only non-zero components are
+\[
+K^{\alpha}_{\beta \bar \gamma \delta}, \quad K^{\alpha}_{\beta \gamma \bar{\delta}}, \quad K^{\bar{\alpha}}_{\bar \beta \bar \gamma \delta}, \quad K^{\bar{\alpha}}_{\bar \beta \gamma \bar{\delta}},
+\]
+\[
+K_{\alpha \bar{\beta} \gamma \bar \delta}, \quad K_{\bar \alpha \beta \bar{\gamma} \delta}, \quad K_{\alpha \bar{\beta} \bar{\gamma} \delta}, \quad K_{\bar{\alpha} \beta \gamma \bar{\delta}}.
+\]
+We obtain
+\begin{equation}\label{eq:80}
+	K^{\alpha}_{\beta \gamma \bar \delta} = -\partial \Gamma^{\alpha}_{\beta \gamma} / \partial \bar z^{\delta},
+\end{equation}
+\[
+K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^2 g_{\alpha \bar{\beta}}}{\partial z^{\gamma} \partial \bar{z}^{\delta}} - \sum_{\tau, \epsilon} g^{\bar{\epsilon} \tau} \frac{\partial g_{\alpha \bar{\epsilon}}}{\partial z^{\gamma}} \frac{\partial g_{\bar \beta \tau}}{\partial \bar{z}^{\delta}},
+\]
+where $(g^{\alpha \bar{\beta}})$ inverts $(g_{\alpha \bar{\beta}})$ such that $\sum_{\beta} g^{\alpha \bar{\beta}} g_{\gamma \bar{\beta}} = \delta^{\alpha}_{\gamma}$.
+
+\textbf{Ricci curvature}:
+\[
+K_{AB} = \sum_C K^C_{ACB}
+\]
+Denote $G = \det(g_{\alpha \bar{\beta}})$, then
+\[
+\frac{\partial G}{\partial z^{\alpha}} = G \sum_{\beta, \gamma} g^{\beta \bar{\gamma}} \frac{\partial g_{\beta \bar{\gamma}}}{\partial z^{\alpha}}.
+\]
+Thus
+\begin{equation}\label{eq:92}
+	\sum_{\gamma} \Gamma^{\gamma}_{\alpha \gamma} = \frac{\partial \log(G)}{\partial z^{\alpha}},
+\end{equation}
+\begin{equation}\label{eq:93}
+	K_{\alpha \bar{\beta}} = -\frac{\partial^2 \log(G)}{\partial z^{\alpha} \partial \bar{z}^{\beta}}.
+\end{equation}
+Also
+\begin{equation}
+Rc = 2 R_{j \bar{k}} dz^j d\bar{z}^k, \quad S = 2 g^{j \bar{k}} R_{j \bar{k}}.
+\end{equation}
+
+\begin{remark}
+	 Note that $\eqref{eq:92}$  holds for real Riemannian manifolds if we set $G = (\det(g_{ij}))^{\frac{1}{2}}$, but $\eqref{eq:93}$ is far from the truth.
+\end{remark}
+Ricci form (defined by $\rho(X, Y) = \operatorname{Ric}(X, JY)$):
+\[
+\rho = -i \sum K_{\alpha \bar{\beta}} dz^{\alpha} \wedge d\bar{z}^{\beta} = i \partial \bar{\partial} \log(G),
+\]
+by $\eqref{eq:93}$. And this means that
+\[
+d\rho = 0.
+\]
+
+
+Let $F$ be a real-valued function in a coordinate neighborhood of a complex manifold $M$ and set
+\[
+g_{\alpha \bar{\beta}} = \frac{\partial^2 F}{\partial z^{\alpha} \partial \bar{z}^{\beta}},
+\]
+which is Hermitian since $F$ is real. If it's positive definite, then $2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}$ is a Kaehler metric by (75). Conversely, a Kaehler metric can be written in this form locally. We have
+\[
+K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^4 F}{\partial z^{\alpha} \partial \bar{z}^{\beta} \partial z^{\gamma} \partial \bar{z}^{\delta}} - \sum_{\epsilon, \tau} g^{\bar{\epsilon} \tau} \frac{\partial^3 F}{\partial \bar{z}^{\epsilon} \partial z^{\alpha} \partial z^{\gamma}} \frac{\partial^3 F}{\partial z^{\tau} \partial \bar{z}^{\beta} \partial \bar{z}^{\delta}}.
+\]
+
+\begin{example}[$\mathbb{C}^n,K=0$]
+	Kaehler form and metric:
+   \[
+   \omega = -\frac{i}{2} \sum_j dz^j \wedge d\bar{z}^j = -\sum_j dx^j \wedge dy^j, \quad g = \sum_j dz^j d\bar{z}^j,
+   \]
+   since $g \left( \frac{\partial}{\partial x^k}, \frac{\partial}{\partial x^j} \right) = \delta_{kj}$, and thus, $g \left( \frac{\partial}{\partial z^k}, \frac{\partial}{\partial \bar{z}^j} \right) = \frac{1}{2} \delta_{kj}$.
+   \end{example}
+\begin{example}[$\mathbb{CP}^n, K=1$ ]
+	Define the affine coordinates $(U_\alpha,\varphi_\alpha)$. 
+ $U_{\alpha} = \{ [w]=[w^0,...,w^n] \in \mathbb{CP}^n : w^{\alpha} \neq 0 \}$;
+$\varphi_{\alpha} : U_{\alpha} \rightarrow \mathbb{C}^n$ 
+\[
+\varphi_{\alpha}([w^0, \dots, w^n]) = \left( \frac{w^0}{w^{\alpha}}, \dots, \frac{w^{\alpha-1}}{w^{\alpha}}, \frac{w^{\alpha+1}}{w^{\alpha}}, \dots, \frac{w^n}{w^{\alpha}} \right),
+\]
+then
+\[
+\varphi_{\alpha}^{-1}(z^1, \dots, z^n) = [z^1, \dots, z^{\alpha-1}, 1, z^{\alpha}, \dots, z^n], 
+\]
+\[
+\varphi_{\alpha} \circ \varphi_{\beta}^{-1}(z^1, \dots, z^n) = \left( \frac{z^1}{z^{\alpha}}, \dots, \frac{\hat{z}^{\alpha}}{z^{\alpha}}, \dots, \frac{1}{z^{\alpha}}, \dots, \frac{z^n}{z^{\alpha}} \right), \quad \alpha <\beta.
+\]
+
+
+Set
+\[
+	\quad \Theta_H |_{U_{\alpha}} = \bar{\partial} \partial \log \frac{|w^{\alpha}|^2}{|w|^2}.
+\]
+In affine coordinates $(z^1, \dots, z^n) \leftrightarrow [z^1, \dots, 1, \dots, z^n]$ on $U_{\alpha}$, 
+\[
+\Theta_H \big|_{U_{\alpha}} = \bar{\partial} \partial \log \frac{1}{1 + |z|^2} = \partial \bar{\partial} \log(1 + |z|^2),
+\]
+which implies
+\[
+\Theta_H = \frac{\sum_j dz^j \wedge d\bar{z}^j}{1 + |z|^2} - \frac{\sum_{j,k} \bar{z}^j z^k \, dz^j \wedge d\bar{z}^k}{(1 + |z|^2)^2}.
+\]
+Let $\omega_{FS}$ be the following closed real $(1,1)$-form:
+\[
+ \quad \omega_{FS} = -2i \Theta_H,
+\]
+then
+\[
+g_{j \bar{k}} = 2 \left( \frac{\delta_{jk}}{1 + |z|^2} - \frac{\bar{z}^j z^k}{(1 + |z|^2)^2} \right).
+\]
+
+Or
+\[
+ds^2 = 4  \frac{\left( 1 + \sum z^{\alpha} \bar{z}^{\alpha} \right) \left( \sum dz^{\alpha} d\bar{z}^{\alpha} \right) - \left( \sum \bar{z}^{\alpha} dz^{\alpha} \right) \left( \sum z^{\alpha} d\bar{z}^{\alpha} \right)}{\left( 1 + \sum z^{\alpha} \bar{z}^{\alpha} \right)^2}.
+\]
+
+\end{example}
+
+\begin{example}[$\mathbb{B}^{2n}$,$K=-1$ ]
+Define
+	\[
+\omega_{\text{CH}} = 2i \partial \bar{\partial} \log(1 - |z|^2),
+\]
+then
+$$ g_{j \bar k}= 2 \left( \frac{\delta_{jk}}{1 - |z|^2} + \frac{\bar{z}^j z^k}{(1 - |z|^2)^2} \right).$$
+
+Or
+\[
+ds^2 = 4 \cdot \frac{\left( 1 - |z|^2 \right) \sum_j dz^j d\bar{z}^j + \left( \sum_j \bar{z}^j dz^j \right) \left( \sum_k z^k d\bar{z}^k \right)}{\left( 1 - |z|^2 \right)^2}.
+\]
+\end{example}
+
+\begin{proposition}[Volume for Kaehler metric]
+   \[
+dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedge \omega.
+\]
+\end{proposition}
+\begin{proof}
+	Note that
+	\[
+(\omega_{(k)})^k = k! \, dx^1 \wedge dy^1 \wedge \cdots \wedge dx^k \wedge dy^k,
+\]
+where 
+$$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
+\end{proof}
+
+\begin{theorem}[Normal coordinate for Kaehler metric]
+    For every $a \in M$, there exists a holomorphic coordinate chart centered at $a$ such that
+\[
+\boxed{g_{j \bar{k}}(a) = \frac{1}{2} \delta_{jk} \quad \text{and} \quad d(g_{j \bar{k}}) \big|_a = 0.}
+\]
+\end{theorem}
+
+\newpage
+\begin{theorem}[\textbf{Characterizations of Kähler Metrics}]
+	 Let $M$ be a complex manifold and $g$ be a Hermitian metric on $M$. We use the following notations:
+	\begin{itemize}
+		\item $\omega$ is the fundamental 2-form of $g$.
+		\item $h = g + i \omega$.
+		\item $\nabla$ is the Levi-Civita connection of $g$.
+		\item $\nabla^{(h)}$ is the Chern connection of $h$ on $T_J M$.
+		\item $\xi : T_J M \to T'_J M$ is the isomorphism $\xi(v) = v - i J v$.
+	\end{itemize}
+	
+	The following statements are equivalent:
+	\begin{enumerate}[(a)]
+		\item $g$ is Kähler (i.e., $d\omega = 0$).
+		\item For every $p \in M$, there exists a real-valued function $u$ on a neighborhood $V$ of $p$ such that $\omega |_V = i \partial \bar{\partial} u$.
+		\item In every holomorphic coordinate chart, $\partial_j g_{ k \bar{l}} = \partial_k g_{j  \bar{l}}$ for all $j, k, l$.
+		\item For every $a \in M$, there exists a holomorphic coordinate chart centered at $a$ such that
+			  \[
+			  g_{j \bar{k}}(a) = \frac{1}{2} \delta_{jk} \quad \text{and} \quad d(g_{j \bar{k}}) \big|_a = 0.
+			  \]
+		\item In every holomorphic coordinate chart, all Christoffel symbols of $g$ are identically zero except those of types $\Gamma^l_{jk}$ and $\Gamma^{\bar{l}}_{\bar j \bar{k}}$.
+		\item $\nabla$ restricts to the Chern connection on $T_J M$ with respect to the Hermitian fiber metric $\langle \cdot, \cdot \rangle$.
+		\item For every real or complex vector field $X$, $\nabla_X$ maps $\Gamma(T' M)$ to itself.
+		\item $\nabla J \equiv 0$.
+		\item $\nabla \omega \equiv 0$.
+		\item $\nabla \xi \equiv 0$.
+		\item $\nabla$ is compatible with the holomorphic structure on $T_J M$.(That's $\nabla^{(0,1)}=\bar \partial_E$, where $E=T_JM$.  )
+		\item $\nabla^{(h)} = \nabla$.
+		\item $\nabla^{(h)}$ is torsion-free.
+	\end{enumerate}
+\end{theorem}
+
+\section{Curvatures(\textit{lee})}
+\begin{remark}
+   Note that the John M Lee's notations are different from ours, for example, he defined 
+   \begin{equation}
+	R(\partial _i, \partial _j)\partial_k=R_{ijk}^l \partial_l
+   \end{equation} 
+   \begin{equation}
+	R(x,y,z,w)=g(R(x,y)z,w)
+   \end{equation}
+   \begin{equation}
+	R_{ijkl}=g_{lm}R_{ijk}^m,
+   \end{equation}
+   and the Bianchi identity is
+   \begin{equation}
+	R_{ijkl}+R_{jkil}+R_{kijl}= 0,
+   \end{equation}
+ and the sectional curvature is 
+ \begin{equation}
+	K(x,y)=\frac{R(x,y,y,x)}{|x|^2|y|^2-g(x,y)^2}.
+ \end{equation}
+ Compare to Sec.\ref{sec:cur}.
+
+ In this section, we refer most content from his book, but adapting to our notations as in previous!
+\end{remark}
+
+A useful identity on any Kaehler manifold:
+\begin{equation}
+\boxed{	R(Z,\bar Z, W,\bar W)=-4\{R(X, Y,X,Y)+R(X,JY,X,JY)   \}=-4R(X,JX,Y,JY),}
+\end{equation}
+where 
+$$Z=X-iJX, \quad W=Y-iJY \in T'M.$$ 
+Also, if let $X=Re(Z), Y=Im(Z)$, then
+
+\begin{equation}
+	\begin{aligned}
+		R(X,Y,X,Y)=\frac{1}{4}R(Z,\bar Z,\bar Z,Z)\\
+		|X|^2|Y|^2-g(X,Y)^2=\frac{1}{4}|Z|^2.
+	\end{aligned} 
+\end{equation}
+
+
+\begin{definition}[holomorphic sectional curvature]
+	$$ H(Z):= \frac{R(Z,\bar Z, \bar Z,  Z)}{|Z|^4}.$$
+\end{definition}
+\begin{definition}[holomorphic bisectional curvature]
+	\begin{equation}
+		H(p,p') := R(X, JX, Y, JY) =R(X, Y, X, Y) + R(X, JY, X, JY),
+	\end{equation}
+	where $p,p'$ are two $J$-invariant  planes and $X,Y$ are unit in   $p,p'$ respectively.
+	Or equivalently,
+	\begin{equation}
+		H(p,p')=B(Z, W)=\frac{R (Z, \bar{Z},  \bar{W},W)}{|Z|^2|W|^2}.
+		\end{equation}
+\end{definition}
+
+\begin{proposition}
+   $H(Z)=K(Re(Z),Im(Z)) =K(X,JX)$, thus the definition coincides with KobayashiNomizu's (Also true for holomorphic bisectional curvature).
+\end{proposition}
+\begin{proposition}
+   $B(Z,W)=K(Re(Z),Re(W))+K(Re(Z),Im(W))$ . 
+\end{proposition}
+
+\begin{proposition}
+	A Kähler metric $g$  has constant holomorphic sectional curvature $c$ iff 
+	\begin{equation}
+		R_{j \bar{k} l \bar{m}}=-\frac{1}{2} c\left(g_{j \bar{k}} g_{l \bar{m}}+g_{l \bar{k}} g_{j \bar{m}}\right) , (\text{under complex vector basis})
+		\end{equation}  
+		iff 
+		\begin{equation}
+			\begin{aligned}
+			R(X, Y, Z, W)=\frac{c}{4}[ & g(X, Z) g(Y, W)-g(X, W) g(Y, Z) \\
+			& +g(X, J Z) g(Y, J W)-g(X, J W) g(Y, J Z) \\
+			& +2 g(X, J Y) g(Z, J W)]
+			\end{aligned}
+			\end{equation}
+			for all real vectors $X,Y,Z,W$.
+	If this's the case, we have
+	\begin{equation}
+		R(X, J X, Y, J Y)=\frac{c}{2}\left[g(X, X) g(Y, Y)+g(X, Y)^2+g(X, J Y)^2\right] ,
+		\end{equation}		 
+		and
+		\begin{equation}
+			R(X, J X, X, J X)=c|X|^2.
+		\end{equation}
+\end{proposition}
+
+\begin{proposition}
+   If  $H(Z)=c$, i.e., $g$  has constant holomorphic sectional curvature $c$, then the range of (holomorphic bisectional curvature) $H(p,p')$ is $[\frac{c}{2},c]$. \textbf{Here the value $c/2$ is attained when $p$  is perpendicular to $p'$   whereas the value $c$ is attained when $p=p'$.} 
+\end{proposition}
+\begin{proposition}
+	Let $M$ be a complex manifold of dimension $n$, and let $g$ be a Kähler metric on $M$ with constant holomorphic sectional curvature $c$.\\
+	(a) Let $v, w \in T_x M$ be a pair of orthonormal vectors. One can show that the (ordinary) sectional curvature of $g$ in the direction of the plane spanned by $(v, w)$ is given by
+	$$
+	K (v, w)=\frac{1}{4} c\left(1+3\langle v, J w\rangle^2\right) .
+	$$
+	(b) Also, one can show that if $n \geq 2$, then at each point of $M$, the (ordinary) sectional curvatures of $g$ take on all values between $\frac{1}{4} c$ and $c$, inclusive. \textbf{Conclude that $M$ cannot have constant sectional curvature unless it is flat.} 
+\end{proposition}
+
+\begin{proposition}[Symmetric properties for Kaehler metrics]
+    $$ R(X,Y)\circ J = J \circ R(X,Y)$$
+	$$ Ric(JX,JY)=Ric(X,Y)=\frac{1}{2} \trace(J \circ R(X,JY)) $$
+	$$ R(J X, J Y, Z, W)=R(X, Y, J Z, J W)=R(X, Y, Z, W) $$
+For $X,Y,Z,W \in T'M$: 
+\begin{equation}
+	\begin{aligned}
+	R(W, X, \cdot, \cdot) & =R(\cdot, \cdot, W, X)=0, \\
+	R(\bar{W}, \bar{X}, \cdot, \cdot) & =R(\cdot, \cdot, \bar{W}, \bar{X})=0 \\
+	R (W, \bar{X}, Y, \bar{Z}) & =R(Y, \bar{X}, W, \bar{Z}), \\
+	R (W, \bar{X}, Y, \bar{Z}) & =R(W, \bar{Z}, Y, \bar{X}).
+	\end{aligned}
+	\end{equation}
+\end{proposition}
+
+\section{Curvature forms (\textit{chenweihuan})}\label{sec:166}   
+Set $(1 \leq \alpha, \beta, \gamma, \dots \leq n)$
+\[
+\nabla \frac{\partial}{\partial z_{\alpha}} = \omega^{\beta}_{\alpha} \frac{\partial}{\partial z_{\beta}}, \quad \nabla \frac{\partial}{\partial x_{\alpha}} = \theta^{\beta}_{\alpha} \frac{\partial}{\partial x_{\beta}} + \theta^{n + \beta}_{\alpha} \frac{\partial}{\partial y_{\beta}},
+\]
+\[
+\nabla \frac{\partial}{\partial y_{\alpha}} = \theta^{\beta}_{n + \alpha} \frac{\partial}{\partial x_{\beta}} + \theta^{n + \beta}_{n + \alpha} \frac{\partial}{\partial y_{\beta}}.
+\]
+Then
+\[
+\theta^{\beta}_{\alpha} = \theta^{n + \beta}_{n + \alpha}, \quad \theta^{\beta}_{n + \alpha} = -\theta^{n + \beta}_{\alpha}, \quad \omega^{\beta}_{\alpha} = \theta^{\beta}_{\alpha} + i \theta^{n + \beta}_{\alpha},
+\]
+which is, in fact, the condition for $\nabla $ to be almost complex. 
+
+
+Now ( with different range of indices!) set
+\[
+\Omega^j_i = d\omega^j_i - \omega^k_i \wedge \omega^j_k, \quad \Theta^{\beta}_{\alpha} = d\theta^{\beta}_{\alpha} - \theta^{\gamma}_{\alpha} \wedge \theta^{\beta}_{\gamma}; \quad 1 \leq j, i, k \leq n, \quad 1 \leq \alpha, \beta, \gamma \leq 2n.
+\]
+
+Then
+\[
+\boxed{\Omega^j_i = \Theta^j_i + \sqrt{-1} \, \Theta^{\bar{j}}_i,}
+\]
+\[
+\Theta^{\bar{j}}_{\bar i} = \Theta^j_i, \quad \Theta^j_{\bar{i}} = -\Theta^{\bar{j}}_i, \quad \bar{i} := n + i, \quad \bar{j} := n + j.
+\]
+
+Also
+\[
+R^{\bar{j}}_{\bar i \gamma \delta} = R^j_{i \gamma \delta}, \quad R^j_{i \gamma \delta} = -R^{\bar{j}}_{i \gamma \delta},
+\]
+\[
+R^{\beta}_{\alpha \bar i \bar{j}} = R^{\beta}_{\alpha i j}, \quad R^{\beta}_{\alpha \bar{i} j} = -R^{\beta}_{\alpha i \bar j},
+\]
+where $R$ is applied to $\left\{ \frac{\partial}{\partial x_{\alpha}}, 1 \leq \alpha \leq 2n \right\}$.
+
+\begin{remark}
+   Note that if we choose a unitary frame, then we have, in addition, that
+   \begin{equation}
+	\omega^\beta _\alpha =-\bar \omega ^\alpha _\beta ,\quad \Omega^\beta _\alpha =-\bar \Omega ^\alpha _\beta .
+   \end{equation} 
+\end{remark}
+\begin{proposition}
+ Set
+	\[
+	K^j_{ikl} = \left( R^j_{ikl} + R^{\bar{j}}_{i\bar kl} \right) + \sqrt{-1} \left( R^j_{ik\bar l} + R^{\bar{j}}_{i \bar k\bar l} \right),
+	\]
+	then
+	\[
+	\boxed{\Omega^j_i = \frac{1}{2} K^j_{ikl} \, dz^k \wedge d\bar{z}^l,}
+	\]
+	\[
+	R \left( \frac{\partial}{\partial z^k}, \frac{\partial}{\partial \bar{z}^l} \right) \frac{\partial}{\partial z^i} = \frac{1}{2} K^j_{ikl} \frac{\partial}{\partial z^j}.
+	\]
+	That is $\left( \frac{1}{2} K^j_{ikl} \right)$ is the matrix of complex linear transformation $R \left( \frac{\partial}{\partial z^k}, \frac{\partial}{\partial \bar{z}^l} \right): T_{(1,0)} M \to T_{(1,0)} M$ under the basis $\left\{ \frac{\partial}{\partial z^i} \right\}$.
+\end{proposition}
+\begin{remark}
+    One can also prove
+	\[
+	K^j_{ikl} = K^j_{kil}.
+	\]
+	In fact, one can further prove
+	\[
+	K^j_{ikl} = -2 \frac{\partial}{\partial \bar{z}^l} \left( h^{j\bar p} \frac{\partial h_{i\bar p}}{\partial z^k} \right),
+	\]
+	where $h_{i\bar p} = g \left( \frac{\partial}{\partial z^i}, \frac{\partial}{\partial \bar z^p} \right) = \frac{1}{2} \left( g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) + \sqrt{-1} g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) \right)$. (The notation $K^j_{ikl}$ here is exactly $2 K^j_{ik \bar l}$ in $\eqref{eq:80}$ !)
+\end{remark}
+
+
+
+\section{Bundle-valued forms}
+Let $E\to M$ be a smooth complex vector bundle. 
+
+\textbf{Several natural wedge product operations}:
+\begin{enumerate}[(a)]
+	\item $\alpha \in \mathscr{E}^q (M), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ \alpha \wedge  (\beta \otimes \sigma) = (\alpha \wedge  \beta) \otimes \sigma $$
+	\item  $\alpha \otimes \varphi  \in \mathscr{E}^q (M;E^*), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes \varphi) \wedge  (\beta \otimes \sigma) =\varphi (\sigma ) (\alpha \wedge  \beta) \in \mathscr{E}^{q+q'}(M) $$
+	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes B \in  \mathscr{E}^{q'} (M;Edn(E))$ $$ (\alpha \otimes A) \wedge  (\beta \otimes B) =(\alpha \wedge  \beta) \otimes (A\circ B) \in \mathscr{E}^{q+q'}(M;End(E)) $$
+	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes \sigma  \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes A) \wedge  (\beta \otimes \sigma ) =(\alpha \wedge  \beta) \otimes A(\sigma ) \in \mathscr{E}^{q+q'}(M;E) $$
+\end{enumerate}
+\begin{example}
+	In a local basis, $\{s_j\}$ is a frame of $E$, and $\{\epsilon \}$ is its dual frame.   Then
+	\begin{equation}
+		\begin{aligned}
+		\omega \wedge \eta & =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
+		& =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
+		& =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
+		\end{aligned}
+		\end{equation}
+		That's matric product: in an expression like $\omega_k^j$   we always interpret \textbf{the upper index as the row number and the lower index as the column number}.
+		Likewise, if $ \gamma =\gamma^m \otimes s_m $,  
+		\begin{equation}
+			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
+		\end{equation}
+\end{example}
+\begin{definition}[Cauchy–Riemann Operator]
+	If $E$ is holomorphic, then the following is well-defined:
+	\begin{equation}
+		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
+	\end{equation}
+\end{definition}
+\begin{proposition}
+	Suppose $M$ is a complex manifold and $E \to M$ is a holomorphic vector bundle.
+	There are operators $\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)$ satisfying the following properties:
+	
+	\begin{itemize}
+		\item[(i)] For $\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)$, $\bar{\partial}_E \sigma = 0$ if and only if $\sigma$ is a holomorphic section.
+	
+		\item[(ii)] For $\alpha \in \mathscr{E}^{p,q}(M)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\[
+		\bar{\partial}_E (\alpha \wedge \beta) = \bar{\partial} \alpha \wedge \beta + (-1)^{p+q} \alpha \wedge \bar{\partial}_E \beta.
+		\]
+	
+		\item[(iii)] For $\gamma \in \mathscr{E}^{p,q}(M; E^*)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\[
+		\bar{\partial} (\gamma \wedge \beta) = \bar{\partial}_E \gamma \wedge \beta + (-1)^{p+q} \gamma \wedge \bar{\partial}_E \beta.
+		\]
+	
+		\item[(iv)] $\bar{\partial}_E \circ \bar{\partial}_E = 0$.
+	
+		\item[(v)] If $\alpha \in \mathscr{E}^{p,q}(M; E)$ satisfies $\bar{\partial}_E \alpha = 0$, then in a neighborhood of each point there exists $\beta \in \mathscr{E}^{p,q-1}(M; E)$ such that $\bar{\partial}_E \beta = \alpha$.
+	\end{itemize} 
+\end{proposition}
