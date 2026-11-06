@@ -376,10 +376,6 @@ The class is quite broad. Their examples include:
 and related homogeneous models. 
 
 
-
-
-
-
 \section*{References} 
 \begin{references}
 \bibitem[Bau26]{Baudoin2025sub}
