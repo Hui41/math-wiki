@@ -27,9 +27,7 @@
 	
 \title{Sub-Riemannian geoemtry}
 
-\section{Sub-Riemannian geoemtry}
-
-\subsection{Sub-Riemannian manifolds}
+\section{Sub-Riemannian manifolds}
 Let $M^{m+k}$ be a $(m+k)$-dimensional smooth manifold and $\mathcal{H}^m$ be  a  subbundle of $TM$ of rank $m$. Assume that $\mathcal{H}$ satisfies step-$r$ bracket generating condition for some $r \geq 1$.
 This means that, at each point \( x \in M \), the sections of \( \mathcal{H} \), along with all their Lie brackets up to order \( r \), generate the tangent space \( T_xM \).
 Then the triple $(M^{m+k},\mathcal{H}^m,g_{\mathcal{H}})$ is called a sub-Riemannian manifold, where $g_{\mathcal{H}}$ is a fiberwise metric on $\mathcal{H}$. The subbundle $\mathcal{H}$ is also called the \textit{horizontal distribution}. Note that one can easily extend $g_{\mathcal{H}}$ to a Riemannian metric $g$ on $TM$ (see, e.g., \cite{dongEellsSampsonType2021a}). Throughout the paper, we fix such a metric $g$ such that $g|_{\mathcal{H}}=g_{\mathcal{H}}$ and denote the corresponding sub-Riemannian manifold by $(M^{m+k},\mathcal{H}^{m},g)$. 
