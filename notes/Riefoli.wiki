@@ -82,19 +82,55 @@ one may express $g$ as
 
 Following \cite{reinhartFoliatedManifoldsBundleLike1959}, a Riemannian metric $g$ on $(M, \mathcal{F})$ is said to be \textbf{bundle-like} if the Lie derivative 
 $$\mathcal{L}_V g_{\mathcal{H}}=0$$ 
-for any vertical vector field $V$. Equivalently, on each foliated coordinate chart $U$ with the local submersion $\pi_U: U \rightarrow \mathcal{B}_U$, there exists a Riemannian metric $h$ on $\mathcal{B}_U$ for which the local submersion $\pi_U:(U, g) \rightarrow$ $\left(\mathcal{B}_U, h\right)$ becomes a Riemannian submersion. In this case, we say that $(M, \mathcal{F}, g)$ is a \textbf{Riemannian foliation}. 
+for any vertical vector field $V$. 
+Equivalently, on each foliated coordinate chart $U$ with the local submersion $\pi_U: U \rightarrow \mathcal{B}_U$, there exists a Riemannian metric $h$ on $\mathcal{B}_U$ for which the local submersion $\pi_U:(U, g) \rightarrow$ $\left(\mathcal{B}_U, h\right)$ becomes a Riemannian submersion. In this case, we say that $(M, \mathcal{F}, g)$ is a \textbf{Riemannian foliation}. 
+
+There are some other equivalent ways to view Riemannian foliation: 
+\begin{itemize}
+   \item The map $(X,Y) \in \mathcal{H} \times \mathcal{H} \mapsto \pi _{\mathcal{V}}(\nabla _XY) \in \mathcal{V}$ is skew-symmetric.
+    \item A geodesic which is perpendicular to a leaf at one point is perpendicular to all the leaves it intersects. To see this, assume the geodesic property. Fix \(p\in M\), a horizontal vector \(X\in\mathcal H_p\), and let \(\gamma\) be the geodesic with
+\[
+\dot\gamma(0)=X.
+\]
+By assumption,
+\[
+\dot\gamma(t)\in \mathcal H_{\gamma(t)}
+\]
+for all \(t\) for which \(\gamma\) is defined.
+Take any vertical vector field \(Z\) along \(\gamma\). Since \(\gamma\) stays orthogonal to the leaves,
+\[
+\langle \dot\gamma,Z\rangle=0.
+\]
+Differentiate at \(t=0\):
+\[
+0
+=
+\frac{d}{dt}\langle\dot\gamma,Z\rangle
+=
+\underbrace{\langle D_{\dot\gamma}\dot\gamma,Z\rangle}_{=0}
++
+\langle\dot\gamma,D_{\dot\gamma}Z\rangle.
+\]
+Thus
+\[
+\langle X,D_XZ\rangle=0.
+\]
+\end{itemize}
+
+ 
 \begin{remark}
     Traditionally the terminology  ``Riemannian foliation" refers only to a foliation endowed with a transverse Riemannian metric on the quotient bundle. It is a known fact (cf. \cite{molinoRiemannianFoliations1988}) that, if $g$ is a bundle-like metric on $(M, \mathcal{F})$, then it induces an associated transverse Riemannian metric $g_Q$ on $Q$ from $g_{\mathcal{H}}$ through the isomorphism $\tau: \mathcal{H} \rightarrow Q$. Conversely, if the quotient bundle $Q$ has a transverse Riemannian metric $g_Q$, then there is also a bundle-like metric $g$ that produces the same transverse metric on $Q$. Thus, in this paper, the triple $(M, \mathcal{F}, g)$ is referred to as a Riemannian foliation when $g$ is a bundle-like metric. In particular, if $\mathcal{F}$ is a simple foliation, it corresponds to a global Riemannian submersion from $(M, g)$ to a base manifold $\mathcal{B}$.
 \end{remark}
 
 \section{Fundamental tensors}
-Let $\left(M^{m+k}, \mathcal{F}^k , g\right)$ be a Riemannian foliation and let $\nabla$ be the Levi-Civita connection of $g$. Following \cite{gromollMetricFoliationsCurvature2009a}, we introduce two $\mathcal{V}$-valued fundamental tensor fields $\mathcal{W}$ and $\mathcal{T}$ on $M$ that measure the complexity of the Riemannian foliation (notice that our notations differ from those in \cite{gromollMetricFoliationsCurvature2009a}). The $\mathcal{W}$-tensor is the tensor field $\mathcal{W}: \mathcal{H} \times \mathcal{V} \rightarrow \mathcal{V}$ defined by
+Let $\left(M^{m+k}, \mathcal{F}^k , g\right)$ be a Riemannian foliation and let $\nabla$ be the Levi-Civita connection of $g$. 
+We now introduce two $\mathcal{V}$-valued fundamental tensor fields $\mathcal{W}$ and $\mathcal{T}$ on $M$ that measure the complexity of the Riemannian foliation. The $\mathcal{W}$-tensor is the tensor field $\mathcal{W}: \mathcal{H} \times \mathcal{V} \rightarrow \mathcal{V}$ defined by
 \begin{equation}\label{wten}
     \mathcal{W}_X U=-\pi_{\mathcal{V}}\left(\nabla_U X\right), \quad X \in \mathfrak{X}_{\mathcal{H}}, \quad U \in \mathfrak{X}_{\mathcal{V}},
 \end{equation}
 and the $\mathcal{T}$-tensor is the tensor field $\mathcal{T}: \mathcal{H} \times \mathcal{H} \rightarrow \mathcal{V}$ given by
 \begin{equation}\label{ttensor}
-    \mathcal{T}_X Y=\pi_{\mathcal{V}}\left(\nabla_X Y\right)=\frac{1}{2} \pi_{\mathcal{V}}([X, Y]), X, Y \in \mathfrak{X}_{\mathcal{H}} .
+    \mathcal{T}_X Y=\pi_{\mathcal{V}}\left(\nabla_X Y\right)=\frac{1}{2} \pi_{\mathcal{V}}([X, Y]), \quad X, Y \in \mathfrak{X}_{\mathcal{H}} .
 \end{equation}		
 The second equality in $\eqref{ttensor}$ is shown in \cite{gromollMetricFoliationsCurvature2009a} by using the Koszul formula (see the proof of Theorem 1.2.1 in \cite{gromollMetricFoliationsCurvature2009a}). This implies that $\mathcal{T}$ is anti-symmetric with respect to $X$ and $Y$. Notice that $\mathcal{W}_X$ is just the Weingarten transformation of a leaf in the direction $X$. If we define an $\mathcal{H}$-valued tensor $\mathcal{S}: \mathcal{V} \times \mathcal{V} \rightarrow \mathcal{H}$ by
 \begin{equation}\label{eq10}
@@ -104,7 +140,7 @@ then
 \begin{equation}\label{eq11}
     g\left(\mathcal{W}_X U, V\right)=g(\mathcal{S}(U, V), X) .
 \end{equation}		
-Consequently $\mathcal{W} \equiv 0$, or equivalently $\mathcal{S} \equiv 0$ if and only if the leaves are totally geodesic, in which case the Riemannian foliation is referred to as totally geodesic. Clearly $\mathcal{T} \equiv 0$ if and only if the horizontal distribution $\mathcal{H}$ is integrable.
+Consequently $\mathcal{W} \equiv 0$, or equivalently $\mathcal{S} \equiv 0$ if and only if the leaves are totally geodesic, in which case the Riemannian foliation is referred to as totally geodesic. Clearly $\mathcal{T} \equiv 0$ if and only if the horizontal distribution $\mathcal{H}$ is integrable (in which case the foliation is said to be \textbf{ﬂat}).
 
 One may extend $\mathcal{W}, \mathcal{S}$ and $\mathcal{T}$ to the entire tangent bundle $T M$ by defining
 \begin{equation}\label{eq12}
@@ -123,6 +159,10 @@ According to \cite{gromollMetricFoliationsCurvature2009a}, the tensor fields $\m
     g\left(\mathcal{T}_X^* Y, Z\right)=g\left(Y, \mathcal{T}_X Z\right), \quad Y, Z \in T M .
 \end{equation}
 Using $\eqref{ttensor}$, $\eqref{eq12}$ and $\eqref{eq14}$, it is easy to see that $\mathcal{T}^*$ is an $\mathcal{H}$-valued tensor field on $M$.
+
+\begin{remark}
+     It is interesting to note that the $\mathcal{T}$  and $\mathcal{W}$  tensors are just the covariant derivatives in horizontal and vertical directions of the projection $\pi _{\mathcal{H}}:TM \to \mathcal{H}$  restricted to $\mathcal{H}$, cf. \cite[p. 24]{gromollMetricFoliationsCurvature2009a}.
+\end{remark}
 
 For local computations, it is convenient to choose a local orthonormal frame field $\left\{e_A\right\}_{A=1}^{m+k}$ in $\left(M^{m+k}, \mathcal{F}^k , g\right)$ such that
 $$
@@ -146,6 +186,10 @@ One can always find an orthonormal frame field $\left\{\bar{e}_i\right\}_{i=1}^m
 \end{equation}
 for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for computations in Riemannian foliations. 
 
+\begin{remark}
+    An interesting relation with harmonic maps theory is that, if $\pi :M \to \mathcal{B}$ is a Riemannian submersion, then $\pi $ is harmonic if and only if the fibers of $\pi $ are minimal submanifolds.   
+\end{remark}
+
 \begin{lemma}[\cite{gromollMetricFoliationsCurvature2009a}]\label{le:td}
     Let $(M, \mathcal{F} , g)$ be a Riemannian foliation with Levi-Civita connection $\nabla$. If $X \in \mathfrak{X}_{\mathcal{H}}$ is basic and $Y \in \mathfrak{X}_{\mathcal{V}}$, then $\mathcal{T}_X^* Y=-\pi_{\mathcal{H}}\left(\nabla_Y X\right)$.
 \end{lemma}
@@ -162,25 +206,35 @@ for any $X \in \mathcal{H}_p$. Such an adapted frame field will be useful for co
 \end{proof}
 
 
+\section{Curvatures}
+Since a Riemannian foliation locally comes from a Riemannian submersion, the famous Gray-O'Neill formuals are available. See \cite{gromollMetricFoliationsCurvature2009a} for more details. 
+\begin{theorem}
+    Let $\pi : M^{m+k} \to \mathcal{B}^k$ be a Riemannian submersion, $p \in M$, $x,y \in \mathcal{H}_p$ and $u,v \in \mathcal{V}_p$.  
+    Then the following relations of sectional curvatures hold: 
+\begin{equation}\label{oneil}
+         \begin{aligned}
+            K_{\bar x, \bar y}=&K_{x,y}+3|\mathcal{T}_xy|^2\\
+            K_{u,v}^F=&K_{u,v}+\mathcal{S}(u,u)\mathcal{S}(v,v)-\mathcal{S}^2(u,v)\\
+            K_{x,u}=& \la (\nabla _x^{\mathcal{V}}\mathcal{W})_x u, u \ra +|\mathcal{T}^{*}_{x}u|^2 - |\mathcal{W}_x u|^2.
+        \end{aligned}  
+\end{equation}  
+Here $K^F$ denotes the  sectional curvature of  fiber $\pi ^{-1}(\pi (p))$.
+\end{theorem}
+\begin{remark}
+    The second equation in the above is just the Gauss equation.
+\end{remark}
 
-\begin{references}
-\bibitem[GW09]{gromollMetricFoliationsCurvature2009a}
-Detlef Gromoll and Gerard Walschap.
-\newblock {\em Metric foliations and curvature}, volume 268 of {\em Progress in Mathematics}.
-\newblock Birkh\"auser Verlag, Basel, 2009.
+\begin{remark}
+    We can see from the first equality in \eqref{oneil} that the non-integrability of $\mathcal{H}$ constributes the curvature. 
+\end{remark}
 
-\bibitem[Mol88]{molinoRiemannianFoliations1988}
-Pierre Molino.
-\newblock {\em Riemannian foliations}, volume~73 of {\em Progress in Mathematics}.
-\newblock Birkh\"auser Boston, Inc., Boston, MA, 1988.
-\newblock Translated from the French by Grant Cairns, With appendices by Cairns, Y. Carri\`ere, \'E. Ghys, E. Salem and V. Sergiescu.
 
-\bibitem[Rei59]{reinhartFoliatedManifoldsBundleLike1959}
-Bruce~L. Reinhart.
-\newblock Foliated manifolds with bundle-like metrics.
-\newblock {\em Ann. of Math. (2)}, 69:119--132, 1959.
+\section{Tense Riemannian foliations}
+One says that $(M, \mathcal{F} , g)$ is tense if its mean curvature vector field $\kappa $  is parallel with respect to Bott connection $\nabla ^B$  along the leaves, that is, 
+$$ \nabla ^B_{Z} \kappa  =0, \quad \forall Z \in \mathfrak{X}_{\mathcal{V}}. $$
+ In view of Lemma 6.9 in \cite{dongEellsSampsonType2021a}, we know that this condition means that $\kappa  $  is (locally) basic.
 
-\end{references}
+ Dominguez showed that every Riemannian foliation $\mathcal{F}$  on a compact manifold $M$  admits a bundle-like metric $g$  for which the mean curvature vector field $\kappa  $  is basic. Hence tense Riemannian foliations exist in abundance.
 
 
 

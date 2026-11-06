@@ -29,111 +29,9 @@
 
 \title{H-type foliation}
 
-\section{Hladky connection}
-\begin{definition}
-	The Hladky connection $\nabla $ on a sub-Riemannian manifold $(M,\mathcal{H},g)$  is given by 
-	\begin{equation}\label{conn6}
-   \nabla _{X}Y= \begin{cases}
-        (D_XY)_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{H}}\\
-        ([X,Y])_{\mathcal{H}}+B_{X}Y &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
-        ([X,Y])_{\mathcal{V}} +C_XY&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
-        (D_XY)_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{V}},
-    \end{cases} 
-\end{equation}
-where $D$ is the Levi-Civita connection of $g$, and 
- tensors $B$ and $C$ are defined by   
-$$ \la B_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{V}}}}g)(Y_{\mathcal{H}},Z_{\mathcal{H}})$$
-and
-$$ \la C_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{H}}}}g)(Y_{\mathcal{V}},Z_{\mathcal{V}}).$$ 
-\end{definition}
-
-The torsion $T$ of $\nabla $  satisfies 
-\begin{equation}\label{tor7}
-	 T(X,Y)=\begin{cases}
-	    -[X,Y]_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{H}}\\
-	    B_XY-C_YX &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
-	      C_XY-B_YX&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
-	      -[X,Y]_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{V}}
-	\end{cases}   
-\end{equation} 
-
-
-
-\begin{remark}\label{re2}
-		Note that Hladky connection $\nabla $ and Levi-Civita connection $D$  are related by  
-	\begin{equation}\label{027}
-		 \nabla_X Y=D_X Y+\frac{1}{2} T(X, Y)-\frac{1}{2} J_X Y-\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M) . 
-	\end{equation}
-	See also \cite{Baudoin2025sub}. Here $J$ is defined by  
-	$$ \la J_Z X, Y \ra = \la Z, T(X,Y) \ra, \quad \forall X, Y,Z \in \mathfrak{X}( M).$$
-	Since the Hladky connection is metric, \(\nabla g=0\), differentiating gives
-	\[
-\left\langle (\nabla_W J)_Z X, Y \right\rangle
-=
-\left\langle Z, (\nabla_W T)(X,Y) \right\rangle \quad \forall X, Y,Z,W \in \mathfrak{X}( M).
-\]
-
-	Setting 
-	\begin{equation}\label{A1}
-		 A_XY:= -\frac{1}{2} T(X, Y)+\frac{1}{2} J_X Y+\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M),
-	\end{equation}
-	which implies 
-	\begin{equation}\label{A2}
-		A_{\mathcal{H}}\mathcal{H} \subset \mathcal{V},\quad A_{\mathcal{V}}\mathcal{V} \subset \mathcal{H}. 
-	\end{equation}
-	Then $D=\nabla +A$, and 
-	\begin{equation}\label{Dnab}
-		\begin{aligned}
-			R^g(X, Y )Z=& R(X,Y)Z+ (\nabla _XA)_{Y}Z-(\nabla _YA)_XZ\\
-			&+A_{T(X,Y)}Z+A_X A_Y Z-A_Y A_X Z  .
-		\end{aligned} 
-	\end{equation} 
-\end{remark}
-
-Having introduced the basic notions associated with the Hladky connection, we next recall some important classes of sub-Riemannian manifolds that provide natural geometric settings.
-
-\begin{example}[Riemannian foliations]   
-	Let  $(M^{m+k},\mathcal{F}^k)$ be a foliated manifold,
-	 where $\mathcal{F}^k$ is  a $k$-dimensional foliation. Let $g$ be a Riemannian metric on $M$ and decompose the tangent bundle 
-	 $$ TM=T\mathcal{F} \oplus \mathcal{H} $$ 
-	 accordingly, where $\mathcal{H}$ is  complementary to $T\mathcal{F} $. The metric $g$ is said to be bundle-like if the Lie derivate of $g_{\mathcal{H}}$ along vertical direction vanishes. 
-	 Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.    
-	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a Riemannian foliation, see  [[Riefoli]] for more details. 
-	When $\mathcal{H}$ is bracket generating, $(M^{m+k},\mathcal{H}^m,g)$ is a sub-Riemannian manifold.  
-\end{example}
-
-\begin{definition}[cf. \cite{Bau2022Htype}]
-Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. If its leaves are totally geodesic, then $(M^{m+k},\mathcal{H}^m,g)$ is called a \emph{totally geodesic foliation}.
-\end{definition}
-
-\begin{proposition}
-	Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. Then it's a totally geodesic foliation if and only if 
-	$$ C=0. $$
-\end{proposition}
-\begin{proof}
-	For $Y,Z \in \mathfrak{X}_{\mathcal{V}}$ and $X \in \mathfrak{X}_{\mathcal{H}}$, we have 
-\begin{equation}
-		 \begin{aligned}
-			2\la C_{X}Y,Z \ra=& X \la Y,Z \ra -\la [X,Y],Z \ra-\la Y,[X,Z ]\ra\\
-			=& \la \nabla _Y X ,Z \ra +\la  Y ,\nabla _Z X\ra\\
-			=&- \la \nabla _Y Z+\nabla _Z Y,X \ra.
-		\end{aligned}   
-\end{equation}
-The integrability of $\mathcal{V}$ implies 
-  $$  \begin{aligned}
-			- \la \nabla _Y Z+\nabla _Z Y,X \ra=& - \la 2\nabla _Y Z+[Z, Y],X \ra\\
-			=& - \la 2\nabla _Y Z,X \ra,
-		\end{aligned}  $$
-from which the conclusion follows.
-\end{proof}
-
-
-\begin{remark}
-	If $(M^{m+k},\mathcal{H}^m,g)$ is a Riemannian foliation with totally geodesic leaves, then the Hladky connection coincides with the generalized Bott connection.
-\end{remark}
-
-
 \section{H-type foliation}
+
+
 H-type foliations were introduced by Baudoin, Grong, Rizzi and Vega-Molino as a geometric framework extending several important classes of sub-Riemannian structures, including H-type groups, \(K\)-contact manifolds and \(3K\)-contact manifolds; see \cite{Bau2022Htype}.
  
 Let
@@ -147,15 +45,15 @@ and let \(\nabla\) be the associated Bott connection with torsion \(T\). For
     \langle J_ZX,Y\rangle
     =
     \langle Z,T(X,Y)\rangle,
-    \qquad X,Y\in\mathcal H.
+    \qquad X,Y\in \mathfrak{X}_{\mathcal H}.
 \]
-The foliation is said to be of H-type if
+The foliation is said to be of \textbf{H-type}(or Heisenberg-type) if
 \[
     \langle J_ZX,J_ZY\rangle
     =
     |Z|^2\langle X,Y\rangle,
 \]
-or equivalently,
+or equivalently(by the skew-symmetry of $J_Z$),
 \[
     J_Z^2=-|Z|^2\operatorname{Id}_{\mathcal H}.
 \]
@@ -163,39 +61,136 @@ Thus each vertical direction induces, after normalization, an orthogonal complex
 
 
 \begin{definition}[\cite{Bau2022Htype}]
-	Let $(M^{m+k},\mathcal{H}^m,g)$ be a  totally geodesic foliation. Then $(M^{m+k},\mathcal{H}^m,g)$ is called H-type foliation if 
-	\begin{equation}\label{eq24}
-		J_Z^2=-|Z|^2 \id_{\mathcal{H}}, \quad \forall Z \in \mathfrak{X}_{\mathcal{V}}.
-	\end{equation}
+An H-type foliation is said to be 
+\begin{itemize}
+   \item  of \textbf{Yang-Mills type}, if $\delta _{\mathcal{H}}^{\nabla }T=0$;
+   \item with horizontally parallel torsion, if $\nabla _{\mathcal{H}}T=0$;
+   \item   with completely parallel torsion, if $\nabla T=0$.  
+\end{itemize}	
 \end{definition}
-By skew-symmetry of $J_Z$,  the H-type condition \eqref{eq24} is equivalent to 
-\begin{equation}\label{66}
-	 \la J_Z X,J_Z Y  \ra=|Z|^2\la X,,Y  \ra, \quad \forall X,Y \in \mathfrak{X}_{\mathcal{H}}, \,\forall  Z \in \mathfrak{X}_{\mathcal{V}}. 
+
+\begin{remark}
+	The Yang-Mills assumption plays an important role in the theory of generalized curvature dimension inequalities. 
+\end{remark}
+
+\begin{proposition}
+	On an H-type foliation, one has for every $X \in \mathfrak{X}_{\mathcal{H}}, Z \in \mathfrak{X}_{\mathcal{V}}$, 
+	$$ -\pi _{\mathcal{V}}([X,J_Z X])=|X|^2Z. $$
+	Thus, the horizontal distribution is bracket generating of step-two.
+\end{proposition}
+\begin{proof}
+	Note that 
+	$$ -\pi _{\mathcal{V}}([X,J_Z X])=T(X, J_Z X) .$$
+	By polarization, the H-type condition implies the Clifford relation
+\begin{equation}\label{clif}
+	J_ZJ_W+J_WJ_Z=-2\langle Z,W\rangle\operatorname{Id}_{\mathcal H}.
 \end{equation}
-It follows that, for any $v=v^{\alpha }e_{\alpha }$, we have   
-$$ \begin{aligned}
-	Q_{\alpha \beta}v^{\alpha }v^{\beta }=& T_{ij}^{\alpha }T_{ij}^{\beta }v^{\alpha }v^{\beta }\\
-	=&
-	\la J_{v} e_i, e_j \ra \la J_{v} e_i, e_j \ra=\la J_{v} e_i,\la J_{v} e_i, e_j \ra\cdot  e_j \ra \\
-	=& \la J_v e_i, J_v e_i \ra \\
-	=&m |v|^2.
-\end{aligned}  $$
-Also, \eqref{66} implies that
+From this we see 
+$$ \la -\pi _{\mathcal{V}}([X,J_{e_{\alpha }} X]), e_{\beta } \ra =- \la X,J_{e_{\beta }}J_{e_{\alpha }}X  \ra= \la X,J_{e_{\alpha }}J_{e_{\beta }}X  \ra+2 \delta _{\alpha \beta }|X|^2.$$
+But 
+$$ \la X,J_{e_{\alpha }}J_{e_{\beta }}X  \ra=- \la J_{e_{\alpha  }}X,J_{e_{\beta  }}X  \ra=  \la X,J_{e_{\beta }}J_{e_{\alpha }}X  \ra,$$
+hence 
+$$ \la -\pi _{\mathcal{V}}([X,J_{e_{\alpha }} X]), e_{\beta } \ra = \delta _{\alpha \beta }|X|^2.$$
+\end{proof}
+
+In fact, the proof states a slightly stronger pointwise fact: once you fix any nonzero horizontal vector \(X_p\),
 \[
-    |J_ZX|=|Z|\,|X|.
+T_pM
+=
+\mathcal H_p+[X,\mathcal H]_p.
 \]
-Hence, with respect to any adapted orthonormal frame,
+
+\begin{theorem}[\cite{Bau2022Htype}]
+	H-type foliations are Yang-Mills.
+\end{theorem}
+
+\section{Clifford representation}
+The H-type condition endows the horizontal bundle with a natural
+Clifford-module structure. Indeed,
+we have seen from \eqref{clif} 
+the following Clifford relation
 \[
-    |T_{ij}^{\alpha}|
+    J_ZJ_W+J_WJ_Z
     =
-    |\langle J_{e_\alpha}e_i,e_j\rangle|
-    \le 1.
+    -2\langle Z,W\rangle
+    \operatorname{Id}_{\mathcal H},
+    \qquad Z,W\in\mathcal V.
 \]
-In particular, the horizontal-horizontal torsion is uniformly bounded
-on every H-type foliation.
-Moreover, according to the Theorem 2.19 in \cite{Bau2022Htype}, $\delta_{\mathcal{H}}^{\nabla}T=0$.
+Consequently, at each \(p\in M\), the map
+\[
+    \mathcal V_p\longrightarrow\operatorname{End}(\mathcal H_p),
+    \qquad
+    Z\longmapsto J_Z,
+\]
+extends naturally to a representation
+\[
+    J:\operatorname{Cl}(\mathcal V_p)
+    \longrightarrow
+    \operatorname{End}(\mathcal H_p)
+\]
+of the Clifford algebra of \(\mathcal V_p\). In particular,
+\[
+    J_1=\operatorname{Id}_{\mathcal H_p},
+    \qquad
+    J_{Z\cdot W}=J_ZJ_W,
+\]
+where \(Z\cdot W\) denotes Clifford multiplication. Thus compositions
+of the operators \(J_Z\) are themselves encoded by the Clifford
+algebra of the vertical space.
 
+This representation provides a useful description of the algebra
+generated by the vertical directions. Let \(\mathfrak a(p)\) denote
+the Lie algebra of endomorphisms of \(\mathcal H_p\) generated by
+\(\{J_Z:Z\in\mathcal V_p\}\), where the bracket is the commutator
+\([A,B]=AB-BA\). As shown in
+\cite{Bau2022Htype}, no higher-order commutators
+are needed to generate \(\mathfrak a(p)\): it is generated by the
+operators
+\[
+    J_Z
+    \quad\text{and}\quad
+    [J_Z,J_W].
+\]
+More precisely, either \(\{J_Z:Z\in\mathcal V_p\}\) is already closed
+under commutators, or
+\[
+    \mathfrak a(p)
+    \simeq
+    \mathfrak{so}(k+1),
+\]
+where \(k=\dim\mathcal V\).
 
+The first possibility is particularly restrictive. If the family
+\(\{J_Z\}\) is itself closed under commutators, then either \(k=1\),
+in which case the resulting structure is of complex type, or \(k=3\),
+in which case the operators \(J_Z\), together with the identity,
+satisfy the quaternionic multiplication rules. In the latter case one
+can choose a local orthonormal vertical frame
+\(\{Z_1,Z_2,Z_3\}\) such that, up to orientation,
+\[
+    J_{Z_1}J_{Z_2}=J_{Z_3},\qquad
+    J_{Z_2}J_{Z_3}=J_{Z_1},\qquad
+    J_{Z_3}J_{Z_1}=J_{Z_2},
+\]
+and
+\[
+    J_{Z_\alpha}^2=-\operatorname{Id}_{\mathcal H}.
+\]
+This motivates the notion of an H-type foliation of
+\emph{quaternionic type}; in particular, such a foliation necessarily
+has vertical rank three. Important examples include \(3K\)-contact,
+\(3\)-Sasakian, and quaternionic Heisenberg geometries.
+
+If, in addition, the torsion is horizontally parallel,
+\[
+    \nabla_{\mathcal H}T=0,
+\]
+then the above algebraic type is independent of the point. Indeed,
+parallel transport along horizontal curves intertwines the operators
+\(J_Z\), while the H-type condition implies that \(\mathcal H\) is
+bracket generating. Hence the Clifford-algebra structure at one point
+determines the corresponding structure throughout the connected
+manifold.
 
 \section{H-type groups}
 
@@ -239,8 +234,7 @@ and consequently
     \qquad
     \ricci_{\mathcal H}^{\nabla}\equiv0.
 \]
-Thus the horizontal Ricci curvature assumption in
-Corollary~\ref{cor4.6} is automatically satisfied. Notice, however,
+Notice, however,
 that the sub-Riemannian geometry is still nontrivial, since
 \[
     T(X,Y)=-[X,Y],
@@ -251,6 +245,7 @@ control of this torsion through the maps \(J_Z\). Hence H-type groups
 provide a large family of examples in which the adapted connection is
 flat while the non-integrability of the horizontal distribution is
 entirely encoded by the torsion.
+
 
 
 \section*{References}

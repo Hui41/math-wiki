@@ -27,7 +27,9 @@
 	
 \title{Sub-Riemannian geoemtry}
 
-\section{Sub-Riemannian manifolds}
+\section{Sub-Riemannian geoemtry}
+
+\subsection{Sub-Riemannian manifolds}
 Let $M^{m+k}$ be a $(m+k)$-dimensional smooth manifold and $\mathcal{H}^m$ be  a  subbundle of $TM$ of rank $m$. Assume that $\mathcal{H}$ satisfies step-$r$ bracket generating condition for some $r \geq 1$.
 This means that, at each point \( x \in M \), the sections of \( \mathcal{H} \), along with all their Lie brackets up to order \( r \), generate the tangent space \( T_xM \).
 Then the triple $(M^{m+k},\mathcal{H}^m,g_{\mathcal{H}})$ is called a sub-Riemannian manifold, where $g_{\mathcal{H}}$ is a fiberwise metric on $\mathcal{H}$. The subbundle $\mathcal{H}$ is also called the \textit{horizontal distribution}. Note that one can easily extend $g_{\mathcal{H}}$ to a Riemannian metric $g$ on $TM$ (see, e.g., \cite{dongEellsSampsonType2021a}). Throughout the paper, we fix such a metric $g$ such that $g|_{\mathcal{H}}=g_{\mathcal{H}}$ and denote the corresponding sub-Riemannian manifold by $(M^{m+k},\mathcal{H}^{m},g)$. 
@@ -130,18 +132,17 @@ connection is one of such connections given by
 \nabla^{\mathfrak B}_X Y
 =
 \begin{cases}
-\pi_H\bigl(\nabla^R_XY\bigr),
+\pi_H\bigl(D_XY\bigr),
 & X,Y\in\Gamma(H),\\[4pt]
 \pi_H\bigl([X,Y]\bigr),
 & X\in\Gamma(V),\ Y\in\Gamma(H),\\[4pt]
 \pi_V\bigl([X,Y]\bigr),
 & X\in\Gamma(H),\ Y\in\Gamma(V),\\[4pt]
-\pi_V\bigl(\nabla^R_XY\bigr),
+\pi_V\bigl(D_XY\bigr),
 & X,Y\in\Gamma(V).
 \end{cases}
 \]
-
-where $\nabla^R$ denotes the Riemannian connection of $g$. Clearly,
+where $D$ denotes the Riemannian connection of $g$. Clearly,
 $\nabla^{B}$ preserves the decomposition, and it also satisfies
 \[
 \nabla^{B}_X g_H=0
@@ -153,12 +154,232 @@ for any $X\in H$ and $Y\in V$. However, $\nabla^{B}$ does \textit{not} preserve 
 \begin{lemma}
 For any \(X,Y\in\Gamma(TM)\), we have
 \[
-T(X,Y)
+T^{\nabla ^B}(X,Y)
 =
 -\pi_V\bigl([\pi_H(X),\pi_H(Y)]\bigr)
 -\pi_H\bigl([\pi_V(X),\pi_V(Y)]\bigr).
 \]
 \end{lemma}
+
+\section{Hladky connection}
+Hladky connection is a generalization of Tanaka-Webster connection. 
+\begin{definition}
+	The Hladky connection $\nabla $ on a sub-Riemannian manifold $(M,\mathcal{H},g)$  is given by 
+	\begin{equation}\label{conn6}
+   \nabla _{X}Y= \begin{cases}
+        (D_XY)_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{H}}+B_{X}Y &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{V}} +C_XY&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+        (D_XY)_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X} _{\mathcal{V}},
+    \end{cases} 
+\end{equation}
+where $D$ is the Levi-Civita connection of $g$, and 
+ tensors $B$ and $C$ are defined by   
+$$ \la B_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{V}}}}g)(Y_{\mathcal{H}},Z_{\mathcal{H}})$$
+and
+$$ \la C_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{H}}}}g)(Y_{\mathcal{V}},Z_{\mathcal{V}}).$$ 
+\end{definition}
+
+The torsion $T$ of $\nabla $  satisfies 
+\begin{equation}\label{tor7}
+	 T(X,Y)=\begin{cases}
+	    -[X,Y]_{\mathcal{V}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{H}}\\
+	    B_XY-C_YX &\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+	      C_XY-B_YX&\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+	      -[X,Y]_{\mathcal{H}} &\text{if } X,Y \in \mathfrak{X}_{\mathcal{V}}
+	\end{cases}   
+\end{equation} 
+
+Actually, Hladky gives the following characterization of $\nabla $.
+\begin{proposition}[cf. \cite{Hla2012}]
+There exists a unique metric connection $\nabla$ on $M$ such that:
+\begin{itemize}
+    \item $\mathcal H$ and $\mathcal V$ are $\nabla$-parallel, i.e., for every
+    $X\in\Gamma(\mathcal H)$, $Y\in\Gamma(TM)$, and $Z\in\Gamma(\mathcal V)$,
+    \[
+    \nabla_Y X\in\Gamma(\mathcal H),
+    \qquad
+    \nabla_Y Z\in\Gamma(\mathcal V).
+    \]
+
+    \item The torsion $T$ of $\nabla$ satisfies
+    \[
+    T(\mathcal H,\mathcal H)\subset \mathcal V,
+    \qquad
+    T(\mathcal V,\mathcal V)\subset \mathcal H.
+    \]
+
+    \item For every $X,Y\in\Gamma(\mathcal H)$ and $V,Z\in\Gamma(\mathcal V)$,
+    \[
+    \langle T(X,Z),Y\rangle
+    =
+    \langle T(Y,Z),X\rangle,
+    \qquad
+    \langle T(Z,X),V\rangle
+    =
+    \langle T(V,X),Z\rangle.
+    \]
+\end{itemize}
+\end{proposition} 
+
+\begin{remark}
+		Note that Hladky connection $\nabla $ and Levi-Civita connection $D$  are related by  
+	\begin{equation}\label{027}
+		 \nabla_X Y=D_X Y+\frac{1}{2} T(X, Y)-\frac{1}{2} J_X Y-\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M) . 
+	\end{equation}
+	See also \cite{Baudoin2025sub}. Here $J$ is defined by  
+	$$ \la J_Z X, Y \ra = \la Z, T(X,Y) \ra, \quad \forall X, Y,Z \in \mathfrak{X}( M).$$
+	Since the Hladky connection is metric, \(\nabla g=0\), differentiating gives
+	\[
+\left\langle (\nabla_W J)_Z X, Y \right\rangle
+=
+\left\langle Z, (\nabla_W T)(X,Y) \right\rangle \quad \forall X, Y,Z,W \in \mathfrak{X}( M).
+\]
+
+Setting 
+	\begin{equation}\label{A1}
+		 A_XY:= -\frac{1}{2} T(X, Y)+\frac{1}{2} J_X Y+\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M),
+	\end{equation}
+	which implies 
+	\begin{equation}\label{A2}
+		A_{\mathcal{H}}\mathcal{H} \subset \mathcal{V},\quad A_{\mathcal{V}}\mathcal{V} \subset \mathcal{H}. 
+	\end{equation}
+	Then $D=\nabla +A$, and 
+	\begin{equation}\label{Dnab}
+		\begin{aligned}
+			R^g(X, Y )Z=& R(X,Y)Z+ (\nabla _XA)_{Y}Z-(\nabla _YA)_XZ\\
+			&+A_{T(X,Y)}Z+A_X A_Y Z-A_Y A_X Z  .
+		\end{aligned} 
+	\end{equation} 
+\end{remark}
+
+Having introduced the basic notions associated with the Hladky connection, we next recall some important classes of sub-Riemannian manifolds that provide natural geometric settings.
+
+\begin{example}[Riemannian foliations]   
+	Let  $(M^{m+k},\mathcal{F}^k)$ be a foliated manifold,
+	 where $\mathcal{F}^k$ is  a $k$-dimensional foliation. Let $g$ be a Riemannian metric on $M$ and decompose the tangent bundle 
+	 $$ TM=T\mathcal{F} \oplus \mathcal{H} $$ 
+	 accordingly, where $\mathcal{H}$ is  complementary to $T\mathcal{F} $. The metric $g$ is said to be bundle-like if the Lie derivate of $g_{\mathcal{H}}$ along vertical direction vanishes. 
+	 Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.    
+	The triple $(M^{m+k},\mathcal{F}^k,g)$ is referred to as a \textit{Riemannian foliation}, see  \cite{CDHL2026hor} or \cite{gromollMetricFoliationsCurvature2009a} for more details. 
+	When $\mathcal{H}$ is bracket generating, $(M^{m+k},\mathcal{H}^m,g)$ is a sub-Riemannian manifold.  
+\end{example}
+
+\begin{definition}[cf. \cite{Bau2022Htype}]
+Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. If its leaves are totally geodesic, then $(M^{m+k},\mathcal{H}^m,g)$ is called a \emph{totally geodesic foliation}.
+\end{definition}
+
+\begin{proposition}
+	Let $(M^{m+k},\mathcal{H}^m,g)$ be a Riemannian foliation. Then it's a totally geodesic foliation if and only if 
+	$$ C=0. $$
+\end{proposition}
+\begin{proof}
+	For $Y,Z \in \mathfrak{X}_{\mathcal{V}}$ and $X \in \mathfrak{X}_{\mathcal{H}}$, we have 
+\begin{equation}
+		 \begin{aligned}
+			2\la C_{X}Y,Z \ra=& X \la Y,Z \ra -\la [X,Y],Z \ra-\la Y,[X,Z ]\ra\\
+			=& \la \nabla _Y X ,Z \ra +\la  Y ,\nabla _Z X\ra\\
+			=&- \la \nabla _Y Z+\nabla _Z Y,X \ra.
+		\end{aligned}   
+\end{equation}
+The integrability of $\mathcal{V}$ implies 
+  $$  \begin{aligned}
+			- \la \nabla _Y Z+\nabla _Z Y,X \ra=& - \la 2\nabla _Y Z+[Z, Y],X \ra\\
+			=& - \la 2\nabla _Y Z,X \ra,
+		\end{aligned}  $$
+from which the conclusion follows.
+\end{proof}
+
+
+\begin{remark}
+	If $(M^{m+k},\mathcal{H}^m,g)$ is a Riemannian foliation with totally geodesic leaves, then the Hladky connection coincides with the generalized Bott connection.
+\end{remark}
+
+
+\section{sub-Riemannian manifold with transverse symmetries}
+In this section, we introduce Baudoin-Garofalo's \cite{BauGar2017trsy} notion of a sub-Riemannian manifold with transverse symmetries is a particularly structured way of adding “vertical directions” to a sub-Riemannian manifold.
+
+Start with a sub-Riemannian manifold
+\(
+(M,\mathcal H,g_{\mathcal H}),
+\)
+where \(\mathcal H\subset TM\) is bracket generating. A vector field \(Z\) is called a \textbf{sub-Riemannian Killing field} if its flow preserves both the horizontal distribution and the horizontal metric. Concretely,
+\[
+[Z,X]\in \Gamma(\mathcal H)
+\quad\text{for every }X\in\Gamma(\mathcal H),
+\]
+and
+\[
+(\mathcal L_Z g_{\mathcal H})(X,Y)=0,
+\qquad X,Y\in\Gamma(\mathcal H).
+\]
+Thus flowing in the \(Z\)-direction does not change the sub-Riemannian geometry. 
+
+The key assumption is that there exists a finite-dimensional Lie algebra \(\mathcal V\) of such symmetries satisfying
+\[
+\boxed{
+T_xM=\mathcal H_x\oplus\mathcal V_x
+\qquad \text{for every }x\in M.
+}
+\]
+The directions generated by \(\mathcal V\) are called the vertical directions. So the tangent bundle splits into horizontal directions, where the sub-Riemannian metric lives, and vertical directions which act as infinitesimal symmetries of that geometry. 
+
+This is why the term transverse symmetries is appropriate: the vertical vector fields are transverse to \(\mathcal H\), and their flows preserve \((\mathcal H,g_{\mathcal H})\).
+
+If one chooses an inner product on \(\mathcal V\), one obtains a Riemannian extension
+\[
+g=g_{\mathcal H}\oplus g_{\mathcal V}.
+\]
+But Baudoin-Garofalo emphasize that the important geometric objects they construct ultimately do not depend on this auxiliary choice. 
+
+There is also a \textbf{canonical connection} \(\nabla\), characterized by
+$$ \begin{aligned}
+  &\nabla g=0,\\
+  &\nabla_XY\in\mathcal H
+\qquad (X,Y\in\mathcal H),\\
+&\nabla Z=0
+\qquad (Z\in\mathcal V),
+\end{aligned}  $$
+and
+\[
+T(X,Y)\in\mathcal V,\qquad
+T(X,Z)=0.
+\]
+More explicitly,
+\[
+\nabla_XY=\pi_{\mathcal H}(D_XY),\qquad
+\nabla_ZX=[Z,X],\qquad
+\nabla Z=0,
+\]
+where \(D\) is the Levi-Civita connection of the chosen Riemannian extension. 
+
+So the torsion on horizontal vectors is essentially the obstruction to integrability of \(\mathcal H\):
+\[
+T(X,Y)=-\pi_{\mathcal V}[X,Y].
+\]
+This should look very familiar from  Hladky and Bott setting.
+
+A useful geometric picture is that, when the Lie group generated by \(\mathcal V\) acts properly, one has a quotient
+\[
+M\longrightarrow M/\mathbb V,
+\]
+which becomes a Riemannian submersion after choosing the vertical metric. Baudoin–Garofalo mention the Hopf fibration
+\[
+S^3\to S^2
+\]
+as a basic example.
+
+The class is quite broad. Their examples include:
+\[
+\text{Sasakian manifolds},\qquad
+\text{step-two Carnot groups},\qquad
+\text{certain principal bundles},
+\]
+and related homogeneous models. 
+
+
+
+
 
 
 \section*{References} 
