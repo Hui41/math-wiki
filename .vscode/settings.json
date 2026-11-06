@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.wiki": "latex"
+  },
+  "editor.wordWrap": "on",
+  "editor.tabCompletion": "on"
+}
