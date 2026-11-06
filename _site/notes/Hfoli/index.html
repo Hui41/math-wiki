@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>H-type foliation · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>H-type foliation</h1>
+      <article><h1>H-type foliation</h1>
+<p>H-type foliations were introduced by Baudoin, Grong, Rizzi and Vega-Molino as a geometric framework extending several important classes of sub-Riemannian structures, including H-type groups, \(K\)-contact manifolds and \(3K\)-contact manifolds; see [<a href="#ref-Bau2022Htype">BGRVM22</a>].</p>
+<p>Let
+\((M,\mathcal H,g)\) be a totally geodesic Riemannian foliation with orthogonal splitting</p>
+<p>\[
+    TM=\mathcal H\oplus\mathcal V,
+\]</p>
+<p>and let \(\nabla\) be the associated Bott connection with torsion \(T\). For
+\(Z\in\mathcal V\), define \(J_Z:\mathcal H\to\mathcal H\) by</p>
+<p>\[
+    \langle J_ZX,Y\rangle
+    =
+    \langle Z,T(X,Y)\rangle,
+    \qquad X,Y\in \mathfrak{X}_{\mathcal H}.
+\]</p>
+<p>The foliation is said to be of <strong>H-type</strong>(or Heisenberg-type) if</p>
+<p>\[
+    \langle J_ZX,J_ZY\rangle
+    =
+    |Z|^2\langle X,Y\rangle,
+\]</p>
+<p>or equivalently(by the skew-symmetry of \(J_Z\)),</p>
+<p>\[
+    J_Z^2=-|Z|^2\operatorname{Id}_{\mathcal H}.
+\]</p>
+<p>Thus each vertical direction induces, after normalization, an orthogonal complex structure on the horizontal bundle. In particular, the horizontal distribution is bracket generating of step two, and the maps \(J_Z\) encode quantitatively the non-integrability of \(\mathcal H\).</p>
+<div class="theorem definition">
+<header>Definition ([<a href="#ref-Bau2022Htype">BGRVM22</a>])</header>
+<section>
+<p>An H-type foliation is said to be
+\begin{itemize}</p>
+<ol>
+<li>of <strong>Yang-Mills type</strong>, if \(\delta _{\mathcal{H}}^{\nabla }T=0\);</li>
+<li>with horizontally parallel torsion, if \(\nabla _{\mathcal{H}}T=0\);</li>
+<li>with completely parallel torsion, if \(\nabla T=0\).<br />
+\end{itemize}</li>
+</ol>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>The Yang-Mills assumption plays an important role in the theory of generalized curvature dimension inequalities.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header>
+<section>
+<p>On an H-type foliation, one has for every \(X \in \mathfrak{X}_{\mathcal{H}}, Z \in \mathfrak{X}_{\mathcal{V}}\),</p>
+<p>\[ -\pi _{\mathcal{V}}([X,J_Z X])=|X|^2Z. \]</p>
+<p>Thus, the horizontal distribution is bracket generating of step-two.</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header>
+<section>
+<p>Note that</p>
+<p>\[ -\pi _{\mathcal{V}}([X,J_Z X])=T(X, J_Z X) .\]</p>
+<p>By polarization, the H-type condition implies the Clifford relation</p>
+<p>\begin{equation}\label{clif}
+	J_ZJ_W+J_WJ_Z=-2\langle Z,W\rangle\operatorname{Id}_{\mathcal H}.
+\end{equation}</p>
+<p>From this we see</p>
+<p>\[ \la -\pi _{\mathcal{V}}([X,J_{e_{\alpha }} X]), e_{\beta } \ra =- \la X,J_{e_{\beta }}J_{e_{\alpha }}X  \ra= \la X,J_{e_{\alpha }}J_{e_{\beta }}X  \ra+2 \delta _{\alpha \beta }|X|^2.\]</p>
+<p>But</p>
+<p>\[ \la X,J_{e_{\alpha }}J_{e_{\beta }}X  \ra=- \la J_{e_{\alpha  }}X,J_{e_{\beta  }}X  \ra=  \la X,J_{e_{\beta }}J_{e_{\alpha }}X  \ra,\]</p>
+<p>hence</p>
+<p>\[ \la -\pi _{\mathcal{V}}([X,J_{e_{\alpha }} X]), e_{\beta } \ra = \delta _{\alpha \beta }|X|^2.\]</p>
+</section>
+</div>
+<p>In fact, the proof states a slightly stronger pointwise fact: once you fix any nonzero horizontal vector \(X_p\),</p>
+<p>\[
+T_pM
+=
+\mathcal H_p+[X,\mathcal H]_p.
+\]</p>
+<div class="theorem theorem">
+<header>Theorem ([<a href="#ref-Bau2022Htype">BGRVM22</a>])</header>
+<section>
+<p>H-type foliations are Yang-Mills.</p>
+</section>
+</div>
+<h1>Clifford representation</h1>
+<p>The H-type condition endows the horizontal bundle with a natural
+Clifford-module structure. Indeed,
+we have seen from \eqref{clif}
+the following Clifford relation</p>
+<p>\[
+    J_ZJ_W+J_WJ_Z
+    =
+    -2\langle Z,W\rangle
+    \operatorname{Id}_{\mathcal H},
+    \qquad Z,W\in\mathcal V.
+\]</p>
+<p>Consequently, at each \(p\in M\), the map</p>
+<p>\[
+    \mathcal V_p\longrightarrow\operatorname{End}(\mathcal H_p),
+    \qquad
+    Z\longmapsto J_Z,
+\]</p>
+<p>extends naturally to a representation</p>
+<p>\[
+    J:\operatorname{Cl}(\mathcal V_p)
+    \longrightarrow
+    \operatorname{End}(\mathcal H_p)
+\]</p>
+<p>of the Clifford algebra of \(\mathcal V_p\). In particular,</p>
+<p>\[
+    J_1=\operatorname{Id}_{\mathcal H_p},
+    \qquad
+    J_{Z\cdot W}=J_ZJ_W,
+\]</p>
+<p>where \(Z\cdot W\) denotes Clifford multiplication. Thus compositions
+of the operators \(J_Z\) are themselves encoded by the Clifford
+algebra of the vertical space.</p>
+<p>This representation provides a useful description of the algebra
+generated by the vertical directions. Let \(\mathfrak a(p)\) denote
+the Lie algebra of endomorphisms of \(\mathcal H_p\) generated by
+\(\{J_Z:Z\in\mathcal V_p\}\), where the bracket is the commutator
+\([A,B]=AB-BA\). As shown in
+[<a href="#ref-Bau2022Htype">BGRVM22</a>], no higher-order commutators
+are needed to generate \(\mathfrak a(p)\): it is generated by the
+operators</p>
+<p>\[
+    J_Z
+    \quad\text{and}\quad
+    [J_Z,J_W].
+\]</p>
+<p>More precisely, either \(\{J_Z:Z\in\mathcal V_p\}\) is already closed
+under commutators, or</p>
+<p>\[
+    \mathfrak a(p)
+    \simeq
+    \mathfrak{so}(k+1),
+\]</p>
+<p>where \(k=\dim\mathcal V\).</p>
+<p>The first possibility is particularly restrictive. If the family
+\(\{J_Z\}\) is itself closed under commutators, then either \(k=1\),
+in which case the resulting structure is of complex type, or \(k=3\),
+in which case the operators \(J_Z\), together with the identity,
+satisfy the quaternionic multiplication rules. In the latter case one
+can choose a local orthonormal vertical frame
+\(\{Z_1,Z_2,Z_3\}\) such that, up to orientation,</p>
+<p>\[
+    J_{Z_1}J_{Z_2}=J_{Z_3},\qquad
+    J_{Z_2}J_{Z_3}=J_{Z_1},\qquad
+    J_{Z_3}J_{Z_1}=J_{Z_2},
+\]</p>
+<p>and</p>
+<p>\[
+    J_{Z_\alpha}^2=-\operatorname{Id}_{\mathcal H}.
+\]</p>
+<p>This motivates the notion of an H-type foliation of
+<em>quaternionic type</em>; in particular, such a foliation necessarily
+has vertical rank three. Important examples include \(3K\)-contact,
+\(3\)-Sasakian, and quaternionic Heisenberg geometries.</p>
+<p>If, in addition, the torsion is horizontally parallel,</p>
+<p>\[
+    \nabla_{\mathcal H}T=0,
+\]</p>
+<p>then the above algebraic type is independent of the point. Indeed,
+parallel transport along horizontal curves intertwines the operators
+\(J_Z\), while the H-type condition implies that \(\mathcal H\) is
+bracket generating. Hence the Clifford-algebra structure at one point
+determines the corresponding structure throughout the connected
+manifold.</p>
+<h1>H-type groups</h1>
+<p>H-type foliations may be viewed as a geometric generalization of the classical H-type groups introduced by Kaplan (cf. [<a href="#ref-Kapl1980Htype">Kap80</a>] or [<a href="#ref-Bau2022Htype">BGRVM22</a>]).</p>
+<p>Recall that an H-type group is a connected simply connected two-step nilpotent Lie group \(G\) whose Lie algebra admits an orthogonal decomposition</p>
+<p>\[
+    \mathfrak g=\mathfrak h\oplus\mathfrak z,
+\]</p>
+<p>where \(\mathfrak z\) is the center of \(\mathfrak g\), such that</p>
+<p>\[
+    [\mathfrak h,\mathfrak h]\subset\mathfrak z,
+    \qquad
+    [\mathfrak g,\mathfrak z]=0.
+\]</p>
+<p>For \(Z\in\mathfrak z\), define \(J_Z:\mathfrak h\to\mathfrak h\) by</p>
+<p>\[
+    \langle J_ZX,Y\rangle
+    =
+    \langle Z,[X,Y]\rangle .
+\]</p>
+<p>The H-type condition is</p>
+<p>\[
+    J_Z^2=-|Z|^2\operatorname{Id}_{\mathfrak h},
+    \qquad Z\in\mathfrak z.
+\]</p>
+<p>The left translations of \(\mathfrak h\) and \(\mathfrak z\) determine, respectively, the horizontal and vertical distributions \(\mathcal H\) and \(\mathcal V\), and the cosets of the center form the leaves of a totally geodesic Riemannian foliation. In particular, H-type groups constitute basic examples of H-type foliations; see [<a href="#ref-Bau2022Htype">BGRVM22</a>].</p>
+<p>A useful feature of this model is that the canonical Bott, equivalently Hladky, connection associated with the splitting</p>
+<p>\[
+    TG=\mathcal H\oplus\mathcal V
+\]</p>
+<p>is flat. Indeed, with respect to any left-invariant adapted frame
+\(\{e_i,e_\alpha\}\), the two-step nilpotent structure gives</p>
+<p>\[
+    \nabla_{e_A}e_B=0,
+\]</p>
+<p>and consequently</p>
+<p>\[
+    R^\nabla\equiv0,
+    \qquad
+    \ricci_{\mathcal H}^{\nabla}\equiv0.
+\]</p>
+<p>Notice, however,
+that the sub-Riemannian geometry is still nontrivial, since</p>
+<p>\[
+    T(X,Y)=-[X,Y],
+    \qquad X,Y\in\mathcal H,
+\]</p>
+<p>is generally nonzero. The H-type condition gives strong algebraic
+control of this torsion through the maps \(J_Z\). Hence H-type groups
+provide a large family of examples in which the adapted connection is
+flat while the non-integrability of the horizontal distribution is
+entirely encoded by the torsion.</p>
+<h1>References</h1>
+<ol class="references"><li id="ref-Baudoin2025sub">[Bau26] Fabrice Baudoin. Sub-laplacian comparison theorems on Riemannian foliations with minimal leaves and applications. <em>Communications on Pure and Applied Analysis</em>, 2026.</li><li id="ref-Bau2022Htype">[BGRVM22] Fabrice Baudoin, Erlend Grong, Luca Rizzi, and Gianmarco Vega-Molino. H-type foliations. <em>Differential Geom. Appl.</em>, 85:Paper No. 101952, 25, 2022.</li><li id="ref-CDHL2026hor">[CDHL26] Tian Chong, Yuxin Dong, Xin Huang, and Hui Liu. On critical maps of the horizontal energy functional between Riemannian foliations. <em>J. Geom. Anal.</em>, 36(1):Paper No. 21, 44, 2026.</li><li id="ref-gromollMetricFoliationsCurvature2009a">[GW09] Detlef Gromoll and Gerard Walschap. <em>Metric foliations and curvature</em>, volume 268 of <em>Progress in Mathematics</em>. Birkhäuser Verlag, Basel, 2009.</li><li id="ref-Kapl1980Htype">[Kap80] Aroldo Kaplan. Fundamental solutions for a class of hypoelliptic PDE generated by composition of quadratic forms. <em>Trans. Am. Math. Soc.</em>, 258:147--153, 1980.</li></ol>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

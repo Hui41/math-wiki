@@ -34,7 +34,20 @@ E(\phi)=\int_M \frac12 |d\phi|^2\,dv_g.
 若 $N=\rr$，调和映射就是调和函数。
 \end{example}
 
-$$ \la \aleph , \beta  \ra $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section*{参考文献}
 \begin{references}

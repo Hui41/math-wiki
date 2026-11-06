@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Pseudo-Hermitian Geometry · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Pseudo-Hermitian Geometry</h1>
+      <article><h1>Preliminaries</h1>
+<p>Let \(M^{2m+1}\) be a \((2m+1)\)-dimensional smooth orientable manifold. A <em>CR structure</em> on \(M^{2m+1}\) is a complex rank-\(m\) subbundle \(H^{1,0} \) of \( 
+T(M)\otimes \mathbb{C}\) with the following properties</p>
+<p>\begin{align}
+    H^{1,0} \cap H^{0,1}  =&amp; \{0\}, \quad H^{0,1}  = \overline{H^{1,0} } \notag \\
+    [\Gamma (H^{1,0} ),\Gamma (H^{1,0} )] \subseteq &amp;\, \Gamma(H^{1,0} ). \label{1.1}
+    \end{align}</p>
+<p>The complex subbundle \(H^{1,0} \) corresponds to a real rank \(2m\) subbundle
+\(H :=\Re\{H^{1,0} \oplus H^{0,1} \}\) of \(T(M)\), which carries a
+complex structure \(J_{b}\) defined by</p>
+<p>\begin{equation*}
+J_{b}(V+\overline{V})=i(V-\overline{V})
+\end{equation*}</p>
+<p>for any \(V\in H^{1,0} \). The synthetic object \((M,H^{1,0} )\) or \( 
+(M,H ,J_{b})\) is called a <em>CR manifold</em>.</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Formally integrable condition is equivalent to</p>
+<p>\[
+\begin{gathered}
+{\left[J_{b} X, Y\right]+\left[X, J_{b} Y\right] \in \Gamma^{\infty}(U, H(M)),} \\
+{\left[J_{b} X, J_{b} Y\right]-[X, Y]=J_{b}\left\{\left[J_{b} X, Y\right]+\left[X, J_{b} Y\right]\right\}}
+\end{gathered}
+\]</p>
+<p>for all \(X, Y \in \mathfrak{X}_{\mathcal{H}}\).</p>
+</section>
+</div>
+<p>Let \(E\) be a real line bundle of \(T^{\ast }M\), whose fiber at each point \( 
+x\in M\) is given by</p>
+<p>\begin{equation*}
+E_{x}=\{\omega \in T_{x}^{\ast }M:\ker \omega \supseteq H_{x} \}.
+\end{equation*}</p>
+<p>Since both \(TM\) and \(H \) are orientable vector bundles on \(M\), the real
+line bundle \(E\) is orientable, so \(E\) has globally defined nowhere vanishing
+sections. Any such a section \(\theta \in \Gamma (E\backslash \{0\})\) is
+referred to as a <em>pseudo-Hermitian 1-form</em> on \(M\).</p>
+<p>Given a pseudo-Hermitian \(1\)-form \(\theta \) on \(M\), we have the <em>Levi form</em> \( 
+L_{\theta }\) corresponding to \(\theta \), which is defined by</p>
+<p>\begin{equation}
+L_{\theta }(X,Y)=d\theta (X,J_{b}Y)  \label{1.2}
+\end{equation}</p>
+<p>for any \(X,Y\in H \). The second condition in (\ref{1.1}) implies that \( 
+L_{\theta }\) is \(J_{b}\)-invariant, and thus symmetric. If \(L_{\theta }\) is
+positive definite on \(H \) for some \(\theta \), \((M,H^{1,0} )\) is said to
+be <em>strictly pseudoconvex</em>. From now on, we will always assume that \( 
+(M,H^{1,0} )\) is a strictly pseudoconvex CR manifold endowed with a
+pseudo-Hermitian \(1\)-form \(\theta \), such that its Levi form \(L_{\theta }\)
+is positive definite. In this case  the synthetic object \((M,H^{1,0} ,\theta )\) is
+referred to as a <em>pseudo-Hermitian manifold</em>.</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>For any \(Z,W \in H^{1,0}(M)\),</p>
+<p>\[
+L_{\theta}(Z, \overline{W})=-i(d \theta)(Z, \overline{W}):=G_{\theta }(Z, \overline{W}).
+\]</p>
+</section>
+</div>
+<p>Let \((M^{2m+1},H^{1,0} , \theta )\) be a pseudo-Hermitian manifold. Clearly \( 
+\theta \) is a contact form. Thus there is a unique vector field \(\xi \in
+\Gamma (T(M))\), called the <em>Reeb vector field</em>, such that</p>
+<p>\begin{equation}
+\theta (\xi )=1\quad i_{\xi }d\theta =0 , \label{1.3}
+\end{equation}</p>
+<p>where \(i_{\xi }\) denotes the interior product with respect to \(\xi \). The
+collection of all its integral curves forms an oriented one-dimensional
+foliation \(\mathcal{F}_{\xi }\) on \(M\), which is called the <em>Reeb
+foliation</em>. The first condition in (\ref{1.3}) implies that \(\xi \) is
+transversal to \(H \). Therefore \(T(M)\) admits a decomposition</p>
+<p>\begin{equation}
+T(M)=H \oplus V_{\xi },  \label{1.4}
+\end{equation}</p>
+<p>where \(V_{\xi }:= 
+\mathbb{R}
+\xi \) is a trivial line bundle on \(M\). In terms of terminology from
+foliation theory, \(H \) and \(V_{\xi }\) are called the horizontal and
+vertical distributions respectively. Let \(\pi _{H}:TM\rightarrow H \) and \( 
+\pi _{V}:TM\rightarrow V_{\xi }\) be the natural projections associated with
+the direct sum decomposition (\ref{1.4}). In terms of \(\theta \), the Levi
+form \(L_{\theta }\) can be extended to a Riemannian metric</p>
+<p>\begin{equation}
+g_{\theta }=L_{\theta }(\pi _{H},\pi _{H})+\theta \otimes \theta,  \label{1.5}
+\end{equation}</p>
+<p>which is called the Webster metric. It is convenient to extend the complex
+structure \(J_{b}\) on \(H \) to an endomorphism \(J\) of \(T(M)\) by requiring
+that</p>
+<p>\begin{equation}
+J\mid _{H }=J_{b}~\text{  and  }~J\mid _{V_{\xi }}=0 , \label{1.6}
+\end{equation}</p>
+<p>where \(\mid \) denotes the fiberwise restriction.
+Define the \(2\)-form \(\Omega\) by</p>
+<p>\begin{equation}
+    \Omega(X,Y):=g_{\theta}(X,JY)=-d \theta (X,Y).
+ \end{equation}</p>
+<p>It is known that there exists a unique linear connection \(\nabla \) on \( 
+(M^{2m+1},H^{1,0} ,\theta )\), called the <em>Tanaka-Webster connection</em>,
+such that (cf. [<a href="#ref-DT2006differential">DT2006differential</a>], [<a href="#ref-TA1975adifferential">TA1975adifferential</a>], [<a href="#ref-We1978pseudo">We1978pseudo</a>])</p>
+<ol>
+<li>\(\nabla _{X}\Gamma (H )\subseteq \Gamma (H )\) and \(\nabla _{X}J=0\)
+for any \(X\in \Gamma (TM)\);</li>
+<li>\(\nabla g_{\theta }=0\);</li>
+<li>\(T_{\nabla }(X,Y)=2d\theta (X,Y)\xi \) \ and \(T_{\nabla }(\xi
+,JX)+JT_{\nabla }(\xi ,X)=0\) for any \(X,Y\in H \), where \(T_{\nabla }(\cdot
+,\cdot )\) denotes the torsion of the connection \(\nabla \).</li>
+</ol>
+<p>Note that (3) is equivalent to that \(T_{\nabla }\) is pure(compared to Chern connection), that is,</p>
+<p>\[ \begin{aligned}
+    T_{\nabla }(Z,W)=&amp;0,\\
+    T_{\nabla }(Z,\overline{W})=&amp; 2 i L_{\theta }(Z,\overline{W}) \xi ,\\
+    \tau \circ J+J \circ \tau =&amp;0,
+\end{aligned}  \]</p>
+<p>for any \(Z,W \in H^{1,0}(M)\). See [<a href="#ref-dongren2024dgpseudo">dongren2024dgpseudo</a>] for more information.</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>One has</p>
+<p>\[ T^{\nabla }(X,Y) = 2 g_{\theta }(JX,Y) \xi +\theta (X) \tau Y-\theta (Y) \tau X,  \]</p>
+<p>or (be careful with the wedge convention)</p>
+<p>\[ T_{\nabla }=2(\theta  \wedge \tau -\Omega \otimes  \xi ) .\]</p>
+<p>Also,</p>
+<p>\[ \tau \circ J+J \circ \tau =0; \]</p>
+<p>\[ J^2 Y=-Y+\theta (Y) \xi , \quad \forall Y \in T(M); \]</p>
+<p>\[ [\xi ,X] \in \mathfrak{X}_{H}, \quad \forall X \in \mathfrak{X}_H.\]</p>
+</section>
+</div>
+<p>One important partial component of \(T_{\nabla }\) is the pseudo-Hermitian
+torsion \(\tau \) given by</p>
+<p>\begin{equation}
+\tau (X)=T_{\nabla }(\xi ,X)  \label{1.7}
+\end{equation}</p>
+<p>for any \(X\in TM\). Then \((M,H^{1,0} ,\theta )\) is said to be <em>Sasakian</em> if \(\tau =0\).</p>
+<p>For the pseudo-Hermitian manifold \((M,H^{1,0} ,\theta )\), we choose a
+local orthonormal frame field \(\{e_{A}\}_{A=0}^{2m}=\{\xi
+,e_{1},...,e_{m},e_{m+1},...,e_{2m}\}\) with respect to \(g_{\theta }\) such
+that</p>
+<p>\begin{equation*}
+\{e_{m+1},...,e_{2m}\}=\{Je_{1},...,Je_{m}\}.
+\end{equation*}</p>
+<p>Such a frame field \(\{e_{A}\}_{A=0}^{2m}\) is referred to as an adapted frame
+field \(M\). Set</p>
+<p>\begin{equation}
+\eta _{j}=\frac{1}{\sqrt{2}}\left( e_{j}-\sqrt{-1}Je_{j}\right) , \quad 
+\eta _{\bar{j}}=\overline{\eta _{j}} \quad (j=1,...,m).
+\label{1.8}
+\end{equation}</p>
+<p>Let \(\{\theta ^{j}\}_{j =1}^{m}\) be the dual frame field of \(\{\eta
+_{j}\}_{j=1}^{m}\). By the properties of the Tanaka-Webster connection \( 
+\nabla \), we have (cf. [<a href="#ref-DT2006differential">DT2006differential</a>])</p>
+<p>\begin{equation}
+\nabla \xi =0, \quad\nabla \eta _{j}=\theta _{j}^{i}\otimes \eta _{i} 
+\quad \nabla \eta _{\overline{j}}=\theta _{\overline{j}}^{\overline{i} 
+}\otimes \eta _{\overline{i}} , \label{1.9}
+\end{equation}</p>
+<p>where \(\{\theta _{j}^{i}\}\) denotes the connection \(1\)-forms with respect to
+the frame field. Since</p>
+<p>\[\tau (H^{1,0} )\subset H^{0,1} ,\]</p>
+<p>one may write</p>
+<p>\begin{eqnarray}
+\tau &amp;=&amp;\tau ^{i}\eta _{i}+\tau ^{\overline{i}}\eta _{\overline{i}}  \notag
+\\
+&amp;=&amp;A_{\overline{j}}^{i}\theta ^{\overline{j}}\otimes \eta _{i}+A_{j}^{ 
+\overline{i}}\theta ^{j}\otimes \eta _{\overline{i}}.  \label{1.10}
+\end{eqnarray}</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Set</p>
+<p>\[ A(X,Y)=g_{\theta }(\tau X,Y) \]</p>
+<p>for any \(X,Y \in T(M) .\)
+Then we have \(A(X,Y)=A(Y,X)\).
+Writing \(A_{ij}=A(\eta_i,\eta_j)\) and \(h_{i \bar j}=g_{\theta }(\eta_i,\eta_{\bar j})\), then</p>
+<p>\[A_{ij}=A_{i}^{\bar k}h_{\bar k j}.\]</p>
+</section>
+</div>
+<p>From [<a href="#ref-We1978pseudo">We1978pseudo</a>], we know that \(\{\theta ,\theta ^{i},\theta_{j}^{i}\}\)
+satisfy the following structure equations (cf. also \S 1.4 in [<a href="#ref-DT2006differential">DT2006differential</a>]
+)</p>
+<p>\begin{eqnarray}
+d\theta &amp;=&amp;2\sqrt{-1}\theta ^{i}\wedge \theta ^{\overline{i}}\text{,}  \notag
+\\
+d\theta ^{i} &amp;=&amp;-\theta _{j}^{i}\wedge \theta ^{j}+A_{\bar{j} 
+}^{i}\theta \wedge \theta ^{\overline{j}}\text{,}  \label{1.11} \\
+d\theta _{j}^{i} &amp;=&amp;-\theta _{k}^{i}\wedge \theta _{j}^{k}+\Pi _{j}^{i} 
+\notag
+\end{eqnarray}</p>
+<p>with</p>
+<p>\begin{eqnarray}
+\Pi _{j}^{i} &amp;=&amp;2\sqrt{-1}(\theta ^{i}\wedge \tau ^{\overline{j}}-\tau
+^{i}\wedge \theta ^{\overline{j}})+R_{jk\bar{l}}^{i}\theta ^{k}\wedge
+\theta ^{\overline{l}}  \notag \\
+&amp;&amp;+W_{j\overline{k}}^{i}\theta \wedge \theta ^{\overline{k} 
+}-W_{jk}^{i}\theta \wedge \theta ^{k} , \label{1.12}
+\end{eqnarray}</p>
+<p>where \(W_{j\overline{k}}^{i}=A_{\overline{k},j}^{i}\), \(W_{jk}^{i}=A_{j, 
+\overline{i}}^{\overline{k}}\) are the covariant derivatives of \(A\) and \(R_{jk 
+\bar{l}}^{i}\) are the components of curvature tensor of the
+Tanaka-Webster connection.</p>
+<div class="theorem lemma">
+<header>Lemma ([<a href="#ref-CDRY2019onharm">CDRY2019onharm</a>])</header>
+<section>
+<p>\label{lemDiv}
+Let \((M^{2m+1},H,J,\theta )\) be a pseudo-Hermitian manifold with
+Tanaka-Webster connection \(\nabla \). Let \(X\) and \(\rho \) be a vector field
+and \(1\)-form on \(M\) respectively. Then</p>
+<p>\begin{equation*}
+\di X=\sum_{A=0}^{2m}g_{\theta }(\nabla _{e_{A}}X,e_{A})~\text{  and }~\delta \rho =-\sum_{A=0}^{2m}(\nabla _{e_{A}}\rho )(e_{A}),
+\end{equation*}</p>
+<p>where \(\{e_{A}\}_{A=0}^{2m}=\{\xi ,e_{1},...,e_{2m}\}\) is an orthonormal
+frame field on \(M\). Here \(\di(\cdot )\) and \(\delta (\cdot )\) denote
+the divergence and codifferential respectively.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition (Relation with Levi-Civita connection)</header>
+<section>
+<p>Let \(\nabla ^{\theta }\) be the Levi-Civita connection of Webster metric, then</p>
+<p>\begin{equation}
+        \nabla ^{\theta }=\nabla +(\Omega -A) \xi +\tau  \otimes \theta +2 \theta \odot  J 
+    \end{equation}</p>
+<p>and</p>
+<p>\begin{equation}\label{15}
+     \trace_{g_{\theta }}(\nabla ^{\theta }-\nabla )=\trace_{G_{\theta }}(\nabla ^{\theta }-\nabla )=0. 
+   \end{equation}</p>
+<p>For curvature tensor, we have</p>
+<p>\[ \begin{aligned}
+    R^\theta(X, Y) Z=R(X, Y) &amp; Z+(L X \wedge L Y) Z-2 \Omega(X, Y) J Z \\
+    &amp; -g_\theta(S(X, Y), Z) \xi +\theta(Z) S(X, Y) \\
+    &amp; -2 g_\theta((\theta \wedge \mathcal{O})(X, Y), Z) \xi +2 \theta(Z)(\theta \wedge \mathcal{O})(X, Y),
+    \end{aligned} \]</p>
+<p>for any \(X,Y,Z \in TM\).
+where</p>
+<p>\[ S(X,Y)=(\nabla _{X}\tau )Y-(\nabla _{Y}\tau )X ,\]</p>
+<p>\[ \mathcal{O}=\tau ^2+2J \tau -I ,\quad L:=\nabla ^{\theta } \xi =\tau +J.\]</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>One has</p>
+<p>\[ \nabla ^{\theta }_{\xi }\xi =0, \qquad \di \xi =0. \]</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header>
+<section>
+<p>The Levi distribution \(H(M)\) is minimal and</p>
+<p>\[ \trace (\tau) =0. \]</p>
+</section>
+</div>
+<h1>Divergence formulas</h1>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>Define the divergence of a vector \(X \in TM\)  by</p>
+<p>\[ \di (X) \Psi  = \mathcal{L}_{X} \Psi ,\]</p>
+<p>where \(\Psi =\theta \wedge (d \theta )^n\) is the volume form and \(\mathcal{L}\) is the Lie derivative.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>By \eqref{15} and metricity of \(\nabla \),</p>
+<p>\[ \begin{aligned}
+    \di (X)= &amp;\trace_{g_{\theta }}\{Y \in TM \to \nabla^{\theta } _{Y}X\}\\
+    = &amp;\trace_{g_{\theta }}\{Y \in TM \to \nabla _{Y}X\}.
+   \end{aligned} 
+    \]</p>
+<p>Note that</p>
+<p>\[ \begin{aligned}
+   g_{\theta }(\nabla ^{\theta }_{e_{A}}X,e_{A})= g_{\theta }(\nabla ^{\theta }_{\eta _{i }}X,\eta _{\bar i })+g_{\theta }(\nabla ^{\theta }_{\eta _{\bar i }}X,\eta _{ i })+g_{\theta }(\nabla ^{\theta }_{\xi }X,\xi ).
+   \end{aligned}  \]</p>
+</section>
+</div>
+<div class="theorem exercise">
+<header>Exercise</header>
+<section>
+<p>For any complex vector \(Z \in T_{\cc}(M)\),</p>
+<p>\[ \overline{\di (Z)}=\di (\bar{Z}) .\]</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>Define  the divergence of a 1-form \(\sigma \) by</p>
+<p>\[ \di (\sigma )=\di (X_{\sigma }), \]</p>
+<p>where \(X_{\sigma }\) is the dual vector of \(\sigma \) w.r.t. \(g_{\theta }\), i.e., \(g_{\theta }(X_{\sigma },Y)=\sigma (Y), \forall ~ Y \in T(M) \).</p>
+</section>
+</div>
+<div class="theorem exercise">
+<header>Exercise</header>
+<section>
+<p>For any \( Z=Z^{i }e_{i }\in H^{1,0}(M)\), we have</p>
+<p>\[ \di (Z)=e_{i }(Z^{i })+Z^{j } \theta_{j }^{i }(e_{i }). \]</p>
+<p>If \(\sigma =\sigma _i \theta ^i\), then</p>
+<p>\[ \di (\sigma )=\sigma _{i ,\bar{j }}h^{i \bar{j }}. \]</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>Sub-Laplacian for a smooth function \(u\)  is defined by</p>
+<p>\[ \Delta _b(u):=\di(\nabla^{h} u)=u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j },\]</p>
+<p>where \(\nabla ^{h}u\) is the horizontal component of the gradient \(\nabla u\).</p>
+</section>
+</div>
+<p>Note that</p>
+<p>\[ \nabla ^h u = u_{i} e_{\bar i}+u_{\bar i} e_{i}. \]</p>
+<div class="theorem exercise">
+<header>Exercise</header>
+<section>
+<p>The usual Laplacian is given by</p>
+<p>\[ \Delta  u= u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j }+u_{00}. \]</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition (Stokes&#x27; formulas)</header>
+<section>
+<p>If at least one of the smooth functions \(a,b\) has compact support, then</p>
+<p>\begin{equation}\label{eq:laplacian-symmetry}
+		\begin{aligned}
+			\int_Ma\,\Delta b\dd&amp;=-\int_M\ip{da}{db}\dd=\int_Mb\,\Delta a\dd,\\
+			\int_Ma\,\Delta_bb\dd&amp;=-\int_M\ip{d_Ha}{d_Hb}\dd,\\
+			\int_Ma\,\xi^2b\dd&amp;=-\int_M(\xi a)(\xi b)\dd .
+		\end{aligned}
+	\end{equation}</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header>
+<section>
+<p>Put \(D=\nabla ^{\theta }\) and</p>
+<p>\begin{equation}\label{eq:Z-def}
+			\mathsf Z=\Delta^{D }\xi+\ricci_g^\sharp\xi,\qquad
+			\Delta^D=\sum_\mu\bigl(D_{e_\mu}D_{e_\mu}-D_{D_{e_\mu}e_\mu}\bigr),
+		\end{equation}</p>
+<p>where \(\ricci_g^\sharp\) is the Ricci endomorphism of \(g\), and \(\di_g\tau=\sum_\mu(D_{e_\mu}\tau)e_\mu\). Then</p>
+<p>\begin{equation}\label{eq:z-div}
+			\mathsf Z=2\di_g\tau,
+		\end{equation}</p>
+<p>and for horizontal \(X\),</p>
+<p>\begin{equation}\label{eq:reeb-curvature}
+			R^{\theta }(X,\xi)\xi=X-2J\tau X-\tau^2X-(\nabla_\xi\tau)X .
+		\end{equation}</p>
+</section>
+</div>
+<h1>Curvatures</h1>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>The Ricci tensor of the Webster connection is defined by</p>
+<p>\[
+\operatorname{Ric}(Y,Z)
+=
+\operatorname{trace}\{X\mapsto R(X,Z)Y\},
+\]</p>
+<p>for any \(Y,Z\in T(M)\). The <em>pseudo-Hermitian Ricci</em> tensor is then given by</p>
+<p>\[
+R_{i\bar{j}}
+=
+\operatorname{Ric}(\eta _i,\eta _{\bar{j}}).
+\]</p>
+</section>
+</div>
+<p>Let us set</p>
+<p>\[
+R_{i\bar{j}k\bar{l}}
+=
+g_{\theta}\bigl(R(\eta_k,\eta_{\bar{l}})\eta_i,\eta_{\bar{j}}\bigr)
+=
+h_{s\bar{j}}\,R^{s}_{ik\bar{l}},
+\]</p>
+<p>where \(R\) is the curvature tensor of \(\nabla\). One may derive that (cf.~[<a href="#ref-DT2006differential">DT2006differential</a>])</p>
+<p>\[
+R_{i\bar{j}k\bar{l}}=R_{k\bar{j}i\bar{l}}.
+\]</p>
+<p>The pseudo-Hermitian Ricci tensor is given by</p>
+<p>\[
+R_{k\bar{l}}
+=
+R^{i}_{ki\bar{l}}
+=
+R^{i}_{ik\bar{l}},
+\]</p>
+<p>which satisfies</p>
+<p>\[
+R_{k\bar{l}}=R_{\bar{l}k}.
+\]</p>
+<p>Since the Tanaka--Webster connection can be viewed as a connection in \(H^{1,0}(M)\), the pseudo-Hermitian Ricci tensor and the torsion tensor on \(H^{1,0}(M)\) are also denoted by</p>
+<p>\[
+\operatorname{Ric}(X,Y)=R_{i\bar{j}}X^{i}Y^{\bar{j}}
+\]</p>
+<p>and</p>
+<p>\[
+\operatorname{Tor}(X,Y)
+=
+\sqrt{-1}\bigl(A_{\bar{i}\bar{j}}X^{\bar{i}}Y^{\bar{j}}-A_{ij}X^{i}Y^{j}\bigr)
+\]</p>
+<p>for any \(X=X^{i}\eta _i\), \(Y=Y^{j}\eta _j\in H^{1,0}(M)\).</p>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

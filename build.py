@@ -116,6 +116,30 @@ def compile_page(p):
     src=re.sub(r'\\begin\{('+mathenvs+r')\}.*?\\end\{\1\}',lambda m:'\n\n'+save(m.group(0))+'\n\n',src,flags=re.S)
     src=re.sub(r'(?<!\\)\$(?!\$)(.+?)(?<!\\)\$(?!\$)',lambda m:save('\\('+m.group(1)+'\\)'),src,flags=re.S)
     src=re.sub(r'\\\((.*?)\\\)',lambda m:save('\\('+m.group(1)+'\\)'),src,flags=re.S)
+    # LaTeX accents in ordinary Wiki text.
+    # Examples: \"o -> ö, \'e -> é, \`e -> è.
+    text_accents = {
+        "'": "\u0301",
+        '"': "\u0308",
+        "`": "\u0300",
+        "^": "\u0302",
+        "~": "\u0303",
+        "=": "\u0304",
+        ".": "\u0307",
+    }
+
+    def convert_text_accent(m):
+        letter = m.group(2) or m.group(3)
+        return unicodedata.normalize(
+            "NFC",
+            letter + text_accents[m.group(1)]
+        )
+
+    src = re.sub(
+        r'\\([\'"`^~=.])\s*(?:\{([A-Za-z])\}|([A-Za-z]))',
+        convert_text_accent,
+        src
+    )
     names_en = {'definition':'Definition','theorem':'Theorem','lemma':'Lemma','proposition':'Proposition','corollary':'Corollary','remark':'Remark','example':'Example','exercise':'Exercise','proof':'Proof'}
     names_zh = {'definition':'定义','theorem':'定理','lemma':'引理','proposition':'命题','corollary':'推论','remark':'注','example':'例','exercise':'练习','proof':'证明'}
     names = names_en if lang == 'en' else names_zh

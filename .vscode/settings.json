@@ -3,5 +3,23 @@
     "*.wiki": "latex"
   },
   "editor.wordWrap": "on",
-  "editor.tabCompletion": "on"
+  "editor.tabCompletion": "on",
+
+    "files.associations": {
+    "*.wiki": "latex"
+  },
+  "editor.wordWrap": "on",
+  "editor.tabCompletion": "on",
+
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.wiki$",
+        "cmd": "cd \"${workspaceFolder}\" && env -u WIKI_BASE_PATH .venv/bin/python build.py"
+      }
+    ]
+  },
+
+  "livePreview.serverRoot": "_site",
+  "livePreview.autoRefreshPreview": "On Changes to Saved Files"
 }

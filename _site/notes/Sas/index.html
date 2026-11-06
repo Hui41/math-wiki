@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Sasakian Manifolds · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g"
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Sasakian Manifolds</h1>
+      <article><h1>Definitions</h1>
+<p>There are many equivalent definitons of Sasakian manifold.
+We will take a viewpoint from <a href="/notes/PseuHerm/">Pseudo-Hermitian Geometry</a>.</p>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>A Sasakian manifold is a pseudo-Hermitian manifold \((M,H,J,\theta)\), whose pseudo-Hermitian torsion \(\tau \)  vanishes.</p>
+</section>
+</div>
+<p>The following proposition gives different characterizations of Sasakian manifolds.</p>
+<div class="theorem proposition">
+<header>Proposition</header>
+<section>
+<p>Let \((M^{2m+1},g)\) be a Riemannian manifold, \(\nabla\) the Levi-Civita connection, and \(R\) its curvature tensor.
+Then the following conditions are equivalent:</p>
+<ol>
+<li>\((M, g)\) is a Sasakian manifold.</li>
+<li>The associated cone manifold \((C(M), \tilde{g})= (M \times \rr^+,r^2g+dr^2)\) is a Kähler manifold. Therefore, Sasakian manifolds are the ``odd-dimensional'' generalization of Kähler manifolds.</li>
+<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that the \((1,1)\)-type tensor field \(\Phi\) defined by \(\Phi(X) = \nabla_X T\) satisfies
+\(
+        (\nabla_X \Phi)(Y) = g(T, Y)X - g(X, Y)T , \quad \forall X,Y \in T(M).
+        \)</li>
+<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that the curvature satisfies
+\(
+        R(X, T)Y = g(T, Y)X - g(X, Y)T, \quad \forall X,Y \in T(M).
+        \)</li>
+<li>There exists a unit-length Killing vector field \(T\) on \(M\) such that every section containing \(T\) has sectional curvature equal to \(1\).</li>
+</ol>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Let \((M,g)\) be a Sasakian manifold and \(T\) the Killing vector field satisfying the above proposition.
+Then the tangent bundle admits the decomposition with respect to \(g\):</p>
+<p>\[ T(M)=H \otimes V_{T }. \]</p>
+<p>Define the \((1,1)\)-tensor field \(J_b=\Phi |_H\) on \(H\). Then by (i) of the above proposition, it is easy to verify that \(J_b^2=-\id\). Note that the complex structure \(J_c\) on \((C(M),\tilde{g})\) is given by</p>
+<p>\[ J_c(Y)=\begin{cases}
+    \Phi (Y)-g(T ,Y) r \frac{\partial }{\partial r} &amp;\text{ if }~ Y \in T(M);\\
+    T  &amp;\text{ if }~ Y=r \frac{\partial }{\partial r}.
+\end{cases}  \]</p>
+<p>Then, using the integrability of \(J_c\) and the fact that \(T\) is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that \((M,H,J_b)\) is precisely the pseudo-Hermitian manifold with \(\tau\) equal to zero.</p>
+</section>
+</div>
+<p>The Kähler metric is discussed in
+Poincaré geometry.</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>This is a theorem of Hôpital.</p>
+</section>
+</div>
+<h1>Space forms</h1>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

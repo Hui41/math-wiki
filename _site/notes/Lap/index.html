@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Laplace&#x27;s equation · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits"
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Laplace&#x27;s equation</h1>
+      <article><p>See [<a href="#ref-axl2013">axl2013</a>, <a href="#ref-gtr2001">gtr2001</a>].</p>
+<p><strong>Problem</strong>.
+Consider</p>
+<p>\begin{equation}
+		\Delta u=0 \text { in } \Omega \quad \text{or} \quad \Delta u=f \text { in } \Omega.
+	\end{equation}</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Usaully, we only consider \(\Omega\) is a bound domain, and the Green formula is valid.</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example</header>
+<section>
+<ol>
+<li>\(u(x)=\left(x^{1}\right)^{2}-\left(x^{2}\right)^{2}\).</li>
+<li>1, \(x_1,\cdots, x_n,x_{i}^{2}-x_{j}^{2},x_{i}x_{j}(i\neq j), (3x_{i}^{2}-x_{j}^2)x_{j}\). These are called harmnic polynomials.</li>
+<li>Real and imaginary part of holomorphic functions.</li>
+</ol>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>The fundamental solution in \(\rr^d\) is given by</p>
+<p>\begin{equation}
+		\Gamma(x, y)=\Gamma(|x-y|):= \begin{cases}\frac{1}{2 \pi} \log |x-y| &amp; \text { for } d=2 \\ \frac{1}{d(2-d) \omega_{d}}|x-y|^{2-d} &amp; \text { for } d&gt;2\end{cases}
+	\end{equation}</p>
+<p>Here \(\omega _d \) is the volume of unit ball in \(\rr^d\).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header>
+<section>
+<p>Assume \(u \in C^{2}(\bar{\Omega}), y\in \Omega\). Then</p>
+<p>\begin{equation}
+		u(y)=\int_{\partial \Omega}\left\{u(x) \frac{\partial \Gamma}{\partial v_{x}}(x, y)-\Gamma(x, y) \frac{\partial u}{\partial v}(x)\right\} d S(x)+\int_{\Omega} \Gamma(x, y) \Delta u(x) \mathrm{d} x
+	\end{equation}</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header>
+<section>
+<p>Assume \(\varphi \in C^{0}(\partial B_R(0))\),
+then  the following Dirichlet problem has unique solution \(u\in C^{2} (B_R(0)) \cap C^{0}(\overline{B}_R(0))\).</p>
+<p>\[
+	\begin{cases}
+		&amp;\Delta u(x)=0 \quad \text { for } x \in B_R(0),\\
+		&amp;u(x)=\varphi(x) \quad \text { for } x \in \partial B_R(0) .
+	\end{cases}
+	\]</p>
+<p>The solution can be expressed by</p>
+<p>\[
+	u(y):= \begin{cases}\frac{R^{2}-|y|^{2}}{d \omega_{d} R} \int_{\partial B_R(0)} \frac{\varphi(x)}{|x-y|^{d}} d S(x) &amp; \text { for } y \in B_R(0) \\ \varphi(y) &amp; \text { for } y \in \partial B_R(0)\end{cases}.
+	\]</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header>
+<section>
+<p>Harmonic function is analytic.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Mean value property)</header>
+<section>
+<p>For any harmonic function \(u\), we have</p>
+<p>\[
+	u(x)=\fint_{\partial B(x, r)} u d S=\fint_{B(x, r)} u d y.
+	\]</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Weyl lemma)</header>
+<section>
+<p>If \(u\) is locally integrable on \(\Omega\), and</p>
+<p>\[
+	\int_{\Omega} u(x) \Delta \varphi(x) \mathrm{d} x=0, \quad \forall \varphi \in C_{0}^{\infty}(\Omega).
+	\]</p>
+<p>Then \(u\) is harmonic, and in particula, \(u\) is smooth.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (maximum principal)</header>
+<section>
+<p>If \(\Delta u\geq 0\) and \(u\) attains maximum at interior point, then \(u\) is constant.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Singularity removable [<a href="#ref-jost2013">jost2013</a>])</header>
+<section>
+<p>If \(u\) is harmonic outside a point in domain with dimension \(\geq 2\), and \(u\) is bounded, then \(u\) is harmonic.</p>
+</section>
+</div>
+<p>We know from this that Laplace's equation does not always  have a solution.</p>
+<div class="theorem theorem">
+<header>Theorem (Liouville theorem)</header>
+<section>
+<p>Assume \(u: \mathbb{R}^{d} \rightarrow \mathbb{R}\) is bounded harmonic function,
+then \(u\) is constant.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem ([<a href="#ref-jost2013">jost2013</a>])</header>
+<section>
+<p>Let \(u: \mathbb{R}^{d} \rightarrow \mathbb{R}\) be a nonnegative harmonic function,
+then \(u\) is constant.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Harnack inequality)</header>
+<section>
+<p>Assume \(u\) is a nonnegative harmonic function on \(\Omega \), then</p>
+<p>\[
+	\sup _{\Omega^{\prime}} u \leq c \inf _{\Omega^{\prime}} u .
+	\]</p>
+<p>where \(c=c\left(d, \Omega, \Omega^{\prime}\right),\Omega^{\prime} \subset \subset \Omega\).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (monotone convergence)</header>
+<section>
+<p>Suppose \(\{u_n\}\) is a sequence of monotone increasing harmnic functions, and \(\exists y\in \Omega\) s.t. \(\{u_n(y)\}\) is bounded.
+Then \(\{u_n\}\) locally converges to a harmonic function.</p>
+</section>
+</div>
+<p>From mean value property, we have</p>
+<div class="theorem theorem">
+<header>Theorem</header>
+<section>
+<p>If a sequence of harmonic functions uniformly converge to a function, then the limit function is also harmonic.</p>
+</section>
+</div>
+<p>According to gradient estimates [<a href="#ref-gtr2001">gtr2001</a>]:</p>
+<div class="theorem theorem">
+<header>Theorem (Normal family)</header>
+<section>
+<p>Any bouded harmonic functions sequence has subsequence uniformly converging in a compact domain.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header>
+<section>
+<p>Suppose \(u\) is harmonic on unit ball, denote</p>
+<p>\[
+	H(r)=\fint_{\partial B(x, r)} u^2 d S, \quad  D(r)=r^2 \fint_{B(x, r)} |\nabla u|^2 d y.
+	\]</p>
+<p>Then \(H(r),D(r), \frac{D(r)}{H(r)}\) are monotone increasing.</p>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

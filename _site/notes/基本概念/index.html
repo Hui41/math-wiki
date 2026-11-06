@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>基本概念：调和映射 · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "rr": "\\mathbb R", "ss": "\\mathbb S", "la": "\\langle", "ra": "\\rangle"
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>基本概念：调和映射</h1>
+      <article><p>设 \((M,g)\) 和 \((N,h)\) 为两个黎曼流形，\(\phi\colon M\to N\) 为光滑映射，其能量为</p>
+<p>\begin{equation}\label{energy}
+E(\phi)=\int_M \frac12 |d\phi|^2\,dv_g.
+\end{equation}</p>
+<div class="theorem exercise">
+<header>练习</header>
+<section>
+<p>验证 \(|d\phi|^2=\la \phi^*h,g\ra\)。</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>注</header>
+<section>
+<p>显然 \(E(\phi)\geq 0\)。</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>命题（第一变分公式）</header>
+<section>
+<p>\begin{equation}
+\left.\frac{dE(\phi_t)}{dt}\right|_{t=0}=-\int_M\la v,\tau(\phi)\ra\,dv_g.
+\end{equation}</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>证明</header>
+<section>
+<p>这里可以继续写你的完整证明。参见公式 \eqref{energy}。</p>
+</section>
+</div>
+<div class="theorem example">
+<header>例</header>
+<section>
+<p>若 \(N=\rr\)，调和映射就是调和函数。</p>
+</section>
+</div>
+<h1>参考文献</h1>
+<ol class="references"><li id="ref-EL83">[EL83] James Eells and Luc Lemaire. <em>Selected Topics in Harmonic Maps</em>, 1983.</li></ol>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

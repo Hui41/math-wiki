@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Heisenberg Groups · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "Span": "\\operatorname{span}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle"
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Heisenberg Groups</h1>
+      <article><h1>Heisenberg Groups</h1>
+<h2>The CR Structures on the Heisenberg Group</h2>
+<div class="theorem definition">
+<header>Definition (cf. [<a href="#ref-folland_estimates_1974">folland_estimates_1974</a>])</header>
+<section>
+<p>The <strong>Heisenberg group</strong> (of degree \( n \)) is the Lie group \( H_n \) whose underlying manifold is \( \mathbb{C}^n \times \mathbb{R} \) with coordinates \( (z_1, \ldots, z_n, t) \equiv (z, t) \) and whose group law is given by</p>
+<p>\[
+(z, t) \cdot (z', t') = (z + z', t + t' + 2 \Im ( z \cdot z')), \quad z \cdot z' = \sum_{i=1}^n z_i \overline{z'_i}.
+\]</p>
+</section>
+</div>
+<p>If we set \( z_j = x_j + iy_j \), then \( (x_1, \ldots, x_n, y_1, \ldots, y_n, t) \) form a real coordinate system for \( H_n \). In this coordinate system we define the following vector fields:</p>
+<p>\begin{equation}
+X_j = \frac{\partial}{\partial x_j} + 2y_j \frac{\partial}{\partial t}, \quad Y_j = \frac{\partial}{\partial y_j} - 2x_j \frac{\partial}{\partial t}, \quad T = \frac{\partial}{\partial t}
+\end{equation}</p>
+<p>It is a simple exercise to verify that \( \{X_1, \ldots, X_n, Y_1, \ldots, Y_n, T\} \) is a basis for the <strong>left-invariant vector fields</strong> on \( H_n \). The commutation relations are as follows:</p>
+<p>\begin{equation}
+[Y_j, X_k] = 4\delta_{jk} T, \quad [X_j, X_k] = [Y_j, Y_k] = [X_j, T] = [Y_j, T] = 0.
+\end{equation}</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Note that these are an abstract form of the commutation relations for the quantum-mechanical position and momentum operators in \(n\)-space; hence the name ``Heisenberg group''.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>If one use</p>
+<p>\[X_j = \frac{\partial}{\partial x_j} + \frac{1}{2}y_j \frac{\partial}{\partial t}\]</p>
+<p>to define the distribution, then they are not left-invariant. And the Levi form \(\tau\) defined below has to be changed.</p>
+</section>
+</div>
+<p>We further define the complex vector fields</p>
+<p>\begin{equation}
+Z_j = \frac{1}{2}(X_j - iY_j) = \frac{\partial}{\partial z_j} + i \bar{z}_j\frac{\partial}{\partial t}, \quad \overline{Z}_j = \frac{1}{2}(X_j + iY_j) = \frac{\partial}{\partial \overline{z}_j} - iz_j\frac{\partial}{\partial t}
+\end{equation}</p>
+<p>whose commutation relations are</p>
+<p>\begin{equation}
+[Z_j, \overline{Z}_k] = -2i\delta_{jk} T, \quad [Z_j, Z_k] = [\overline{Z}_j, \overline{Z}_k] = [Z_j, T] = [\overline{Z}_j, T] = 0,
+\end{equation}</p>
+<p>and the one-form</p>
+<p>\begin{equation}\label{eq5}
+\tau = dt + 2 \sum_{j=1}^n (x_j \, dy_j - y_j \, dx_j).
+\end{equation}</p>
+<p>We note that \( \langle \tau, Z_j \rangle = \langle \tau, \overline{Z}_j \rangle = 0 \) for all \( j \). It is immediate that the subbundle \( T^{1,0} \) of \( \mathbb{C}T H_n \) spanned by \( Z_1, \ldots, Z_n \) defines a CR structure on \( H_n \). To compute the Lévi form, we have</p>
+<p>\[
+\langle Z_j, Z_k \rangle_L = \frac{1}{2i}\langle \tau, [Z_j, \overline{Z}_k] \rangle = \frac{1}{2i}(\tau, -2i\delta_{jk} T) = \delta_{jk}.
+\]</p>
+<p>Thus \( H_n \) is <strong>strongly pseudoconvex</strong>.</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>\(\eqref{eq5}\) is equal to (cf. [<a href="#ref-dragomir_differential_2006">dragomir_differential_2006</a>])</p>
+<p>\begin{equation}
+    \theta_0 = dt + i \sum_{j=1}^n \left( z^j d\overline{z}^j - \overline{z}^j dz^j \right)
+    \end{equation}</p>
+<p>in complex form, and by differentiating it  we obtain</p>
+<p>\begin{equation}
+d\theta_0 = 2i \sum_{j=1}^n dz^j \wedge d\overline{z}^j.
+\end{equation}</p>
+</section>
+</div>
+<h2>A geometrical interpretation</h2>
+<p>This has the following geometrical interpretation due to Pyatetski-Shapiro. Set</p>
+<p>\[
+D_{n+1} = \left\{ \zeta \in \mathbb{C}^{n+1} : \sum_{j=1}^n |\zeta_j|^2 - \Im  \zeta_0 &lt; 0 \right\},
+\]</p>
+<p>\[
+M_n = \partial D_{n+1} = \left\{ \zeta \in \mathbb{C}^{n+1} : \sum_{j=1}^n |\zeta_j|^2 = \Im  \zeta_0 \right\}.
+\]</p>
+<p>\(D_{n+1}\) (known as the <em>Siegel domain</em>) is holomorphically equivalent to the unit ball in \(\mathbb{C}^{n+1}\). \(H_n\) acts on \(\mathbb{C}^{n+1}\) by holomorphic affine transformations which preserve \(D_{n+1}\) and \(M_n\), as follows: if \((z,t) \in H_n\) and \(\zeta \in \mathbb{C}^{n+1}\), \((z,t) \cdot \zeta = \zeta'\), where</p>
+<p>\[
+\zeta_0' = \zeta_0 + t + i |z|^2 + 2i \sum_{j=1}^n \zeta_j \overline{z}_j,
+\]</p>
+<p>\[
+\zeta_j' = \zeta_j + z_j, \quad j &gt; 0.
+\]</p>
+<p>\(H_n\) acts simply transitively on \(M_n\) and so may be identified with \(M_n\) via the correspondence</p>
+<p>\[
+(z,t) \longleftrightarrow (z,t) \cdot 0 = (t + i|z|^2, z_1, \ldots, z_n).
+\]</p>
+<p>Under this identification, the CR structure on \(H_n\) described above coincides with the CR structure on \(M_n\) induced from \(\mathbb{C}^{n+1}\). (Indeed, one easily checks that the holomorphic subspaces at the origin are the same since \(M_n\) is tangent to the hyperplane \(\zeta_0 = 0\) there. But the CR structure on \(H_n\) is left-invariant, and the action of \(H_n\) on \(M_n\), being holomorphic, preserves the CR structure on \(M_n\); hence the holomorphic subspaces coincide everywhere.)</p>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>The action is <strong>simply transitive</strong> (or sharply transitive, or regular) if it is both transitive and free (cf. \href{https://en.wikipedia.org/wiki/Group_action}{wikipedia}).</p>
+</section>
+</div>
+<h2>Another useful identification</h2>
+<p>Another useful identification is that of the Heisenberg group and the sphere \(S^{2n+1} \subset \mathbb{C}^{n+1}\) minus a point.</p>
+<p>Let \(\Omega \subset \mathbb{C}^{N}\) be a domain with smooth boundary \(\partial \Omega\), i.e., there is an open neighborhood \(U\) of the closure \(\overline{\Omega}\) in \(\mathbb{C}\) and a \(C^\infty\) function \(\rho \colon U \rightarrow \mathbb{R}\) such that \(\Omega = \{ x \in U \colon \rho(x) &gt; 0\}\) (and \(\partial \Omega = \{ x \in U \colon \rho(x) = 0\}\)) and \((D\rho)_x \neq 0\) at any \(x \in \partial \Omega\). Let \(T_{1,0}(\partial \Omega)\) be the induced CR structure on \(\partial \Omega\), as a real hypersurface in \(\mathbb{C}^N\). Let \(\theta\) be the pullback to \(\partial \Omega\) of the real \(1\)-form \(i(\bar{\partial} - \partial)\rho\) on \(U\). Then \(\theta\) is a pseudo-Hermitian structure on \((\partial \Omega, T_{1,0}(\partial \Omega))\). As we just saw, the boundary of the Siegel domain is a strictly pseudoconvex CR manifold.</p>
+<div class="theorem proof">
+<header>Proof</header>
+<section>
+<p>From</p>
+<p>\[\partial\rho = \sum_{i=1}^{n+1}\frac{1}{2} \left( \frac{\partial}{\partial x_j} - i\frac{\partial}{\partial y_j} \right)\rho (dx_j+idy_j)
+    \]</p>
+<p>we know</p>
+<p>\[i(\bar{\partial} - \partial)\rho=\frac{\partial \rho}{\partial x_j}dy_j-\frac{\partial \rho}{\partial y_j}dx_j.
+    \]</p>
+<p>Now it's easy to verify</p>
+<p>\[
+    \theta(J(\nabla \rho))=|\nabla \rho|^2\neq 0, \; \theta(T_j)=0, \forall T_j \perp \{\nabla \rho, J\nabla\rho\}.
+    \]</p>
+</section>
+</div>
+<p>Also, the sphere \(S^{2n+1} \subset \mathbb{C}^{2n+1}\) is a strictly pseudoconvex manifold, since the boundary of the unit ball \(B_{n+1} = \{ z \in \mathbb{C}^{n+1} \colon |z| &lt; 1 \}\), and the (restriction to \(S^{2n+1} \setminus \{p\}\) of the) Cayley transform (cf. Friedrich Haslinger's notes.)</p>
+<p>\[\Phi(z_1, \ldots, z_n,z_{n+1}) = (w_1, \ldots, w_n, w_{n+1}), \]</p>
+<p>\(\text{ where } w_j = \frac{z_j}{(1 + z_n)} \text{ for } 1 \leq j \leq n \text{ and } w_{n+1} = i\frac{(1 - z_{n+1})}{(1 + z_{n+1})} .\) This gives a CR isomorphism \(S^{2n+1} \setminus \{p\} \cong \partial \Omega_{2n+1}\) (and thus a CR isomorphism \(S^{2n+1} \setminus \{p\} \cong H_n\)).</p>
+<h2>A left-invariant \(k\)-strongly pseudoconvex CR structure</h2>
+<p>We can also define a left-invariant CR structure on \(H_n\) which is \(k\)-strongly pseudoconvex, \(\frac{n}{2} \leq k \leq n\), by taking \(T_{1,0}\) to be the bundle spanned by \(Z_1, \ldots, Z_k, \overline{Z}_{k+1}, \ldots, \overline{Z}_n\). A few words of explanation about this will be helpful. Let us take \((w_1, \ldots, w_n, t)\) as new coordinates on \(H_n\), where \(w_j = z_j, 1 \leq j \leq k\), and \(w_j = \overline{z}_j, k + 1 \leq j \leq n\). Set \(\varepsilon_j = 1\) or \(-1\) according as \(j \leq k\) or \(j &gt; k\), and define the Hermitian form \(Q_k\) on \(\mathbb{C}^n\) by</p>
+<p>\[
+Q_k(w, w') = \sum_{j=1}^n \varepsilon_j w_j \overline{w}'_j.
+\]</p>
+<p>Then in the coordinates \((w, t)\) the group law is</p>
+<p>\[
+(w, t)(w', t') = (w + w', t + t' + 2\Im Q_k(w, w')).
+\]</p>
+<p>The left-invariant vector field agreeing with \(\frac{\partial}{\partial w_j}\) at the origin is</p>
+<p>\begin{equation}
+W_j = \frac{\partial}{\partial w_j} + \varepsilon_j i\overline{w}_j \frac{\partial}{\partial t'},
+\end{equation}</p>
+<p>and \(T_{1,0}\) is the bundle spanned by \(W_1, \ldots, W_n\). In fact, \(W_j = Z_j, j \leq k\), and \(W_j = \overline{Z}_j, j &gt; k\). As above, the Levi form is given by \(\langle W_j, W_l \rangle_L = \varepsilon_j \delta_{jl}\). The geometrical realization of \(H_n\) also has an analogue here: \(H_n\) may be embedded in \(\mathbb{C}^{n+1}\) as the hypersurface</p>
+<p>\begin{equation}
+\{\zeta \in \mathbb{C}^{n+1} : \Im  \zeta_0 = Q_k(\zeta', \zeta')\}, \quad \zeta' = (\zeta_1, \ldots, \zeta_n),
+\end{equation}</p>
+<p>via the mapping</p>
+<p>\[
+(w, t) \mapsto (t + i Q_k(w, w), w_1, \ldots, w_n)
+\]</p>
+<p>which preserves the CR structure.</p>
+<h2>Unsolvable Operators</h2>
+<p>At this point we should also mention that, in the case \(n=1\), the vector field \(\bar{Z} = (\partial/\partial z) - i z (\partial/\partial t)\) which spans \(T_{0,1}\) is the unsolvable operator of H. Lewy. Indeed, Lewy was led to this phenomenon by considering boundary values of holomorphic functions on \(D_2\).</p>
+<div class="theorem theorem">
+<header>Theorem (cf. [<a href="#ref-john_partial_1982">john_partial_1982</a>])</header>
+<section>
+<p>Let \(L\) denote the differential operator acting on functions \(u(x,y,z)\) defined by</p>
+<p>\begin{equation}
+Lu = -u_x - iu_y + 2i(x + iy)u_z. \tag{1.1a}
+\end{equation}</p>
+<p>There exists a function \(F(x,y,z) \in C^\infty(\mathbb{R}^3)\) such that the equation</p>
+<p>\begin{equation}
+Lu = F(x,y,z) \tag{1.1b}
+\end{equation}</p>
+<p>has no solution whose domain is an open set \(\Omega\) in \(\mathbb{R}^3\), with \(u \in C^1(\Omega)\), and \(u_x, u_y, u_z\) Hölder continuous in \(\Omega\).</p>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Sub-Riemannian geoemtry · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Sub-Riemannian geoemtry</h1>
+      <article><h1>Sub-Riemannian manifolds</h1>
+<p>Let \(M^{m+k}\) be a \((m+k)\)-dimensional smooth manifold and \(\mathcal{H}^m\) be  a  subbundle of \(TM\) of rank \(m\). Assume that \(\mathcal{H}\) satisfies step-\(r\) bracket generating condition for some \(r \geq 1\).
+This means that, at each point \( x \in M \), the sections of \( \mathcal{H} \), along with all their Lie brackets up to order \( r \), generate the tangent space \( T_xM \).
+Then the triple \((M^{m+k},\mathcal{H}^m,g_{\mathcal{H}})\) is called a sub-Riemannian manifold, where \(g_{\mathcal{H}}\) is a fiberwise metric on \(\mathcal{H}\). The subbundle \(\mathcal{H}\) is also called the <em>horizontal distribution</em>. Note that one can easily extend \(g_{\mathcal{H}}\) to a Riemannian metric \(g\) on \(TM\) (see, e.g., [<a href="#ref-dongEellsSampsonType2021a">Don21</a>]). Throughout the paper, we fix such a metric \(g\) such that \(g|_{\mathcal{H}}=g_{\mathcal{H}}\) and denote the corresponding sub-Riemannian manifold by \((M^{m+k},\mathcal{H}^{m},g)\).
+The term ``complete'' as it applies to \((M, \mathcal{H}, g)\) will refer to the Riemannian metric \(g\) being complete.
+Now \(TM\) admits a direct sum decomposition</p>
+<p>\[ TM=\mathcal{H} \oplus \mathcal{V}, \]</p>
+<p>where \( \mathcal{V} \) denotes the <em>vertical distribution</em>, namely the orthogonal complement of \( \mathcal{H} \) with respect to the metric \( g \).<br />
+Then
+we have the natural projections</p>
+<p>\[ \pi _{\mathcal{H}}:TM \to \mathcal{H}, \quad  \pi _{\mathcal{V}}:TM \to \mathcal{V}.\]</p>
+<p>We denote by \(\mathfrak{X},\mathfrak{X}_{\mathcal{H}},\mathfrak{X}_{\mathcal{V}}\) the spaces of all smooth sections of  \(TM\),  \(\mathcal{H}\) and  \(\mathcal{V}\), respectively.</p>
+<p>When dealing with \(L^p\)-vanishing results on sub-Riemannian manifolds, the  notion of  generalized Sobolev spaces  introduced by  Rothschild and Stein [<a href="#ref-Rothstein1976hyp">RS76</a>] is useful. Let \((M^{m+k},\mathcal{H}^m,g)\) be a sub-Riemannian manifold, and \(U \subset M\) be a coordinate neighborhood on which a horizontal  frame   \(\{e_1,\dots,e_m\}\) is defined. The generalized Sobolev spaces
+is defined as</p>
+<p>\[ S_{l}^{p}(U)=\left\{ u \in L^p(U)|e_{i_1} \cdots e_{i_s}(u) \in L^p(U), 1 \leq i_{1} \leq \cdots \leq i_s \leq m, 0 \leq s \leq l \right\}. \]</p>
+<p>These notions can be easily extended to any relatively compact domain.</p>
+<p>Next, we recall some examples of sub-Riemannian manifolds.</p>
+<div class="theorem example">
+<header>Example (Riemannian foliations)</header>
+<section>
+<p>Let  \((M^{m+k},\mathcal{F}^k)\) be a foliated manifold,
+where \(\mathcal{F}^k\) is  a \(k\)-dimensional foliation. Let \(g\) be a Riemannian metric on \(M\) and decompose the tangent bundle</p>
+<p>\[ TM=T\mathcal{F} \oplus \mathcal{H} \]</p>
+<p>accordingly, where \(\mathcal{H}\) is  complementary to \(T\mathcal{F} \). The metric \(g\) is said to be bundle-like if the Lie derivate of \(g_{\mathcal{H}}\) along vertical direction vanishes.
+Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.<br />
+The triple \((M^{m+k},\mathcal{F}^k,g)\) is referred to as a <em>Riemannian foliation</em>, see  [<a href="#ref-CDHL2026hor">CDHL26</a>] or [<a href="#ref-gromollMetricFoliationsCurvature2009a">GW09</a>] for more details.
+When \(\mathcal{H}\) is bracket generating, \((M^{m+k},\mathcal{H}^m,g)\) is a sub-Riemannian manifold.</p>
+</section>
+</div>
+<p>Carnot groups are typical examples in sub-Riemannian geometry. Moreover, they can be endowed with a bundle-like metric structure, see [<a href="#ref-Baudoin2025sub">Bau26</a>].</p>
+<div class="theorem example">
+<header>Example (Carnot groups)</header>
+<section>
+<p>\label{exCar}
+A Carnot group is a simply connected Lie group \(G\)  whose Lie algebra \(\mathfrak{g}\) admits a stratified decomposition:</p>
+<p>\[ \mathfrak{g}=V_1 \oplus V_2 \oplus \cdots \oplus V_r \quad (r \geq 1) \]</p>
+<p>such that \([V_1,V_j]=V_{j+1}\) for \(1 \leq j \leq r-1\) and \([V_1,V_r]=\{0\}\).   This gives a Lie algebra grading</p>
+<p>\begin{equation}\label{31}
+		[V_i,V_j] \subset V_{i+j}, 
+	\end{equation}</p>
+<p>where \(V_j:=\{0\}\) for \(j &gt;r\).  Define a distribution \(\mathcal{H}\) on \(G\) by</p>
+<p>\[ \mathcal{H}_x=dL_{x}(V_1) \subset T_xG, \quad \forall  x \in G .\]</p>
+<p>Here \(L_x\) is the left translation of \(G\) relative to  \(x\).<br />
+Let \(g_{\mathcal{H}}\) be a left-invariant metric on \(\mathcal{H}\).  We can extend \(g_{\mathcal{H}}\) to a Riemannian metric \(g\)  such that  \(V_i \perp V_j\) for \(i \neq j\). Then \((G,\mathcal{H},g)\) is a step-\(r\)  sub-Riemannian manifold. Thus
+we have  decomposition:</p>
+<p>\[ TG=\mathcal{H} \oplus \mathcal{V} .\]</p>
+<p>Since \([\mathcal{V}, \mathcal{V}] \subset  \mathcal{V}\), \(\mathcal{V}\)  is the vertical bundle of a foliation \(\mathcal{F}\)  on \(G\).</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example (Contact  manifolds, cf. [<a href="#ref-Bla2010rie">Bla10</a>])</header>
+<section>
+<p>\label{excont}
+Let \(M^{2m+1}\)  be a contact  manifold with  structure tensors \(( \phi  , \mathsf{T}  , \theta   , g)\).
+Precisely speaking, \(\theta \) is a contact form (i.e., \(\theta \wedge (d \theta)^m \neq 0\)), \(\mathsf{T}\) is the Reeb vector field, \(\phi \) is a \((1,1)\)-tensor and \(g\) is a Riemannian metric  such that</p>
+<p>\begin{equation}\label{2}
+		 \begin{cases}
+			\phi ^2=-I+\theta \otimes \mathsf{T}, \quad \phi (\mathsf{T})=0, \quad \theta (\mathsf{T})=1; &amp;\text{}\\
+			g(\phi X,\phi Y) = g(X,Y)-\theta (X)\theta (Y), &amp;\text{} \forall X,Y \in TM;\\
+			g(X,\phi Y)=d \theta (X,Y),&amp;\text{} \forall X,Y \in TM.
+		\end{cases}  
+	\end{equation}</p>
+<p>The vertical and horizontal distributions are given by \(\mathcal{V}:=\Span_{\rr} \{\mathsf{T}\} \) and \(\mathcal{H}:=\ker \theta  \). It follows from the last equality of \eqref{2} that \(\mathcal{H}\) is step-\(2\) bracket generating, hence \((M^{2m+1},\mathcal{H}^{2m},g)\) is a sub-Riemannian manifold.</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example (Pseudo-Hermitian manifolds)</header>
+<section>
+<p>Let \(M\) be a real \((2m+p)\)-dimensional oriented manifold. A <em>CR structure</em> of type \((m,p)\) is a complex subbundle   \(H^{1,0}\)  of   \(TM \otimes \cc\), of complex rank \(m\),   satisfying the (formally) integrable condition. The pair \((M,H^{1,0})\) is  called a  <em>CR manifold of type \((m,p)\)</em>.  Set \(H^{0,1}=\overline{H^{1,0}}\).
+Alternatively,  the CR structure can  be described by a pair \((\mathcal{H},J_b)\), where \(\mathcal{H} \) is the real bundle \(\Re\{H^{1,0} \oplus H^{0,1}\}\)  and \(J_b\) is its almost complex structure defined by \(J_b(X+\overline{X})=\sqrt{-1}(X-\overline{X})\) for all \(X \in H^{1,0}\).</p>
+<p>Let us consider the special case that \((M,H^{1,0})\) is   a  CR manifold of type \((m,1)\), which is also referred as <em>hypersurface type</em> (see [<a href="#ref-DT2006differential">DT06</a>, \S 1.1] for details).<br />
+Since \(M\) is oriented, there is a \(1\)-form \(\theta \) which annihilates \(\mathcal{H}\). Define the Levi form \(L_{\theta }\)  by</p>
+<p>\[ L_\theta (X,Y)=d \theta (X,J_b Y), \quad \forall  X,Y \in \mathfrak{X}_{\mathcal{H}} . \]</p>
+<p>When  \(L_\theta \) is positive definite on \(\mathcal{H}\), the CR manifold \((M,H^{1,0})\) is  said to be  <em>strictly pseudoconvex</em> and  the triple \((M^{2m+1},\mathcal{H},\theta )\) is called a <em>pseudo-Hermitian manifold</em>. This also implies that \(\mathcal{H}\) is step-\(2\)  bracket generating.    Clearly, \(\theta \) is a contact form and there is a unique Reeb vector field \(\mathsf{T} \)  satisfying</p>
+<p>\[ \theta (\mathsf{T} )=1, \quad i_{\mathsf{T}}(d \theta) =0. \]</p>
+<p>The collection of all its integral curves forms an oriented one-dimensional foliation \(\mathcal{V}\)  on \(M\), which is called the <em>Reeb foliation</em>.
+Define \(J\) as  the extension of  \(J_b\) to \(TM\)  satisfying \(J(\mathsf{T})=0\).
+Then there is a canonical metric called <em>Webster metric</em> on \(M\), given by</p>
+<p>\[ g=L_{\theta }+\theta \otimes \theta . \]</p>
+<p>Now \(\mathcal{V}\) is the orthogonal complementary of \(\mathcal{H}\) with respect to \(g\).<br />
+Note that \(g(JX,JY)=g(X,Y)\) for all \(X,Y \in \mathfrak{X}_{\mathcal{H}}\). Obviously, \((M^{2m+1},\mathcal{H},g)\) is a sub-Riemannian manifold. There are two natural connections on a pseudo-Hermitian manifold, the Levi-Civita connection \(\nabla \) and the Tanaka-Webster connection \(\nabla ^{TW}\). It's known that \(\nabla ^{TW}\) is   compatible with the CR structure and the metric. The <em>pseudo-Hermitian torsion</em> of \(\nabla ^{TW}\), denoted by  \(\tau \), is given by</p>
+<p>\[ \tau (X)=T_{\nabla ^{TW}}(\mathsf{T},X) \]</p>
+<p>for all \(X \in \mathfrak{X}(M)\), where \(T_{\nabla ^{TW}}\) is the torsion tensor of \(\nabla ^{TW}\).   The pseudo-Hermitian manifold \((M^{2m+1},\mathcal{H},\theta )\) is called <em>Sasakian</em> if \(\tau =0\).<br />
+For more information about pseudo-Hermitian geometry we refer the reader to  [<a href="#ref-DT2006differential">DT06</a>] or [<a href="#ref-CDRY2019onharm">CDRY19</a>].</p>
+</section>
+</div>
+<p>In  [<a href="#ref-Bej1978Cr">Bej78</a>], A. Bejancu introduced the notion of CR-submanifolds, which serve as an intermediate class between complex submanifolds and totally real submanifolds in  complex differential geometry.</p>
+<div class="theorem example">
+<header>Example (CR-submanifolds, cf. [<a href="#ref-bej1986">Bej86</a>])</header>
+<section>
+<p>\label{exCrsub}
+Let \((M,g)\) be a submanifold of a Hermitian manifold \((\widetilde{M},J,\tilde{g})\), where \(g\) is the induced metric on \(M\) from \(\tilde{g}\).
+The submanifold \(M\) is called a <em>CR-submanifold</em> in \(\widetilde{M}\) if there is a \(C^{\infty}\) distribution \(\mathcal{H}\) on \(M\) satisfying the following conditions:
+(i) \(J(\mathcal{H}_x)= \mathcal{H}_x\) for each \(x \in M\); (ii) \(J(\mathcal{V}_x) \subset T_{x}^{\perp}M\) for each \(x\in M\),
+where \(\mathcal{V}\) is the orthogonal complement  of \(\mathcal{H}\) in \(TM\) according to \(g\),
+and \(T^{\perp}M\) is the normal bundle of \(M\) in \(\widetilde{M}\). Let \(2m\) and \(p\) denote the ranks of \(\mathcal{H}\) and \(\mathcal{V}\) respectively.
+Then it follows from [<a href="#ref-BlCh1979cr">BC79</a>, Theorem 4.1] that \((M,\mathcal{H},J|_{\mathcal{H}})\) is a CR manifold of type \((m,p)\). We remark, however, that the induced metric \(g\) (in the case  \(p=1\)) doesn't coincide with the Webster metric in general. If  \(\mathcal{H}\) satisfies bracket generating condition, then \((M,\mathcal{H},g)\) is a sub-Riemannian manifold.</p>
+</section>
+</div>
+<h1>Bott connection</h1>
+<p>It would be convenient to introduce a suitable linear connection compatible with
+the sub-Riemannian structure on \((M,H,g_H;g)\) in some sense. The generalized Bott
+connection is one of such connections given by</p>
+<p>\[
+\nabla^{\mathfrak B}_X Y
+=
+\begin{cases}
+\pi_H\bigl(D_XY\bigr),
+&amp; X,Y\in\Gamma(H),\\[4pt]
+\pi_H\bigl([X,Y]\bigr),
+&amp; X\in\Gamma(V),\ Y\in\Gamma(H),\\[4pt]
+\pi_V\bigl([X,Y]\bigr),
+&amp; X\in\Gamma(H),\ Y\in\Gamma(V),\\[4pt]
+\pi_V\bigl(D_XY\bigr),
+&amp; X,Y\in\Gamma(V).
+\end{cases}
+\]</p>
+<p>where \(D\) denotes the Riemannian connection of \(g\). Clearly,
+\(\nabla^{B}\) preserves the decomposition, and it also satisfies</p>
+<p>\[
+\nabla^{B}_X g_H=0
+\qquad\text{and}\qquad
+\nabla^{B}_Y g_V=0
+\]</p>
+<p>for any \(X\in H\) and \(Y\in V\). However, \(\nabla^{B}\) does <em>not</em> preserve the Riemannian metric \(g\) in general.</p>
+<div class="theorem lemma">
+<header>Lemma</header>
+<section>
+<p>For any \(X,Y\in\Gamma(TM)\), we have</p>
+<p>\[
+T^{\nabla ^B}(X,Y)
+=
+-\pi_V\bigl([\pi_H(X),\pi_H(Y)]\bigr)
+-\pi_H\bigl([\pi_V(X),\pi_V(Y)]\bigr).
+\]</p>
+</section>
+</div>
+<h1>Hladky connection</h1>
+<p>Hladky connection is a generalization of Tanaka-Webster connection.</p>
+<div class="theorem definition">
+<header>Definition</header>
+<section>
+<p>The Hladky connection \(\nabla \) on a sub-Riemannian manifold \((M,\mathcal{H},g)\)  is given by</p>
+<p>\begin{equation}\label{conn6}
+   \nabla _{X}Y= \begin{cases}
+        (D_XY)_{\mathcal{H}} &amp;\text{if } X,Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{H}}+B_{X}Y &amp;\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+        ([X,Y])_{\mathcal{V}} +C_XY&amp;\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+        (D_XY)_{\mathcal{V}} &amp;\text{if } X,Y \in \mathfrak{X} _{\mathcal{V}},
+    \end{cases} 
+\end{equation}</p>
+<p>where \(D\) is the Levi-Civita connection of \(g\), and
+tensors \(B\) and \(C\) are defined by</p>
+<p>\[ \la B_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{V}}}}g)(Y_{\mathcal{H}},Z_{\mathcal{H}})\]</p>
+<p>and</p>
+<p>\[ \la C_{X}Y,Z \ra= \frac{1}{2}(L_{{X_{\mathcal{H}}}}g)(Y_{\mathcal{V}},Z_{\mathcal{V}}).\]</p>
+</section>
+</div>
+<p>The torsion \(T\) of \(\nabla \)  satisfies</p>
+<p>\begin{equation}\label{tor7}
+	 T(X,Y)=\begin{cases}
+	    -[X,Y]_{\mathcal{V}} &amp;\text{if } X,Y \in \mathfrak{X}_{\mathcal{H}}\\
+	    B_XY-C_YX &amp;\text{if } X \in \mathfrak{X}_{\mathcal{V}},Y \in \mathfrak{X} _{\mathcal{H}}\\
+	      C_XY-B_YX&amp;\text{if }  X \in \mathfrak{X}_{\mathcal{H}},Y \in \mathfrak{X} _{\mathcal{V}}\\
+	      -[X,Y]_{\mathcal{H}} &amp;\text{if } X,Y \in \mathfrak{X}_{\mathcal{V}}
+	\end{cases}   
+\end{equation}</p>
+<p>Actually, Hladky gives the following characterization of \(\nabla \).</p>
+<div class="theorem proposition">
+<header>Proposition (cf. [<a href="#ref-Hla2012">Hla2012</a>])</header>
+<section>
+<p>There exists a unique metric connection \(\nabla\) on \(M\) such that:
+\begin{itemize}</p>
+<ol>
+<li>\(\mathcal H\) and \(\mathcal V\) are \(\nabla\)-parallel, i.e., for every
+\(X\in\Gamma(\mathcal H)\), \(Y\in\Gamma(TM)\), and \(Z\in\Gamma(\mathcal V)\),</li>
+</ol>
+<p>\[
+    \nabla_Y X\in\Gamma(\mathcal H),
+    \qquad
+    \nabla_Y Z\in\Gamma(\mathcal V).
+    \]</p>
+<ol>
+<li>The torsion \(T\) of \(\nabla\) satisfies</li>
+</ol>
+<p>\[
+    T(\mathcal H,\mathcal H)\subset \mathcal V,
+    \qquad
+    T(\mathcal V,\mathcal V)\subset \mathcal H.
+    \]</p>
+<ol>
+<li>For every \(X,Y\in\Gamma(\mathcal H)\) and \(V,Z\in\Gamma(\mathcal V)\),</li>
+</ol>
+<p>\[
+    \langle T(X,Z),Y\rangle
+    =
+    \langle T(Y,Z),X\rangle,
+    \qquad
+    \langle T(Z,X),V\rangle
+    =
+    \langle T(V,X),Z\rangle.
+    \]</p>
+<p>\end{itemize}</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>Note that Hladky connection \(\nabla \) and Levi-Civita connection \(D\)  are related by</p>
+<p>\begin{equation}\label{027}
+		 \nabla_X Y=D_X Y+\frac{1}{2} T(X, Y)-\frac{1}{2} J_X Y-\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M) . 
+	\end{equation}</p>
+<p>See also [<a href="#ref-Baudoin2025sub">Bau26</a>]. Here \(J\) is defined by</p>
+<p>\[ \la J_Z X, Y \ra = \la Z, T(X,Y) \ra, \quad \forall X, Y,Z \in \mathfrak{X}( M).\]</p>
+<p>Since the Hladky connection is metric, \(\nabla g=0\), differentiating gives</p>
+<p>\[
+\left\langle (\nabla_W J)_Z X, Y \right\rangle
+=
+\left\langle Z, (\nabla_W T)(X,Y) \right\rangle \quad \forall X, Y,Z,W \in \mathfrak{X}( M).
+\]</p>
+<p>Setting</p>
+<p>\begin{equation}\label{A1}
+		 A_XY:= -\frac{1}{2} T(X, Y)+\frac{1}{2} J_X Y+\frac{1}{2} J_Y X, \quad X, Y \in \mathfrak{X}( M),
+	\end{equation}</p>
+<p>which implies</p>
+<p>\begin{equation}\label{A2}
+		A_{\mathcal{H}}\mathcal{H} \subset \mathcal{V},\quad A_{\mathcal{V}}\mathcal{V} \subset \mathcal{H}. 
+	\end{equation}</p>
+<p>Then \(D=\nabla +A\), and</p>
+<p>\begin{equation}\label{Dnab}
+		\begin{aligned}
+			R^g(X, Y )Z=&amp; R(X,Y)Z+ (\nabla _XA)_{Y}Z-(\nabla _YA)_XZ\\
+			&amp;+A_{T(X,Y)}Z+A_X A_Y Z-A_Y A_X Z  .
+		\end{aligned} 
+	\end{equation}</p>
+</section>
+</div>
+<p>Having introduced the basic notions associated with the Hladky connection, we next recall some important classes of sub-Riemannian manifolds that provide natural geometric settings.</p>
+<div class="theorem example">
+<header>Example (Riemannian foliations)</header>
+<section>
+<p>Let  \((M^{m+k},\mathcal{F}^k)\) be a foliated manifold,
+where \(\mathcal{F}^k\) is  a \(k\)-dimensional foliation. Let \(g\) be a Riemannian metric on \(M\) and decompose the tangent bundle</p>
+<p>\[ TM=T\mathcal{F} \oplus \mathcal{H} \]</p>
+<p>accordingly, where \(\mathcal{H}\) is  complementary to \(T\mathcal{F} \). The metric \(g\) is said to be bundle-like if the Lie derivate of \(g_{\mathcal{H}}\) along vertical direction vanishes.
+Geometrically, this condition implies that the foliation arises locally from a Riemannian submersion.<br />
+The triple \((M^{m+k},\mathcal{F}^k,g)\) is referred to as a <em>Riemannian foliation</em>, see  [<a href="#ref-CDHL2026hor">CDHL26</a>] or [<a href="#ref-gromollMetricFoliationsCurvature2009a">GW09</a>] for more details.
+When \(\mathcal{H}\) is bracket generating, \((M^{m+k},\mathcal{H}^m,g)\) is a sub-Riemannian manifold.</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition (cf. [<a href="#ref-Bau2022Htype">Bau2022Htype</a>])</header>
+<section>
+<p>Let \((M^{m+k},\mathcal{H}^m,g)\) be a Riemannian foliation. If its leaves are totally geodesic, then \((M^{m+k},\mathcal{H}^m,g)\) is called a <em>totally geodesic foliation</em>.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header>
+<section>
+<p>Let \((M^{m+k},\mathcal{H}^m,g)\) be a Riemannian foliation. Then it's a totally geodesic foliation if and only if</p>
+<p>\[ C=0. \]</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header>
+<section>
+<p>For \(Y,Z \in \mathfrak{X}_{\mathcal{V}}\) and \(X \in \mathfrak{X}_{\mathcal{H}}\), we have</p>
+<p>\begin{equation}
+		 \begin{aligned}
+			2\la C_{X}Y,Z \ra=&amp; X \la Y,Z \ra -\la [X,Y],Z \ra-\la Y,[X,Z ]\ra\\
+			=&amp; \la \nabla _Y X ,Z \ra +\la  Y ,\nabla _Z X\ra\\
+			=&amp;- \la \nabla _Y Z+\nabla _Z Y,X \ra.
+		\end{aligned}   
+\end{equation}</p>
+<p>The integrability of \(\mathcal{V}\) implies</p>
+<p>\[  \begin{aligned}
+			- \la \nabla _Y Z+\nabla _Z Y,X \ra=&amp; - \la 2\nabla _Y Z+[Z, Y],X \ra\\
+			=&amp; - \la 2\nabla _Y Z,X \ra,
+		\end{aligned}  \]</p>
+<p>from which the conclusion follows.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header>
+<section>
+<p>If \((M^{m+k},\mathcal{H}^m,g)\) is a Riemannian foliation with totally geodesic leaves, then the Hladky connection coincides with the generalized Bott connection.</p>
+</section>
+</div>
+<h1>sub-Riemannian manifold with transverse symmetries</h1>
+<p>In this section, we introduce Baudoin-Garofalo's [<a href="#ref-BauGar2017trsy">BauGar2017trsy</a>] notion of a sub-Riemannian manifold with transverse symmetries is a particularly structured way of adding “vertical directions” to a sub-Riemannian manifold.</p>
+<p>Start with a sub-Riemannian manifold
+\(
+(M,\mathcal H,g_{\mathcal H}),
+\)
+where \(\mathcal H\subset TM\) is bracket generating. A vector field \(Z\) is called a <strong>sub-Riemannian Killing field</strong> if its flow preserves both the horizontal distribution and the horizontal metric. Concretely,</p>
+<p>\[
+[Z,X]\in \Gamma(\mathcal H)
+\quad\text{for every }X\in\Gamma(\mathcal H),
+\]</p>
+<p>and</p>
+<p>\[
+(\mathcal L_Z g_{\mathcal H})(X,Y)=0,
+\qquad X,Y\in\Gamma(\mathcal H).
+\]</p>
+<p>Thus flowing in the \(Z\)-direction does not change the sub-Riemannian geometry.</p>
+<p>The key assumption is that there exists a finite-dimensional Lie algebra \(\mathcal V\) of such symmetries satisfying</p>
+<p>\[
+\boxed{
+T_xM=\mathcal H_x\oplus\mathcal V_x
+\qquad \text{for every }x\in M.
+}
+\]</p>
+<p>The directions generated by \(\mathcal V\) are called the vertical directions. So the tangent bundle splits into horizontal directions, where the sub-Riemannian metric lives, and vertical directions which act as infinitesimal symmetries of that geometry.</p>
+<p>This is why the term transverse symmetries is appropriate: the vertical vector fields are transverse to \(\mathcal H\), and their flows preserve \((\mathcal H,g_{\mathcal H})\).</p>
+<p>If one chooses an inner product on \(\mathcal V\), one obtains a Riemannian extension</p>
+<p>\[
+g=g_{\mathcal H}\oplus g_{\mathcal V}.
+\]</p>
+<p>But Baudoin-Garofalo emphasize that the important geometric objects they construct ultimately do not depend on this auxiliary choice.</p>
+<p>There is also a <strong>canonical connection</strong> \(\nabla\), characterized by</p>
+<p>\[ \begin{aligned}
+  &amp;\nabla g=0,\\
+  &amp;\nabla_XY\in\mathcal H
+\qquad (X,Y\in\mathcal H),\\
+&amp;\nabla Z=0
+\qquad (Z\in\mathcal V),
+\end{aligned}  \]</p>
+<p>and</p>
+<p>\[
+T(X,Y)\in\mathcal V,\qquad
+T(X,Z)=0.
+\]</p>
+<p>More explicitly,</p>
+<p>\[
+\nabla_XY=\pi_{\mathcal H}(D_XY),\qquad
+\nabla_ZX=[Z,X],\qquad
+\nabla Z=0,
+\]</p>
+<p>where \(D\) is the Levi-Civita connection of the chosen Riemannian extension.</p>
+<p>So the torsion on horizontal vectors is essentially the obstruction to integrability of \(\mathcal H\):</p>
+<p>\[
+T(X,Y)=-\pi_{\mathcal V}[X,Y].
+\]</p>
+<p>This should look very familiar from  Hladky and Bott setting.</p>
+<p>A useful geometric picture is that, when the Lie group generated by \(\mathcal V\) acts properly, one has a quotient</p>
+<p>\[
+M\longrightarrow M/\mathbb V,
+\]</p>
+<p>which becomes a Riemannian submersion after choosing the vertical metric. Baudoin–Garofalo mention the Hopf fibration</p>
+<p>\[
+S^3\to S^2
+\]</p>
+<p>as a basic example.</p>
+<p>The class is quite broad. Their examples include:</p>
+<p>\[
+\text{Sasakian manifolds},\qquad
+\text{step-two Carnot groups},\qquad
+\text{certain principal bundles},
+\]</p>
+<p>and related homogeneous models.</p>
+<h1>References</h1>
+<ol class="references"><li id="ref-Baudoin2025sub">[Bau26] Fabrice Baudoin. Sub-laplacian comparison theorems on Riemannian foliations with minimal leaves and applications. <em>Communications on Pure and Applied Analysis</em>, 2026.</li><li id="ref-BlCh1979cr">[BC79] David E. Blair and Bang-Yen Chen. On CR-submanifolds of Hermitian manifolds. <em>Israel J. Math.</em>, 34(4):353--363, 1979.</li><li id="ref-Bej1978Cr">[Bej78] Aurel Bejancu. \({\rm CR}\) submanifolds of a Kaehler manifold. I. <em>Proc. Amer. Math. Soc.</em>, 69(1):135--142, 1978.</li><li id="ref-bej1986">[Bej86] Aurel Bejancu. {\em Geometry of CR-submanifolds}, volume 23 of <em>Mathematics and its Applications (East European Series)</em>. D. Reidel Publishing Co., Dordrecht, 1986.</li><li id="ref-Bla2010rie">[Bla10] David E. Blair. <em>Riemannian geometry of contact and symplectic manifolds</em>, volume 203 of <em>Progress in Mathematics</em>. Birkhäuser Boston, Ltd., Boston, MA, second edition, 2010.</li><li id="ref-CDHL2026hor">[CDHL26] Tian Chong, Yuxin Dong, Xin Huang, and Hui Liu. On critical maps of the horizontal energy functional between Riemannian foliations. <em>J. Geom. Anal.</em>, 36(1):Paper No. 21, 44, 2026.</li><li id="ref-CDRY2019onharm">[CDRY19] Tian Chong, Yuxin Dong, Yibin Ren, and Guilin Yang. On harmonic and pseudoharmonic maps from pseudo-Hermitian manifolds. <em>Nagoya Math. J.</em>, 234:170--210, 2019.</li><li id="ref-dongEellsSampsonType2021a">[Don21] Yuxin Dong. Eells-Sampson type theorems for subelliptic harmonic maps from sub-Riemannian manifolds. <em>J. Geom. Anal.</em>, 31(4):3608--3655, 2021.</li><li id="ref-DT2006differential">[DT06] Sorin Dragomir and Giuseppe Tomassini. {\em Differential geometry and analysis on CR manifolds}, volume 246 of <em>Progress in Mathematics</em>. Birkhäuser Boston, Inc., Boston, MA, 2006.</li><li id="ref-gromollMetricFoliationsCurvature2009a">[GW09] Detlef Gromoll and Gerard Walschap. <em>Metric foliations and curvature</em>, volume 268 of <em>Progress in Mathematics</em>. Birkhäuser Verlag, Basel, 2009.</li><li id="ref-Rothstein1976hyp">[RS76] Linda Preiss Rothschild and E. M. Stein. Hypoelliptic differential operators and nilpotent groups. <em>Acta Math.</em>, 137(3-4):247--320, 1976.</li></ol>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>
