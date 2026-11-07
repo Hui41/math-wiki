@@ -1,29 +1,3 @@
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\dimension}{dim}
-\DeclareMathOperator{\trace}{tr} 
-\DeclareMathOperator{\di}{div}
-\DeclareMathOperator{\ricci}{Ric}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{Id}
-
-\def\zz{{\mathbb Z}}
-\def\rr{{\mathbb R}}
-\def\cc{{\mathbb C}}
-\def\qq{{\mathbb Q}}
-\def\oo{{\infty}}
-\def\db{{\partial_b }}
-\def\dbb{{\bar{\partial}_b }}
-\def\lap{{\Delta}}
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\dd}{\,\mathrm{d}v_g}
-\newcommand{\ip}[2]{\langle #1,#2\rangle}
-
 \title{Riemannian foliations}
 
 \section{Foliations}

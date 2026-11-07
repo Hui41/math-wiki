@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -58,7 +128,7 @@
     <main>
       <nav><a href="/notes/">All notes</a></nav>
       <h1>Sub-Riemannian geoemtry</h1>
-      <article><h1>Sub-Riemannian manifolds</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Sub-Riemannian manifolds</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Let \(M^{m+k}\) be a \((m+k)\)-dimensional smooth manifold and \(\mathcal{H}^m\) be  a  subbundle of \(TM\) of rank \(m\). Assume that \(\mathcal{H}\) satisfies step-\(r\) bracket generating condition for some \(r \geq 1\).
 This means that, at each point \( x \in M \), the sections of \( \mathcal{H} \), along with all their Lie brackets up to order \( r \), generate the tangent space \( T_xM \).
 Then the triple \((M^{m+k},\mathcal{H}^m,g_{\mathcal{H}})\) is called a sub-Riemannian manifold, where \(g_{\mathcal{H}}\) is a fiberwise metric on \(\mathcal{H}\). The subbundle \(\mathcal{H}\) is also called the <em>horizontal distribution</em>. Note that one can easily extend \(g_{\mathcal{H}}\) to a Riemannian metric \(g\) on \(TM\) (see, e.g., [<a href="#ref-dongEellsSampsonType2021a">Don21</a>]). Throughout the paper, we fix such a metric \(g\) such that \(g|_{\mathcal{H}}=g_{\mathcal{H}}\) and denote the corresponding sub-Riemannian manifold by \((M^{m+k},\mathcal{H}^{m},g)\).
@@ -76,7 +146,7 @@ is defined as</p>
 <p>These notions can be easily extended to any relatively compact domain.</p>
 <p>Next, we recall some examples of sub-Riemannian manifolds.</p>
 <div class="theorem example">
-<header>Example (Riemannian foliations)</header>
+<header>Example (Riemannian foliations)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:25:1" title="Edit example at source line 25" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Let  \((M^{m+k},\mathcal{F}^k)\) be a foliated manifold,
 where \(\mathcal{F}^k\) is  a \(k\)-dimensional foliation. Let \(g\) be a Riemannian metric on \(M\) and decompose the tangent bundle</p>
@@ -89,9 +159,9 @@ When \(\mathcal{H}\) is bracket generating, \((M^{m+k},\mathcal{H}^m,g)\) is a s
 </div>
 <p>Carnot groups are typical examples in sub-Riemannian geometry. Moreover, they can be endowed with a bundle-like metric structure, see [<a href="#ref-Baudoin2025sub">Bau26</a>].</p>
 <div class="theorem example">
-<header>Example (Carnot groups)</header>
+<header>Example (Carnot groups)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:36:1" title="Edit example at source line 36" aria-label="Edit example in VS Code">Edit</a>
 <section>
-<p>\label{exCar}
+<p><span class="wiki-label" data-wiki-label="exCar"></span>
 A Carnot group is a simply connected Lie group \(G\)  whose Lie algebra \(\mathfrak{g}\) admits a stratified decomposition:</p>
 <p>\[ \mathfrak{g}=V_1 \oplus V_2 \oplus \cdots \oplus V_r \quad (r \geq 1) \]</p>
 <p>such that \([V_1,V_j]=V_{j+1}\) for \(1 \leq j \leq r-1\) and \([V_1,V_r]=\{0\}\).   This gives a Lie algebra grading</p>
@@ -108,9 +178,9 @@ we have  decomposition:</p>
 </section>
 </div>
 <div class="theorem example">
-<header>Example (Contact  manifolds, cf. [<a href="#ref-Bla2010rie">Bla10</a>])</header>
+<header>Example (Contact  manifolds, cf. [<a href="#ref-Bla2010rie">Bla10</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:52:1" title="Edit example at source line 52" aria-label="Edit example in VS Code">Edit</a>
 <section>
-<p>\label{excont}
+<p><span class="wiki-label" data-wiki-label="excont"></span>
 Let \(M^{2m+1}\)  be a contact  manifold with  structure tensors \(( \phi  , \mathsf{T}  , \theta   , g)\).
 Precisely speaking, \(\theta \) is a contact form (i.e., \(\theta \wedge (d \theta)^m \neq 0\)), \(\mathsf{T}\) is the Reeb vector field, \(\phi \) is a \((1,1)\)-tensor and \(g\) is a Riemannian metric  such that</p>
 <p>\begin{equation}\label{2}
@@ -124,7 +194,7 @@ Precisely speaking, \(\theta \) is a contact form (i.e., \(\theta \wedge (d \the
 </section>
 </div>
 <div class="theorem example">
-<header>Example (Pseudo-Hermitian manifolds)</header>
+<header>Example (Pseudo-Hermitian manifolds)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:65:1" title="Edit example at source line 65" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Let \(M\) be a real \((2m+p)\)-dimensional oriented manifold. A <em>CR structure</em> of type \((m,p)\) is a complex subbundle   \(H^{1,0}\)  of   \(TM \otimes \cc\), of complex rank \(m\),   satisfying the (formally) integrable condition. The pair \((M,H^{1,0})\) is  called a  <em>CR manifold of type \((m,p)\)</em>.  Set \(H^{0,1}=\overline{H^{1,0}}\).
 Alternatively,  the CR structure can  be described by a pair \((\mathcal{H},J_b)\), where \(\mathcal{H} \) is the real bundle \(\Re\{H^{1,0} \oplus H^{0,1}\}\)  and \(J_b\) is its almost complex structure defined by \(J_b(X+\overline{X})=\sqrt{-1}(X-\overline{X})\) for all \(X \in H^{1,0}\).</p>
@@ -146,9 +216,9 @@ For more information about pseudo-Hermitian geometry we refer the reader to  [<a
 </div>
 <p>In  [<a href="#ref-Bej1978Cr">Bej78</a>], A. Bejancu introduced the notion of CR-submanifolds, which serve as an intermediate class between complex submanifolds and totally real submanifolds in  complex differential geometry.</p>
 <div class="theorem example">
-<header>Example (CR-submanifolds, cf. [<a href="#ref-bej1986">Bej86</a>])</header>
+<header>Example (CR-submanifolds, cf. [<a href="#ref-bej1986">Bej86</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:89:1" title="Edit example at source line 89" aria-label="Edit example in VS Code">Edit</a>
 <section>
-<p>\label{exCrsub}
+<p><span class="wiki-label" data-wiki-label="exCrsub"></span>
 Let \((M,g)\) be a submanifold of a Hermitian manifold \((\widetilde{M},J,\tilde{g})\), where \(g\) is the induced metric on \(M\) from \(\tilde{g}\).
 The submanifold \(M\) is called a <em>CR-submanifold</em> in \(\widetilde{M}\) if there is a \(C^{\infty}\) distribution \(\mathcal{H}\) on \(M\) satisfying the following conditions:
 (i) \(J(\mathcal{H}_x)= \mathcal{H}_x\) for each \(x \in M\); (ii) \(J(\mathcal{V}_x) \subset T_{x}^{\perp}M\) for each \(x\in M\),
@@ -157,7 +227,7 @@ and \(T^{\perp}M\) is the normal bundle of \(M\) in \(\widetilde{M}\). Let \(2m\
 Then it follows from [<a href="#ref-BlCh1979cr">BC79</a>, Theorem 4.1] that \((M,\mathcal{H},J|_{\mathcal{H}})\) is a CR manifold of type \((m,p)\). We remark, however, that the induced metric \(g\) (in the case  \(p=1\)) doesn't coincide with the Webster metric in general. If  \(\mathcal{H}\) satisfies bracket generating condition, then \((M,\mathcal{H},g)\) is a sub-Riemannian manifold.</p>
 </section>
 </div>
-<h1>Bott connection</h1>
+<div class="wiki-heading-with-edit"><h1>Bott connection</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:98:1" title="Edit section at source line 98" aria-label="Edit section in VS Code">Edit</a></div>
 <p>It would be convenient to introduce a suitable linear connection compatible with
 the sub-Riemannian structure on \((M,H,g_H;g)\) in some sense. The generalized Bott
 connection is one of such connections given by</p>
@@ -184,7 +254,7 @@ connection is one of such connections given by</p>
 \]</p>
 <p>for any \(X\in H\) and \(Y\in V\). However, \(\nabla^{B}\) does <em>not</em> preserve the Riemannian metric \(g\) in general.</p>
 <div class="theorem lemma">
-<header>Lemma</header>
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:125:1" title="Edit lemma at source line 125" aria-label="Edit lemma in VS Code">Edit</a>
 <section>
 <p>For any \(X,Y\in\Gamma(TM)\), we have</p>
 <p>\[
@@ -195,10 +265,10 @@ T^{\nabla ^B}(X,Y)
 \]</p>
 </section>
 </div>
-<h1>Hladky connection</h1>
+<div class="wiki-heading-with-edit"><h1>Hladky connection</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:135:1" title="Edit section at source line 135" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Hladky connection is a generalization of Tanaka-Webster connection.</p>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:137:1" title="Edit definition at source line 137" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>The Hladky connection \(\nabla \) on a sub-Riemannian manifold \((M,\mathcal{H},g)\)  is given by</p>
 <p>\begin{equation}\label{conn6}
@@ -227,24 +297,29 @@ tensors \(B\) and \(C\) are defined by</p>
 \end{equation}</p>
 <p>Actually, Hladky gives the following characterization of \(\nabla \).</p>
 <div class="theorem proposition">
-<header>Proposition (cf. [<a href="#ref-Hla2012">Hla2012</a>])</header>
+<header>Proposition (cf. [<a href="#ref-Hla2012">Hla2012</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:165:1" title="Edit proposition at source line 165" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
-<p>There exists a unique metric connection \(\nabla\) on \(M\) such that:
-\begin{itemize}
-\item \(\mathcal H\) and \(\mathcal V\) are \(\nabla\)-parallel, i.e., for every
+<p>There exists a unique metric connection \(\nabla\) on \(M\) such that:</p>
+<ul class="wiki-itemize">
+<li>
+<p>\(\mathcal H\) and \(\mathcal V\) are \(\nabla\)-parallel, i.e., for every
 \(X\in\Gamma(\mathcal H)\), \(Y\in\Gamma(TM)\), and \(Z\in\Gamma(\mathcal V)\),</p>
 <p>\[
     \nabla_Y X\in\Gamma(\mathcal H),
     \qquad
     \nabla_Y Z\in\Gamma(\mathcal V).
     \]</p>
-<p>\item The torsion \(T\) of \(\nabla\) satisfies</p>
+</li>
+<li>
+<p>The torsion \(T\) of \(\nabla\) satisfies</p>
 <p>\[
     T(\mathcal H,\mathcal H)\subset \mathcal V,
     \qquad
     T(\mathcal V,\mathcal V)\subset \mathcal H.
     \]</p>
-<p>\item For every \(X,Y\in\Gamma(\mathcal H)\) and \(V,Z\in\Gamma(\mathcal V)\),</p>
+</li>
+<li>
+<p>For every \(X,Y\in\Gamma(\mathcal H)\) and \(V,Z\in\Gamma(\mathcal V)\),</p>
 <p>\[
     \langle T(X,Z),Y\rangle
     =
@@ -254,11 +329,12 @@ tensors \(B\) and \(C\) are defined by</p>
     =
     \langle T(V,X),Z\rangle.
     \]</p>
-<p>\end{itemize}</p>
+</li>
+</ul>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:196:1" title="Edit remark at source line 196" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Note that Hladky connection \(\nabla \) and Levi-Civita connection \(D\)  are related by</p>
 <p>\begin{equation}\label{027}
@@ -291,7 +367,7 @@ tensors \(B\) and \(C\) are defined by</p>
 </div>
 <p>Having introduced the basic notions associated with the Hladky connection, we next recall some important classes of sub-Riemannian manifolds that provide natural geometric settings.</p>
 <div class="theorem example">
-<header>Example (Riemannian foliations)</header>
+<header>Example (Riemannian foliations)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:229:1" title="Edit example at source line 229" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Let  \((M^{m+k},\mathcal{F}^k)\) be a foliated manifold,
 where \(\mathcal{F}^k\) is  a \(k\)-dimensional foliation. Let \(g\) be a Riemannian metric on \(M\) and decompose the tangent bundle</p>
@@ -303,20 +379,20 @@ When \(\mathcal{H}\) is bracket generating, \((M^{m+k},\mathcal{H}^m,g)\) is a s
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition (cf. [<a href="#ref-Bau2022Htype">Bau2022Htype</a>])</header>
+<header>Definition (cf. [<a href="#ref-Bau2022Htype">Bau2022Htype</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:239:1" title="Edit definition at source line 239" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Let \((M^{m+k},\mathcal{H}^m,g)\) be a Riemannian foliation. If its leaves are totally geodesic, then \((M^{m+k},\mathcal{H}^m,g)\) is called a <em>totally geodesic foliation</em>.</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:243:1" title="Edit proposition at source line 243" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Let \((M^{m+k},\mathcal{H}^m,g)\) be a Riemannian foliation. Then it's a totally geodesic foliation if and only if</p>
 <p>\[ C=0. \]</p>
 </section>
 </div>
 <div class="theorem proof">
-<header>Proof</header>
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:247:1" title="Edit proof at source line 247" aria-label="Edit proof in VS Code">Edit</a>
 <section>
 <p>For \(Y,Z \in \mathfrak{X}_{\mathcal{V}}\) and \(X \in \mathfrak{X}_{\mathcal{H}}\), we have</p>
 <p>\begin{equation}
@@ -335,12 +411,12 @@ When \(\mathcal{H}\) is bracket generating, \((M^{m+k},\mathcal{H}^m,g)\) is a s
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:265:1" title="Edit remark at source line 265" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>If \((M^{m+k},\mathcal{H}^m,g)\) is a Riemannian foliation with totally geodesic leaves, then the Hladky connection coincides with the generalized Bott connection.</p>
 </section>
 </div>
-<h1>sub-Riemannian manifold with transverse symmetries</h1>
+<div class="wiki-heading-with-edit"><h1>sub-Riemannian manifold with transverse symmetries</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:270:1" title="Edit section at source line 270" aria-label="Edit section in VS Code">Edit</a></div>
 <p>In this section, we introduce Baudoin-Garofalo's [<a href="#ref-BauGar2017trsy">BauGar2017trsy</a>] notion of a sub-Riemannian manifold with transverse symmetries is a particularly structured way of adding “vertical directions” to a sub-Riemannian manifold.</p>
 <p>Start with a sub-Riemannian manifold
 \(
@@ -412,7 +488,7 @@ S^3\to S^2
 \text{certain principal bundles},
 \]</p>
 <p>and related homogeneous models.</p>
-<h1>References</h1>
+<div class="wiki-heading-with-edit"><h1>References</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/subRiem.wiki:352:1" title="Edit section at source line 352" aria-label="Edit section in VS Code">Edit</a></div>
 <ol class="references"><li id="ref-Baudoin2025sub">[Bau26] Fabrice Baudoin. Sub-laplacian comparison theorems on Riemannian foliations with minimal leaves and applications. <em>Communications on Pure and Applied Analysis</em>, 2026.</li><li id="ref-BlCh1979cr">[BC79] David E. Blair and Bang-Yen Chen. On CR-submanifolds of Hermitian manifolds. <em>Israel J. Math.</em>, 34(4):353--363, 1979.</li><li id="ref-Bej1978Cr">[Bej78] Aurel Bejancu. \({\rm CR}\) submanifolds of a Kaehler manifold. I. <em>Proc. Amer. Math. Soc.</em>, 69(1):135--142, 1978.</li><li id="ref-bej1986">[Bej86] Aurel Bejancu. {\em Geometry of CR-submanifolds}, volume 23 of <em>Mathematics and its Applications (East European Series)</em>. D. Reidel Publishing Co., Dordrecht, 1986.</li><li id="ref-Bla2010rie">[Bla10] David E. Blair. <em>Riemannian geometry of contact and symplectic manifolds</em>, volume 203 of <em>Progress in Mathematics</em>. Birkhäuser Boston, Ltd., Boston, MA, second edition, 2010.</li><li id="ref-CDHL2026hor">[CDHL26] Tian Chong, Yuxin Dong, Xin Huang, and Hui Liu. On critical maps of the horizontal energy functional between Riemannian foliations. <em>J. Geom. Anal.</em>, 36(1):Paper No. 21, 44, 2026.</li><li id="ref-CDRY2019onharm">[CDRY19] Tian Chong, Yuxin Dong, Yibin Ren, and Guilin Yang. On harmonic and pseudoharmonic maps from pseudo-Hermitian manifolds. <em>Nagoya Math. J.</em>, 234:170--210, 2019.</li><li id="ref-dongEellsSampsonType2021a">[Don21] Yuxin Dong. Eells-Sampson type theorems for subelliptic harmonic maps from sub-Riemannian manifolds. <em>J. Geom. Anal.</em>, 31(4):3608--3655, 2021.</li><li id="ref-DT2006differential">[DT06] Sorin Dragomir and Giuseppe Tomassini. {\em Differential geometry and analysis on CR manifolds}, volume 246 of <em>Progress in Mathematics</em>. Birkhäuser Boston, Inc., Boston, MA, 2006.</li><li id="ref-gromollMetricFoliationsCurvature2009a">[GW09] Detlef Gromoll and Gerard Walschap. <em>Metric foliations and curvature</em>, volume 268 of <em>Progress in Mathematics</em>. Birkhäuser Verlag, Basel, 2009.</li><li id="ref-Rothstein1976hyp">[RS76] Linda Preiss Rothschild and E. M. Stein. Hypoelliptic differential operators and nilpotent groups. <em>Acta Math.</em>, 137(3-4):247--320, 1976.</li></ol>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>

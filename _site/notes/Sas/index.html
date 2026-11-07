@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g"
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -58,18 +128,18 @@
     <main>
       <nav><a href="/notes/">All notes</a></nav>
       <h1>Sasakian Manifolds</h1>
-      <article><h1>Definitions</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Definitions</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
 <p>There are many equivalent definitons of Sasakian manifold.
 We will take a viewpoint from <a href="/notes/PseuHerm/">Pseudo-Hermitian Geometry</a>.</p>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:7:1" title="Edit definition at source line 7" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>A Sasakian manifold is a pseudo-Hermitian manifold \((M,H,J,\theta)\), whose pseudo-Hermitian torsion \(\tau \)  vanishes.</p>
 </section>
 </div>
 <p>The following proposition gives different characterizations of Sasakian manifolds.</p>
 <div class="theorem proposition">
-<header>Proposition</header>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:13:1" title="Edit proposition at source line 13" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Let \((M^{2m+1},g)\) be a Riemannian manifold, \(\nabla\) the Levi-Civita connection, and \(R\) its curvature tensor.
 Then the following conditions are equivalent:</p>
@@ -98,21 +168,16 @@ Then the following conditions are equivalent:</p>
 </ol>
 </section>
 </div>
-<div class="theorem remark">
-<header>Remark</header>
-<section>
-<p>Let \((M,g)\) be a Sasakian manifold and \(T\) the Killing vector field satisfying the above proposition.
-Then the tangent bundle admits the decomposition with respect to \(g\):</p>
+<p>For example,  given \(T\) and \(\Phi\)  in (iii), we can construct pseudo-Hermitian structure on \((M,g)\) as follows.
+First,  the tangent bundle admits the decomposition with respect to \(g\):</p>
 <p>\[ T(M)=H \otimes V_{T }. \]</p>
-<p>Define the \((1,1)\)-tensor field \(J_b=\Phi |_H\) on \(H\). Then by (iii) of the above proposition, it is easy to verify that \(J_b^2=-\id\). Note that the complex structure \(J_c\) on \((C(M),\tilde{g})\) is given by</p>
+<p>Define the \((1,1)\)-tensor field \(J_b:=\Phi |_H\) on \(H\). Then by (iii), it is easy to verify that \(J_b^2=-\id\). Note that the complex structure \(J_c\) on \((C(M),\tilde{g})\) is given by</p>
 <p>\[ J_c(Y)=\begin{cases}
     \Phi (Y)-g(T ,Y) r \frac{\partial }{\partial r} &amp;\text{ if }~ Y \in T(M);\\
     T  &amp;\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  \]</p>
 <p>Then, using the integrability of \(J_c\) and the fact that \(T\) is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that \((M,H,J_b)\) is precisely the pseudo-Hermitian manifold with \(\tau=0\).</p>
-</section>
-</div>
-<h1>Space forms</h1>
+<div class="wiki-heading-with-edit"><h1>Space forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:45:1" title="Edit section at source line 45" aria-label="Edit section in VS Code">Edit</a></div>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>

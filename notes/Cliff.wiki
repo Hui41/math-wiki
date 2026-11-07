@@ -1,32 +1,3 @@
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\dimension}{dim}
-\DeclareMathOperator{\trace}{tr} 
-\DeclareMathOperator{\di}{div}
-\DeclareMathOperator{\ricci}{Ric}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{Id}
-\DeclareMathOperator{\Cl}{Cl}
-
-\def\zz{{\mathbb Z}}
-\def\rr{{\mathbb R}}
-\def\cc{{\mathbb C}}
-\def\qq{{\mathbb Q}}
-\def\oo{{\infty}}
-\def\db{{\partial_b }}
-\def\dbb{{\bar{\partial}_b }}
-\def\lap{{\Delta}}
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\dd}{\,\mathrm{d}v_g}
-
-	
-
-
 \title{Clifford Algebra}
 
 Clifford algebra is a way to encode an inner-product space into an associative algebra so that vectors multiply according to the metric.
@@ -120,4 +91,4 @@ with strictly increasing indices. Hence
 
 
 
-\end{document}
+

@@ -1,32 +1,3 @@
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\dimension}{dim}
-\DeclareMathOperator{\trace}{tr} 
-\DeclareMathOperator{\di}{div}
-\DeclareMathOperator{\ricci}{Ric}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{Id}
-
-\def\zz{{\mathbb Z}}
-\def\rr{{\mathbb R}}
-\def\cc{{\mathbb C}}
-\def\qq{{\mathbb Q}}
-\def\oo{{\infty}}
-\def\db{{\partial_b }}
-\def\dbb{{\bar{\partial}_b }}
-\def\lap{{\Delta}}
-
-
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\dd}{\,\mathrm{d}v_g}
-\newcommand{\ip}[2]{\langle #1,#2\rangle}
-	
-
 \title{H-type foliation}
 
 \section{H-type foliation}
@@ -58,7 +29,6 @@ or equivalently(by the skew-symmetry of $J_Z$),
     J_Z^2=-|Z|^2\operatorname{Id}_{\mathcal H}.
 \]
 Thus each vertical direction induces, after normalization, an orthogonal complex structure on the horizontal bundle. In particular, the horizontal distribution is bracket generating of step two, and the maps \(J_Z\) encode quantitatively the non-integrability of \(\mathcal H\).
-
 
 \begin{definition}[\cite{Bau2022Htype}]
 An H-type foliation is said to be 
@@ -245,7 +215,6 @@ control of this torsion through the maps \(J_Z\). Hence H-type groups
 provide a large family of examples in which the adapted connection is
 flat while the non-integrability of the horizontal distribution is
 entirely encoded by the torsion.
-
 
 
 \section*{References}

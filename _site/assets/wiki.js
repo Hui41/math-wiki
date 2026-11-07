@@ -666,4 +666,231 @@
 })();
 
 
+/* ============================================
+   Math Wiki — Cross References
+
+   Supports:
+   \label{...}
+   \ref{...}
+
+   Sections and theorem-like environments.
+   ============================================ */
+
+(() => {
+  'use strict';
+
+  function initializeReferences() {
+    const article =
+      document.querySelector('main article');
+
+    if (!article) return;
+
+    const labels = new Map();
+
+    let currentSection = '0';
+    let environmentCounter = 0;
+
+    // ----------------------------------------
+    // 1. Number theorem-like environments
+    // ----------------------------------------
+
+    const elements = article.querySelectorAll(
+      'h1, h2, h3, .theorem'
+    );
+
+    for (const element of elements) {
+
+      // Section heading.
+      if (/^H[123]$/.test(element.tagName)) {
+
+        const match = element.textContent
+          .trim()
+          .match(/^(\d+(?:\.\d+)*)\./);
+
+        if (element.tagName === 'H1') {
+          currentSection = match
+            ? match[1]
+            : '0';
+
+          environmentCounter = 0;
+        }
+
+        if (match) {
+          element.dataset.wikiNumber =
+            match[1];
+        }
+
+        continue;
+      }
+
+      // Proof is not numbered.
+      if (element.classList.contains('proof')) {
+        continue;
+      }
+
+      environmentCounter++;
+
+      const number =
+        currentSection === '0'
+          ? String(environmentCounter)
+          : currentSection + '.' +
+            environmentCounter;
+
+      element.dataset.wikiNumber = number;
+
+      // Create a stable anchor.
+      if (!element.id) {
+        element.id = 'wiki-env-' +
+          number.replace(/\./g, '-');
+      }
+
+      // Update environment title.
+      const header =
+        element.querySelector(':scope > header');
+
+      if (header) {
+        const original = header.textContent.trim();
+
+        const match = original.match(
+          /^([^\s(（]+)(.*)$/
+        );
+
+        if (match) {
+          header.textContent =
+            match[1] + ' ' + number +
+            match[2];
+        }
+      }
+    }
+
+    // ----------------------------------------
+    // 2. Associate labels with their targets
+    // ----------------------------------------
+
+    const markers =
+      article.querySelectorAll('.wiki-label');
+
+    for (const marker of markers) {
+      const key = marker.dataset.wikiLabel;
+
+      if (!key) continue;
+
+      let target = marker.closest(
+        '.theorem, h1, h2, h3'
+      );
+
+      // Labels immediately following
+      // a section heading.
+      if (!target) {
+        const container =
+          marker.closest('p') || marker;
+
+        const previous =
+          container.previousElementSibling;
+
+        if (previous) {
+          if (
+            /^H[123]$/.test(previous.tagName)
+          ) {
+            target = previous;
+          } else if (
+            previous.classList.contains(
+              'wiki-heading-with-edit'
+            )
+          ) {
+            target = previous.querySelector(
+              'h1, h2, h3'
+            );
+          }
+        }
+      }
+
+      if (!target) {
+        console.warn(
+          'Math Wiki: no target for label',
+          key
+        );
+        continue;
+      }
+
+      const number =
+        target.dataset.wikiNumber;
+
+      if (!number) continue;
+
+      if (!target.id) {
+        target.id = 'wiki-ref-' +
+          Array.from(key)
+            .map(c => c.codePointAt(0).toString(16))
+            .join('-');
+      }
+
+      if (labels.has(key)) {
+        console.warn(
+          'Math Wiki: duplicate label',
+          key
+        );
+      } else {
+        labels.set(key, {
+          number,
+          id: target.id
+        });
+      }
+
+      // Remove the invisible marker,
+      // including its empty paragraph.
+      const paragraph = marker.closest('p');
+
+      marker.remove();
+
+      if (
+        paragraph &&
+        !paragraph.textContent.trim() &&
+        !paragraph.children.length
+      ) {
+        paragraph.remove();
+      }
+    }
+
+    // ----------------------------------------
+    // 3. Resolve references
+    // ----------------------------------------
+
+    const references =
+      article.querySelectorAll('.wiki-crossref');
+
+    for (const link of references) {
+      const key = link.dataset.wikiRef;
+      const reference = labels.get(key);
+
+      if (!reference) {
+        link.textContent = '??';
+        link.title =
+          'Undefined reference: ' + key;
+        continue;
+      }
+
+      link.textContent = reference.number;
+
+      link.href = '#' +
+        encodeURIComponent(reference.id);
+
+      link.title = 'Go to ' + key;
+    }
+  }
+
+  // Register after the original Wiki
+  // heading-numbering initialization.
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      initializeReferences
+    );
+  } else {
+    initializeReferences();
+  }
+
+})();
+
+
 

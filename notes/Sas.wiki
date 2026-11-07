@@ -1,29 +1,5 @@
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\dimension}{dim}
-\DeclareMathOperator{\trace}{tr} 
-\DeclareMathOperator{\di}{div}
-\DeclareMathOperator{\ricci}{Ric}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{Id}
-
-\def\zz{{\mathbb Z}}
-\def\rr{{\mathbb R}}
-\def\cc{{\mathbb C}}
-\def\qq{{\mathbb Q}}
-\def\oo{{\infty}}
-\def\db{{\partial_b }}
-\def\dbb{{\bar{\partial}_b }}
-\def\lap{{\Delta}}
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\dd}{\,\mathrm{d}v_g}
-
 \title{Sasakian Manifolds}
+
 \section{Definitions}
 There are many equivalent definitons of Sasakian manifold.
 We will take a viewpoint from [[PseuHerm|Pseudo-Hermitian Geometry]].
@@ -52,17 +28,18 @@ The following proposition gives different characterizations of Sasakian manifold
     \end{enumerate}
 \end{proposition}
 
-\begin{remark} 
-Let $(M,g)$ be a Sasakian manifold and $T$ the Killing vector field satisfying the above proposition.
-Then the tangent bundle admits the decomposition with respect to $g$:
+
+
+For example,  given $T$ and $\Phi$  in (iii), we can construct pseudo-Hermitian structure on $(M,g)$ as follows. 
+First,  the tangent bundle admits the decomposition with respect to $g$:
 $$ T(M)=H \otimes V_{T }. $$
-Define the $(1,1)$-tensor field $J_b=\Phi |_H$ on $H$. Then by (iii) of the above proposition, it is easy to verify that $J_b^2=-\id$. Note that the complex structure $J_c$ on $(C(M),\tilde{g})$ is given by
+Define the $(1,1)$-tensor field $J_b:=\Phi |_H$ on $H$. Then by (iii), it is easy to verify that $J_b^2=-\id$. Note that the complex structure $J_c$ on $(C(M),\tilde{g})$ is given by
 $$ J_c(Y)=\begin{cases}
     \Phi (Y)-g(T ,Y) r \frac{\partial }{\partial r} &\text{ if }~ Y \in T(M);\\
     T  &\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  $$
 Then, using the integrability of $J_c$ and the fact that $T$ is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that $(M,H,J_b)$ is precisely the pseudo-Hermitian manifold with $\tau=0$.
-\end{remark}
+
 
 
 \section{Space forms}

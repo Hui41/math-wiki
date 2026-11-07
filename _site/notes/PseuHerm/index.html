@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -58,7 +128,7 @@
     <main>
       <nav><a href="/notes/">All notes</a></nav>
       <h1>Pseudo-Hermitian Geometry</h1>
-      <article><h1>Preliminaries</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Preliminaries</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Let \(M^{2m+1}\) be a \((2m+1)\)-dimensional smooth orientable manifold. A <em>CR structure</em> on \(M^{2m+1}\) is a complex rank-\(m\) subbundle \(H^{1,0} \) of \( 
 T(M)\otimes \mathbb{C}\) with the following properties</p>
 <p>\begin{align}
@@ -74,7 +144,7 @@ J_{b}(V+\overline{V})=i(V-\overline{V})
 <p>for any \(V\in H^{1,0} \). The synthetic object \((M,H^{1,0} )\) or \( 
 (M,H ,J_{b})\) is called a <em>CR manifold</em>.</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:20:1" title="Edit remark at source line 20" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Formally integrable condition is equivalent to</p>
 <p>\[
@@ -100,7 +170,7 @@ L_{\theta }\) corresponding to \(\theta \), which is defined by</p>
 <p>\begin{equation}
 L_{\theta }(X,Y)=d\theta (X,J_{b}Y)  \label{1.2}
 \end{equation}</p>
-<p>for any \(X,Y\in H \). The second condition in (\ref{1.1}) implies that \( 
+<p>for any \(X,Y\in H \). The second condition in (<a class="wiki-crossref" data-wiki-ref="1.1" href="#">??</a>) implies that \( 
 L_{\theta }\) is \(J_{b}\)-invariant, and thus symmetric. If \(L_{\theta }\) is
 positive definite on \(H \) for some \(\theta \), \((M,H^{1,0} )\) is said to
 be <em>strictly pseudoconvex</em>. From now on, we will always assume that \( 
@@ -109,7 +179,7 @@ pseudo-Hermitian \(1\)-form \(\theta \), such that its Levi form \(L_{\theta }\)
 is positive definite. In this case  the synthetic object \((M,H^{1,0} ,\theta )\) is
 referred to as a <em>pseudo-Hermitian manifold</em>.</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:55:1" title="Edit remark at source line 55" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>For any \(Z,W \in H^{1,0}(M)\),</p>
 <p>\[
@@ -126,7 +196,7 @@ L_{\theta}(Z, \overline{W})=-i(d \theta)(Z, \overline{W}):=G_{\theta }(Z, \overl
 <p>where \(i_{\xi }\) denotes the interior product with respect to \(\xi \). The
 collection of all its integral curves forms an oriented one-dimensional
 foliation \(\mathcal{F}_{\xi }\) on \(M\), which is called the <em>Reeb
-foliation</em>. The first condition in (\ref{1.3}) implies that \(\xi \) is
+foliation</em>. The first condition in (<a class="wiki-crossref" data-wiki-ref="1.3" href="#">??</a>) implies that \(\xi \) is
 transversal to \(H \). Therefore \(T(M)\) admits a decomposition</p>
 <p>\begin{equation}
 T(M)=H \oplus V_{\xi },  \label{1.4}
@@ -137,7 +207,7 @@ T(M)=H \oplus V_{\xi },  \label{1.4}
 foliation theory, \(H \) and \(V_{\xi }\) are called the horizontal and
 vertical distributions respectively. Let \(\pi _{H}:TM\rightarrow H \) and \( 
 \pi _{V}:TM\rightarrow V_{\xi }\) be the natural projections associated with
-the direct sum decomposition (\ref{1.4}). In terms of \(\theta \), the Levi
+the direct sum decomposition (<a class="wiki-crossref" data-wiki-ref="1.4" href="#">??</a>). In terms of \(\theta \), the Levi
 form \(L_{\theta }\) can be extended to a Riemannian metric</p>
 <p>\begin{equation}
 g_{\theta }=L_{\theta }(\pi _{H},\pi _{H})+\theta \otimes \theta,  \label{1.5}
@@ -178,7 +248,7 @@ for any \(X\in \Gamma (TM)\);</p>
 \end{aligned}  \]</p>
 <p>for any \(Z,W \in H^{1,0}(M)\). See [<a href="#ref-dongren2024dgpseudo">dongren2024dgpseudo</a>] for more information.</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:121:1" title="Edit remark at source line 121" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>One has</p>
 <p>\[ T^{\nabla }(X,Y) = 2 g_{\theta }(JX,Y) \xi +\theta (X) \tau Y-\theta (Y) \tau X,  \]</p>
@@ -229,7 +299,7 @@ the frame field. Since</p>
 \overline{i}}\theta ^{j}\otimes \eta _{\overline{i}}.  \label{1.10}
 \end{eqnarray}</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:174:1" title="Edit remark at source line 174" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Set</p>
 <p>\[ A(X,Y)=g_{\theta }(\tau X,Y) \]</p>
@@ -263,9 +333,9 @@ d\theta _{j}^{i} &amp;=&amp;-\theta _{k}^{i}\wedge \theta _{j}^{k}+\Pi _{j}^{i}
 \bar{l}}^{i}\) are the components of curvature tensor of the
 Tanaka-Webster connection.</p>
 <div class="theorem lemma">
-<header>Lemma ([<a href="#ref-CDRY2019onharm">CDRY2019onharm</a>])</header>
+<header>Lemma ([<a href="#ref-CDRY2019onharm">CDRY2019onharm</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:209:1" title="Edit lemma at source line 209" aria-label="Edit lemma in VS Code">Edit</a>
 <section>
-<p>\label{lemDiv}
+<p><span class="wiki-label" data-wiki-label="lemDiv"></span>
 Let \((M^{2m+1},H,J,\theta )\) be a pseudo-Hermitian manifold with
 Tanaka-Webster connection \(\nabla \). Let \(X\) and \(\rho \) be a vector field
 and \(1\)-form on \(M\) respectively. Then</p>
@@ -278,7 +348,7 @@ the divergence and codifferential respectively.</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Relation with Levi-Civita connection)</header>
+<header>Proposition (Relation with Levi-Civita connection)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:222:1" title="Edit proposition at source line 222" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Let \(\nabla ^{\theta }\) be the Levi-Civita connection of Webster metric, then</p>
 <p>\begin{equation}
@@ -301,22 +371,22 @@ where</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:244:1" title="Edit remark at source line 244" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>One has</p>
 <p>\[ \nabla ^{\theta }_{\xi }\xi =0, \qquad \di \xi =0. \]</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:249:1" title="Edit proposition at source line 249" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>The Levi distribution \(H(M)\) is minimal and</p>
 <p>\[ \trace (\tau) =0. \]</p>
 </section>
 </div>
-<h1>Divergence formulas</h1>
+<div class="wiki-heading-with-edit"><h1>Divergence formulas</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:254:1" title="Edit section at source line 254" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:255:1" title="Edit definition at source line 255" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Define the divergence of a vector \(X \in TM\)  by</p>
 <p>\[ \di (X) \Psi  = \mathcal{L}_{X} \Psi ,\]</p>
@@ -324,7 +394,7 @@ where</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:261:1" title="Edit remark at source line 261" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>By \eqref{15} and metricity of \(\nabla \),</p>
 <p>\[ \begin{aligned}
@@ -339,14 +409,14 @@ where</p>
 </section>
 </div>
 <div class="theorem exercise">
-<header>Exercise</header>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:273:1" title="Edit exercise at source line 273" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>For any complex vector \(Z \in T_{\cc}(M)\),</p>
 <p>\[ \overline{\di (Z)}=\di (\bar{Z}) .\]</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:277:1" title="Edit definition at source line 277" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Define  the divergence of a 1-form \(\sigma \) by</p>
 <p>\[ \di (\sigma )=\di (X_{\sigma }), \]</p>
@@ -354,7 +424,7 @@ where</p>
 </section>
 </div>
 <div class="theorem exercise">
-<header>Exercise</header>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:282:1" title="Edit exercise at source line 282" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>For any \( Z=Z^{i }e_{i }\in H^{1,0}(M)\), we have</p>
 <p>\[ \di (Z)=e_{i }(Z^{i })+Z^{j } \theta_{j }^{i }(e_{i }). \]</p>
@@ -363,7 +433,7 @@ where</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:289:1" title="Edit definition at source line 289" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Sub-Laplacian for a smooth function \(u\)  is defined by</p>
 <p>\[ \Delta _b(u):=\di(\nabla^{h} u)=u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j },\]</p>
@@ -373,14 +443,14 @@ where</p>
 <p>Note that</p>
 <p>\[ \nabla ^h u = u_{i} e_{\bar i}+u_{\bar i} e_{i}. \]</p>
 <div class="theorem exercise">
-<header>Exercise</header>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:296:1" title="Edit exercise at source line 296" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>The usual Laplacian is given by</p>
 <p>\[ \Delta  u= u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j }+u_{00}. \]</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Stokes&#x27; formulas)</header>
+<header>Proposition (Stokes&#x27; formulas)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:301:1" title="Edit proposition at source line 301" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>If at least one of the smooth functions \(a,b\) has compact support, then</p>
 <p>\begin{equation}\label{eq:laplacian-symmetry}
@@ -393,7 +463,7 @@ where</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:312:1" title="Edit proposition at source line 312" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Put \(D=\nabla ^{\theta }\) and</p>
 <p>\begin{equation}\label{eq:Z-def}
@@ -410,9 +480,9 @@ where</p>
 		\end{equation}</p>
 </section>
 </div>
-<h1>Curvatures</h1>
+<div class="wiki-heading-with-edit"><h1>Curvatures</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:329:1" title="Edit section at source line 329" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:333:1" title="Edit definition at source line 333" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>The Ricci tensor of the Webster connection is defined by</p>
 <p>\[

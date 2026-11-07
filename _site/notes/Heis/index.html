@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "Span": "\\operatorname{span}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle"
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -58,10 +128,10 @@
     <main>
       <nav><a href="/notes/">All notes</a></nav>
       <h1>Heisenberg Groups</h1>
-      <article><h1>Heisenberg Groups</h1>
-<h2>The CR Structures on the Heisenberg Group</h2>
+      <article><div class="wiki-heading-with-edit"><h1>Heisenberg Groups</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h2>The CR Structures on the Heisenberg Group</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:5:1" title="Edit section at source line 5" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem definition">
-<header>Definition (cf. [<a href="#ref-folland_estimates_1974">folland_estimates_1974</a>])</header>
+<header>Definition (cf. [<a href="#ref-folland_estimates_1974">folland_estimates_1974</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:6:1" title="Edit definition at source line 6" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>The <strong>Heisenberg group</strong> (of degree \( n \)) is the Lie group \( H_n \) whose underlying manifold is \( \mathbb{C}^n \times \mathbb{R} \) with coordinates \( (z_1, \ldots, z_n, t) \equiv (z, t) \) and whose group law is given by</p>
 <p>\[
@@ -78,13 +148,13 @@ X_j = \frac{\partial}{\partial x_j} + 2y_j \frac{\partial}{\partial t}, \quad Y_
 [Y_j, X_k] = 4\delta_{jk} T, \quad [X_j, X_k] = [Y_j, Y_k] = [X_j, T] = [Y_j, T] = 0.
 \end{equation}</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:24:1" title="Edit remark at source line 24" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Note that these are an abstract form of the commutation relations for the quantum-mechanical position and momentum operators in \(n\)-space; hence the name ``Heisenberg group''.</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:27:1" title="Edit remark at source line 27" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>If one use</p>
 <p>\[X_j = \frac{\partial}{\partial x_j} + \frac{1}{2}y_j \frac{\partial}{\partial t}\]</p>
@@ -109,7 +179,7 @@ Z_j = \frac{1}{2}(X_j - iY_j) = \frac{\partial}{\partial z_j} + i \bar{z}_j\frac
 \]</p>
 <p>Thus \( H_n \) is <strong>strongly pseudoconvex</strong>.</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:52:1" title="Edit remark at source line 52" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>\(\eqref{eq5}\) is equal to (cf. [<a href="#ref-dragomir_differential_2006">dragomir_differential_2006</a>])</p>
 <p>\begin{equation}
@@ -121,7 +191,7 @@ d\theta_0 = 2i \sum_{j=1}^n dz^j \wedge d\overline{z}^j.
 \end{equation}</p>
 </section>
 </div>
-<h2>A geometrical interpretation</h2>
+<div class="wiki-heading-with-edit"><h2>A geometrical interpretation</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:63:1" title="Edit section at source line 63" aria-label="Edit section in VS Code">Edit</a></div>
 <p>This has the following geometrical interpretation due to Pyatetski-Shapiro. Set</p>
 <p>\[
 D_{n+1} = \left\{ \zeta \in \mathbb{C}^{n+1} : \sum_{j=1}^n |\zeta_j|^2 - \Im  \zeta_0 &lt; 0 \right\},
@@ -142,16 +212,16 @@ M_n = \partial D_{n+1} = \left\{ \zeta \in \mathbb{C}^{n+1} : \sum_{j=1}^n |\zet
 \]</p>
 <p>Under this identification, the CR structure on \(H_n\) described above coincides with the CR structure on \(M_n\) induced from \(\mathbb{C}^{n+1}\). (Indeed, one easily checks that the holomorphic subspaces at the origin are the same since \(M_n\) is tangent to the hyperplane \(\zeta_0 = 0\) there. But the CR structure on \(H_n\) is left-invariant, and the action of \(H_n\) on \(M_n\), being holomorphic, preserves the CR structure on \(M_n\); hence the holomorphic subspaces coincide everywhere.)</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:84:1" title="Edit remark at source line 84" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>The action is <strong>simply transitive</strong> (or sharply transitive, or regular) if it is both transitive and free (cf. \href{https://en.wikipedia.org/wiki/Group_action}{wikipedia}).</p>
 </section>
 </div>
-<h2>Another useful identification</h2>
+<div class="wiki-heading-with-edit"><h2>Another useful identification</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:88:1" title="Edit section at source line 88" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Another useful identification is that of the Heisenberg group and the sphere \(S^{2n+1} \subset \mathbb{C}^{n+1}\) minus a point.</p>
 <p>Let \(\Omega \subset \mathbb{C}^{N}\) be a domain with smooth boundary \(\partial \Omega\), i.e., there is an open neighborhood \(U\) of the closure \(\overline{\Omega}\) in \(\mathbb{C}\) and a \(C^\infty\) function \(\rho \colon U \rightarrow \mathbb{R}\) such that \(\Omega = \{ x \in U \colon \rho(x) &gt; 0\}\) (and \(\partial \Omega = \{ x \in U \colon \rho(x) = 0\}\)) and \((D\rho)_x \neq 0\) at any \(x \in \partial \Omega\). Let \(T_{1,0}(\partial \Omega)\) be the induced CR structure on \(\partial \Omega\), as a real hypersurface in \(\mathbb{C}^N\). Let \(\theta\) be the pullback to \(\partial \Omega\) of the real \(1\)-form \(i(\bar{\partial} - \partial)\rho\) on \(U\). Then \(\theta\) is a pseudo-Hermitian structure on \((\partial \Omega, T_{1,0}(\partial \Omega))\). As we just saw, the boundary of the Siegel domain is a strictly pseudoconvex CR manifold.</p>
 <div class="theorem proof">
-<header>Proof</header>
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:93:1" title="Edit proof at source line 93" aria-label="Edit proof in VS Code">Edit</a>
 <section>
 <p>From</p>
 <p>\[\partial\rho = \sum_{i=1}^{n+1}\frac{1}{2} \left( \frac{\partial}{\partial x_j} - i\frac{\partial}{\partial y_j} \right)\rho (dx_j+idy_j)
@@ -168,7 +238,7 @@ M_n = \partial D_{n+1} = \left\{ \zeta \in \mathbb{C}^{n+1} : \sum_{j=1}^n |\zet
 <p>Also, the sphere \(S^{2n+1} \subset \mathbb{C}^{2n+1}\) is a strictly pseudoconvex manifold, since the boundary of the unit ball \(B_{n+1} = \{ z \in \mathbb{C}^{n+1} \colon |z| &lt; 1 \}\), and the (restriction to \(S^{2n+1} \setminus \{p\}\) of the) Cayley transform (cf. Friedrich Haslinger's notes.)</p>
 <p>\[\Phi(z_1, \ldots, z_n,z_{n+1}) = (w_1, \ldots, w_n, w_{n+1}), \]</p>
 <p>\(\text{ where } w_j = \frac{z_j}{(1 + z_n)} \text{ for } 1 \leq j \leq n \text{ and } w_{n+1} = i\frac{(1 - z_{n+1})}{(1 + z_{n+1})} .\) This gives a CR isomorphism \(S^{2n+1} \setminus \{p\} \cong \partial \Omega_{2n+1}\) (and thus a CR isomorphism \(S^{2n+1} \setminus \{p\} \cong H_n\)).</p>
-<h2>A left-invariant \(k\)-strongly pseudoconvex CR structure</h2>
+<div class="wiki-heading-with-edit"><h2>A left-invariant \(k\)-strongly pseudoconvex CR structure</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:112:1" title="Edit section at source line 112" aria-label="Edit section in VS Code">Edit</a></div>
 <p>We can also define a left-invariant CR structure on \(H_n\) which is \(k\)-strongly pseudoconvex, \(\frac{n}{2} \leq k \leq n\), by taking \(T_{1,0}\) to be the bundle spanned by \(Z_1, \ldots, Z_k, \overline{Z}_{k+1}, \ldots, \overline{Z}_n\). A few words of explanation about this will be helpful. Let us take \((w_1, \ldots, w_n, t)\) as new coordinates on \(H_n\), where \(w_j = z_j, 1 \leq j \leq k\), and \(w_j = \overline{z}_j, k + 1 \leq j \leq n\). Set \(\varepsilon_j = 1\) or \(-1\) according as \(j \leq k\) or \(j &gt; k\), and define the Hermitian form \(Q_k\) on \(\mathbb{C}^n\) by</p>
 <p>\[
 Q_k(w, w') = \sum_{j=1}^n \varepsilon_j w_j \overline{w}'_j.
@@ -190,10 +260,10 @@ W_j = \frac{\partial}{\partial w_j} + \varepsilon_j i\overline{w}_j \frac{\parti
 (w, t) \mapsto (t + i Q_k(w, w), w_1, \ldots, w_n)
 \]</p>
 <p>which preserves the CR structure.</p>
-<h2>Unsolvable Operators</h2>
+<div class="wiki-heading-with-edit"><h2>Unsolvable Operators</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:136:1" title="Edit section at source line 136" aria-label="Edit section in VS Code">Edit</a></div>
 <p>At this point we should also mention that, in the case \(n=1\), the vector field \(\bar{Z} = (\partial/\partial z) - i z (\partial/\partial t)\) which spans \(T_{0,1}\) is the unsolvable operator of H. Lewy. Indeed, Lewy was led to this phenomenon by considering boundary values of holomorphic functions on \(D_2\).</p>
 <div class="theorem theorem">
-<header>Theorem (cf. [<a href="#ref-john_partial_1982">john_partial_1982</a>])</header>
+<header>Theorem (cf. [<a href="#ref-john_partial_1982">john_partial_1982</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Heis.wiki:138:1" title="Edit theorem at source line 138" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \(L\) denote the differential operator acting on functions \(u(x,y,z)\) defined by</p>
 <p>\begin{equation}

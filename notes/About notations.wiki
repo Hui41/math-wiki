@@ -1,0 +1,367 @@
+\title{About notations}
+
+In this section, we fix some notations and normalizations to avoid misleading. 
+When we have to use different conventions, we give an explanation. 
+
+
+\section{Wegde products}
+
+Following John M Lee's book, we define
+	\begin{equation*}
+		\text { Alt } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right), \text { Sym } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}{ }^{\sigma} \alpha,
+	\end{equation*}
+and    
+	\begin{equation*}
+		\omega \wedge \eta=\frac{(k+l) !}{k ! l !} \operatorname{Alt}(\omega \otimes \eta), \quad  \alpha \beta= \operatorname{Sym}(\alpha \otimes \beta).
+	\end{equation*}
+Then one can show that     
+		\begin{equation}
+		\Phi \wedge\Psi \wedge \eta=\frac{(r+s+t) !}{r ! s ! t !} \operatorname{Alt}(\Phi \otimes \Psi \otimes \eta).
+	\end{equation}
+		\begin{equation}
+		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! \operatorname{Alt}\left(\omega^{i_{1}} \otimes \omega^{i_{2}} \otimes \cdots \otimes \omega^{i_{r}}\right).
+	\end{equation}
+
+The interior product and the exterior product are     
+\begin{lemma}
+\label{le:int}
+Let \(V\) be a finite-dimensional vector space and \(v\in V\).
+    \begin{enumerate}[(a)]
+    \item
+    \[
+    i_v\circ i_v=0.
+    \]
+
+    \item If \(\omega\in\Lambda^k(V^*)\) and \(\eta\in\Lambda^l(V^*)\), then
+    \[
+    i_v(\omega\wedge\eta)
+    =
+    (i_v\omega)\wedge\eta
+    +
+    (-1)^k\omega\wedge(i_v\eta).
+    \]
+    \end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+\label{th:ext}    
+Suppose \(M\) is a smooth manifold with or without boundary. There are unique operators
+\[
+d:\Omega^k(M)\to \Omega^{k+1}(M)
+\]
+for all \(k\), called exterior differentiation, satisfying the following four properties:
+
+\begin{enumerate}[(i)]
+    \item \(d\) is linear over \(\mathbb{R}\).
+
+    \item If \(\omega\in\Omega^k(M)\) and \(\eta\in\Omega^l(M)\), then
+    \[
+    d(\omega\wedge\eta)
+    =
+    d\omega\wedge\eta
+    +
+    (-1)^k\omega\wedge d\eta.
+    \]
+
+    \item
+    \[
+    d\circ d\equiv 0.
+    \]
+
+    \item For \(f\in\Omega^0(M)=C^\infty(M)\), \(df\) is the differential of \(f\), given by
+    \[
+    df(X)=Xf.
+    \]
+\end{enumerate}
+\end{theorem}
+
+
+\begin{remark}
+	Compare with alt convention $\bar\wedge, \bar d$ of Kobayashi-Nomizu's book:
+	\begin{equation*}
+	\eta_{(k)}	\bar \wedge \omega_{(l)} =\operatorname{Alt}(\omega \otimes \eta), \quad \eta	\bar \wedge \omega =\frac{k!l!}{(k+l)!} \eta \wedge \omega, \quad \bar d \eta =\frac{1}{k+1} d \eta,
+	\end{equation*}
+	and
+	\begin{equation}
+		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! 
+		\omega^{i_{1}}\bar \wedge \omega^{i_{2}} \bar \wedge \cdots \bar \wedge \omega^{i_{r}}.
+	\end{equation}
+    The Alt convention  is more common in complex differential geometry.
+
+    When the wedge product is defined using the Alt convention, interior multiplication
+of a vector with a $k$-form has to be defined with an extra factor of $k$:
+\[
+\bar{\iota}_v\omega(w_1,\ldots,w_{k-1})
+=
+k\,\omega(v,w_1,\ldots,w_{k-1}),
+\]
+and the exterior differentiation is 
+$$ \bar{d} \omega = \frac{1}{k+1} d \omega . $$ 
+Under these conventions, the formulas in Lemma \ref{le:int} and Theorem \ref{th:ext} are still valid.
+\end{remark}
+
+\section{Curvatures}
+
+\subsection{Christoffel symbols}
+Let $\nabla $ be Levi-Civita connection. 
+Set
+$$\nabla_{\frac{\partial }{\partial x^i}} 
+\frac{\partial }{\partial x^j} := \Gamma_{i j}^{k} \frac{\partial }{\partial x^k},$$
+then
+\begin{equation}
+	\boxed{\Gamma_{i j}^{k}=\frac{1}{2} g^{k \ell}\left(\frac{\partial}{\partial x^{i}}
+	g_{j \ell}+\frac{\partial}{\partial x^{j}} g_{i \ell}-\frac{\partial}{\partial x^{\ell}} 
+	g_{i j}\right).}
+\end{equation}
+Change of coordinates:
+\begin{equation*}
+	\Gamma_{i j}^{k}=\tilde{\Gamma}_{p q}^{r} \frac{\partial \tilde{x}^{p}}{\partial x^{i}}
+	\frac{\partial \tilde{x}^{q}}{\partial x^{j}} \frac{\partial x^{k}}{\partial 
+		\tilde{x}^{r}}+\frac{\partial^{2} \tilde{x}^{r}}{\partial x^{i} \partial x^{j}} 
+	\frac{\partial x^{k}}{\partial \tilde{x}^{r}}.
+\end{equation*}
+\begin{equation*}
+	g_{i j}=\tilde{g}_{p q} \frac{\partial \tilde{x}^{p}}{\partial x^{i}} 
+	\frac{\partial \tilde{x}^{q}}{\partial x^{j}}.
+\end{equation*}
+When using moving frame, given $\tilde{E}_{i}=A_{i}^{j} E_{j}$, then
+\begin{equation*}
+	\tilde{\Gamma}_{i j}^{k}=\left(A^{-1}\right)_{p}^{k} A_{i}^{q} A_{j}^{r} 
+	\Gamma_{q r}^{p}+\left(A^{-1}\right)_{p}^{k} A_{i}^{q} E_{q}\left(A_{j}^{p}\right).
+\end{equation*}
+
+Let $\varphi:N\to M$ be a immersion, then
+\begin{equation*}
+	\Gamma\left(\varphi^{*} g\right)_{\alpha \beta}^{\gamma} \frac{\partial \varphi^{k}}{\partial y^{\gamma}}=\left(\Gamma_{i j}^{k} \circ \varphi\right) \frac{\partial \varphi^{i}}{\partial y^{\alpha}} \frac{\partial \varphi^{j}}{\partial y^{\beta}}+\frac{\partial^{2} \varphi^{k}}{\partial y^{\alpha} \partial y^{\beta}}.
+\end{equation*}
+In moving frames:
+\begin{equation*}
+\Gamma_{k j}^i=\omega^i\left(\nabla_{e_k} e_j\right)=\omega_j^i\left(e_k\right) .
+\end{equation*}
+Change of frames: $\bar{e}_i=a_i^ke_k,$ and $(b_i^j)$ inverts $(a_i^j)$ (thus $\bar{\omega}^i=b^i_j \omega^j$, $b_k^j a^k_i=\delta_{ij}$ and $b_j^k a^i_k=\delta_{ij}$), then
+\begin{equation}
+\overline{\omega_j^i}=\left(a_j^l \omega_l^k+d a_j^k\right) b_k^i .
+\end{equation}
+
+\subsection{Riemannian Curvature tensor}
+We adopt the following convention:
+\begin{equation}
+   \boxed{ \begin{aligned}
+        &R(X, Y) Z=\nabla_{X} \nabla_{Y} Z-\nabla_{Y} \nabla_{X} Z-\nabla_{[X, Y]} Z,\\
+        &R(X, Y, Z, W)=\langle R(Z,W) Y, X\rangle.
+    \end{aligned}}
+\end{equation}
+Local coefficients are
+\begin{equation}
+\begin{aligned}
+    &R(e_k,e_l)e_j=R_{jkl}^h e_h,\\
+    &R_{ijkl}=R(e_i,e_j,e_k,e_l)=g_{ih}R_{jkl}^h.
+\end{aligned} 
+\end{equation}
+Torsion tensor:
+\begin{equation*}
+    T(X,Y)=\nabla_XY -\nabla_YX-[X,Y].
+\end{equation*}
+\begin{remark}
+    Sectional, Ricci, scalar curvature:
+    $$ \begin{aligned}
+    &K(u, v)=\frac{R(u, v, u, v)}{\|u \wedge v\|^{2}}, \\
+    & \ricci(X, Y)=\trace(Z \rightarrow R(Z,X) Y)=\la R(e_i,X)Y,e_i \ra=R(X,e_i,Y,e_i),\\
+    &\sc=\trace \ricci=R_{i}^{i}=g^{i j} R_{i j}.
+\end{aligned} $$
+\end{remark}
+
+Note that for a linear transformation $A=(a_{j}^{i})$,
+\[
+\begin{pmatrix}
+\widetilde u\\
+\widetilde v
+\end{pmatrix}
+=A\begin{pmatrix}
+u\\
+v
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_1^1&a_2^1\\
+a_1^2&a_2^2
+\end{pmatrix}
+\begin{pmatrix}
+u\\
+v
+\end{pmatrix}.
+\]
+we have 
+\begin{equation*}
+    \|\tilde{u} \wedge \tilde{v}\|^{2}=\left(
+        \operatorname{det}\left(A\right)\right)^{2}\|u \wedge v\|^{2},\quad
+        R(\tilde{u}, \tilde{v}, \tilde{u}, \tilde{v})=\left(\operatorname{det}
+        \left(A\right)\right)^{2} R(u, v, u, v).
+\end{equation*}
+
+\begin{proposition}
+    For Levi-Civita connection, we have the following curvature symmetries:
+    \begin{equation}
+\left\{\begin{aligned}
+& \text { (i) } R(X, Y) Z+R(Y, X) Z=0, \\
+& \text { (ii) } R(X, Y) Z+R(Y, Z) X+R(Z, X) Y=0, \\
+& \text { (iii) } R(X, Y, Z, W)=-R(Y, X, Z, W) =-R(X, Y, W, Z), \\
+& \text { (iv) } R(X, Y, Z, W)=R(Z, W, X, Y) ,
+\end{aligned}\right.
+\end{equation}
+or
+\begin{equation}
+\left\{\begin{array}{l}
+\text { (i) } R_{j k l}^i+R_{j l k}^i=0, \\
+\text { (ii) } R_{j k l}^i+R_{k l j}^i+R_{i j k}^i=0, \\
+\qquad R_{i j k l}+R_{i k l j}+R_{i j k k}=0, \\
+\text { (iii) } R_{i j k l}=-R_{j i k l}=-R_{i j k l}, \\
+\text { (iv) } R_{i j k l}=R_{k l i j} .
+\end{array}\right.
+\end{equation}
+
+Moreover, the Second Bianchi identity holds:
+\begin{equation}
+\begin{gathered}
+\nabla R(V, W, X, Y ; Z)+\nabla R(V, W, Y, Z ; X)+ 
+\nabla R(V, W, Z, X ; Y)=0,
+\end{gathered}
+\end{equation}
+or
+\begin{equation}
+    R_{ijkl,h}+R_{ijlh,k}+R_{ijhk,l}=0.
+\end{equation}
+\end{proposition}
+
+In a local coordinate, we have
+$$ \begin{aligned}
+	R_{j k l}^i & =\Omega_j^i\left(\frac{\partial}{\partial x^k}, \frac{\partial}{\partial x^l}\right) \\
+	& =\boxed{\frac{\partial \Gamma_{l j}^i}{\partial x^k}-\frac{\partial \Gamma_{k j}^i}{\partial x^l}+\Gamma_{l j}^h \Gamma_{k h}^i-\Gamma_{k j}^h \Gamma_{l h}^i} .
+	\end{aligned} $$
+
+\subsection{Covariant derivatives}
+Write an $(r,s)$-type tensor $\phi \in T_{s}^{r}(M)$ as 
+\begin{equation}
+    \phi=\phi_{j_1 \cdots j_i}^{i_i \cdots i_s} \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes d x^{j_1} \otimes \cdots \otimes d x^{j_s}. 
+\end{equation}
+Given a linear connection $\nabla $, we wrtie the covariant derivate of $\phi $ as  
+\begin{equation}
+    \nabla_X \phi=X^k \phi_{j_1 \cdots  j_s,k}^{i_1 \cdots i_r} \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes d x^{j_1} \otimes \cdots \otimes d x^{j_s}.
+\end{equation}
+Hence 
+\begin{equation}
+    \phi_{j_{1} \cdots j_{s, k}}^{i_{1} \cdots i_{r}}= \frac{\partial \phi_{j_{1} \cdots j_{s}}^{i_{1} \cdots i_{r}}}{\partial x^{k}}+\sum_{t=1}^{r} \Gamma_{kl}^{i_{t}} \phi_{j_{1} \cdots j_{s}}^{i_{1} \cdots i_{t-1} l i_{t+1} \cdots i_{r}}-
+    \sum_{t=1}^{s} \Gamma_{k j_{t}}^{l} \phi_{j_{1} \cdots j_{t-1}l j_{t+1} \cdots j_{s}}^{i_{1} \cdots i_{r}},
+\end{equation}
+\begin{equation}
+\nabla \phi=\phi_{j_1 \cdots j_j, k}^{i_1 \cdots i_r} d x^k \otimes \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes d x^{j_1} \otimes \cdots \otimes d x^{j_1}.
+\end{equation}
+Second derivative for a tensor $\phi:$
+\begin{equation}
+\nabla^2 \phi(\cdots ; X, Y)=\left(\nabla_Y\left(\nabla_X \phi\right)\right)(\cdots)-\nabla_{\nabla_Y X} \phi(\cdots).
+\end{equation}
+
+\begin{proposition}[Ricci identity]
+    \begin{equation}
+\begin{aligned}
+& \nabla^2 \phi(\cdots ; X, Y)-\nabla^2 \phi(\cdots ; Y, X) \\
+= & R(Y, X) \phi(\cdots)=-R(X, Y) \phi(\cdots) ,
+\end{aligned}
+\end{equation}
+under frames:
+\begin{equation}
+\begin{aligned}
+& \phi_{j_1 \cdots j_s, k l}^{i_1 \cdots i_r}-\phi_{j_1 \cdots j_s, l k}^{i_1 \cdots i_r} \\
+= & \sum_{\alpha=1}^s \phi_{j_1 \cdots j_{\alpha-1} h j_{\alpha+1} \cdots j_s}^{i_1 \cdots i_r} R_{j_\alpha k l}^h-  \sum_{\beta=1}^r \phi_{j_1 \cdots j_s}^{i_1 \cdots i_{\beta-1} h i_{\beta+1} \cdots i_r} R_{h k l}^{i_\beta} .
+\end{aligned}
+\end{equation}
+\end{proposition}
+
+
+Set
+\begin{equation}
+\nabla_X e_i=\omega_i^j(X) e_j, \quad \nabla_X \omega^i=-\omega_j^i(X) \omega^j,
+\end{equation}
+thus the Christoffel symbols are given by
+$$ \Gamma _{ji}^{k}= \omega _{i}^{k}(e_{j}). $$
+Define
+\begin{equation}
+\begin{aligned}
+& D \phi_{j_1 \cdots j_s}^{i_1 \cdots i_r} :=\phi_{j_1 \cdots j_s, k}^{i_1 \cdots i_r} \omega^k=d \phi_{j_1 \cdots j_s}^{i_1 \cdots i_r}+\sum_{t=1}^{r} \phi_{j_1 \cdots j_s}^{i_1 \cdots i_{t-1} l i_{t+1} \cdots i_r} \omega_l^{i_t}- \sum_{t=1}^s \phi_{j_1 \cdots j_{t-1} l j_{t+1} \cdots j_s}^{i_1 \cdots i_{r}} \omega^l_{j_t},
+\end{aligned}
+\end{equation}
+then
+\begin{equation}
+\nabla \phi=\left(D \phi_{j_1 \cdots j_s}^{i_1 \cdots i_r}\right) \otimes e_{i_1} \otimes \cdots \otimes e_{i_1} \otimes \omega^{j_1} \otimes \cdots \otimes \omega^{j_s}.
+\end{equation}
+
+\subsection{Connection forms}
+Let 
+\begin{gather*}
+     T(X,Y)=T^i(X,Y)e_i\\
+    R(X,Y)e_i=\Omega^j_i(X,Y)e_j
+\end{gather*}
+
+\begin{proposition}[Cartan structure equations]
+    \begin{gather*}
+    d \omega^i=-\omega^i_k \wedge \omega^k+T^i\\
+    d \omega_j^i=-\omega^i_k \wedge \omega^k_j+\Omega^i_j.
+\end{gather*}
+In particular, when $\{e_i\}$ is orthonormal and the connection $\nabla$ is metric, we have
+\begin{equation*}
+    \omega^i_j+\omega^j_i=0.
+\end{equation*}
+\end{proposition}
+
+
+
+Let
+\begin{equation*}
+T^i=\frac{1}{2} T_{j k}^i \omega^j \wedge \omega^k, \quad T_{j k}^i=-T_{k j}^i,
+\end{equation*}
+\begin{equation*}
+\Omega_j^i=\frac{1}{2} R_{j k l}^i \omega^k \wedge \omega^l, \quad R_{j k l}^i=-R_{j l k}^i.
+\end{equation*}
+
+\begin{proposition}
+  For a linear connection under a coordinate, we have 
+\begin{align*}
+    T_{j k}^i &=\Gamma_{j k}^i-\Gamma_{k j}^i \\
+    R_{j k l}^i & =\Omega_j^i\left(\frac{\partial}{\partial x^k}, \frac{\partial}{\partial x^l}\right) \\
+& =\frac{\partial \Gamma_{l j}^i}{\partial x^k}-\frac{\partial \Gamma_{k j}^i}{\partial x^l}+\Gamma_{l j}^h \Gamma_{k h}^i-\Gamma_{k j}^h \Gamma_{l h}^i.
+\end{align*}
+\end{proposition}
+
+
+\begin{remark}
+	On an almost complex manifold $M^{2n}$, we set
+	$$\varphi^\alpha =\omega ^\alpha +i \omega  ^{n+\alpha} , \quad \psi^\alpha _\beta=\omega ^\alpha _\beta +i \omega ^\alpha _{n+\beta}, \quad \alpha ,\beta =1,...,n ;$$ 
+$$ \Phi^\alpha =T^\alpha +i T^{n+\alpha },\quad \Psi^{\alpha }_\beta=\Omega ^\alpha _\beta +i \Omega ^\alpha _{n+\beta}, \quad \alpha ,\beta =1,...,n ;$$
+then
+\begin{gather*}
+    d \varphi^\alpha=-\psi^\alpha _\beta \wedge \varphi^\beta+\Phi^\alpha\\
+    d \psi^\alpha _\beta=-\psi^\alpha _\gamma  \wedge \psi^\gamma_\beta+\Psi^{\alpha }_\beta.
+\end{gather*}
+Set
+$$ z_{\alpha }=\frac{1}{2}(e_\alpha -iJe_{\alpha }), $$
+and denote $Je_\alpha =e_{n+\alpha }$, then $\{z_\alpha \}$ is the dual of $\{\varphi^\alpha \}$.   When $M$ is K\"ahlerian, see [[Kaeh]]. 
+ \end{remark}
+
+\begin{example}[Pull-backs]
+Let $y=y(x): M\to N$ be a smooth map. Let $dy=y_\alpha^i dx^{\alpha}\otimes \frac{\partial }{\partial y^i},\nabla dy=y_{\alpha \beta}^i dx^{\beta}\otimes dx^{\alpha}\otimes \frac{\partial }{\partial y^i}$. 
+Then
+\begin{equation*}
+    y_\alpha^i=\frac{\partial y^i}{\partial x^\alpha} ; \quad y_{\alpha \beta}^i=\frac{\partial^2 y^i}{\partial x^\alpha \partial x^\beta}- ^M\Gamma_{\alpha \beta}^\gamma y_\gamma^i+ ^N\Gamma_{j k}^i y_\alpha^j y_{\beta}^k.
+\end{equation*}
+Similarly,
+\begin{equation}
+    \boxed{
+	f_{i j k}^I-f_{i k j}^I=f_l^I R_{ijk}^l-f_i^J f_j^K f_k^L \tilde{R}_{J K L}^I.}
+\end{equation}
+\end{example}	
+	
+
+
+
+\section{Hermitian metrics}
+

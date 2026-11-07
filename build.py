@@ -94,10 +94,22 @@ def macros_from(src):
                 continue
         chunks.append(line)
     return '\n'.join(chunks), macros
+# Load macros shared by all Wiki pages.
+GLOBAL_MACROS = {}
 
+global_macros_file = ROOT / "macros.tex"
+
+if global_macros_file.exists():
+    _, GLOBAL_MACROS = macros_from(
+        global_macros_file.read_text(encoding="utf-8")
+    )
 def compile_page(p):
     src=p['src']
     src,macros=macros_from(src)
+
+    # Global macros apply to every page.
+    # Page-specific macros take precedence.
+    macros = {**GLOBAL_MACROS, **macros}
     src=re.sub(r'^\\title\{[^\n]*\}\s*$', '',src,flags=re.M)
     src=re.sub(r'^\\theoremstyle\{[^\n]*\}\s*$', '',src,flags=re.M)
     custom_names = dict(re.findall(r'^\\newtheorem\{([a-zA-Z]+)\}(?:\[[^\]]+\])?\{([^\n{}]+)\}\s*$', src, flags=re.M))
@@ -311,6 +323,48 @@ def compile_page(p):
         src
     )
 
+    # ==========================================
+    # Cross-references for sections and
+    # theorem-like environments.
+    #
+    # Mathematical environments were already
+    # protected as tokens, so MathJax labels
+    # remain untouched.
+    # ==========================================
+
+    def wiki_label(match):
+        key = match.group(1).strip()
+
+        return (
+            '<span class="wiki-label" '
+            'data-wiki-label="' +
+            html.escape(key, quote=True) +
+            '"></span>'
+        )
+
+    def wiki_ref(match):
+        key = match.group(1).strip()
+
+        return (
+            '<a class="wiki-crossref" '
+            'data-wiki-ref="' +
+            html.escape(key, quote=True) +
+            '" href="#">??</a>'
+        )
+
+    src = re.sub(
+        r'\\label\{([^{}\n]+)\}',
+        wiki_label,
+        src
+    )
+
+    src = re.sub(
+        r'\\ref\{([^{}\n]+)\}',
+        wiki_ref,
+        src
+    )
+
+
     src=re.sub(r'\\(?:emph|textit)\{([^{}]*)\}',lambda m:'*'+m.group(1)+'*',src)
     src=re.sub(r'\\textbf\{([^{}]*)\}',lambda m:'**'+m.group(1)+'**',src)
     # Enumerate: preserve numbering across display equations.
@@ -358,6 +412,42 @@ def compile_page(p):
         r'\\begin\{enumerate\}(?:\[([^\]]*)\])?'
         r'(.*?)\\end\{enumerate\}',
         render_enumerate,
+        src,
+        flags=re.S
+    )
+
+    # Itemize: unordered lists with display math support.
+    def render_itemize(match):
+        body = match.group(1)
+
+        parts = re.split(
+            r'(?m)^[ \t]*\\item(?:[ \t]+|(?=\n)|$)',
+            body
+        )
+
+        items = []
+
+        for part in parts[1:]:
+            content = part.strip()
+
+            if not content:
+                continue
+
+            content = MD.render(content)
+
+            items.append(
+                '<li>\n' + content + '</li>'
+            )
+
+        return (
+            '\n\n<ul class="wiki-itemize">\n' +
+            '\n'.join(items) +
+            '\n</ul>\n\n'
+        )
+
+    src = re.sub(
+        r'\\begin\{itemize\}(.*?)\\end\{itemize\}',
+        render_itemize,
         src,
         flags=re.S
     )

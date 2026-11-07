@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "oo": "\\infty", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits"
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -65,13 +135,13 @@ Consider</p>
 		\Delta u=0 \text { in } \Omega \quad \text{or} \quad \Delta u=f \text { in } \Omega.
 	\end{equation}</p>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:12:1" title="Edit remark at source line 12" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Usaully, we only consider \(\Omega\) is a bound domain, and the Green formula is valid.</p>
 </section>
 </div>
 <div class="theorem example">
-<header>Example</header>
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:18:1" title="Edit example at source line 18" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <ol class="wiki-enumerate decimal">
 <li>
@@ -87,7 +157,7 @@ Consider</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition</header>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:26:1" title="Edit definition at source line 26" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>The fundamental solution in \(\rr^d\) is given by</p>
 <p>\begin{equation}
@@ -97,7 +167,7 @@ Consider</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem</header>
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:34:1" title="Edit theorem at source line 34" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Assume \(u \in C^{2}(\bar{\Omega}), y\in \Omega\). Then</p>
 <p>\begin{equation}
@@ -106,7 +176,7 @@ Consider</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem</header>
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:41:1" title="Edit theorem at source line 41" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Assume \(\varphi \in C^{0}(\partial B_R(0))\),
 then  the following Dirichlet problem has unique solution \(u\in C^{2} (B_R(0)) \cap C^{0}(\overline{B}_R(0))\).</p>
@@ -123,13 +193,13 @@ then  the following Dirichlet problem has unique solution \(u\in C^{2} (B_R(0)) 
 </section>
 </div>
 <div class="theorem corollary">
-<header>Corollary</header>
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:56:1" title="Edit corollary at source line 56" aria-label="Edit corollary in VS Code">Edit</a>
 <section>
 <p>Harmonic function is analytic.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Mean value property)</header>
+<header>Theorem (Mean value property)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:60:1" title="Edit theorem at source line 60" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>For any harmonic function \(u\), we have</p>
 <p>\[
@@ -138,7 +208,7 @@ then  the following Dirichlet problem has unique solution \(u\in C^{2} (B_R(0)) 
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Weyl lemma)</header>
+<header>Theorem (Weyl lemma)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:67:1" title="Edit theorem at source line 67" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>If \(u\) is locally integrable on \(\Omega\), and</p>
 <p>\[
@@ -148,34 +218,34 @@ then  the following Dirichlet problem has unique solution \(u\in C^{2} (B_R(0)) 
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (maximum principal)</header>
+<header>Theorem (maximum principal)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:75:1" title="Edit theorem at source line 75" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>If \(\Delta u\geq 0\) and \(u\) attains maximum at interior point, then \(u\) is constant.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Singularity removable [<a href="#ref-jost2013">jost2013</a>])</header>
+<header>Theorem (Singularity removable [<a href="#ref-jost2013">jost2013</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:84:1" title="Edit theorem at source line 84" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>If \(u\) is harmonic outside a point in domain with dimension \(\geq 2\), and \(u\) is bounded, then \(u\) is harmonic.</p>
 </section>
 </div>
 <p>We know from this that Laplace's equation does not always  have a solution.</p>
 <div class="theorem theorem">
-<header>Theorem (Liouville theorem)</header>
+<header>Theorem (Liouville theorem)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:90:1" title="Edit theorem at source line 90" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Assume \(u: \mathbb{R}^{d} \rightarrow \mathbb{R}\) is bounded harmonic function,
 then \(u\) is constant.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-jost2013">jost2013</a>])</header>
+<header>Theorem ([<a href="#ref-jost2013">jost2013</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:95:1" title="Edit theorem at source line 95" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \(u: \mathbb{R}^{d} \rightarrow \mathbb{R}\) be a nonnegative harmonic function,
 then \(u\) is constant.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Harnack inequality)</header>
+<header>Theorem (Harnack inequality)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:102:1" title="Edit theorem at source line 102" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Assume \(u\) is a nonnegative harmonic function on \(\Omega \), then</p>
 <p>\[
@@ -185,7 +255,7 @@ then \(u\) is constant.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (monotone convergence)</header>
+<header>Theorem (monotone convergence)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:110:1" title="Edit theorem at source line 110" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Suppose \(\{u_n\}\) is a sequence of monotone increasing harmnic functions, and \(\exists y\in \Omega\) s.t. \(\{u_n(y)\}\) is bounded.
 Then \(\{u_n\}\) locally converges to a harmonic function.</p>
@@ -193,20 +263,20 @@ Then \(\{u_n\}\) locally converges to a harmonic function.</p>
 </div>
 <p>From mean value property, we have</p>
 <div class="theorem theorem">
-<header>Theorem</header>
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:116:1" title="Edit theorem at source line 116" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>If a sequence of harmonic functions uniformly converge to a function, then the limit function is also harmonic.</p>
 </section>
 </div>
 <p>According to gradient estimates [<a href="#ref-gtr2001">gtr2001</a>]:</p>
 <div class="theorem theorem">
-<header>Theorem (Normal family)</header>
+<header>Theorem (Normal family)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:121:1" title="Edit theorem at source line 121" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Any bouded harmonic functions sequence has subsequence uniformly converging in a compact domain.</p>
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem</header>
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Lap.wiki:125:1" title="Edit theorem at source line 125" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Suppose \(u\) is harmonic on unit ball, denote</p>
 <p>\[

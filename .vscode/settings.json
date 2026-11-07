@@ -15,11 +15,15 @@
     "commands": [
       {
         "match": "\\.wiki$",
-        "cmd": "cd \"${workspaceFolder}\" && env -u WIKI_BASE_PATH .venv/bin/python build.py"
+        "cmd": "cd \"${workspaceFolder}\" && env -u WIKI_BASE_PATH .venv/bin/python build.py && .venv/bin/python section_jump.py"
       }
     ]
   },
 
   "livePreview.serverRoot": "_site",
-  "livePreview.autoRefreshPreview": "On Changes to Saved Files"
+  "livePreview.autoRefreshPreview": "On Changes to Saved Files",
+
+  "livePreview.useIntegratedBrowser": true
 }
+
+

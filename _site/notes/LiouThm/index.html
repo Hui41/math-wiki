@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "Span": "\\operatorname{span}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b ", "dbb": "\\bar{\\partial}_b ", "lap": "\\Delta", "la": "\\langle", "ra": "\\rangle"
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -59,31 +129,31 @@
       <nav><a href="/notes/">All notes</a></nav>
       <h1>Liouville Theorems</h1>
       <article><p>The classical Liouville theorem states that every bounded entire function on the complex plane \(\cc\) is constant. The same conclusion also holds for bounded harmonic functions defined on the whole Euclidean space \(\rr^n\). As harmonic maps generalize harmonic functions, one of the classical topics in the theory of harmonic maps is the extension of Liouville-type theorems to this setting. One of the main themes of this paper is to establish Liouville-type theorems for several classes of generalized harmonic maps. For this purpose, in this section we recall some classical results in this direction. Although the Liouville-type theorems below are classified according to different assumptions, these results are related to one another and should not be regarded as completely independent.</p>
-<h1>Boundedness of the image</h1>
+<div class="wiki-heading-with-edit"><h1>Boundedness of the image</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:5:1" title="Edit section at source line 5" aria-label="Edit section in VS Code">Edit</a></div>
 <p>We first consider the case where the global image \(f(M)\) of a harmonic map \(f\) is sufficiently ``small'' in \(N\), for instance, when \(f(M)\) is bounded. Such an assumption often leads to a Liouville-type theorem, and the classical Liouville theorem itself belongs to this category. By means of gradient estimates, Yau extended the classical Liouville theorem to complete Riemannian manifolds with nonnegative Ricci curvature.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-Yau1975Harmonic">Yau75</a>])</header>
+<header>Theorem ([<a href="#ref-Yau1975Harmonic">Yau75</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:9:1" title="Edit theorem at source line 9" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \((M,g)\) be a complete Riemannian manifold with nonnegative Ricci curvature. Then every bounded harmonic function \(f\) on \(M\) is constant.</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:13:1" title="Edit remark at source line 13" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>In fact, Yau proved a stronger Liouville-type theorem, for which it is enough to assume that \(f\) is bounded from below.</p>
 </section>
 </div>
 <p>Later, Cheng extended the Liouville theorem to harmonic maps.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-Cheng1980Liouville">Che80</a>])</header>
+<header>Theorem ([<a href="#ref-Cheng1980Liouville">Che80</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:19:1" title="Edit theorem at source line 19" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
-<p>\label{ChengLiou}
+<p><span class="wiki-label" data-wiki-label="ChengLiou"></span>
 Let \((M,g)\) be a complete Riemannian manifold with nonnegative Ricci curvature, and let \(N\) be a simply connected Riemannian manifold with nonpositive sectional curvature. If \(f:M\to N\) is a harmonic map whose image is contained in a compact subset of \(N\), then \(f\) is constant.</p>
 </section>
 </div>
 <p>Moreover, Hildebrandt, Jost, and Widman proved the following result.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-HJW1981harm">HJW81</a>])</header>
+<header>Theorem ([<a href="#ref-HJW1981harm">HJW81</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:26:1" title="Edit theorem at source line 26" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \((M,g)\) be a simple Riemannian manifold or a compact Riemannian manifold, and let \((N,h)\) be a Riemannian manifold whose sectional curvature is bounded above by \(k\geq 0\). Suppose that \(u:M\to N\) is harmonic. If</p>
 <p>\[
@@ -96,10 +166,10 @@ r&lt;\frac{\pi}{2\sqrt{k}}
 <p>and containing no cut point of \(q\). Such a geodesic ball is usually called a <strong>regular geodesic ball</strong>.</p>
 </section>
 </div>
-<h1>Finite energy</h1>
+<div class="wiki-heading-with-edit"><h1>Finite energy</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:38:1" title="Edit section at source line 38" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Besides assuming that the image of the map is sufficiently ``small'', another common assumption is the finiteness of the energy. A classical result in this direction is due to Schoen and Yau.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-SYau1976ener">SY76</a>])</header>
+<header>Theorem ([<a href="#ref-SYau1976ener">SY76</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:42:1" title="Edit theorem at source line 42" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \((M,g)\) be a complete Riemannian manifold with nonnegative Ricci curvature, and let \((N,h)\) be a Riemannian manifold with nonpositive sectional curvature. If \(f:M\to N\) is a harmonic map with finite energy, then \(f\) is constant.</p>
 </section>
@@ -121,7 +191,7 @@ u:(\rr^m, f g_{\mathrm{can}})\to (N,h),
 \]</p>
 <p>Then, under suitable conditions on the conformal factor \(f\), the map \(u\) must be constant. In particular, when \(f\equiv 1\), one has the following result.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-jin_liouville_nodate">Jin92</a>])</header>
+<header>Theorem ([<a href="#ref-jin_liouville_nodate">Jin92</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:66:1" title="Edit theorem at source line 66" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let</p>
 <p>\[
@@ -135,10 +205,10 @@ u:(\rr^m,g_{\mathrm{can}})\to (N,h)
 </section>
 </div>
 <p>The proof consists essentially of two steps. First, one derives a lower bound for the growth of the energy of \(u\) on geodesic balls. Second, the asymptotic condition is used to obtain an upper bound for the energy growth. Combining these two estimates yields a contradiction unless \(u\) is constant.</p>
-<h1>\(L^p\)-Liouville-type theorems</h1>
+<div class="wiki-heading-with-edit"><h1>\(L^p\)-Liouville-type theorems</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:52:1" title="Edit section at source line 52" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Yau also proved the following Liouville theorem for \(L^p\) harmonic functions. Notice that no curvature assumption on the manifold is required.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-Yau1976func">Yau76</a>])</header>
+<header>Theorem ([<a href="#ref-Yau1976func">Yau76</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:84:1" title="Edit theorem at source line 84" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \((M,g)\) be a complete Riemannian manifold, and let \(f\) be an \(L^p\) harmonic function on \(M\), where</p>
 <p>\[
@@ -148,7 +218,7 @@ u:(\rr^m,g_{\mathrm{can}})\to (N,h)
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:92:1" title="Edit remark at source line 92" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Karp subsequently obtained a quantitative version of the \(L^p\) Liouville theorem for harmonic functions; see [<a href="#ref-Karp1982subh">Kar82</a>]. He proved that if \(f\) is a nonconstant harmonic function, then</p>
 <p>\[
@@ -171,10 +241,10 @@ u:(\rr^m,g_{\mathrm{can}})\to (N,h)
 </div>
 <p>For the range \(0&lt;p\leq 1\), we refer to [<a href="#ref-LiSch1984Lp">LS84</a>, <a href="#ref-Yau1976func">Yau76</a>, <a href="#ref-GW1974int">GW74</a>].</p>
 <p>Yau's result can also be generalized to Liouville-type theorems under suitable growth conditions; see [<a href="#ref-PRS2008van">PRS08</a>, Chapter 4].</p>
-<h1>Kendall-type theorems</h1>
+<div class="wiki-heading-with-edit"><h1>Kendall-type theorems</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:80:1" title="Edit section at source line 80" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Using methods from probability theory and potential theory, Kendall proved the following Liouville-type theorem.</p>
 <div class="theorem theorem">
-<header>Theorem (Theorem~6, [<a href="#ref-Ken1988mart">Ken88</a>])</header>
+<header>Theorem (Theorem~6, [<a href="#ref-Ken1988mart">Ken88</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:120:1" title="Edit theorem at source line 120" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Assume that the Riemannian manifold \((M,g)\) admits no nonconstant bounded harmonic functions. Let</p>
 <p>\[
@@ -184,16 +254,16 @@ u:M\to B_r(q)\subset N
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:128:1" title="Edit remark at source line 128" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>The proof given in [<a href="#ref-Ken1988mart">Ken88</a>] appears to contain an error. A correct proof can be found in [<a href="#ref-Huiken1991cor">HK91</a>].</p>
 </section>
 </div>
 <p>A distinctive feature of Kendall's result is that it reduces a nonlinear problem, namely the harmonic map system, to a linear one involving harmonic functions.</p>
-<h1>Gordon-type theorems</h1>
+<div class="wiki-heading-with-edit"><h1>Gordon-type theorems</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:116:1" title="Edit section at source line 116" aria-label="Edit section in VS Code">Edit</a></div>
 <p>A subset \(D\subset N\) is called <strong>convex supporting</strong> if every compact subset of \(D\) has an open neighborhood on which there exists a strictly convex function. Gordon proved the following result.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-Gord1972conv">Gor72</a>])</header>
+<header>Theorem ([<a href="#ref-Gord1972conv">Gor72</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:138:1" title="Edit theorem at source line 138" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \((M,g)\) be a compact Riemannian manifold and \((N,h)\) a Riemannian manifold. Suppose that \(u:M\to N\) is a harmonic map. If \(u(M)\) is contained in a convex supporting subset of \(N\), then \(u\) is constant.</p>
 </section>
@@ -207,7 +277,7 @@ M=\ss^m,\qquad m\geq 2,
 u:\ss^m\to N
 \]</p>
 <p>is constant. Gordon's theorem shows that the same conclusion remains valid when \(\ss^m\) is equipped with an arbitrary Riemannian metric.</p>
-<h1>Cases where Liouville theorems fail</h1>
+<div class="wiki-heading-with-edit"><h1>Cases where Liouville theorems fail</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:134:1" title="Edit section at source line 134" aria-label="Edit section in VS Code">Edit</a></div>
 <p>By the classical uniformization theorem, every simply connected Riemann surface is biholomorphic to exactly one of the following three spaces:</p>
 <p>\[
 \cc,\qquad \mathbb{D},\qquad \mathbb{S}^2.
@@ -225,7 +295,7 @@ u:\ss^m\to N
 \]</p>
 <p>They then study the solvability of the Dirichlet problem on \(\overline{M}\); see [<a href="#ref-QiuSun2004weifen">Sun04</a>, Chapter 2]. They proved the following theorem.</p>
 <div class="theorem theorem">
-<header>Theorem ([<a href="#ref-Anderson1983Diri">And83</a>, <a href="#ref-Sull1983diri">Sul83</a>])</header>
+<header>Theorem ([<a href="#ref-Anderson1983Diri">And83</a>, <a href="#ref-Sull1983diri">Sul83</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:174:1" title="Edit theorem at source line 174" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \(M^n\) be a complete simply connected Riemannian manifold whose sectional curvature satisfies</p>
 <p>\[
@@ -250,7 +320,7 @@ such that</p>
 K_M(x)\leq -c\,r(x)^{-2}
 \]</p>
 <p>for all \(x\in M\setminus S\). Then \(M\) admits a nontrivial bounded harmonic function.</p>
-<h1>References</h1>
+<div class="wiki-heading-with-edit"><h1>References</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LiouThm.wiki:152:1" title="Edit section at source line 152" aria-label="Edit section in VS Code">Edit</a></div>
 <ol class="references"><li id="ref-Anderson1983Diri">[And83] Michael T. Anderson. The Dirichlet problem at infinity for manifolds of negative curvature. <em>J. Differential Geom.</em>, 18(4):701--721, 1983.</li><li id="ref-Cheng1980Liouville">[Che80] Shiu Yuen Cheng. Liouville theorem for harmonic maps. In <em>Geometry of the Laplace operator (Proc. Sympos. Pure Math., Univ. Hawaii, Honolulu, Hawaii, 1979)</em>, volume XXXVI of <em>Proc. Sympos. Pure Math.</em>, pages 147--151. Amer. Math. Soc., Providence, RI, 1980.</li><li id="ref-Choi1984asy">[Cho84] Hyeong In Choi. Asymptotic Dirichlet problems for harmonic functions on Riemannian manifolds. <em>Trans. Amer. Math. Soc.</em>, 281(2):691--716, 1984.</li><li id="ref-Gord1972conv">[Gor72] William B. Gordon. Convex functions and harmonic maps. <em>Proc. Amer. Math. Soc.</em>, 33:433--437, 1972.</li><li id="ref-Garber1979sigma">[GRSB79] Wolf-Dieter Garber, Simon N. M. Ruijsenaars, Erhard Seiler, and Dan Burns. On finite action solutions of the nonlinear \(\sigma \)-model. <em>Ann. Physics</em>, 119(2):305--325, 1979.</li><li id="ref-GW1974int">[GW74] R. E. Greene and H. Wu. Integrals of subharmonic functions on manifolds of nonnegative curvature. <em>Invent. Math.</em>, 27:265--298, 1974.</li><li id="ref-GW1979func">[GW79] R. E. Greene and H. Wu. <em>Function theory on manifolds which possess a pole</em>, volume 699 of <em>Lecture Notes in Mathematics</em>. Springer, Berlin, 1979.</li><li id="ref-Hil1982liou">[Hil82] Stefan Hildebrandt. Liouville theorems for harmonic mappings, and an approach to Bernstein theorems. In <em>Seminar on Differential Geometry</em>, volume No. 102 of <em>Ann. of Math. Stud.</em>, pages 107--131. Princeton Univ. Press, Princeton, NJ, 1982.</li><li id="ref-HJW1981harm">[HJW81] S. Hildebrandt, J. Jost, and K.-O. Widman. Harmonic mappings and minimal submanifolds. <em>Invent. Math.</em>, 62(2):269--298, 1980/81.</li><li id="ref-Huiken1991cor">[HK91] Hui Huang and Wilfrid S. Kendall. Correction note to: ``Martingales on manifolds and harmonic maps'' [in {\it geometry of random motion (ithaca, ny, 1987)}, 121--157, Contemp. Math., 73, Amer. Math. Soc., Providence, RI, 1988; MR0954635 (90d:58163)] by Kendall. <em>Stochastics Stochastics Rep.</em>, 37(4):253--257, 1991.</li><li id="ref-jin_liouville_nodate">[Jin92] Zhi Ren Jin. Liouville theorems for harmonic maps. <em>Invent. Math.</em>, 108(1):1--10, 1992.</li><li id="ref-Karp1982subh">[Kar82] Leon Karp. Subharmonic functions on real and complex manifolds. <em>Math. Z.</em>, 179(4):535--554, 1982.</li><li id="ref-Ken1988mart">[Ken88] Wilfrid S. Kendall. Martingales on manifolds and harmonic maps. In <em>Geometry of random motion (Ithaca, N.Y., 1987)</em>, volume 73 of <em>Contemp. Math.</em>, pages 121--157. Amer. Math. Soc., Providence, RI, 1988.</li><li id="ref-KN1969found">[KN69] Shoshichi Kobayashi and Katsumi Nomizu. <em>Foundations of differential geometry. Vol. II</em>, volume No. 15 of <em>Interscience Tracts in Pure and Applied Mathematics</em>. Interscience Publishers John Wiley &amp; Sons, Inc., New York-London-Sydney, 1969.</li><li id="ref-Koranyi1972sym">[Kor72] Adam Koranyi. Harmonic functions on symmetric spaces. In <em>Symmetric spaces (Short Courses, Washington Univ., St. Louis, Mo., 1969--1970)</em>, volume Vol. 8 of <em>Pure Appl. Math.</em>, pages 379--412. Dekker, New York, 1972.</li><li id="ref-LiSch1984Lp">[LS84] Peter Li and Richard Schoen. \(L^p\) and mean value properties of subharmonic functions on Riemannian manifolds. <em>Acta Math.</em>, 153(3-4):279--301, 1984.</li><li id="ref-PRS2008van">[PRS08] Stefano Pigola, Marco Rigoli, and Alberto G. Setti. <em>Vanishing and finiteness results in geometric analysis</em>, volume 266 of <em>Progress in Mathematics</em>. Birkhäuser Verlag, Basel, 2008. A generalization of the Bochner technique.</li><li id="ref-sealeysome1982">[Sea82] H. C. J. Sealey. Some conditions ensuring the vanishing of harmonic differential forms with applications to harmonic maps and Yang-Mills theory. <em>Math. Proc. Cambridge Philos. Soc.</em>, 91(3):441--452, 1982.</li><li id="ref-Sull1983diri">[Sul83] Dennis Sullivan. The Dirichlet problem at infinity for a negatively curved manifold. <em>J. Differential Geom.</em>, 18(4):723--732, 1983.</li><li id="ref-QiuSun2004weifen">[Sun04] Chengtong Qiu , Licha Sun. <em>Lectures notes on differential geometry</em>. Higher education press, 2004.</li><li id="ref-SYau1976ener">[SY76] Richard Schoen and Shing Tung Yau. Harmonic maps and the topology of stable hypersurfaces and manifolds with non-negative Ricci curvature. <em>Comment. Math. Helv.</em>, 51(3):333--341, 1976.</li><li id="ref-Wu1983func">[Wu83] Hung Hsi Wu. Function theory on noncompact Kähler manifolds. In <em>Complex differential geometry</em>, volume 3 of <em>DMV Sem.</em>, pages 67--155. Birkhäuser, Basel, 1983.</li><li id="ref-Yau1975Harmonic">[Yau75] Shing Tung Yau. Harmonic functions on complete Riemannian manifolds. <em>Comm. Pure Appl. Math.</em>, 28:201--228, 1975.</li><li id="ref-Yau1976func">[Yau76] Shing Tung Yau. Some function-theoretic properties of complete Riemannian manifold and their applications to geometry. <em>Indiana Univ. Math. J.</em>, 25(7):659--670, 1976.</li></ol>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>

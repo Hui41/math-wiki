@@ -1,56 +1,7 @@
-\DeclareMathOperator{\grad}{grad}
-\DeclareMathOperator{\dimension}{dim}
-\DeclareMathOperator{\trace}{tr} 
-\DeclareMathOperator{\di}{div}
-\DeclareMathOperator{\ricci}{Ric}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\hess}{Hess}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\id}{Id}
-
-\def\zz{{\mathbb Z}}
-\def\rr{{\mathbb R}}
-\def\cc{{\mathbb C}}
-\def\qq{{\mathbb Q}}
-\def\oo{{\infty}}
-\def\db{{\partial_b }}
-\def\dbb{{\bar{\partial}_b }}
-\def\lap{{\Delta}}
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\dd}{\,\mathrm{d}v_g}
-
 \title{K\"ahler geometry}
-\section{K\"ahler geometry}
+
+
 \section{General complex manifolds}
-Here we take KobayashiNomizu's convention, but difference a factor on forms (symmetric operation is the same!).
-Thus we take alt convention of John M Lee's, i.e.,
-	\begin{equation*}
-		\text { Alt } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right), \text { Sym } \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}{ }^{\sigma} \alpha,
-	\end{equation*}
-	\begin{equation*}
-		\omega \wedge \eta=\frac{(k+l) !}{k ! l !} \operatorname{Alt}(\omega \otimes \eta), \quad  \alpha \beta= \operatorname{Sym}(\alpha \otimes \beta).
-	\end{equation*}
-		\begin{equation}
-		\Phi \wedge\Psi \wedge \eta=\frac{(r+s+t) !}{r ! s ! t !} \operatorname{Alt}(\Phi \otimes \Psi \otimes \eta).
-	\end{equation}
-		\begin{equation}
-		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! \operatorname{Alt}\left(\omega^{i_{1}} \otimes \omega^{i_{2}} \otimes \cdots \otimes \omega^{i_{r}}\right).
-	\end{equation}
-\begin{remark}
-	Compare with alt convention $\bar\wedge, \bar d$ of KobayashiNomizu's book:
-	\begin{equation}
-	\eta_{(k)}	\bar \wedge \omega_{(l)} =\operatorname{Alt}(\omega \otimes \eta), \quad \eta	\bar \wedge \omega =\frac{k!l!}{(k+l)!} \eta \wedge \omega, \quad \bar d \eta =\frac{1}{k+1} d \eta,
-	\end{equation}
-	and
-	\begin{equation}
-		\omega^{i_{1}} \wedge \omega^{i_{2}} \wedge \cdots \wedge \omega^{i_{r}}=r ! 
-		\omega^{i_{1}}\bar \wedge \omega^{i_{2}} \bar \wedge \cdots \bar \wedge \omega^{i_{r}}.
-	\end{equation}
-\end{remark}
 
 Set on $\mathbb{C}^n$:
 \begin{equation}
@@ -164,8 +115,8 @@ $$X \to Z=\frac{1}{2}(X-iJX) .$$
 Note that we can write
 \begin{equation}
 	\frac{1}{2}(X-i J X)=\sum_{j=1}^n f^j\left(\partial / \partial z^j\right), \quad \frac{1}{2}(Y-i J Y)=\sum_{j=1}^n g^j\left(\partial / \partial z^j\right) ,
-	\end{equation}
-	\textbf{but $f^j, g^i$ are not necessarily holomorphic functions.} 
+\end{equation}
+but $f^j, g^i$ are \textit{not} necessarily holomorphic functions. 
 \item $M$ admits an \textbf{almost complex affine connection} ($\nabla J=0$) such that its torsion $T$ is given by 
     $$N=8T. $$
 \item $T(J X, J Y) -J(T(J X, Y))-J(T(X, J Y))-T(X, Y)=-\frac{1}{2} N(X, Y)$ 
@@ -192,17 +143,20 @@ $$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
 
 
 
-\section{Hermitian metric on Kaehler manifolds}
-\begin{remark}[About Hermitian metric]
-    1. Hermitian fiber metric in this case is a map $h: \Gamma\left(T_J M\right) \times \Gamma\left(T_J M\right) \rightarrow C^{\infty}(M ; \mathbb{C})$ that satisfies all of the following:\\
-- $h$ is bilinear over $C^{\infty}(M ; \mathbb{R})$;\\
-- $h(J X, Y)=i h(X, Y)$;\\
-- $h(X, J Y)=-i h(X, Y)$;\\
-- $h(Y, X)=\overline{h(X, Y)}$;\\
+\section{Hermitian metric on K\"ahler manifolds}
+\begin{remark}
+    1. Hermitian fiber metric in this case is a map 
+    $$h: \Gamma\left(T_J M\right) \times \Gamma\left(T_J M\right) \rightarrow C^{\infty}(M ; \mathbb{C})$$ 
+    that satisfies all of the following:
+
+- $h$ is bilinear over $C^{\infty}(M ; \mathbb{R})$;
+- $h(J X, Y)=i h(X, Y)$;
+- $h(X, J Y)=-i h(X, Y)$;
+- $h(Y, X)=\overline{h(X, Y)}$;
 - $h(X, X)>0$ at points where $X \neq 0$.
 
-2. Write $h=g+i\omega$, where $g=Re(h), \omega =Im(h)$, then \\
-- $g$ is a Riemannian metric. (since $g(X, Y)=\frac{1}{2}(h(X, Y)+\overline{h(X, Y)})=\frac{1}{2}(h(X, Y)+h(Y, X))$.) \\
+2. Write $h=g+i\omega$, where $g=Re(h), \omega =Im(h)$, then 
+- $g$ is a Riemannian metric. (since $g(X, Y)=\frac{1}{2}(h(X, Y)+\overline{h(X, Y)})=\frac{1}{2}(h(X, Y)+h(Y, X))$.) 
 - $\omega (X,Y)=g(X,JY), g(X,Y)=\omega (JX,Y)$ and $g, \omega $ are both $J$-invariant.
 
 3. Define a Hermitian metric $\la, \ra$ by
@@ -230,22 +184,20 @@ $$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
 \begin{proposition}
    Given the isomorphim $\xi: T_JM \to T'M$ by $\xi(X)=X-iJX$, then
    $$ \la \xi(X), \xi(Y)\ra=2h(X,Y) .$$ 
-  ( We could have avoided this discrepancy by adding a factor of $\frac{1}{\sqrt 2}$  to the definition of $\xi $. ) 
 \end{proposition}
+
+ We could have avoided this discrepancy by adding a factor of $\frac{1}{\sqrt 2}$  to the definition of $\xi $. 
+
 \begin{proposition}
 	In holomorphic coordinates, for sections $Z, W$ of $T^{\prime} M$, we have
 	$$
 	\langle Z, W\rangle=g\left(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\right)=g_{j \bar{k}} Z^j W^{\bar{k}},
 	$$
  On the other hand, if $X$ and $Y$ are real, decomposed as $X=Z+\bar{Z}$ and $Y=W+\bar{W}$ with $Z, W \in \Gamma\left(T^{\prime} M\right)$, then
-	
 	$$
 	\langle X, Y\rangle=g_{j \bar{k}}\left(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\right)
 	$$
-	
-	
-	In particular, for $X=Z+\bar{Z}$, this yields
-	
+In particular, for $X=Z+\bar{Z}$, this yields
 	$$
 	|X|^2=|Z+\bar{Z}|^2=|Z|^2+|\bar{Z}|^2=2|Z|^2=2 g_{j \bar{k}} Z^j Z^{\bar{k}} .
 	$$
@@ -256,9 +208,8 @@ $$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
    $$Z_{\bar k} = g_{j \bar k}Z^{j}, \quad g^{j \bar k}Z_{\bar k} = Z^{j}.$$
 \end{proposition}
 
-
-\section{Kaehler metrics(\textit{kn})}
-The metric $g$ is Kaehlerian if $\Phi$ is closed. For a Kaehler manifold, we have
+\section{K\"ahler metrics(kn)}
+The metric $g$ is K\"ahlerian if $\Phi$ is closed. For a K\"ahler manifold, we have
 \[
 R(JX, JY) = R(X, Y), \quad \operatorname{Ric}(JX, JY) = \operatorname{Ric}(X, Y) = \frac{1}{2} \operatorname{tr} \{ J \circ R(X, JY) \}.
 \]
@@ -278,7 +229,7 @@ Note that here $dz^{\alpha} d\bar{z}^{\beta}$ is the symmetric product, that's w
 \[
 \boxed{\Phi = -i \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} \wedge d\bar{z}^{\beta}.}
 \]
-For $g$ to be Kaehlerian:
+For $g$ to be K\"ahlerian:
 \[
 \frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
 \]
@@ -300,11 +251,11 @@ For an almost complex $\nabla$ to be torsion free:
 \]
 and other $\Gamma_{BC}^A = 0$.
 
-In particular, for a Kaehler manifold:
+In particular, for a K\"ahler manifold:
 \[
 \sum_{\alpha} g_{\alpha \bar{\epsilon}} \Gamma_{\beta \gamma}^{\alpha} = \frac{\partial g_{\bar\epsilon \beta}}{\partial z^{\gamma}}, \quad \sum_{\alpha} g_{\bar\alpha \epsilon} \Gamma_{\bar{\beta} \bar \gamma}^{\bar{\alpha}} = \frac{\partial g_{\epsilon \bar{\beta}}}{\partial \bar{z}^{\gamma}}.
 \]
-Set (as before)
+Set (as before) 
 \[
 R(Z_C, Z_D) Z_B = \sum_A K_{BCD}^A Z_A,
 \]
@@ -383,13 +334,13 @@ Let $F$ be a real-valued function in a coordinate neighborhood of a complex mani
 \[
 g_{\alpha \bar{\beta}} = \frac{\partial^2 F}{\partial z^{\alpha} \partial \bar{z}^{\beta}},
 \]
-which is Hermitian since $F$ is real. If it's positive definite, then $2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}$ is a Kaehler metric by (75). Conversely, a Kaehler metric can be written in this form locally. We have
+which is Hermitian since $F$ is real. If it's positive definite, then $2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}$ is a K\"ahler metric by (75). Conversely, a K\"ahler metric can be written in this form locally. We have
 \[
 K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^4 F}{\partial z^{\alpha} \partial \bar{z}^{\beta} \partial z^{\gamma} \partial \bar{z}^{\delta}} - \sum_{\epsilon, \tau} g^{\bar{\epsilon} \tau} \frac{\partial^3 F}{\partial \bar{z}^{\epsilon} \partial z^{\alpha} \partial z^{\gamma}} \frac{\partial^3 F}{\partial z^{\tau} \partial \bar{z}^{\beta} \partial \bar{z}^{\delta}}.
 \]
 
 \begin{example}[$\mathbb{C}^n,K=0$]
-	Kaehler form and metric:
+	K\"ahler form and metric:
    \[
    \omega = -\frac{i}{2} \sum_j dz^j \wedge d\bar{z}^j = -\sum_j dx^j \wedge dy^j, \quad g = \sum_j dz^j d\bar{z}^j,
    \]
@@ -453,7 +404,7 @@ ds^2 = 4 \cdot \frac{\left( 1 - |z|^2 \right) \sum_j dz^j d\bar{z}^j + \left( \s
 \]
 \end{example}
 
-\begin{proposition}[Volume for Kaehler metric]
+\begin{proposition}[Volume for K\"ahler metric]
    \[
 dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedge \omega.
 \]
@@ -467,15 +418,15 @@ where
 $$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
 \end{proof}
 
-\begin{theorem}[Normal coordinate for Kaehler metric]
+\begin{theorem}[Normal coordinate for K\"ahler metric]
     For every $a \in M$, there exists a holomorphic coordinate chart centered at $a$ such that
 \[
 \boxed{g_{j \bar{k}}(a) = \frac{1}{2} \delta_{jk} \quad \text{and} \quad d(g_{j \bar{k}}) \big|_a = 0.}
 \]
 \end{theorem}
 
-\newpage
-\begin{theorem}[\textbf{Characterizations of Kähler Metrics}]
+
+\begin{theorem}[Characterizations of Kähler Metrics]
 	 Let $M$ be a complex manifold and $g$ be a Hermitian metric on $M$. We use the following notations:
 	\begin{itemize}
 		\item $\omega$ is the fundamental 2-form of $g$.
@@ -506,7 +457,7 @@ $$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
 	\end{enumerate}
 \end{theorem}
 
-\section{Curvatures(\textit{lee})}
+\section{Curvatures(lee)}
 \begin{remark}
    Note that the John M Lee's notations are different from ours, for example, he defined 
    \begin{equation}
@@ -526,12 +477,12 @@ $$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
  \begin{equation}
 	K(x,y)=\frac{R(x,y,y,x)}{|x|^2|y|^2-g(x,y)^2}.
  \end{equation}
- Compare to Sec.\ref{sec:cur}.
+ Compare to Sec.
 
  In this section, we refer most content from his book, but adapting to our notations as in previous!
 \end{remark}
 
-A useful identity on any Kaehler manifold:
+A useful identity on any K\"ahler manifold:
 \begin{equation}
 \boxed{	R(Z,\bar Z, W,\bar W)=-4\{R(X, Y,X,Y)+R(X,JY,X,JY)   \}=-4R(X,JX,Y,JY),}
 \end{equation}
@@ -604,7 +555,7 @@ Also, if let $X=Re(Z), Y=Im(Z)$, then
 	(b) Also, one can show that if $n \geq 2$, then at each point of $M$, the (ordinary) sectional curvatures of $g$ take on all values between $\frac{1}{4} c$ and $c$, inclusive. \textbf{Conclude that $M$ cannot have constant sectional curvature unless it is flat.} 
 \end{proposition}
 
-\begin{proposition}[Symmetric properties for Kaehler metrics]
+\begin{proposition}[Symmetric properties for K\"ahler metrics]
     $$ R(X,Y)\circ J = J \circ R(X,Y)$$
 	$$ Ric(JX,JY)=Ric(X,Y)=\frac{1}{2} \trace(J \circ R(X,JY)) $$
 	$$ R(J X, J Y, Z, W)=R(X, Y, J Z, J W)=R(X, Y, Z, W) $$

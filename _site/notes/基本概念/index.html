@@ -28,13 +28,83 @@
           Ric: '\\operatorname{Ric}',
           di: '\\operatorname{div}',
           trace: '\\operatorname{tr}',
-          "rr": "\\mathbb R", "ss": "\\mathbb S", "la": "\\langle", "ra": "\\rangle"
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
         }
       },
       options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
 </head>
 <body>
   <header class="site-header">
@@ -63,19 +133,19 @@
 E(\phi)=\int_M \frac12 |d\phi|^2\,dv_g.
 \end{equation}</p>
 <div class="theorem exercise">
-<header>练习</header>
+<header>练习</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:15:1" title="Edit exercise at source line 15" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>验证 \(|d\phi|^2=\la \phi^*h,g\ra\)。</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>注</header>
+<header>注</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:19:1" title="Edit remark at source line 19" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>显然 \(E(\phi)\geq 0\)。</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>命题（第一变分公式）</header>
+<header>命题（第一变分公式）</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:23:1" title="Edit proposition at source line 23" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>\begin{equation}
 \left.\frac{dE(\phi_t)}{dt}\right|_{t=0}=-\int_M\la v,\tau(\phi)\ra\,dv_g.
@@ -83,18 +153,18 @@ E(\phi)=\int_M \frac12 |d\phi|^2\,dv_g.
 </section>
 </div>
 <div class="theorem proof">
-<header>证明</header>
+<header>证明</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:29:1" title="Edit proof at source line 29" aria-label="Edit proof in VS Code">Edit</a>
 <section>
 <p>这里可以继续写你的完整证明。参见公式 \eqref{energy}。</p>
 </section>
 </div>
 <div class="theorem example">
-<header>例</header>
+<header>例</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:33:1" title="Edit example at source line 33" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>若 \(N=\rr\)，调和映射就是调和函数。</p>
 </section>
 </div>
-<h1>参考文献</h1>
+<div class="wiki-heading-with-edit"><h1>参考文献</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.wiki:52:1" title="Edit section at source line 52" aria-label="Edit section in VS Code">Edit</a></div>
 <ol class="references"><li id="ref-EL83">[EL83] James Eells and Luc Lemaire. <em>Selected Topics in Harmonic Maps</em>, 1983.</li></ol>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>

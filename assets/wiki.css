@@ -156,3 +156,278 @@ footer { border-top: 1px solid var(--border); margin-top: 62px; padding: 22px 0;
   content: "(" counter(item, upper-alpha) ")";
 }
 
+
+/* ============================================
+   Math Wiki — Mathematical Environments
+   Academic style with subtle colors
+   ============================================ */
+
+/* 1. Colors for light mode */
+
+:root {
+  --env-theorem-bg: #e9f1e9;
+  --env-theorem-border: #588a68;
+  --env-theorem-title: #2d6748;
+
+  --env-proposition-bg: #edf2fa;
+  --env-proposition-border: #7899c9;
+  --env-proposition-title: #456a9b;
+
+  --env-lemma-bg: #f1f2f5;
+  --env-lemma-border: #9299a5;
+  --env-lemma-title: #586271;
+
+  --env-definition-bg: #f8f4e8;
+  --env-definition-border: #ba9a56;
+  --env-definition-title: #856827;
+
+  --env-remark-bg: #f1f4f2;
+  --env-remark-border: #9aafa2;
+  --env-remark-title: #547361;
+
+  --env-example-bg: #eef5f4;
+  --env-example-border: #75a6a4;
+  --env-example-title: #357b78;
+
+  --env-exercise-bg: #f5f0f7;
+  --env-exercise-border: #a18bad;
+  --env-exercise-title: #805b90;
+}
+
+
+/* 2. Colors for dark mode */
+
+:root[data-theme="dark"] {
+  --env-theorem-bg: #1c3025;
+  --env-theorem-border: #588a68;
+  --env-theorem-title: #a5d3b2;
+
+  --env-proposition-bg: #252e3a;
+  --env-proposition-border: #7899c9;
+  --env-proposition-title: #b4ccef;
+
+  --env-lemma-bg: #272a30;
+  --env-lemma-border: #9299a5;
+  --env-lemma-title: #c4cad4;
+
+  --env-definition-bg: #2d2b20;
+  --env-definition-border: #ba9a56;
+  --env-definition-title: #dec58c;
+
+  --env-remark-bg: #252b29;
+  --env-remark-border: #9aafa2;
+  --env-remark-title: #a9c4b2;
+
+  --env-example-bg: #242d30;
+  --env-example-border: #75a6a4;
+  --env-example-title: #a0d3cf;
+
+  --env-exercise-bg: #292630;
+  --env-exercise-border: #a18bad;
+  --env-exercise-title: #ceb7d9;
+}
+
+
+/* 3. Common environment layout */
+
+article .theorem {
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-radius: 5px;
+
+  padding: 12px 17px;
+  margin: 19px 0;
+
+  line-height: 1.8;
+}
+
+
+/* 4. Theorem */
+
+article .theorem.theorem {
+  background: var(--env-theorem-bg);
+  border-left-color: var(--env-theorem-border);
+}
+
+article .theorem.theorem > header {
+  color: var(--env-theorem-title);
+}
+
+
+/* 5. Proposition */
+
+article .theorem.proposition {
+  background: var(--env-proposition-bg);
+  border-left-color: var(--env-proposition-border);
+}
+
+article .theorem.proposition > header {
+  color: var(--env-proposition-title);
+}
+
+
+/* 6. Lemma and Corollary */
+
+article .theorem.lemma,
+article .theorem.corollary {
+  background: var(--env-lemma-bg);
+  border-left-color: var(--env-lemma-border);
+}
+
+article .theorem.lemma > header,
+article .theorem.corollary > header {
+  color: var(--env-lemma-title);
+}
+
+
+/* 7. Definition */
+
+article .theorem.definition {
+  background: var(--env-definition-bg);
+  border-left-color: var(--env-definition-border);
+}
+
+article .theorem.definition > header {
+  color: var(--env-definition-title);
+}
+
+
+/* 8. Remark */
+
+article .theorem.remark {
+  background: var(--env-remark-bg);
+  border-left-color: var(--env-remark-border);
+}
+
+article .theorem.remark > header {
+  color: var(--env-remark-title);
+}
+
+
+/* 9. Example */
+
+article .theorem.example {
+  background: var(--env-example-bg);
+  border-left-color: var(--env-example-border);
+}
+
+article .theorem.example > header {
+  color: var(--env-example-title);
+}
+
+
+/* 10. Exercise */
+
+article .theorem.exercise {
+  background: var(--env-exercise-bg);
+  border-left-color: var(--env-exercise-border);
+}
+
+article .theorem.exercise > header {
+  color: var(--env-exercise-title);
+}
+
+
+/* 11. Mathematical statements use italics */
+
+article .theorem:is(
+  .theorem,
+  .proposition,
+  .lemma,
+  .corollary
+) > section {
+  font-style: italic;
+}
+
+
+/* 12. Explanatory environments use upright text */
+
+article .theorem:is(
+  .definition,
+  .remark,
+  .example,
+  .exercise,
+  .proof
+) > section {
+  font-style: normal;
+}
+
+
+/* 13. Proof: minimal academic style */
+
+article .theorem.proof {
+  background: transparent;
+  border-left: none;
+  border-radius: 0;
+
+  padding: 3px 0 3px 12px;
+  margin: 18px 0;
+}
+
+article .theorem.proof > header {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text);
+}
+
+
+/* 14. Space for local Edit links */
+
+article .theorem:not(.proof) {
+  padding-right: 58px;
+}
+
+
+/* 15. Smaller screens */
+
+@media (max-width: 700px) {
+  article .theorem {
+    padding: 10px 13px;
+  }
+
+  article .theorem:not(.proof) {
+    padding-right: 50px;
+  }
+}
+
+
+/* ============================================
+   QED symbol for proof environments
+   ============================================ */
+
+/* Automatically append QED after each proof */
+
+article .theorem.proof::after {
+  content: "\25A1";
+  display: block;
+  text-align: right;
+
+  font-family: "Times New Roman", serif;
+  font-size: 1.15em;
+  line-height: 1;
+
+  margin-top: 0.25em;
+  padding-right: 0.4em;
+}
+
+
+/* Wiki cross-references */
+
+article .wiki-crossref {
+  color: var(--link, #3677a5);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+article .wiki-crossref:hover {
+  text-decoration: none;
+  border-bottom-style: solid;
+}
+
+/* Hide unresolved label markers */
+
+article .wiki-label {
+  display: none;
+}
+
+
