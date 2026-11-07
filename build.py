@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import quote
 import html, json, re, shutil, os
 from markdown_it import MarkdownIt
+from bib_auto import expand_bibliography
 
 ROOT=Path(__file__).resolve().parent
 BASE='/' + os.environ.get('WIKI_BASE_PATH', '').strip('/') if os.environ.get('WIKI_BASE_PATH', '').strip('/') else ''
@@ -104,7 +105,7 @@ if global_macros_file.exists():
         global_macros_file.read_text(encoding="utf-8")
     )
 def compile_page(p):
-    src=p['src']
+    src = expand_bibliography(p['src'])
     src,macros=macros_from(src)
 
     # Global macros apply to every page.

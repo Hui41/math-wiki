@@ -3,43 +3,44 @@
 
 \section{General complex manifolds}
 
-Set on $\mathbb{C}^n$:
+We adopt the following notations in $\mathbb{C}^n$:
 \begin{equation}
 	z^k=x^k+i y^k, \quad x^k, y^k \in \mathbb{R}.
 \end{equation}
 \begin{equation}
 	Z=(z^1,...,z^n)=(x^1,...,x^n,y^1,...,y^n).
 \end{equation}
-Complex structure:
+The complex structure is given by
 \begin{equation}
 	J_0(Z)=(y^1,...,y^n, -x^1,...,-x^n),
 \end{equation}
+i.e.,
 \begin{equation}
 	J_0= \begin{pmatrix}
 	0 & I_n\\
 	-I_n & 0
 \end{pmatrix}.
 \end{equation}
+Set
 \begin{equation}
 J\left(\partial / \partial x^j\right)=\partial / \partial y^j, \quad J\left(\partial / \partial y^j\right)=-\left(\partial / \partial x^j\right), \quad j=1, \ldots, n .
 \end{equation}
 \begin{equation}
 \partial / \partial z^j=\frac{1}{2}\left(\partial / \partial x^j-i\left(\partial / \partial y^j\right)\right), \quad \partial / \partial \bar{z}^j=\frac{1}{2}\left(\partial / \partial x^j+i\left(\partial / \partial y^j\right)\right) .
 \end{equation}
-Real representation of $GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})$:
+Recall that the real representation of $GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})$ is given by 
 \begin{equation}
 	A+iB \to \begin{pmatrix}
 		A & B\\
 		-B & A
 	\end{pmatrix} .
 \end{equation}
-A natural one-to-one correspondence:
+A natural one-to-one correspondence(cf. \cite{KN1969found}):
 \begin{equation}
 	\{ \text{the set of complex structures on} \, \mathbb{R}^{2n} \} \Leftrightarrow GL(2n;\mathbb{R})/GL(n;\mathbb{C})
 \end{equation}
 by sending $S\in GL(2n;\mathbb{R})/GL(n;\mathbb{C})$ into $SJ_0S^{-1}.$
 
-\noindent	
 The complex structure on dual space:
 \begin{equation}
 	\la JX,X^* \ra=\la X,JX^* \ra.
@@ -672,25 +673,27 @@ Let $E\to M$ be a smooth complex vector bundle.
 		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
 	\end{equation}
 \end{definition}
+
 \begin{proposition}
 	Suppose $M$ is a complex manifold and $E \to M$ is a holomorphic vector bundle.
 	There are operators $\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)$ satisfying the following properties:
+	\begin{itemize}[(i)]
+		\item For $\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)$, $\bar{\partial}_E \sigma = 0$ if and only if $\sigma$ is a holomorphic section.
 	
-	\begin{itemize}
-		\item[(i)] For $\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)$, $\bar{\partial}_E \sigma = 0$ if and only if $\sigma$ is a holomorphic section.
-	
-		\item[(ii)] For $\alpha \in \mathscr{E}^{p,q}(M)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\item For $\alpha \in \mathscr{E}^{p,q}(M)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
 		\[
 		\bar{\partial}_E (\alpha \wedge \beta) = \bar{\partial} \alpha \wedge \beta + (-1)^{p+q} \alpha \wedge \bar{\partial}_E \beta.
 		\]
 	
-		\item[(iii)] For $\gamma \in \mathscr{E}^{p,q}(M; E^*)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\item For $\gamma \in \mathscr{E}^{p,q}(M; E^*)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
 		\[
 		\bar{\partial} (\gamma \wedge \beta) = \bar{\partial}_E \gamma \wedge \beta + (-1)^{p+q} \gamma \wedge \bar{\partial}_E \beta.
 		\]
 	
-		\item[(iv)] $\bar{\partial}_E \circ \bar{\partial}_E = 0$.
+		\item $\bar{\partial}_E \circ \bar{\partial}_E = 0$.
 	
-		\item[(v)] If $\alpha \in \mathscr{E}^{p,q}(M; E)$ satisfies $\bar{\partial}_E \alpha = 0$, then in a neighborhood of each point there exists $\beta \in \mathscr{E}^{p,q-1}(M; E)$ such that $\bar{\partial}_E \beta = \alpha$.
+		\item If $\alpha \in \mathscr{E}^{p,q}(M; E)$ satisfies $\bar{\partial}_E \alpha = 0$, then in a neighborhood of each point there exists $\beta \in \mathscr{E}^{p,q-1}(M; E)$ such that $\bar{\partial}_E \beta = \alpha$.
 	\end{itemize} 
 \end{proposition}
+
+\bibliography{references}
