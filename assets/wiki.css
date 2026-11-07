@@ -431,3 +431,83 @@ article .wiki-label {
 }
 
 
+/* ============================================
+   References navigation
+   ============================================ */
+
+/* References in sidebar */
+
+.page-toc li.wiki-references-toc {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+}
+
+.page-toc li.wiki-references-toc a {
+  font-weight: 600;
+  color: var(--link);
+}
+
+/* Bibliography heading */
+
+article #wiki-references {
+  margin-top: 38px;
+  scroll-margin-top: 25px;
+}
+
+/* Return to citation button */
+
+#back-to-citation {
+  position: fixed;
+
+  right: 26px;
+  bottom: 85px;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+  border: 1px solid var(--border);
+
+  background: var(--sidebar);
+  color: var(--link);
+
+  font-size: 27px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.15s ease;
+}
+
+#back-to-citation.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#back-to-citation:hover {
+  background: var(--hover);
+}
+
+/* Mobile screens */
+
+@media (max-width: 700px) {
+  #back-to-citation {
+    right: 16px;
+    bottom: 72px;
+
+    width: 42px;
+    height: 42px;
+  }
+}
+
+

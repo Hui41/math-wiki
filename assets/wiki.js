@@ -893,4 +893,272 @@
 })();
 
 
+/* ============================================
+   Math Wiki — References Navigation
+
+   1. Add References to the sidebar TOC.
+   2. Remember position before citation jumps.
+   3. Show a button to return to that position.
+   ============================================ */
+
+(() => {
+  "use strict";
+
+  function initializeBibliographyNavigation() {
+
+    const article = document.querySelector(
+      "main article"
+    );
+
+    const toc = document.getElementById(
+      "page-toc"
+    );
+
+    const tocList = document.getElementById(
+      "page-toc-list"
+    );
+
+    if (!article) return;
+
+    // ========================================
+    // 1. Find bibliography
+    // ========================================
+
+    const bibliography = article.querySelector(
+      "ol.references"
+    );
+
+    if (!bibliography) return;
+
+    // ========================================
+    // 2. Create or reuse References heading
+    // ========================================
+
+    let heading = Array.from(
+      article.querySelectorAll("h1, h2, h3")
+    ).find(el =>
+      /^(References|参考文献)$/i.test(
+        el.textContent.trim()
+          .replace(/^\d+(?:\.\d+)*[.．]?\s*/, "")
+      )
+    );
+
+    if (!heading) {
+      heading = document.createElement("h2");
+      heading.textContent = "References";
+
+      bibliography.parentNode.insertBefore(
+        heading,
+        bibliography
+      );
+    }
+
+    if (!heading.id) {
+      heading.id = "wiki-references";
+    }
+
+    // ========================================
+    // 3. Add References to sidebar
+    // ========================================
+
+    if (toc && tocList) {
+
+      const existing = Array.from(
+        tocList.querySelectorAll("a")
+      ).some(link =>
+        link.getAttribute("href") ===
+        "#" + heading.id
+      );
+
+      if (!existing) {
+
+        const item = document.createElement("li");
+
+        item.className =
+          "toc-h2 wiki-references-toc";
+
+        const link = document.createElement("a");
+
+        link.href = "#" + heading.id;
+        link.textContent = "References";
+
+        item.appendChild(link);
+        tocList.appendChild(item);
+      }
+
+      toc.hidden = false;
+    }
+
+    // ========================================
+    // 4. Create Back to citation button
+    // ========================================
+
+    if (document.getElementById(
+      "back-to-citation"
+    )) return;
+
+    const backButton =
+      document.createElement("button");
+
+    backButton.id = "back-to-citation";
+    backButton.type = "button";
+
+    backButton.textContent = "↩";
+
+    backButton.title =
+      "Return to previous reading position";
+
+    backButton.setAttribute(
+      "aria-label",
+      "Return to citation"
+    );
+
+    document.body.appendChild(backButton);
+
+    // Position to restore when going back.
+    let previousPosition = null;
+
+    // ========================================
+    // 5. Record position before citation jump
+    // ========================================
+
+    document.addEventListener(
+      "click",
+      event => {
+
+        const target = event.target;
+
+        if (!(target instanceof Element)) {
+          return;
+        }
+
+        const link = target.closest(
+          'a[href^="#ref-"]'
+        );
+
+        if (!link) return;
+
+        const id = link.getAttribute(
+          "href"
+        ).slice(1);
+
+        // Only handle actual bibliography links.
+        if (!document.getElementById(id)) {
+          return;
+        }
+
+        // Remember exact reading position.
+        previousPosition = window.scrollY;
+
+        // Show return button.
+        backButton.classList.add(
+          "visible"
+        );
+      },
+      true
+    );
+
+    // ========================================
+    // 6. Return without scrolling animation
+    // ========================================
+
+    backButton.addEventListener(
+      "click",
+      () => {
+
+        if (previousPosition === null) return;
+
+        const html = document.documentElement;
+        const body = document.body;
+
+        // Save the existing inline styles.
+        const oldHtml =
+          html.style.getPropertyValue(
+            "scroll-behavior"
+          );
+
+        const oldHtmlPriority =
+          html.style.getPropertyPriority(
+            "scroll-behavior"
+          );
+
+        const oldBody =
+          body.style.getPropertyValue(
+            "scroll-behavior"
+          );
+
+        const oldBodyPriority =
+          body.style.getPropertyPriority(
+            "scroll-behavior"
+          );
+
+        // Temporarily disable smooth scrolling.
+        html.style.setProperty(
+          "scroll-behavior",
+          "auto",
+          "important"
+        );
+
+        body.style.setProperty(
+          "scroll-behavior",
+          "auto",
+          "important"
+        );
+
+        window.scrollTo({
+          top: previousPosition,
+          left: 0,
+          behavior: "instant"
+        });
+
+        // Restore the original styles.
+        requestAnimationFrame(() => {
+
+          if (oldHtml) {
+            html.style.setProperty(
+              "scroll-behavior",
+              oldHtml,
+              oldHtmlPriority
+            );
+          } else {
+            html.style.removeProperty(
+              "scroll-behavior"
+            );
+          }
+
+          if (oldBody) {
+            body.style.setProperty(
+              "scroll-behavior",
+              oldBody,
+              oldBodyPriority
+            );
+          } else {
+            body.style.removeProperty(
+              "scroll-behavior"
+            );
+          }
+        });
+
+        // Hide button after returning.
+        backButton.classList.remove(
+          "visible"
+        );
+
+        previousPosition = null;
+      }
+    );
+  }
+
+  // Initialize after the existing sidebar TOC.
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializeBibliographyNavigation
+    );
+  } else {
+    initializeBibliographyNavigation();
+  }
+
+})();
+
 
