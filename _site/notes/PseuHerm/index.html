@@ -131,10 +131,13 @@ article .theorem >
       <article><div class="wiki-heading-with-edit"><h1>Preliminaries</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Let \(M^{2m+1}\) be a \((2m+1)\)-dimensional smooth orientable manifold. A <em>CR structure</em> on \(M^{2m+1}\) is a complex rank-\(m\) subbundle \(H^{1,0} \) of \( 
 T(M)\otimes \mathbb{C}\) with the following properties</p>
-<p>\begin{align}
-    H^{1,0} \cap H^{0,1}  =&amp; \{0\}, \quad H^{0,1}  = \overline{H^{1,0} } \notag \\
-    [\Gamma (H^{1,0} ),\Gamma (H^{1,0} )] \subseteq &amp;\, \Gamma(H^{1,0} ). \label{1.1}
-    \end{align}</p>
+<p>\begin{equation}
+\label{1.1}   
+\begin{aligned}
+       &amp;  H^{1,0} \cap H^{0,1}  = \{0\}, \quad H^{0,1}  = \overline{H^{1,0} } \notag \\
+       &amp; [\Gamma (H^{1,0} ),\Gamma (H^{1,0} )] \subseteq \, \Gamma(H^{1,0} ). 
+    \end{aligned} 
+\end{equation}</p>
 <p>The complex subbundle \(H^{1,0} \) corresponds to a real rank \(2m\) subbundle
 \(H :=\Re\{H^{1,0} \oplus H^{0,1} \}\) of \(T(M)\), which carries a
 complex structure \(J_{b}\) defined by</p>
@@ -144,9 +147,9 @@ J_{b}(V+\overline{V})=i(V-\overline{V})
 <p>for any \(V\in H^{1,0} \). The synthetic object \((M,H^{1,0} )\) or \( 
 (M,H ,J_{b})\) is called a <em>CR manifold</em>.</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:20:1" title="Edit remark at source line 20" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:23:1" title="Edit remark at source line 23" aria-label="Edit remark in VS Code">Edit</a>
 <section>
-<p>Formally integrable condition is equivalent to</p>
+<p>The formally integrable condition is equivalent to</p>
 <p>\[
 \begin{gathered}
 {\left[J_{b} X, Y\right]+\left[X, J_{b} Y\right] \in \Gamma^{\infty}(U, H(M)),} \\
@@ -170,7 +173,7 @@ L_{\theta }\) corresponding to \(\theta \), which is defined by</p>
 <p>\begin{equation}
 L_{\theta }(X,Y)=d\theta (X,J_{b}Y)  \label{1.2}
 \end{equation}</p>
-<p>for any \(X,Y\in H \). The second condition in (<a class="wiki-crossref" data-wiki-ref="1.1" href="#">??</a>) implies that \( 
+<p>for any \(X,Y\in H \). The second condition in \eqref{1.1} implies that \( 
 L_{\theta }\) is \(J_{b}\)-invariant, and thus symmetric. If \(L_{\theta }\) is
 positive definite on \(H \) for some \(\theta \), \((M,H^{1,0} )\) is said to
 be <em>strictly pseudoconvex</em>. From now on, we will always assume that \( 
@@ -179,7 +182,7 @@ pseudo-Hermitian \(1\)-form \(\theta \), such that its Levi form \(L_{\theta }\)
 is positive definite. In this case  the synthetic object \((M,H^{1,0} ,\theta )\) is
 referred to as a <em>pseudo-Hermitian manifold</em>.</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:55:1" title="Edit remark at source line 55" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:58:1" title="Edit remark at source line 58" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>For any \(Z,W \in H^{1,0}(M)\),</p>
 <p>\[
@@ -191,12 +194,13 @@ L_{\theta}(Z, \overline{W})=-i(d \theta)(Z, \overline{W}):=G_{\theta }(Z, \overl
 \theta \) is a contact form. Thus there is a unique vector field \(\xi \in
 \Gamma (T(M))\), called the <em>Reeb vector field</em>, such that</p>
 <p>\begin{equation}
-\theta (\xi )=1\quad i_{\xi }d\theta =0 , \label{1.3}
+\label{1.3}
+\theta (\xi )=1\quad i_{\xi }d\theta =0 , 
 \end{equation}</p>
 <p>where \(i_{\xi }\) denotes the interior product with respect to \(\xi \). The
 collection of all its integral curves forms an oriented one-dimensional
 foliation \(\mathcal{F}_{\xi }\) on \(M\), which is called the <em>Reeb
-foliation</em>. The first condition in (<a class="wiki-crossref" data-wiki-ref="1.3" href="#">??</a>) implies that \(\xi \) is
+foliation</em>. The first condition in \eqref{1.3} implies that \(\xi \) is
 transversal to \(H \). Therefore \(T(M)\) admits a decomposition</p>
 <p>\begin{equation}
 T(M)=H \oplus V_{\xi },  \label{1.4}
@@ -225,7 +229,7 @@ Define the \(2\)-form \(\Omega\) by</p>
  \end{equation}</p>
 <p>It is known that there exists a unique linear connection \(\nabla \) on \( 
 (M^{2m+1},H^{1,0} ,\theta )\), called the <em>Tanaka-Webster connection</em>,
-such that (cf. [<a href="#ref-DT2006differential">DT2006differential</a>], [<a href="#ref-TA1975adifferential">TA1975adifferential</a>], [<a href="#ref-We1978pseudo">We1978pseudo</a>])</p>
+such that (cf. [<a href="#ref-DT2006differential">DT06</a>], [<a href="#ref-TA1975adifferential">Tan75</a>], [<a href="#ref-We1978pseudo">Web78</a>])</p>
 <ol class="wiki-enumerate decimal">
 <li>
 <p>\(\nabla _{X}\Gamma (H )\subseteq \Gamma (H )\) and \(\nabla _{X}J=0\)
@@ -246,16 +250,15 @@ for any \(X\in \Gamma (TM)\);</p>
     T_{\nabla }(Z,\overline{W})=&amp; 2 i L_{\theta }(Z,\overline{W}) \xi ,\\
     \tau \circ J+J \circ \tau =&amp;0,
 \end{aligned}  \]</p>
-<p>for any \(Z,W \in H^{1,0}(M)\). See [<a href="#ref-dongren2024dgpseudo">dongren2024dgpseudo</a>] for more information.</p>
+<p>for any \(Z,W \in H^{1,0}(M)\). See [<a href="#ref-dongren2024dgpseudo">DR24</a>] for more information.</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:121:1" title="Edit remark at source line 121" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:125:1" title="Edit remark at source line 125" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>One has</p>
 <p>\[ T^{\nabla }(X,Y) = 2 g_{\theta }(JX,Y) \xi +\theta (X) \tau Y-\theta (Y) \tau X,  \]</p>
 <p>or (be careful with the wedge convention)</p>
 <p>\[ T_{\nabla }=2(\theta  \wedge \tau -\Omega \otimes  \xi ) .\]</p>
 <p>Also,</p>
-<p>\[ \tau \circ J+J \circ \tau =0; \]</p>
 <p>\[ J^2 Y=-Y+\theta (Y) \xi , \quad \forall Y \in T(M); \]</p>
 <p>\[ [\xi ,X] \in \mathfrak{X}_{H}, \quad \forall X \in \mathfrak{X}_H.\]</p>
 </section>
@@ -282,7 +285,7 @@ field \(M\). Set</p>
 \end{equation}</p>
 <p>Let \(\{\theta ^{j}\}_{j =1}^{m}\) be the dual frame field of \(\{\eta
 _{j}\}_{j=1}^{m}\). By the properties of the Tanaka-Webster connection \( 
-\nabla \), we have (cf. [<a href="#ref-DT2006differential">DT2006differential</a>])</p>
+\nabla \), we have (cf. [<a href="#ref-DT2006differential">DT06</a>])</p>
 <p>\begin{equation}
 \nabla \xi =0, \quad\nabla \eta _{j}=\theta _{j}^{i}\otimes \eta _{i} 
 \quad \nabla \eta _{\overline{j}}=\theta _{\overline{j}}^{\overline{i} 
@@ -299,7 +302,7 @@ the frame field. Since</p>
 \overline{i}}\theta ^{j}\otimes \eta _{\overline{i}}.  \label{1.10}
 \end{eqnarray}</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:174:1" title="Edit remark at source line 174" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:177:1" title="Edit remark at source line 177" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Set</p>
 <p>\[ A(X,Y)=g_{\theta }(\tau X,Y) \]</p>
@@ -309,8 +312,8 @@ Writing \(A_{ij}=A(\eta_i,\eta_j)\) and \(h_{i \bar j}=g_{\theta }(\eta_i,\eta_{
 <p>\[A_{ij}=A_{i}^{\bar k}h_{\bar k j}.\]</p>
 </section>
 </div>
-<p>From [<a href="#ref-We1978pseudo">We1978pseudo</a>], we know that \(\{\theta ,\theta ^{i},\theta_{j}^{i}\}\)
-satisfy the following structure equations (cf. also \S 1.4 in [<a href="#ref-DT2006differential">DT2006differential</a>]
+<p>From [<a href="#ref-We1978pseudo">Web78</a>], we know that \(\{\theta ,\theta ^{i},\theta_{j}^{i}\}\)
+satisfy the following structure equations (cf. also \S 1.4 in [<a href="#ref-DT2006differential">DT06</a>]
 )</p>
 <p>\begin{eqnarray}
 d\theta &amp;=&amp;2\sqrt{-1}\theta ^{i}\wedge \theta ^{\overline{i}}\text{,}  \notag
@@ -333,7 +336,7 @@ d\theta _{j}^{i} &amp;=&amp;-\theta _{k}^{i}\wedge \theta _{j}^{k}+\Pi _{j}^{i}
 \bar{l}}^{i}\) are the components of curvature tensor of the
 Tanaka-Webster connection.</p>
 <div class="theorem lemma">
-<header>Lemma ([<a href="#ref-CDRY2019onharm">CDRY2019onharm</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:209:1" title="Edit lemma at source line 209" aria-label="Edit lemma in VS Code">Edit</a>
+<header>Lemma ([<a href="#ref-CDRY2019onharm">CDRY19</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:212:1" title="Edit lemma at source line 212" aria-label="Edit lemma in VS Code">Edit</a>
 <section>
 <p><span class="wiki-label" data-wiki-label="lemDiv"></span>
 Let \((M^{2m+1},H,J,\theta )\) be a pseudo-Hermitian manifold with
@@ -348,7 +351,7 @@ the divergence and codifferential respectively.</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Relation with Levi-Civita connection)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:222:1" title="Edit proposition at source line 222" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition (Relation with Levi-Civita connection)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:225:1" title="Edit proposition at source line 225" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Let \(\nabla ^{\theta }\) be the Levi-Civita connection of Webster metric, then</p>
 <p>\begin{equation}
@@ -371,22 +374,22 @@ where</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:244:1" title="Edit remark at source line 244" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:247:1" title="Edit remark at source line 247" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>One has</p>
 <p>\[ \nabla ^{\theta }_{\xi }\xi =0, \qquad \di \xi =0. \]</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:249:1" title="Edit proposition at source line 249" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:252:1" title="Edit proposition at source line 252" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>The Levi distribution \(H(M)\) is minimal and</p>
 <p>\[ \trace (\tau) =0. \]</p>
 </section>
 </div>
-<div class="wiki-heading-with-edit"><h1>Divergence formulas</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:254:1" title="Edit section at source line 254" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Divergence formulas</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:257:1" title="Edit section at source line 257" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem definition">
-<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:255:1" title="Edit definition at source line 255" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:258:1" title="Edit definition at source line 258" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Define the divergence of a vector \(X \in TM\)  by</p>
 <p>\[ \di (X) \Psi  = \mathcal{L}_{X} \Psi ,\]</p>
@@ -394,7 +397,7 @@ where</p>
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:261:1" title="Edit remark at source line 261" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:264:1" title="Edit remark at source line 264" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>By \eqref{15} and metricity of \(\nabla \),</p>
 <p>\[ \begin{aligned}
@@ -409,14 +412,14 @@ where</p>
 </section>
 </div>
 <div class="theorem exercise">
-<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:273:1" title="Edit exercise at source line 273" aria-label="Edit exercise in VS Code">Edit</a>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:276:1" title="Edit exercise at source line 276" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>For any complex vector \(Z \in T_{\cc}(M)\),</p>
 <p>\[ \overline{\di (Z)}=\di (\bar{Z}) .\]</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:277:1" title="Edit definition at source line 277" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:280:1" title="Edit definition at source line 280" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Define  the divergence of a 1-form \(\sigma \) by</p>
 <p>\[ \di (\sigma )=\di (X_{\sigma }), \]</p>
@@ -424,7 +427,7 @@ where</p>
 </section>
 </div>
 <div class="theorem exercise">
-<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:282:1" title="Edit exercise at source line 282" aria-label="Edit exercise in VS Code">Edit</a>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:285:1" title="Edit exercise at source line 285" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>For any \( Z=Z^{i }e_{i }\in H^{1,0}(M)\), we have</p>
 <p>\[ \di (Z)=e_{i }(Z^{i })+Z^{j } \theta_{j }^{i }(e_{i }). \]</p>
@@ -433,7 +436,7 @@ where</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:289:1" title="Edit definition at source line 289" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:292:1" title="Edit definition at source line 292" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>Sub-Laplacian for a smooth function \(u\)  is defined by</p>
 <p>\[ \Delta _b(u):=\di(\nabla^{h} u)=u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j },\]</p>
@@ -443,14 +446,14 @@ where</p>
 <p>Note that</p>
 <p>\[ \nabla ^h u = u_{i} e_{\bar i}+u_{\bar i} e_{i}. \]</p>
 <div class="theorem exercise">
-<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:296:1" title="Edit exercise at source line 296" aria-label="Edit exercise in VS Code">Edit</a>
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:299:1" title="Edit exercise at source line 299" aria-label="Edit exercise in VS Code">Edit</a>
 <section>
 <p>The usual Laplacian is given by</p>
 <p>\[ \Delta  u= u_{i \bar{j }}h^{i \bar{j }}+u_{\bar{i }j }h^{\bar{i }j }+u_{00}. \]</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Stokes&#x27; formulas)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:301:1" title="Edit proposition at source line 301" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition (Stokes&#x27; formulas)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:304:1" title="Edit proposition at source line 304" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>If at least one of the smooth functions \(a,b\) has compact support, then</p>
 <p>\begin{equation}\label{eq:laplacian-symmetry}
@@ -463,7 +466,7 @@ where</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:312:1" title="Edit proposition at source line 312" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:315:1" title="Edit proposition at source line 315" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Put \(D=\nabla ^{\theta }\) and</p>
 <p>\begin{equation}\label{eq:Z-def}
@@ -480,9 +483,9 @@ where</p>
 		\end{equation}</p>
 </section>
 </div>
-<div class="wiki-heading-with-edit"><h1>Curvatures</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:329:1" title="Edit section at source line 329" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Curvatures</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:332:1" title="Edit section at source line 332" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem definition">
-<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:333:1" title="Edit definition at source line 333" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/PseuHerm.wiki:336:1" title="Edit definition at source line 336" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>The Ricci tensor of the Webster connection is defined by</p>
 <p>\[
@@ -506,7 +509,7 @@ g_{\theta}\bigl(R(\eta_k,\eta_{\bar{l}})\eta_i,\eta_{\bar{j}}\bigr)
 =
 h_{s\bar{j}}\,R^{s}_{ik\bar{l}},
 \]</p>
-<p>where \(R\) is the curvature tensor of \(\nabla\). One may derive that (cf.~[<a href="#ref-DT2006differential">DT2006differential</a>])</p>
+<p>where \(R\) is the curvature tensor of \(\nabla\). One may derive that (cf.~[<a href="#ref-DT2006differential">DT06</a>])</p>
 <p>\[
 R_{i\bar{j}k\bar{l}}=R_{k\bar{j}i\bar{l}}.
 \]</p>
@@ -533,6 +536,7 @@ R_{k\bar{l}}=R_{\bar{l}k}.
 \sqrt{-1}\bigl(A_{\bar{i}\bar{j}}X^{\bar{i}}Y^{\bar{j}}-A_{ij}X^{i}Y^{j}\bigr)
 \]</p>
 <p>for any \(X=X^{i}\eta _i\), \(Y=Y^{j}\eta _j\in H^{1,0}(M)\).</p>
+<ol class="references"><li id="ref-CDRY2019onharm">[CDRY19] Tian Chong, Yuxin Dong, Yibin Ren, and Guilin Yang. On harmonic and pseudoharmonic maps from pseudo-Hermitian manifolds. Nagoya Math. J., 234:170–210, 2019. URL: https://doi.org/10.1017/nmj.2017.38, doi:10.1017/nmj.2017.38.</li><li id="ref-dongren2024dgpseudo">[DR24] Yuxin Dong and Yibin Ren. On differential geometry of non-degenerate CR manifolds. 2024. URL: https://arxiv.org/abs/2408.10591, arXiv:2408.10591.</li><li id="ref-DT2006differential">[DT06] Sorin Dragomir and Giuseppe Tomassini. Differential geometry and analysis on CR manifolds. Volume 246 of Progress in Mathematics. Birkhäuser Boston, Inc., Boston, MA, 2006. ISBN 978-0-8176-4388-1; 0-8176-4388-5. URL: https://doi.org/10.1007/0-8176-4483-0, doi:10.1007/0-8176-4483-0.</li><li id="ref-TA1975adifferential">[Tan75] Noboru Tanaka. A differential geometric study on strongly pseudo-convex manifolds. Volume No. 9 of Lectures in Mathematics, Department of Mathematics, Kyoto University. Kinokuniya Book Store Co., Ltd., Tokyo, 1975.</li><li id="ref-We1978pseudo">[Web78] S. M. Webster. Pseudo-Hermitian structures on a real hypersurface. J. Differential Geometry, 13(1):25–41, 1978. URL: http://projecteuclid.org/euclid.jdg/1214434345.</li></ol>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>

@@ -1,77 +1,87 @@
-\title{K\"ahler geometry}
-
+\title{K\"ahler manifolds}
+\wikilang{en}
 
 \section{General complex manifolds}
 
 We adopt the following notations in $\mathbb{C}^n$:
-\begin{equation}
+\begin{equation*}
 	z^k=x^k+i y^k, \quad x^k, y^k \in \mathbb{R}.
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 	Z=(z^1,...,z^n)=(x^1,...,x^n,y^1,...,y^n).
-\end{equation}
+\end{equation*}
 The complex structure is given by
-\begin{equation}
+\begin{equation*}
 	J_0(Z)=(y^1,...,y^n, -x^1,...,-x^n),
-\end{equation}
+\end{equation*}
 i.e.,
-\begin{equation}
+\begin{equation*}
 	J_0= \begin{pmatrix}
 	0 & I_n\\
 	-I_n & 0
 \end{pmatrix}.
-\end{equation}
+\end{equation*}
 Set
-\begin{equation}
+\begin{equation*}
 J\left(\partial / \partial x^j\right)=\partial / \partial y^j, \quad J\left(\partial / \partial y^j\right)=-\left(\partial / \partial x^j\right), \quad j=1, \ldots, n .
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 \partial / \partial z^j=\frac{1}{2}\left(\partial / \partial x^j-i\left(\partial / \partial y^j\right)\right), \quad \partial / \partial \bar{z}^j=\frac{1}{2}\left(\partial / \partial x^j+i\left(\partial / \partial y^j\right)\right) .
-\end{equation}
-Recall that the real representation of $GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})$ is given by 
-\begin{equation}
+\end{equation*}
+A real representation of $GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})$ is given by 
+\begin{equation*}
 	A+iB \to \begin{pmatrix}
 		A & B\\
 		-B & A
 	\end{pmatrix} .
-\end{equation}
-A natural one-to-one correspondence(cf. \cite{KN1969found}):
-\begin{equation}
+\end{equation*}
+
+\begin{proposition}[cf. \cite{KN1969found}]
+	We have the following natural one-to-one correspondence:
+\begin{equation*}
 	\{ \text{the set of complex structures on} \, \mathbb{R}^{2n} \} \Leftrightarrow GL(2n;\mathbb{R})/GL(n;\mathbb{C})
-\end{equation}
+\end{equation*}
 by sending $S\in GL(2n;\mathbb{R})/GL(n;\mathbb{C})$ into $SJ_0S^{-1}.$
+\end{proposition}
+
 
 The complex structure on dual space:
-\begin{equation}
+\begin{equation*}
 	\la JX,X^* \ra=\la X,JX^* \ra.
-\end{equation}	
+\end{equation*}	
 
-\begin{equation}
+\begin{equation*}
 V^{1,0}=\{X-i J X ; X \in V\}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 V^{0,1}=\{X+i J X ; X \in V\}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 \begin{array}{ll}
 V_{1,0}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &  \left.X \in V^{0,1}\right\}, \\
 V_{0,1}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &  \left.X \in V^{1,0}\right\} .
 \end{array}
-\end{equation}
+\end{equation*}
 
-Hermitian inner product on a real vector space $V$:
-\begin{equation}
+\begin{definition}
+	An Hermitian inner product on a real vector space $(V,J)$ is a metric $h$ satisfying 
+\begin{equation*}
 	h(JX,JY)=h(X,Y), \quad X,Y \in V.
-\end{equation}
-A natural one-to-one correspondence
-\begin{equation}
+\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	We have the following natural one-to-one correspondence
+\begin{equation*}
 	\{ \text{the set of Hermitian inner products in}\, \mathbb{R}^{2n} \} \Leftrightarrow GL(n;\mathbb{C})/U(n)
-\end{equation}
+\end{equation*}
 by sending $S$ to $h(X,Y)=h_0(SX,SY)$.
+\end{proposition}
+
 
 After complex-extending $h$, we have
 \begin{enumerate}
-	\item $h(\bar{Z}, \bar{W})=\overline{h(Z, W)} \quad$ for $Z, W \in V^c$;
+\item $h(\bar{Z}, \bar{W})=\overline{h(Z, W)} \quad$ for $Z, W \in V^c$;
 \item $h(Z, \bar{Z})>0 \quad$ for all non-zero $Z \in V^c$;
 \item $h(Z, \bar{W})=0 \quad$ for $Z \in V^{1,0} $ and $ W \in V^{0,1}$.
 \end{enumerate}
@@ -79,64 +89,70 @@ Define a skew-symmetric	element
 $$ \boxed{\varphi(X,Y)=h(X,JY),}$$
 then $\varphi \in \Lambda^{1,1}V^*$	and $\varphi$ is $J$-invariant.
 
-Let $\{Z_j\}$ be a basis for $V^{1,0}$ and $\{\xi_J\}$ a basis for $V_{1,0}$.
+Let $\{Z_j\}$ be a basis for $V^{1,0}$ and $\{\xi_j\}$ a basis for $V_{1,0}$.
 Set
-\begin{equation}
+\begin{equation*}
 	h_{j \bar k}=h(Z_j,Z_{\bar k}).
-\end{equation}
+\end{equation*}
 Then
 \begin{enumerate}
 	\item $h_{j \bar k}=\bar{h}_{k \bar j}$
 	\item $\varphi=-i\sum_{j,k=1}^n h_{j \bar k}\xi^j \wedge \bar{\xi}^k$
 \end{enumerate}
 i.e.,
-\begin{equation}
+\begin{equation*}
 \varphi(Z, W)=-i \sum_{j, k=1}^n h_{j \bar k}\left(\xi^j(Z) \bar{\xi}^k(W)-\xi^j(W) \bar{\xi}^k(Z)\right) .
-\end{equation}
+\end{equation*}
 
 The torsion of $J$:
-\begin{equation}
+\begin{equation*}
 	N(X,Y)=2\{ [JX, JY] - [X, Y] - J[X, JY] - J[JX, Y] \}, \quad X,Y \in \mathfrak{X}(M).
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 N_{j k}^i=2 \sum_{h=1}^{2 n}\left(J_i^h \partial_h J_k^i-J_k^h \partial_h J_j^i-J_h^i \partial_j J_k^h+J_h^i \partial_k J_j^h\right).
-\end{equation}
+\end{equation*}
 The complex differential forms on an almost complex manifold $M$ of dimension $2n$:
-\begin{equation}
+\begin{equation*}
 d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mathfrak{C}^{p, q+1}+\mathfrak{C}^{p-1, q+2} .
-\end{equation}
+\end{equation*}
 An infinitesimal automorphism is a vf. $X$ s.t. $L_XJ=0,$ equivalently,
-\begin{equation}
+\begin{equation*}
   [X,JY]=J[X,Y], \quad \forall Y \in \mathfrak{X}(M)
-\end{equation}
-On any \textbf{complex manifold} $M$:
+\end{equation*}
+
+\begin{proposition}
+	Let $M$ be a complex manifold. Then 
 \begin{enumerate}
   \item  The Lie algebra of infinitesimal automorphisms of the complex structure $J$ is isomorphic with the Lie algebra of holomorphic vector fields, the isomorphism being given by
 $$X \to Z=\frac{1}{2}(X-iJX) .$$
 Note that we can write
-\begin{equation}
+\begin{equation*}
 	\frac{1}{2}(X-i J X)=\sum_{j=1}^n f^j\left(\partial / \partial z^j\right), \quad \frac{1}{2}(Y-i J Y)=\sum_{j=1}^n g^j\left(\partial / \partial z^j\right) ,
-\end{equation}
+\end{equation*}
 but $f^j, g^i$ are \textit{not} necessarily holomorphic functions. 
 \item $M$ admits an \textbf{almost complex affine connection} ($\nabla J=0$) such that its torsion $T$ is given by 
     $$N=8T. $$
 \item $T(J X, J Y) -J(T(J X, Y))-J(T(X, J Y))-T(X, Y)=-\frac{1}{2} N(X, Y)$ 
 \item $R(X,Y)\circ J=J\circ R(X,Y)$
 \end{enumerate}
-On any almost Hermitian manifold $(M,J,g)$:
-\begin{equation}
+\end{proposition}
+
+\begin{proposition}
+	Let $(M,J,g)$ be an almost Hermitian manifold. Then 
+\begin{equation*}
 \begin{aligned}
 4 g\left(\left(\nabla_X J\right) Y, Z\right)= 2 d \Phi(X, J Y, J Z)-2 d \Phi(X, Y, Z)  +g(N(Y, Z), J X) ,
 \end{aligned}
-\end{equation}
-where the fundamental 2-form $\Phi(X,Y)=g(X,JY)$.
+\end{equation*}
+where $\Phi $ is  the fundamental 2-form, i.e., $\Phi(X,Y)=g(X,JY)$.
+\end{proposition}
 
 \section{Some simple calculation}
 Set
 $$ Z_j=\frac{1}{2}(X_j-iY_j), \quad  \bar Z_j=\frac{1}{2}(X_j+iY_j),$$
 then
 $$ X_j=Z_j+\bar Z_j, \quad Y_j=i(Z_j-\bar Z_j). $$
-For any bilinear operator
+For any bilinear operator $A$, we have 
 $$ A(X_j,X_j)+A(Y_j,Y_j) = 2\{A(Z_j,\bar Z_j) +A(\bar Z_j, Z_j)  \},$$
 $$ A(Z_j,\bar Z_j)=\frac{1}{4}\{ A(X_j,X_j)+A(Y_j,Y_j)   \}-\frac{i}{4}\{ A(X_j,Y_j)+A(Y_j,X_j)   \} ,$$
 $$ X_jX_j+Y_jY_j=2(Z_j \bar Z_j+\bar Z_j  Z_j)$$
@@ -161,19 +177,19 @@ $$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
 - $\omega (X,Y)=g(X,JY), g(X,Y)=\omega (JX,Y)$ and $g, \omega $ are both $J$-invariant.
 
 3. Define a Hermitian metric $\la, \ra$ by
-\begin{equation}
+\begin{equation*}
 	\boxed{\la Z,W\ra=g(Z,\bar W).}
-\end{equation}
+\end{equation*}
 \end{remark}
 \begin{proposition}
 	In local holomorphic coordinates,
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 		g & =g_{j \bar{k}} d z^j \otimes d \bar{z}^k+g_{\bar{j} k} d \bar{z}^j \otimes d z^k \\
 		& =2 g_{j \bar{k}}\left(\frac{d z^j \otimes d \bar{z}^k+d \bar{z}^k \otimes d z^j}{2}\right) \\
 		& =2 g_{j \bar{k}} d z^j d \bar{z}^k.
 		\end{aligned}
-		\end{equation} 
+		\end{equation*} 
 \end{proposition}
 \begin{proposition}
 	If $X$ and $Y$ are real vector fields, written locally as $X=X^j \partial_j+X^{\bar{j}} \partial_{\bar{j}}$ and $Y=Y^j \partial_j+Y^{\bar{j}} \partial_j$, then
@@ -192,11 +208,11 @@ $$ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).$$
 \begin{proposition}
 	In holomorphic coordinates, for sections $Z, W$ of $T^{\prime} M$, we have
 	$$
-	\langle Z, W\rangle=g\left(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\right)=g_{j \bar{k}} Z^j W^{\bar{k}},
+	\langle Z, W\rangle=g\big(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\big)=g_{j \bar{k}} Z^j W^{\bar{k}},
 	$$
  On the other hand, if $X$ and $Y$ are real, decomposed as $X=Z+\bar{Z}$ and $Y=W+\bar{W}$ with $Z, W \in \Gamma\left(T^{\prime} M\right)$, then
 	$$
-	\langle X, Y\rangle=g_{j \bar{k}}\left(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\right)
+	\langle X, Y\rangle=g_{j \bar{k}}\big(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\big)
 	$$
 In particular, for $X=Z+\bar{Z}$, this yields
 	$$
@@ -210,6 +226,8 @@ In particular, for $X=Z+\bar{Z}$, this yields
 \end{proposition}
 
 \section{K\"ahler metrics(kn)}
+\label{se4}
+
 The metric $g$ is K\"ahlerian if $\Phi$ is closed. For a K\"ahler manifold, we have
 \[
 R(JX, JY) = R(X, Y), \quad \operatorname{Ric}(JX, JY) = \operatorname{Ric}(X, Y) = \frac{1}{2} \operatorname{tr} \{ J \circ R(X, JY) \}.
@@ -231,9 +249,9 @@ Note that here $dz^{\alpha} d\bar{z}^{\beta}$ is the symmetric product, that's w
 \boxed{\Phi = -i \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} \wedge d\bar{z}^{\beta}.}
 \]
 For $g$ to be K\"ahlerian:
-\[
-\frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
-\]
+\begin{equation}\label{kl}
+	\frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
+\end{equation}
 For an affine connection, set
 \[
 \nabla_{Z_B} Z_C = \sum \Gamma_{BC}^A Z_A.
@@ -314,9 +332,9 @@ Thus
 	K_{\alpha \bar{\beta}} = -\frac{\partial^2 \log(G)}{\partial z^{\alpha} \partial \bar{z}^{\beta}}.
 \end{equation}
 Also
-\begin{equation}
-Rc = 2 R_{j \bar{k}} dz^j d\bar{z}^k, \quad S = 2 g^{j \bar{k}} R_{j \bar{k}}.
-\end{equation}
+\begin{equation*}
+\ricci = 2 R_{j \bar{k}} dz^j d\bar{z}^k, \quad S = 2 g^{j \bar{k}} R_{j \bar{k}}.
+\end{equation*}
 
 \begin{remark}
 	 Note that $\eqref{eq:92}$  holds for real Riemannian manifolds if we set $G = (\det(g_{ij}))^{\frac{1}{2}}$, but $\eqref{eq:93}$ is far from the truth.
@@ -335,12 +353,14 @@ Let $F$ be a real-valued function in a coordinate neighborhood of a complex mani
 \[
 g_{\alpha \bar{\beta}} = \frac{\partial^2 F}{\partial z^{\alpha} \partial \bar{z}^{\beta}},
 \]
-which is Hermitian since $F$ is real. If it's positive definite, then $2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}$ is a K\"ahler metric by (75). Conversely, a K\"ahler metric can be written in this form locally. We have
+which is Hermitian since $F$ is real. If it's positive definite, then $2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}$ is a K\"ahler metric by \eqref{kl}. Conversely, a K\"ahler metric can be written in this form locally. We have
 \[
 K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^4 F}{\partial z^{\alpha} \partial \bar{z}^{\beta} \partial z^{\gamma} \partial \bar{z}^{\delta}} - \sum_{\epsilon, \tau} g^{\bar{\epsilon} \tau} \frac{\partial^3 F}{\partial \bar{z}^{\epsilon} \partial z^{\alpha} \partial z^{\gamma}} \frac{\partial^3 F}{\partial z^{\tau} \partial \bar{z}^{\beta} \partial \bar{z}^{\delta}}.
 \]
 
-\begin{example}[$\mathbb{C}^n,K=0$]
+
+The complex space forms are exhibited by the following three examples.
+\begin{example}[$\mathbb{C}^n, K=0$]
 	K\"ahler form and metric:
    \[
    \omega = -\frac{i}{2} \sum_j dz^j \wedge d\bar{z}^j = -\sum_j dx^j \wedge dy^j, \quad g = \sum_j dz^j d\bar{z}^j,
@@ -391,7 +411,7 @@ ds^2 = 4  \frac{\left( 1 + \sum z^{\alpha} \bar{z}^{\alpha} \right) \left( \sum 
 
 \end{example}
 
-\begin{example}[$\mathbb{B}^{2n}$,$K=-1$ ]
+\begin{example}[$\mathbb{B}^{2n}$, $K=-1$]
 Define
 	\[
 \omega_{\text{CH}} = 2i \partial \bar{\partial} \log(1 - |z|^2),
@@ -426,7 +446,6 @@ $$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
 \]
 \end{theorem}
 
-
 \begin{theorem}[Characterizations of Kähler Metrics]
 	 Let $M$ be a complex manifold and $g$ be a Hermitian metric on $M$. We use the following notations:
 	\begin{itemize}
@@ -459,96 +478,98 @@ $$ \omega_{(k)}=\sum_{j=1}^{k}  dx^j \wedge dy^j .$$
 \end{theorem}
 
 \section{Curvatures(lee)}
+
 \begin{remark}
    Note that the John M Lee's notations are different from ours, for example, he defined 
-   \begin{equation}
+   \begin{equation*}
 	R(\partial _i, \partial _j)\partial_k=R_{ijk}^l \partial_l
-   \end{equation} 
-   \begin{equation}
+   \end{equation*} 
+   \begin{equation*}
 	R(x,y,z,w)=g(R(x,y)z,w)
-   \end{equation}
-   \begin{equation}
+   \end{equation*}
+   \begin{equation*}
 	R_{ijkl}=g_{lm}R_{ijk}^m,
-   \end{equation}
+   \end{equation*}
    and the Bianchi identity is
-   \begin{equation}
+   \begin{equation*}
 	R_{ijkl}+R_{jkil}+R_{kijl}= 0,
-   \end{equation}
+   \end{equation*}
  and the sectional curvature is 
- \begin{equation}
+ \begin{equation*}
 	K(x,y)=\frac{R(x,y,y,x)}{|x|^2|y|^2-g(x,y)^2}.
- \end{equation}
+ \end{equation*}
  Compare to Sec.
 
  In this section, we refer most content from his book, but adapting to our notations as in previous!
 \end{remark}
 
 A useful identity on any K\"ahler manifold:
-\begin{equation}
+\begin{equation*}
 \boxed{	R(Z,\bar Z, W,\bar W)=-4\{R(X, Y,X,Y)+R(X,JY,X,JY)   \}=-4R(X,JX,Y,JY),}
-\end{equation}
+\end{equation*}
 where 
 $$Z=X-iJX, \quad W=Y-iJY \in T'M.$$ 
 Also, if let $X=Re(Z), Y=Im(Z)$, then
 
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		R(X,Y,X,Y)=\frac{1}{4}R(Z,\bar Z,\bar Z,Z)\\
 		|X|^2|Y|^2-g(X,Y)^2=\frac{1}{4}|Z|^2.
 	\end{aligned} 
-\end{equation}
+\end{equation*}
 
 
 \begin{definition}[holomorphic sectional curvature]
 	$$ H(Z):= \frac{R(Z,\bar Z, \bar Z,  Z)}{|Z|^4}.$$
 \end{definition}
 \begin{definition}[holomorphic bisectional curvature]
-	\begin{equation}
+	\begin{equation*}
 		H(p,p') := R(X, JX, Y, JY) =R(X, Y, X, Y) + R(X, JY, X, JY),
-	\end{equation}
+	\end{equation*}
 	where $p,p'$ are two $J$-invariant  planes and $X,Y$ are unit in   $p,p'$ respectively.
 	Or equivalently,
-	\begin{equation}
+	\begin{equation*}
 		H(p,p')=B(Z, W)=\frac{R (Z, \bar{Z},  \bar{W},W)}{|Z|^2|W|^2}.
-		\end{equation}
+		\end{equation*}
 \end{definition}
 
 \begin{proposition}
    $H(Z)=K(Re(Z),Im(Z)) =K(X,JX)$, thus the definition coincides with KobayashiNomizu's (Also true for holomorphic bisectional curvature).
 \end{proposition}
 \begin{proposition}
-   $B(Z,W)=K(Re(Z),Re(W))+K(Re(Z),Im(W))$ . 
+   $$B(Z,W)=K(Re(Z),Re(W))+K(Re(Z),Im(W)).$$ 
 \end{proposition}
 
 \begin{proposition}
 	A Kähler metric $g$  has constant holomorphic sectional curvature $c$ iff 
-	\begin{equation}
+	\begin{equation*}
 		R_{j \bar{k} l \bar{m}}=-\frac{1}{2} c\left(g_{j \bar{k}} g_{l \bar{m}}+g_{l \bar{k}} g_{j \bar{m}}\right) , (\text{under complex vector basis})
-		\end{equation}  
+		\end{equation*}  
 		iff 
-		\begin{equation}
+		\begin{equation*}
 			\begin{aligned}
 			R(X, Y, Z, W)=\frac{c}{4}[ & g(X, Z) g(Y, W)-g(X, W) g(Y, Z) \\
 			& +g(X, J Z) g(Y, J W)-g(X, J W) g(Y, J Z) \\
 			& +2 g(X, J Y) g(Z, J W)]
 			\end{aligned}
-			\end{equation}
+			\end{equation*}
 			for all real vectors $X,Y,Z,W$.
 	If this's the case, we have
-	\begin{equation}
+	\begin{equation*}
 		R(X, J X, Y, J Y)=\frac{c}{2}\left[g(X, X) g(Y, Y)+g(X, Y)^2+g(X, J Y)^2\right] ,
-		\end{equation}		 
+		\end{equation*}		 
 		and
-		\begin{equation}
+		\begin{equation*}
 			R(X, J X, X, J X)=c|X|^2.
-		\end{equation}
+		\end{equation*}
 \end{proposition}
 
 \begin{proposition}
    If  $H(Z)=c$, i.e., $g$  has constant holomorphic sectional curvature $c$, then the range of (holomorphic bisectional curvature) $H(p,p')$ is $[\frac{c}{2},c]$. \textbf{Here the value $c/2$ is attained when $p$  is perpendicular to $p'$   whereas the value $c$ is attained when $p=p'$.} 
 \end{proposition}
 \begin{proposition}
-	Let $M$ be a complex manifold of dimension $n$, and let $g$ be a Kähler metric on $M$ with constant holomorphic sectional curvature $c$.\\
+	Let $M$ be a complex manifold of dimension $n$, and let $g$ be a Kähler metric on $M$ with constant holomorphic sectional curvature $c$.
+
 	(a) Let $v, w \in T_x M$ be a pair of orthonormal vectors. One can show that the (ordinary) sectional curvature of $g$ in the direction of the plane spanned by $(v, w)$ is given by
 	$$
 	K (v, w)=\frac{1}{4} c\left(1+3\langle v, J w\rangle^2\right) .
@@ -561,17 +582,19 @@ Also, if let $X=Re(Z), Y=Im(Z)$, then
 	$$ Ric(JX,JY)=Ric(X,Y)=\frac{1}{2} \trace(J \circ R(X,JY)) $$
 	$$ R(J X, J Y, Z, W)=R(X, Y, J Z, J W)=R(X, Y, Z, W) $$
 For $X,Y,Z,W \in T'M$: 
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 	R(W, X, \cdot, \cdot) & =R(\cdot, \cdot, W, X)=0, \\
 	R(\bar{W}, \bar{X}, \cdot, \cdot) & =R(\cdot, \cdot, \bar{W}, \bar{X})=0 \\
 	R (W, \bar{X}, Y, \bar{Z}) & =R(Y, \bar{X}, W, \bar{Z}), \\
 	R (W, \bar{X}, Y, \bar{Z}) & =R(W, \bar{Z}, Y, \bar{X}).
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 \end{proposition}
 
-\section{Curvature forms (\textit{chenweihuan})}\label{sec:166}   
+\section{Curvature forms}
+\label{sec:166}   
+This section is taken from \cite{chen2004riemann}.
 Set $(1 \leq \alpha, \beta, \gamma, \dots \leq n)$
 \[
 \nabla \frac{\partial}{\partial z_{\alpha}} = \omega^{\beta}_{\alpha} \frac{\partial}{\partial z_{\beta}}, \quad \nabla \frac{\partial}{\partial x_{\alpha}} = \theta^{\beta}_{\alpha} \frac{\partial}{\partial x_{\beta}} + \theta^{n + \beta}_{\alpha} \frac{\partial}{\partial y_{\beta}},
@@ -583,7 +606,7 @@ Then
 \[
 \theta^{\beta}_{\alpha} = \theta^{n + \beta}_{n + \alpha}, \quad \theta^{\beta}_{n + \alpha} = -\theta^{n + \beta}_{\alpha}, \quad \omega^{\beta}_{\alpha} = \theta^{\beta}_{\alpha} + i \theta^{n + \beta}_{\alpha},
 \]
-which is, in fact, the condition for $\nabla $ to be almost complex. 
+which is actually the condition for $\nabla $ to be almost complex. 
 
 
 Now ( with different range of indices!) set
@@ -610,9 +633,9 @@ where $R$ is applied to $\left\{ \frac{\partial}{\partial x_{\alpha}}, 1 \leq \a
 
 \begin{remark}
    Note that if we choose a unitary frame, then we have, in addition, that
-   \begin{equation}
+   \begin{equation*}
 	\omega^\beta _\alpha =-\bar \omega ^\alpha _\beta ,\quad \Omega^\beta _\alpha =-\bar \Omega ^\alpha _\beta .
-   \end{equation} 
+   \end{equation*} 
 \end{remark}
 \begin{proposition}
  Set
@@ -637,7 +660,7 @@ where $R$ is applied to $\left\{ \frac{\partial}{\partial x_{\alpha}}, 1 \leq \a
 	\[
 	K^j_{ikl} = -2 \frac{\partial}{\partial \bar{z}^l} \left( h^{j\bar p} \frac{\partial h_{i\bar p}}{\partial z^k} \right),
 	\]
-	where $h_{i\bar p} = g \left( \frac{\partial}{\partial z^i}, \frac{\partial}{\partial \bar z^p} \right) = \frac{1}{2} \left( g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) + \sqrt{-1} g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) \right)$. (The notation $K^j_{ikl}$ here is exactly $2 K^j_{ik \bar l}$ in $\eqref{eq:80}$ !)
+	where $h_{i\bar p} = g \left( \frac{\partial}{\partial z^i}, \frac{\partial}{\partial \bar z^p} \right) = \frac{1}{2} \left( g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) + \sqrt{-1} g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) \right)$. (The notation $K^j_{ikl}$ here is exactly $2 K^j_{ik \bar l}$ in \eqref{eq:80}!)
 \end{remark}
 
 
@@ -654,24 +677,24 @@ Let $E\to M$ be a smooth complex vector bundle.
 \end{enumerate}
 \begin{example}
 	In a local basis, $\{s_j\}$ is a frame of $E$, and $\{\epsilon \}$ is its dual frame.   Then
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 		\omega \wedge \eta & =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
 		& =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
 		& =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
 		\end{aligned}
-		\end{equation}
+		\end{equation*}
 		That's matric product: in an expression like $\omega_k^j$   we always interpret \textbf{the upper index as the row number and the lower index as the column number}.
 		Likewise, if $ \gamma =\gamma^m \otimes s_m $,  
-		\begin{equation}
+		\begin{equation*}
 			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
-		\end{equation}
+		\end{equation*}
 \end{example}
 \begin{definition}[Cauchy–Riemann Operator]
 	If $E$ is holomorphic, then the following is well-defined:
-	\begin{equation}
+	\begin{equation*}
 		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
-	\end{equation}
+	\end{equation*}
 \end{definition}
 
 \begin{proposition}

@@ -1,4 +1,4 @@
-\title{Sub-Riemannian geoemtry}
+\title{Sub-Riemannian geometry}
 
 \section{Sub-Riemannian manifolds}
 Let $M^{m+k}$ be a $(m+k)$-dimensional smooth manifold and $\mathcal{H}^m$ be  a  subbundle of $TM$ of rank $m$. Assume that $\mathcal{H}$ satisfies step-$r$ bracket generating condition for some $r \geq 1$.

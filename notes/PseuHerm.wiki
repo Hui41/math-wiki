@@ -4,10 +4,13 @@
 
 Let $M^{2m+1}$ be a $(2m+1)$-dimensional smooth orientable manifold. A \emph{CR structure} on $M^{2m+1}$ is a complex rank-$m$ subbundle $H^{1,0} $ of $ 
 T(M)\otimes \mathbb{C}$ with the following properties 
-\begin{align}
-    H^{1,0} \cap H^{0,1}  =& \{0\}, \quad H^{0,1}  = \overline{H^{1,0} } \notag \\
-    [\Gamma (H^{1,0} ),\Gamma (H^{1,0} )] \subseteq &\, \Gamma(H^{1,0} ). \label{1.1}
-    \end{align}    
+\begin{equation}
+\label{1.1}   
+\begin{aligned}
+       &  H^{1,0} \cap H^{0,1}  = \{0\}, \quad H^{0,1}  = \overline{H^{1,0} } \notag \\
+       & [\Gamma (H^{1,0} ),\Gamma (H^{1,0} )] \subseteq \, \Gamma(H^{1,0} ). 
+    \end{aligned} 
+\end{equation}   
 The complex subbundle $H^{1,0} $ corresponds to a real rank $2m$ subbundle 
 $H :=\Re\{H^{1,0} \oplus H^{0,1} \}$ of $T(M)$, which carries a
 complex structure $J_{b}$ defined by 
@@ -18,7 +21,7 @@ for any $V\in H^{1,0} $. The synthetic object $(M,H^{1,0} )$ or $
 (M,H ,J_{b})$ is called a \emph{CR manifold}.
 
 \begin{remark}
-	Formally integrable condition is equivalent to
+	The formally integrable condition is equivalent to
 $$
 \begin{gathered}
 {\left[J_{b} X, Y\right]+\left[X, J_{b} Y\right] \in \Gamma^{\infty}(U, H(M)),} \\
@@ -43,7 +46,7 @@ L_{\theta }$ corresponding to $\theta $, which is defined by
 \begin{equation}
 L_{\theta }(X,Y)=d\theta (X,J_{b}Y)  \label{1.2}
 \end{equation} 
-for any $X,Y\in H $. The second condition in (\ref{1.1}) implies that $ 
+for any $X,Y\in H $. The second condition in \eqref{1.1} implies that $ 
 L_{\theta }$ is $J_{b}$-invariant, and thus symmetric. If $L_{\theta }$ is
 positive definite on $H $ for some $\theta $, $(M,H^{1,0} )$ is said to
 be \textit{strictly pseudoconvex}. From now on, we will always assume that $ 
@@ -63,12 +66,13 @@ Let $(M^{2m+1},H^{1,0} , \theta )$ be a pseudo-Hermitian manifold. Clearly $
 \theta $ is a contact form. Thus there is a unique vector field $\xi \in
 \Gamma (T(M))$, called the \emph{Reeb vector field}, such that
 \begin{equation}
-\theta (\xi )=1\quad i_{\xi }d\theta =0 , \label{1.3}
+\label{1.3}
+\theta (\xi )=1\quad i_{\xi }d\theta =0 , 
 \end{equation}
 where $i_{\xi }$ denotes the interior product with respect to $\xi $. The
 collection of all its integral curves forms an oriented one-dimensional
 foliation $\mathcal{F}_{\xi }$ on $M$, which is called the \emph{Reeb
-foliation}. The first condition in (\ref{1.3}) implies that $\xi $ is
+foliation}. The first condition in \eqref{1.3} implies that $\xi $ is
 transversal to $H $. Therefore $T(M)$ admits a decomposition 
 \begin{equation}
 T(M)=H \oplus V_{\xi },  \label{1.4}
@@ -124,7 +128,6 @@ for any $Z,W \in H^{1,0}(M)$. See \cite{dongren2024dgpseudo} for more informatio
     or (be careful with the wedge convention)
      $$ T_{\nabla }=2(\theta  \wedge \tau -\Omega \otimes  \xi ) .$$ 
      Also, 
-    $$ \tau \circ J+J \circ \tau =0; $$
     $$ J^2 Y=-Y+\theta (Y) \xi , \quad \forall Y \in T(M); $$
     $$ [\xi ,X] \in \mathfrak{X}_{H}, \quad \forall X \in \mathfrak{X}_H.$$
 \end{remark}
@@ -382,3 +385,8 @@ $$
 \sqrt{-1}\bigl(A_{\bar{i}\bar{j}}X^{\bar{i}}Y^{\bar{j}}-A_{ij}X^{i}Y^{j}\bigr)
 $$
 for any $X=X^{i}\eta _i$, $Y=Y^{j}\eta _j\in H^{1,0}(M)$.
+
+
+
+
+\bibliography{references}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="color-scheme" content="light dark">
-  <title>Kähler geometry · Mathematical Notes</title>
+  <title>Kähler manifolds · Mathematical Notes</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/assets/wiki.css">
   <script>
@@ -127,70 +127,85 @@ article .theorem >
     </aside>
     <main>
       <nav><a href="/notes/">All notes</a></nav>
-      <h1>Kähler geometry</h1>
+      <h1>Kähler manifolds</h1>
       <article><div class="wiki-heading-with-edit"><h1>General complex manifolds</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:4:1" title="Edit section at source line 4" aria-label="Edit section in VS Code">Edit</a></div>
 <p>We adopt the following notations in \(\mathbb{C}^n\):</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	z^k=x^k+i y^k, \quad x^k, y^k \in \mathbb{R}.
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 	Z=(z^1,...,z^n)=(x^1,...,x^n,y^1,...,y^n).
-\end{equation}</p>
+\end{equation*}</p>
 <p>The complex structure is given by</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	J_0(Z)=(y^1,...,y^n, -x^1,...,-x^n),
-\end{equation}</p>
+\end{equation*}</p>
 <p>i.e.,</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	J_0= \begin{pmatrix}
 	0 &amp; I_n\\
 	-I_n &amp; 0
 \end{pmatrix}.
-\end{equation}</p>
+\end{equation*}</p>
 <p>Set</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 J\left(\partial / \partial x^j\right)=\partial / \partial y^j, \quad J\left(\partial / \partial y^j\right)=-\left(\partial / \partial x^j\right), \quad j=1, \ldots, n .
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 \partial / \partial z^j=\frac{1}{2}\left(\partial / \partial x^j-i\left(\partial / \partial y^j\right)\right), \quad \partial / \partial \bar{z}^j=\frac{1}{2}\left(\partial / \partial x^j+i\left(\partial / \partial y^j\right)\right) .
-\end{equation}</p>
-<p>Recall that the real representation of \(GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})\) is given by</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>A real representation of \(GL(n;\mathbb{C}) \to GL(2n;\mathbb{R})\) is given by</p>
+<p>\begin{equation*}
 	A+iB \to \begin{pmatrix}
 		A &amp; B\\
 		-B &amp; A
 	\end{pmatrix} .
-\end{equation}</p>
-<p>A natural one-to-one correspondence(cf. [<a href="#ref-KN1969found">KN69</a>]):</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<div class="theorem proposition">
+<header>Proposition (cf. [<a href="#ref-KN1969found">KN69</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:39:1" title="Edit proposition at source line 39" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>We have the following natural one-to-one correspondence:</p>
+<p>\begin{equation*}
 	\{ \text{the set of complex structures on} \, \mathbb{R}^{2n} \} \Leftrightarrow GL(2n;\mathbb{R})/GL(n;\mathbb{C})
-\end{equation}</p>
+\end{equation*}</p>
 <p>by sending \(S\in GL(2n;\mathbb{R})/GL(n;\mathbb{C})\) into \(SJ_0S^{-1}.\)</p>
+</section>
+</div>
 <p>The complex structure on dual space:</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\la JX,X^* \ra=\la X,JX^* \ra.
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 V^{1,0}=\{X-i J X ; X \in V\}
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 V^{0,1}=\{X+i J X ; X \in V\}
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 \begin{array}{ll}
 V_{1,0}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &amp;  \left.X \in V^{0,1}\right\}, \\
 V_{0,1}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &amp;  \left.X \in V^{1,0}\right\} .
 \end{array}
-\end{equation}</p>
-<p>Hermitian inner product on a real vector space \(V\):</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:66:1" title="Edit definition at source line 66" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>An Hermitian inner product on a real vector space \((V,J)\) is a metric \(h\) satisfying</p>
+<p>\begin{equation*}
 	h(JX,JY)=h(X,Y), \quad X,Y \in V.
-\end{equation}</p>
-<p>A natural one-to-one correspondence</p>
-<p>\begin{equation}
+\end{equation*}</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:73:1" title="Edit proposition at source line 73" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>We have the following natural one-to-one correspondence</p>
+<p>\begin{equation*}
 	\{ \text{the set of Hermitian inner products in}\, \mathbb{R}^{2n} \} \Leftrightarrow GL(n;\mathbb{C})/U(n)
-\end{equation}</p>
+\end{equation*}</p>
 <p>by sending \(S\) to \(h(X,Y)=h_0(SX,SY)\).</p>
+</section>
+</div>
 <p>After complex-extending \(h\), we have</p>
 <ol class="wiki-enumerate decimal">
 <li>
@@ -206,11 +221,11 @@ V_{0,1}=\left\{X^* \in V^{* c} |\left\langle X, X^*\right\rangle=0,\right. &amp;
 <p>Define a skew-symmetric	element</p>
 <p>\[ \boxed{\varphi(X,Y)=h(X,JY),}\]</p>
 <p>then \(\varphi \in \Lambda^{1,1}V^*\)	and \(\varphi\) is \(J\)-invariant.</p>
-<p>Let \(\{Z_j\}\) be a basis for \(V^{1,0}\) and \(\{\xi_J\}\) a basis for \(V_{1,0}\).
+<p>Let \(\{Z_j\}\) be a basis for \(V^{1,0}\) and \(\{\xi_j\}\) a basis for \(V_{1,0}\).
 Set</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	h_{j \bar k}=h(Z_j,Z_{\bar k}).
-\end{equation}</p>
+\end{equation*}</p>
 <p>Then</p>
 <ol class="wiki-enumerate decimal">
 <li>
@@ -221,33 +236,36 @@ Set</p>
 </li>
 </ol>
 <p>i.e.,</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 \varphi(Z, W)=-i \sum_{j, k=1}^n h_{j \bar k}\left(\xi^j(Z) \bar{\xi}^k(W)-\xi^j(W) \bar{\xi}^k(Z)\right) .
-\end{equation}</p>
+\end{equation*}</p>
 <p>The torsion of \(J\):</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	N(X,Y)=2\{ [JX, JY] - [X, Y] - J[X, JY] - J[JX, Y] \}, \quad X,Y \in \mathfrak{X}(M).
-\end{equation}</p>
-<p>\begin{equation}
+\end{equation*}</p>
+<p>\begin{equation*}
 N_{j k}^i=2 \sum_{h=1}^{2 n}\left(J_i^h \partial_h J_k^i-J_k^h \partial_h J_j^i-J_h^i \partial_j J_k^h+J_h^i \partial_k J_j^h\right).
-\end{equation}</p>
+\end{equation*}</p>
 <p>The complex differential forms on an almost complex manifold \(M\) of dimension \(2n\):</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mathfrak{C}^{p, q+1}+\mathfrak{C}^{p-1, q+2} .
-\end{equation}</p>
+\end{equation*}</p>
 <p>An infinitesimal automorphism is a vf. \(X\) s.t. \(L_XJ=0,\) equivalently,</p>
-<p>\begin{equation}
+<p>\begin{equation*}
   [X,JY]=J[X,Y], \quad \forall Y \in \mathfrak{X}(M)
-\end{equation}</p>
-<p>On any <strong>complex manifold</strong> \(M\):</p>
+\end{equation*}</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:123:1" title="Edit proposition at source line 123" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \(M\) be a complex manifold. Then</p>
 <ol class="wiki-enumerate decimal">
 <li>
 <p>The Lie algebra of infinitesimal automorphisms of the complex structure \(J\) is isomorphic with the Lie algebra of holomorphic vector fields, the isomorphism being given by</p>
 <p>\[X \to Z=\frac{1}{2}(X-iJX) .\]</p>
 <p>Note that we can write</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\frac{1}{2}(X-i J X)=\sum_{j=1}^n f^j\left(\partial / \partial z^j\right), \quad \frac{1}{2}(Y-i J Y)=\sum_{j=1}^n g^j\left(\partial / \partial z^j\right) ,
-\end{equation}</p>
+\end{equation*}</p>
 <p>but \(f^j, g^i\) are <em>not</em> necessarily holomorphic functions.</p>
 </li>
 <li>
@@ -261,26 +279,33 @@ d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mat
 <p>\(R(X,Y)\circ J=J\circ R(X,Y)\)</p>
 </li>
 </ol>
-<p>On any almost Hermitian manifold \((M,J,g)\):</p>
-<p>\begin{equation}
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:140:1" title="Edit proposition at source line 140" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \((M,J,g)\) be an almost Hermitian manifold. Then</p>
+<p>\begin{equation*}
 \begin{aligned}
 4 g\left(\left(\nabla_X J\right) Y, Z\right)= 2 d \Phi(X, J Y, J Z)-2 d \Phi(X, Y, Z)  +g(N(Y, Z), J X) ,
 \end{aligned}
-\end{equation}</p>
-<p>where the fundamental 2-form \(\Phi(X,Y)=g(X,JY)\).</p>
-<div class="wiki-heading-with-edit"><h1>Some simple calculation</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:134:1" title="Edit section at source line 134" aria-label="Edit section in VS Code">Edit</a></div>
+\end{equation*}</p>
+<p>where \(\Phi \) is  the fundamental 2-form, i.e., \(\Phi(X,Y)=g(X,JY)\).</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Some simple calculation</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:150:1" title="Edit section at source line 150" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Set</p>
 <p>\[ Z_j=\frac{1}{2}(X_j-iY_j), \quad  \bar Z_j=\frac{1}{2}(X_j+iY_j),\]</p>
 <p>then</p>
 <p>\[ X_j=Z_j+\bar Z_j, \quad Y_j=i(Z_j-\bar Z_j). \]</p>
-<p>For any bilinear operator</p>
+<p>For any bilinear operator \(A\), we have</p>
 <p>\[ A(X_j,X_j)+A(Y_j,Y_j) = 2\{A(Z_j,\bar Z_j) +A(\bar Z_j, Z_j)  \},\]</p>
 <p>\[ A(Z_j,\bar Z_j)=\frac{1}{4}\{ A(X_j,X_j)+A(Y_j,Y_j)   \}-\frac{i}{4}\{ A(X_j,Y_j)+A(Y_j,X_j)   \} ,\]</p>
 <p>\[ X_jX_j+Y_jY_j=2(Z_j \bar Z_j+\bar Z_j  Z_j)\]</p>
 <p>\[ Z_j \bar Z_j=\frac{1}{4}(X_jX_j+Y_jY_j)+ \frac{i}{4}(X_jY_j-Y_jX_j).\]</p>
-<div class="wiki-heading-with-edit"><h1>Hermitian metric on Kähler manifolds</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:147:1" title="Edit section at source line 147" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Hermitian metric on Kähler manifolds</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:163:1" title="Edit section at source line 163" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:148:1" title="Edit remark at source line 148" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:164:1" title="Edit remark at source line 164" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <ol>
 <li>Hermitian fiber metric in this case is a map</li>
@@ -304,26 +329,26 @@ d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mat
 <ol start="3">
 <li>Define a Hermitian metric \(\la, \ra\) by</li>
 </ol>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\boxed{\la Z,W\ra=g(Z,\bar W).}
-\end{equation}</p>
+\end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:168:1" title="Edit proposition at source line 168" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:184:1" title="Edit proposition at source line 184" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>In local holomorphic coordinates,</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		\begin{aligned}
 		g &amp; =g_{j \bar{k}} d z^j \otimes d \bar{z}^k+g_{\bar{j} k} d \bar{z}^j \otimes d z^k \\
 		&amp; =2 g_{j \bar{k}}\left(\frac{d z^j \otimes d \bar{z}^k+d \bar{z}^k \otimes d z^j}{2}\right) \\
 		&amp; =2 g_{j \bar{k}} d z^j d \bar{z}^k.
 		\end{aligned}
-		\end{equation}</p>
+		\end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:178:1" title="Edit proposition at source line 178" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:194:1" title="Edit proposition at source line 194" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>If \(X\) and \(Y\) are real vector fields, written locally as \(X=X^j \partial_j+X^{\bar{j}} \partial_{\bar{j}}\) and \(Y=Y^j \partial_j+Y^{\bar{j}} \partial_j\), then</p>
 <p>\[
@@ -333,7 +358,7 @@ d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mat
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:185:1" title="Edit proposition at source line 185" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:201:1" title="Edit proposition at source line 201" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Given the isomorphim \(\xi: T_JM \to T'M\) by \(\xi(X)=X-iJX\), then</p>
 <p>\[ \la \xi(X), \xi(Y)\ra=2h(X,Y) .\]</p>
@@ -341,15 +366,15 @@ d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mat
 </div>
 <p>We could have avoided this discrepancy by adding a factor of \(\frac{1}{\sqrt 2}\)  to the definition of \(\xi \).</p>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:192:1" title="Edit proposition at source line 192" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:208:1" title="Edit proposition at source line 208" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>In holomorphic coordinates, for sections \(Z, W\) of \(T^{\prime} M\), we have</p>
 <p>\[
-	\langle Z, W\rangle=g\left(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\right)=g_{j \bar{k}} Z^j W^{\bar{k}},
+	\langle Z, W\rangle=g\big(Z^j \partial_j, W^{\bar{k}} \partial_{\bar{k}}\big)=g_{j \bar{k}} Z^j W^{\bar{k}},
 	\]</p>
 <p>On the other hand, if \(X\) and \(Y\) are real, decomposed as \(X=Z+\bar{Z}\) and \(Y=W+\bar{W}\) with \(Z, W \in \Gamma\left(T^{\prime} M\right)\), then</p>
 <p>\[
-	\langle X, Y\rangle=g_{j \bar{k}}\left(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\right)
+	\langle X, Y\rangle=g_{j \bar{k}}\big(Z^j W^{\bar{k}}+W^j Z^{\bar{k}}\big)
 	\]</p>
 <p>In particular, for \(X=Z+\bar{Z}\), this yields</p>
 <p>\[
@@ -358,13 +383,14 @@ d \mathfrak{C}^{p, q} \subset \mathfrak{C}^{p+2, q-1}+\mathfrak{C}^{p+1, q}+\mat
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Raising and lowering, the musical isomorphim)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:207:1" title="Edit proposition at source line 207" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition (Raising and lowering, the musical isomorphim)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:223:1" title="Edit proposition at source line 223" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Define for a complex \(X\),  \(X^b(Y)=g(X, Y), \forall Y \in T_{\mathbb{C}}M\). Then for \(Z \in T'M\), we have</p>
 <p>\[Z_{\bar k} = g_{j \bar k}Z^{j}, \quad g^{j \bar k}Z_{\bar k} = Z^{j}.\]</p>
 </section>
 </div>
-<div class="wiki-heading-with-edit"><h1>Kähler metrics(kn)</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:212:1" title="Edit section at source line 212" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Kähler metrics(kn)</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:228:1" title="Edit section at source line 228" aria-label="Edit section in VS Code">Edit</a></div>
+<p><span class="wiki-label" data-wiki-label="se4"></span></p>
 <p>The metric \(g\) is Kählerian if \(\Phi\) is closed. For a Kähler manifold, we have</p>
 <p>\[
 R(JX, JY) = R(X, Y), \quad \operatorname{Ric}(JX, JY) = \operatorname{Ric}(X, Y) = \frac{1}{2} \operatorname{tr} \{ J \circ R(X, JY) \}.
@@ -385,9 +411,9 @@ g_{AB} = g(Z_A, Z_B), \quad A, B = 1, \dots, n, \bar{1}, \dots, \bar{n}.
 \boxed{\Phi = -i \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} \wedge d\bar{z}^{\beta}.}
 \]</p>
 <p>For \(g\) to be Kählerian:</p>
-<p>\[
-\frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
-\]</p>
+<p>\begin{equation}\label{kl}
+	\frac{\partial g_{\alpha \bar{\beta}}}{\partial z^{\gamma}} = \frac{\partial g_{\gamma \bar{\beta}}}{\partial z^{\alpha }}, \quad \frac{\partial g_{\alpha \bar{\beta}}}{\partial \bar{z}^{\gamma}} = \frac{\partial g_{\alpha \bar{\gamma}}}{\partial \bar{z}^{\beta}}.
+\end{equation}</p>
 <p>For an affine connection, set</p>
 <p>\[
 \nabla_{Z_B} Z_C = \sum \Gamma_{BC}^A Z_A.
@@ -466,11 +492,11 @@ K_{AB} = \sum_C K^C_{ACB}
 	K_{\alpha \bar{\beta}} = -\frac{\partial^2 \log(G)}{\partial z^{\alpha} \partial \bar{z}^{\beta}}.
 \end{equation}</p>
 <p>Also</p>
-<p>\begin{equation}
-Rc = 2 R_{j \bar{k}} dz^j d\bar{z}^k, \quad S = 2 g^{j \bar{k}} R_{j \bar{k}}.
-\end{equation}</p>
+<p>\begin{equation*}
+\ricci = 2 R_{j \bar{k}} dz^j d\bar{z}^k, \quad S = 2 g^{j \bar{k}} R_{j \bar{k}}.
+\end{equation*}</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:321:1" title="Edit remark at source line 321" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:339:1" title="Edit remark at source line 339" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Note that \(\eqref{eq:92}\)  holds for real Riemannian manifolds if we set \(G = (\det(g_{ij}))^{\frac{1}{2}}\), but \(\eqref{eq:93}\) is far from the truth.</p>
 </section>
@@ -487,12 +513,13 @@ d\rho = 0.
 <p>\[
 g_{\alpha \bar{\beta}} = \frac{\partial^2 F}{\partial z^{\alpha} \partial \bar{z}^{\beta}},
 \]</p>
-<p>which is Hermitian since \(F\) is real. If it's positive definite, then \(2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}\) is a Kähler metric by (75). Conversely, a Kähler metric can be written in this form locally. We have</p>
+<p>which is Hermitian since \(F\) is real. If it's positive definite, then \(2 \sum_{\alpha, \beta = 1}^n g_{\alpha \bar{\beta}} dz^{\alpha} d\bar{z}^{\beta}\) is a Kähler metric by \eqref{kl}. Conversely, a Kähler metric can be written in this form locally. We have</p>
 <p>\[
 K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^4 F}{\partial z^{\alpha} \partial \bar{z}^{\beta} \partial z^{\gamma} \partial \bar{z}^{\delta}} - \sum_{\epsilon, \tau} g^{\bar{\epsilon} \tau} \frac{\partial^3 F}{\partial \bar{z}^{\epsilon} \partial z^{\alpha} \partial z^{\gamma}} \frac{\partial^3 F}{\partial z^{\tau} \partial \bar{z}^{\beta} \partial \bar{z}^{\delta}}.
 \]</p>
+<p>The complex space forms are exhibited by the following three examples.</p>
 <div class="theorem example">
-<header>Example (\(\mathbb{C}^n,K=0\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:343:1" title="Edit example at source line 343" aria-label="Edit example in VS Code">Edit</a>
+<header>Example (\(\mathbb{C}^n, K=0\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:363:1" title="Edit example at source line 363" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Kähler form and metric:</p>
 <p>\[
@@ -502,7 +529,7 @@ K_{\alpha \bar{\beta} \gamma \bar{\delta}} = \frac{\partial^4 F}{\partial z^{\al
 </section>
 </div>
 <div class="theorem example">
-<header>Example (\(\mathbb{CP}^n, K=1\) )</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:350:1" title="Edit example at source line 350" aria-label="Edit example in VS Code">Edit</a>
+<header>Example (\(\mathbb{CP}^n, K=1\) )</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:370:1" title="Edit example at source line 370" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Define the affine coordinates \((U_\alpha,\varphi_\alpha)\).
 \(U_{\alpha} = \{ [w]=[w^0,...,w^n] \in \mathbb{CP}^n : w^{\alpha} \neq 0 \}\);
@@ -544,7 +571,7 @@ ds^2 = 4  \frac{\left( 1 + \sum z^{\alpha} \bar{z}^{\alpha} \right) \left( \sum 
 </section>
 </div>
 <div class="theorem example">
-<header>Example (\(\mathbb{B}^{2n}\),\(K=-1\) )</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:394:1" title="Edit example at source line 394" aria-label="Edit example in VS Code">Edit</a>
+<header>Example (\(\mathbb{B}^{2n}\), \(K=-1\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:414:1" title="Edit example at source line 414" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>Define</p>
 <p>\[
@@ -559,7 +586,7 @@ ds^2 = 4 \cdot \frac{\left( 1 - |z|^2 \right) \sum_j dz^j d\bar{z}^j + \left( \s
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Volume for Kähler metric)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:408:1" title="Edit proposition at source line 408" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition (Volume for Kähler metric)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:428:1" title="Edit proposition at source line 428" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>\[
 dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedge \omega.
@@ -567,7 +594,7 @@ dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedg
 </section>
 </div>
 <div class="theorem proof">
-<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:413:1" title="Edit proof at source line 413" aria-label="Edit proof in VS Code">Edit</a>
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:433:1" title="Edit proof at source line 433" aria-label="Edit proof in VS Code">Edit</a>
 <section>
 <p>Note that</p>
 <p>\[
@@ -578,7 +605,7 @@ dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedg
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Normal coordinate for Kähler metric)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:422:1" title="Edit theorem at source line 422" aria-label="Edit theorem in VS Code">Edit</a>
+<header>Theorem (Normal coordinate for Kähler metric)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:442:1" title="Edit theorem at source line 442" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>For every \(a \in M\), there exists a holomorphic coordinate chart centered at \(a\) such that</p>
 <p>\[
@@ -587,7 +614,7 @@ dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedg
 </section>
 </div>
 <div class="theorem theorem">
-<header>Theorem (Characterizations of Kähler Metrics)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:430:1" title="Edit theorem at source line 430" aria-label="Edit theorem in VS Code">Edit</a>
+<header>Theorem (Characterizations of Kähler Metrics)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:449:1" title="Edit theorem at source line 449" aria-label="Edit theorem in VS Code">Edit</a>
 <section>
 <p>Let \(M\) be a complex manifold and \(g\) be a Hermitian metric on \(M\). We use the following notations:</p>
 <ul class="wiki-itemize">
@@ -654,113 +681,113 @@ dV_g = \frac{(-1)^n}{n!} \omega^n = \frac{(-1)^n}{n!} \omega \wedge \cdots \wedg
 </ol>
 </section>
 </div>
-<div class="wiki-heading-with-edit"><h1>Curvatures(lee)</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:461:1" title="Edit section at source line 461" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Curvatures(lee)</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:480:1" title="Edit section at source line 480" aria-label="Edit section in VS Code">Edit</a></div>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:462:1" title="Edit remark at source line 462" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:482:1" title="Edit remark at source line 482" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Note that the John M Lee's notations are different from ours, for example, he defined</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	R(\partial _i, \partial _j)\partial_k=R_{ijk}^l \partial_l
-   \end{equation}</p>
-<p>\begin{equation}
+   \end{equation*}</p>
+<p>\begin{equation*}
 	R(x,y,z,w)=g(R(x,y)z,w)
-   \end{equation}</p>
-<p>\begin{equation}
+   \end{equation*}</p>
+<p>\begin{equation*}
 	R_{ijkl}=g_{lm}R_{ijk}^m,
-   \end{equation}</p>
+   \end{equation*}</p>
 <p>and the Bianchi identity is</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	R_{ijkl}+R_{jkil}+R_{kijl}= 0,
-   \end{equation}</p>
+   \end{equation*}</p>
 <p>and the sectional curvature is</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	K(x,y)=\frac{R(x,y,y,x)}{|x|^2|y|^2-g(x,y)^2}.
- \end{equation}</p>
+ \end{equation*}</p>
 <p>Compare to Sec.</p>
 <p>In this section, we refer most content from his book, but adapting to our notations as in previous!</p>
 </section>
 </div>
 <p>A useful identity on any Kähler manifold:</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 \boxed{	R(Z,\bar Z, W,\bar W)=-4\{R(X, Y,X,Y)+R(X,JY,X,JY)   \}=-4R(X,JX,Y,JY),}
-\end{equation}</p>
+\end{equation*}</p>
 <p>where</p>
 <p>\[Z=X-iJX, \quad W=Y-iJY \in T'M.\]</p>
 <p>Also, if let \(X=Re(Z), Y=Im(Z)\), then</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\begin{aligned}
 		R(X,Y,X,Y)=\frac{1}{4}R(Z,\bar Z,\bar Z,Z)\\
 		|X|^2|Y|^2-g(X,Y)^2=\frac{1}{4}|Z|^2.
 	\end{aligned} 
-\end{equation}</p>
+\end{equation*}</p>
 <div class="theorem definition">
-<header>Definition (holomorphic sectional curvature)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:502:1" title="Edit definition at source line 502" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition (holomorphic sectional curvature)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:522:1" title="Edit definition at source line 522" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>\[ H(Z):= \frac{R(Z,\bar Z, \bar Z,  Z)}{|Z|^4}.\]</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition (holomorphic bisectional curvature)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:505:1" title="Edit definition at source line 505" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition (holomorphic bisectional curvature)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:525:1" title="Edit definition at source line 525" aria-label="Edit definition in VS Code">Edit</a>
 <section>
-<p>\begin{equation}
+<p>\begin{equation*}
 		H(p,p') := R(X, JX, Y, JY) =R(X, Y, X, Y) + R(X, JY, X, JY),
-	\end{equation}</p>
+	\end{equation*}</p>
 <p>where \(p,p'\) are two \(J\)-invariant  planes and \(X,Y\) are unit in   \(p,p'\) respectively.
 Or equivalently,</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		H(p,p')=B(Z, W)=\frac{R (Z, \bar{Z},  \bar{W},W)}{|Z|^2|W|^2}.
-		\end{equation}</p>
+		\end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:516:1" title="Edit proposition at source line 516" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:536:1" title="Edit proposition at source line 536" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>\(H(Z)=K(Re(Z),Im(Z)) =K(X,JX)\), thus the definition coincides with KobayashiNomizu's (Also true for holomorphic bisectional curvature).</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:519:1" title="Edit proposition at source line 519" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:539:1" title="Edit proposition at source line 539" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
-<p>\(B(Z,W)=K(Re(Z),Re(W))+K(Re(Z),Im(W))\) .</p>
+<p>\[B(Z,W)=K(Re(Z),Re(W))+K(Re(Z),Im(W)).\]</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:523:1" title="Edit proposition at source line 523" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:543:1" title="Edit proposition at source line 543" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>A Kähler metric \(g\)  has constant holomorphic sectional curvature \(c\) iff</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		R_{j \bar{k} l \bar{m}}=-\frac{1}{2} c\left(g_{j \bar{k}} g_{l \bar{m}}+g_{l \bar{k}} g_{j \bar{m}}\right) , (\text{under complex vector basis})
-		\end{equation}</p>
+		\end{equation*}</p>
 <p>iff</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 			\begin{aligned}
 			R(X, Y, Z, W)=\frac{c}{4}[ &amp; g(X, Z) g(Y, W)-g(X, W) g(Y, Z) \\
 			&amp; +g(X, J Z) g(Y, J W)-g(X, J W) g(Y, J Z) \\
 			&amp; +2 g(X, J Y) g(Z, J W)]
 			\end{aligned}
-			\end{equation}</p>
+			\end{equation*}</p>
 <p>for all real vectors \(X,Y,Z,W\).
 If this's the case, we have</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		R(X, J X, Y, J Y)=\frac{c}{2}\left[g(X, X) g(Y, Y)+g(X, Y)^2+g(X, J Y)^2\right] ,
-		\end{equation}</p>
+		\end{equation*}</p>
 <p>and</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 			R(X, J X, X, J X)=c|X|^2.
-		\end{equation}</p>
+		\end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:547:1" title="Edit proposition at source line 547" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:567:1" title="Edit proposition at source line 567" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>If  \(H(Z)=c\), i.e., \(g\)  has constant holomorphic sectional curvature \(c\), then the range of (holomorphic bisectional curvature) \(H(p,p')\) is \([\frac{c}{2},c]\). <strong>Here the value \(c/2\) is attained when \(p\)  is perpendicular to \(p'\)   whereas the value \(c\) is attained when \(p=p'\).</strong></p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:550:1" title="Edit proposition at source line 550" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:570:1" title="Edit proposition at source line 570" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
-<p>Let \(M\) be a complex manifold of dimension \(n\), and let \(g\) be a Kähler metric on \(M\) with constant holomorphic sectional curvature \(c\).\
-(a) Let \(v, w \in T_x M\) be a pair of orthonormal vectors. One can show that the (ordinary) sectional curvature of \(g\) in the direction of the plane spanned by \((v, w)\) is given by</p>
+<p>Let \(M\) be a complex manifold of dimension \(n\), and let \(g\) be a Kähler metric on \(M\) with constant holomorphic sectional curvature \(c\).</p>
+<p>(a) Let \(v, w \in T_x M\) be a pair of orthonormal vectors. One can show that the (ordinary) sectional curvature of \(g\) in the direction of the plane spanned by \((v, w)\) is given by</p>
 <p>\[
 	K (v, w)=\frac{1}{4} c\left(1+3\langle v, J w\rangle^2\right) .
 	\]</p>
@@ -768,23 +795,25 @@ If this's the case, we have</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition (Symmetric properties for Kähler metrics)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:559:1" title="Edit proposition at source line 559" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition (Symmetric properties for Kähler metrics)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:580:1" title="Edit proposition at source line 580" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>\[ R(X,Y)\circ J = J \circ R(X,Y)\]</p>
 <p>\[ Ric(JX,JY)=Ric(X,Y)=\frac{1}{2} \trace(J \circ R(X,JY)) \]</p>
 <p>\[ R(J X, J Y, Z, W)=R(X, Y, J Z, J W)=R(X, Y, Z, W) \]</p>
 <p>For \(X,Y,Z,W \in T'M\):</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\begin{aligned}
 	R(W, X, \cdot, \cdot) &amp; =R(\cdot, \cdot, W, X)=0, \\
 	R(\bar{W}, \bar{X}, \cdot, \cdot) &amp; =R(\cdot, \cdot, \bar{W}, \bar{X})=0 \\
 	R (W, \bar{X}, Y, \bar{Z}) &amp; =R(Y, \bar{X}, W, \bar{Z}), \\
 	R (W, \bar{X}, Y, \bar{Z}) &amp; =R(W, \bar{Z}, Y, \bar{X}).
 	\end{aligned}
-	\end{equation}</p>
+	\end{equation*}</p>
 </section>
 </div>
-<p>\section{Curvature forms (<em>chenweihuan</em>)}<span class="wiki-label" data-wiki-label="sec:166"></span><br />
+<div class="wiki-heading-with-edit"><h1>Curvature forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:595:1" title="Edit section at source line 595" aria-label="Edit section in VS Code">Edit</a></div>
+<p><span class="wiki-label" data-wiki-label="sec:166"></span><br />
+This section is taken from [<a href="#ref-chen2004riemann">04</a>].
 Set \((1 \leq \alpha, \beta, \gamma, \dots \leq n)\)</p>
 <p>\[
 \nabla \frac{\partial}{\partial z_{\alpha}} = \omega^{\beta}_{\alpha} \frac{\partial}{\partial z_{\beta}}, \quad \nabla \frac{\partial}{\partial x_{\alpha}} = \theta^{\beta}_{\alpha} \frac{\partial}{\partial x_{\beta}} + \theta^{n + \beta}_{\alpha} \frac{\partial}{\partial y_{\beta}},
@@ -796,7 +825,7 @@ Set \((1 \leq \alpha, \beta, \gamma, \dots \leq n)\)</p>
 <p>\[
 \theta^{\beta}_{\alpha} = \theta^{n + \beta}_{n + \alpha}, \quad \theta^{\beta}_{n + \alpha} = -\theta^{n + \beta}_{\alpha}, \quad \omega^{\beta}_{\alpha} = \theta^{\beta}_{\alpha} + i \theta^{n + \beta}_{\alpha},
 \]</p>
-<p>which is, in fact, the condition for \(\nabla \) to be almost complex.</p>
+<p>which is actually the condition for \(\nabla \) to be almost complex.</p>
 <p>Now ( with different range of indices!) set</p>
 <p>\[
 \Omega^j_i = d\omega^j_i - \omega^k_i \wedge \omega^j_k, \quad \Theta^{\beta}_{\alpha} = d\theta^{\beta}_{\alpha} - \theta^{\gamma}_{\alpha} \wedge \theta^{\beta}_{\gamma}; \quad 1 \leq j, i, k \leq n, \quad 1 \leq \alpha, \beta, \gamma \leq 2n.
@@ -817,16 +846,16 @@ R^{\beta}_{\alpha \bar i \bar{j}} = R^{\beta}_{\alpha i j}, \quad R^{\beta}_{\al
 \]</p>
 <p>where \(R\) is applied to \(\left\{ \frac{\partial}{\partial x_{\alpha}}, 1 \leq \alpha \leq 2n \right\}\).</p>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:611:1" title="Edit remark at source line 611" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:634:1" title="Edit remark at source line 634" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>Note that if we choose a unitary frame, then we have, in addition, that</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 	\omega^\beta _\alpha =-\bar \omega ^\alpha _\beta ,\quad \Omega^\beta _\alpha =-\bar \Omega ^\alpha _\beta .
-   \end{equation}</p>
+   \end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:617:1" title="Edit proposition at source line 617" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:640:1" title="Edit proposition at source line 640" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Set</p>
 <p>\[
@@ -843,7 +872,7 @@ R^{\beta}_{\alpha \bar i \bar{j}} = R^{\beta}_{\alpha i j}, \quad R^{\beta}_{\al
 </section>
 </div>
 <div class="theorem remark">
-<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:631:1" title="Edit remark at source line 631" aria-label="Edit remark in VS Code">Edit</a>
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:654:1" title="Edit remark at source line 654" aria-label="Edit remark in VS Code">Edit</a>
 <section>
 <p>One can also prove</p>
 <p>\[
@@ -853,10 +882,10 @@ R^{\beta}_{\alpha \bar i \bar{j}} = R^{\beta}_{\alpha i j}, \quad R^{\beta}_{\al
 <p>\[
 	K^j_{ikl} = -2 \frac{\partial}{\partial \bar{z}^l} \left( h^{j\bar p} \frac{\partial h_{i\bar p}}{\partial z^k} \right),
 	\]</p>
-<p>where \(h_{i\bar p} = g \left( \frac{\partial}{\partial z^i}, \frac{\partial}{\partial \bar z^p} \right) = \frac{1}{2} \left( g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) + \sqrt{-1} g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) \right)\). (The notation \(K^j_{ikl}\) here is exactly \(2 K^j_{ik \bar l}\) in \(\eqref{eq:80}\) !)</p>
+<p>where \(h_{i\bar p} = g \left( \frac{\partial}{\partial z^i}, \frac{\partial}{\partial \bar z^p} \right) = \frac{1}{2} \left( g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) + \sqrt{-1} g \left( \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^p} \right) \right)\). (The notation \(K^j_{ikl}\) here is exactly \(2 K^j_{ik \bar l}\) in \eqref{eq:80}!)</p>
 </section>
 </div>
-<div class="wiki-heading-with-edit"><h1>Bundle-valued forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:574:1" title="Edit section at source line 574" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Bundle-valued forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:668:1" title="Edit section at source line 668" aria-label="Edit section in VS Code">Edit</a></div>
 <p>Let \(E\to M\) be a smooth complex vector bundle.</p>
 <p><strong>Several natural wedge product operations</strong>:</p>
 <ol class="wiki-enumerate alpha">
@@ -878,34 +907,34 @@ R^{\beta}_{\alpha \bar i \bar{j}} = R^{\beta}_{\alpha i j}, \quad R^{\beta}_{\al
 </li>
 </ol>
 <div class="theorem example">
-<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:655:1" title="Edit example at source line 655" aria-label="Edit example in VS Code">Edit</a>
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:678:1" title="Edit example at source line 678" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>In a local basis, \(\{s_j\}\) is a frame of \(E\), and \(\{\epsilon \}\) is its dual frame.   Then</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		\begin{aligned}
 		\omega \wedge \eta &amp; =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
 		&amp; =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
 		&amp; =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
 		\end{aligned}
-		\end{equation}</p>
+		\end{equation*}</p>
 <p>That's matric product: in an expression like \(\omega_k^j\)   we always interpret <strong>the upper index as the row number and the lower index as the column number</strong>.
 Likewise, if \( \gamma =\gamma^m \otimes s_m \),</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
-		\end{equation}</p>
+		\end{equation*}</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition (Cauchy–Riemann Operator)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:670:1" title="Edit definition at source line 670" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition (Cauchy–Riemann Operator)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:693:1" title="Edit definition at source line 693" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>If \(E\) is holomorphic, then the following is well-defined:</p>
-<p>\begin{equation}
+<p>\begin{equation*}
 		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
-	\end{equation}</p>
+	\end{equation*}</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:677:1" title="Edit proposition at source line 677" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Kaeh.wiki:700:1" title="Edit proposition at source line 700" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Suppose \(M\) is a complex manifold and \(E \to M\) is a holomorphic vector bundle.
 There are operators \(\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)\) satisfying the following properties:</p>
@@ -934,7 +963,7 @@ There are operators \(\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}
 </ul>
 </section>
 </div>
-<ol class="references"><li id="ref-KN1969found">[KN69] Shoshichi Kobayashi and Katsumi Nomizu. Foundations of differential geometry. Vol. II. Volume No. 15 of Interscience Tracts in Pure and Applied Mathematics. Interscience Publishers John Wiley &amp; Sons, Inc., New York-London-Sydney, 1969.</li></ol>
+<ol class="references"><li id="ref-KN1969found">[KN69] Shoshichi Kobayashi and Katsumi Nomizu. Foundations of differential geometry. Vol. II. Volume No. 15 of Interscience Tracts in Pure and Applied Mathematics. Interscience Publishers John Wiley &amp; Sons, Inc., New York-London-Sydney, 1969.</li><li id="ref-chen2004riemann">[04] 陈维桓 and 李兴校. 黎曼几何引论（下册）. 北京大学数学教学系列丛书. 北京大学出版社, 北京, 2004. ISBN 9787301067949.</li></ol>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>

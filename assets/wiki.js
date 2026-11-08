@@ -744,21 +744,48 @@
           number.replace(/\./g, '-');
       }
 
-      // Update environment title.
+
+      // ======================================
+      // Update environment title safely.
+      // Preserve MathJax formulas in headers.
+      // ======================================
+
       const header =
         element.querySelector(':scope > header');
 
       if (header) {
-        const original = header.textContent.trim();
 
-        const match = original.match(
-          /^([^\s(（]+)(.*)$/
+        // Find the first text node.
+        // Do not replace the entire header HTML.
+        const firstText = Array.from(
+          header.childNodes
+        ).find(node =>
+          node.nodeType === Node.TEXT_NODE &&
+          node.textContent.trim()
         );
 
-        if (match) {
-          header.textContent =
-            match[1] + ' ' + number +
-            match[2];
+        if (firstText) {
+
+          // Example (...) -> Example 4.2 (...)
+          // Theorem (...) -> Theorem 4.2 (...)
+
+          firstText.textContent =
+            firstText.textContent.replace(
+              /^(\s*[^\s(（]+)/,
+              '$1 ' + number
+            );
+
+        } else {
+
+          // Fallback for headers without
+          // an initial text node.
+          header.insertBefore(
+            document.createTextNode(
+              number + ' '
+            ),
+            header.firstChild
+          );
+
         }
       }
     }
@@ -1010,8 +1037,9 @@
 
     backButton.setAttribute(
       "aria-label",
-      "Return to citation"
+      "Return to previous position"
     );
+
 
     document.body.appendChild(backButton);
 
@@ -1020,6 +1048,12 @@
 
     // ========================================
     // 5. Record position before citation jump
+    // ========================================
+
+
+    // ========================================
+    // 5. Remember position before internal jumps
+    //    Supports cite, ref, eqref, etc.
     // ========================================
 
     document.addEventListener(
@@ -1032,31 +1066,54 @@
           return;
         }
 
-        const link = target.closest(
-          'a[href^="#ref-"]'
-        );
+        // Find the clicked hyperlink.
+        const link = target.closest("a[href]");
 
         if (!link) return;
 
-        const id = link.getAttribute(
-          "href"
-        ).slice(1);
+        const href = link.getAttribute("href");
 
-        // Only handle actual bibliography links.
-        if (!document.getElementById(id)) {
+        if (!href || href === "#") return;
+
+        // Exclude Edit links and external protocols.
+        if (
+          link.classList.contains("wiki-source-jump")
+        ) {
           return;
         }
 
-        // Remember exact reading position.
+        let url;
+
+        try {
+          url = new URL(href, window.location.href);
+        } catch {
+          return;
+        }
+
+        // Only handle links within the current page.
+        if (
+          url.origin !== window.location.origin ||
+          url.pathname !== window.location.pathname ||
+          url.search !== window.location.search
+        ) {
+          return;
+        }
+
+        // Must have a destination anchor.
+        if (!url.hash || url.hash === "#") {
+          return;
+        }
+
+        // Remember the reading position.
         previousPosition = window.scrollY;
 
-        // Show return button.
-        backButton.classList.add(
-          "visible"
-        );
+        // Show the return button.
+        backButton.classList.add("visible");
+
       },
       true
     );
+
 
     // ========================================
     // 6. Return without scrolling animation
