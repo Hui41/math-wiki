@@ -3,7 +3,7 @@
 \section{Heisenberg Groups}
 
 \subsection{The CR Structures on the Heisenberg Group }
-\begin{definition}[cf. \cite{folland_estimates_1974}]
+\begin{definition}[cf. \cite{follandstein1974}]
     The \textbf{Heisenberg group} (of degree \( n \)) is the Lie group \( H_n \) whose underlying manifold is \( \mathbb{C}^n \times \mathbb{R} \) with coordinates \( (z_1, \ldots, z_n, t) \equiv (z, t) \) and whose group law is given by
 \[
 (z, t) \cdot (z', t') = (z + z', t + t' + 2 \Im ( z \cdot z')), \quad z \cdot z' = \sum_{i=1}^n z_i \overline{z'_i}.
@@ -50,7 +50,7 @@ We note that \( \langle \tau, Z_j \rangle = \langle \tau, \overline{Z}_j \rangle
 Thus \( H_n \) is \textbf{strongly pseudoconvex}.
 
 \begin{remark}
-    \(\eqref{eq5}\) is equal to (cf. \cite{dragomir_differential_2006})
+    \(\eqref{eq5}\) is equal to (cf. \cite{DT2006differential})
     \begin{equation}
     \theta_0 = dt + i \sum_{j=1}^n \left( z^j d\overline{z}^j - \overline{z}^j dz^j \right)
     \end{equation}
@@ -135,7 +135,7 @@ which preserves the CR structure.
 
 \subsection{Unsolvable Operators}
 At this point we should also mention that, in the case $n=1$, the vector field $\bar{Z} = (\partial/\partial z) - i z (\partial/\partial t)$ which spans $T_{0,1}$ is the unsolvable operator of H. Lewy. Indeed, Lewy was led to this phenomenon by considering boundary values of holomorphic functions on $D_2$.
-\begin{theorem}[cf. \cite{john_partial_1982}]
+\begin{theorem}[cf. \cite{Joh1982pde}]
 Let $L$ denote the differential operator acting on functions $u(x,y,z)$ defined by
 \begin{equation}
 Lu = -u_x - iu_y + 2i(x + iy)u_z. \tag{1.1a}
@@ -147,3 +147,5 @@ Lu = F(x,y,z) \tag{1.1b}
 has no solution whose domain is an open set $\Omega$ in $\mathbb{R}^3$, with $u \in C^1(\Omega)$, and $u_x, u_y, u_z$ H\"older continuous in $\Omega$.
 \end{theorem}
 
+
+\bibliography{references}

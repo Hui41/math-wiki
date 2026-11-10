@@ -2,23 +2,15 @@
   "files.associations": {
     "*.wiki": "latex"
   },
+  "editor.quickSuggestions": {
+  "other": "on",
+  "comments": "off",
+  "strings": "on"
+},
+"editor.suggestOnTriggerCharacters": true,
   "editor.wordWrap": "on",
   "editor.tabCompletion": "on",
 
-    "files.associations": {
-    "*.wiki": "latex"
-  },
-  "editor.wordWrap": "on",
-  "editor.tabCompletion": "on",
-
-  "emeraldwalk.runonsave": {
-    "commands": [
-      {
-        "match": "\\.wiki$",
-        "cmd": "cd \"${workspaceFolder}\" && env -u WIKI_BASE_PATH .venv/bin/python build.py && .venv/bin/python section_jump.py"
-      }
-    ]
-  },
 
   "livePreview.serverRoot": "_site",
   "livePreview.autoRefreshPreview": "On Changes to Saved Files",

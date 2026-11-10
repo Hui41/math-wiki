@@ -1,6 +1,9 @@
 \title{Laplace's equation}
 
-See \cite{axl2013,gtr2001}. 
+
+\section{harmonic functions}
+
+For references, see \cite{Axl2001harm}, \cite{GT2001pde2o}, \cite{jost2013}.
 
 \textbf{Problem}.
 	Consider
@@ -12,8 +15,6 @@ See \cite{axl2013,gtr2001}.
 \begin{remark}
 	Usaully, we only consider $\Omega$ is a bound domain, and the Green formula is valid.
 \end{remark}
-
-
 
 \begin{example}
 	\begin{enumerate}
@@ -78,10 +79,7 @@ Here $\omega _d $ is the volume of unit ball in $\rr^d$.
 
 
 
-
-
-
-\begin{theorem}[Singularity removable \cite{jost2013}]
+\begin{theorem}[Singularity removable ]
 	If $u$ is harmonic outside a point in domain with dimension $\geq 2$, and $u$ is bounded, then $u$ is harmonic. 
 \end{theorem}
 
@@ -92,7 +90,8 @@ We know from this that Laplace's equation does not always  have a solution.
 	then $u$ is constant.
 \end{theorem}
 
-\begin{theorem}[\cite{jost2013}]
+
+\begin{theorem}
 	Let $u: \mathbb{R}^{d} \rightarrow \mathbb{R}$ be a nonnegative harmonic function,
 	then $u$ is constant. 
 \end{theorem}
@@ -117,7 +116,7 @@ From mean value property, we have
 	If a sequence of harmonic functions uniformly converge to a function, then the limit function is also harmonic.
 \end{theorem}
 
-According to gradient estimates \cite{gtr2001}:
+According to gradient estimates, one has
 \begin{theorem}[Normal family]
 	Any bouded harmonic functions sequence has subsequence uniformly converging in a compact domain.
 \end{theorem}
@@ -130,3 +129,4 @@ According to gradient estimates \cite{gtr2001}:
 	Then $H(r),D(r), \frac{D(r)}{H(r)}$ are monotone increasing.
 \end{theorem}
 
+\bibliography{references}
