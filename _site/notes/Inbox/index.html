@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>inbox · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>inbox</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Unique continuation</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:4:1" title="Edit definition at source line 4" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>A measurable function \(u\) defined in a domain \(D\) of the euclidean  \(n \)-space  is said to have a zero of order \( \alpha &gt;0\)        at  \(x_0 \in D \)   in the \(p\)-mean ( \(1 \leq p\leq \infty  \)  ) if</p>
+<p>\[ \int_{|x-x_0|&lt;r}|u|^p dx=O(|r|^{p\alpha+n }). \]</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:8:1" title="Edit remark at source line 8" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>The usual definition of a zero of order \(\alpha  \) corresponds to \(p=\infty . \)</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:11:1" title="Edit remark at source line 11" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>The zero is said to be of infinite order if it is of order \(\alpha  \)   for all \(\alpha &gt;0 \).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Heinz)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:15:1" title="Edit theorem at source line 15" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(r \leq 1 \) and \(u \) vanishes outside a compact set contained in \(0&lt;|x|&lt;r \), then</p>
+<p>\begin{equation}
+  cr^2 \int_{|x|&lt;r} |x|^{-2 \alpha } |\Delta u|^2 dx \geq \int_{|x|&lt;r} |x|^{- 2 \alpha } \left[ \sum_{i=1}^n |\frac{\partial u}{\partial x^i} |^2+|u|^2 \right] dx.
+ \end{equation}</p>
+</section>
+</div>
+<p>Consider first the metric</p>
+<p>\[ a_{ij}dx^idx^j .\]</p>
+<p>Fix a point \(x_0 \in D \) and denote the distance by \(r=|x-x_0| \). Introduce the new tensor (for constant \(\nu  \)  )</p>
+<p>\[ \tilde{a}^{ij}=e^{2 \nu r^2} a^{ij},\quad  \tilde{a}_{ij}=e^{-2 \nu r^2} a_{ij},\]</p>
+<p>and the Laplacian-Beltrami operator</p>
+<p>\[ \tilde{A}= \frac{1}{\sqrt{\tilde{a}}} \frac{\partial }{\partial x^i} (\sqrt{\tilde{a}} a^{ij} \frac{\partial }{\partial x^j} )  .\]</p>
+<p>Then the new distance \(\tilde{r} \) are related to \(r \) by (geodesics are the same)</p>
+<p>\[ \tilde{r}=\int_{0}^{r} e^{-\nu \sigma ^2} d \sigma . \]</p>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:33:1" title="Edit theorem at source line 33" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Denote the sphere by \(\tilde{S}_h(x_0) \)   with \(\tilde{r} &lt;h \) in the metric \(d \tilde{s} \). Then</p>
+<p>\[ ch^2 \int_{\tilde{S}_h(x_0)} \tilde{r}^{-2 \alpha } |\tilde{A}u|^2 \sqrt{\tilde{a}} dx \geq \int_{\tilde{S}_h(x_0)} \tilde{r}^{-2 \alpha } \left[ \tilde{a}^{ij}\frac{\partial u}{\partial x^i}\frac{\partial u}{\partial x^j} +|u|^2   \right] \sqrt{\tilde{a}} dx,\]</p>
+<p>where \(u \) vanishes outside a compact set of \(\tilde{S}_h(x_0) \setminus x_0 \) and \(c \) is a constant independent on \(u \) and \(\alpha  .\)</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Bejancu: Geometry of CR-Submanifolds</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:40:1" title="Edit section at source line 40" aria-label="Edit section in VS Code">Edit</a></div>
+<p>I'm reading Bejancu's <em>Geometry of CR-Submanifolds</em> and before that I was reading Blair's <em>Riemannian Geometry of Contact and Symplectic Manifolds</em>. Next step, I should go back to <em>foliation theory</em>.</p>
+<ul class="wiki-itemize">
+<li>
+<p>Yano and Kon, <em>CR Submanifolds of Kaehlerian and Sasakian Manifolds</em></p>
+</li>
+<li>
+<p>Yano and Kon, <em>Anti-invariant submanifolds</em></p>
+</li>
+<li>
+<p>Yano, <em>On a Structure Defined by a Tensor Field f of Type (1,1) Satisfying \(f^3+f = 0\).</em></p>
+</li>
+<li>
+<p>Yano, <em>Integral formulas in Riemannian geometry</em></p>
+</li>
+<li>
+<p>Ogiue, <em>Differential geometry of Kaehler submanifolds</em></p>
+</li>
+</ul>
+<p>These two classes of submanifolds have been extensively investigated in the last decade from different viewpoints. The fundamental results on the geometry of totally real submanifolds can be found in Yano-Kon [1]. Also, a survey of the principal results on the geometry of complex submanifolds is given by Ogiue in [1].</p>
+<p>Yano-Kon's <em>Anti-invariant submanifolds</em> is not easy to find online, so I borrow it from UniVie.
+But you can find it  in <a href="https://archive.org/details/antiinvariantsub0000yano/page/186/mode/2up">archive.org</a>.</p>
+<p>Bejancu's book is great, but it seems that there is a few misquoted or error. I mainly read the part of second chapter about CR submfd of an almost Hermitian manifold, and left the CR submfd in Kähler mfds to read when necessary. And the first chapter about basic theory of Rie mfds are also uesful.</p>
+<div class="wiki-heading-with-edit"><h1>\(f\)-harmonic maps</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:60:1" title="Edit section at source line 60" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="theorem definition">
+<header>Definition (\(f\)-Laplacian, \(\ricci_f\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:62:1" title="Edit definition at source line 62" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>\[ \lap_f(u):=\lap u -\la \nabla u,\nabla f \ra  ,\]</p>
+<p>\[ \ricci_f := \ricci +\hess f. \]</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition (Bochner formula)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:67:1" title="Edit proposition at source line 67" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>\begin{equation}
+   \frac{1}{2} \lap_f |\nabla u|^2=|\hess u|^2+\la \nabla u, \nabla \lap_f u\ra+\ricci_f(\nabla u,\nabla u). 
+ \end{equation}</p>
+</section>
+</div>
+<p>Indeed,</p>
+<p>\[ \begin{aligned}
+   \frac{1}{2} \lap_f |\nabla u|^2=&amp; \frac{1}{2}\lap |\nabla u|^2-\hess u (\nabla u,\nabla f)\\
+   \la \nabla u,\nabla \lap_f u \ra=&amp; \la \nabla u,\nabla \lap u \ra -\hess u(\nabla u,\nabla f)-\hess f(\nabla u,\nabla u).
+\end{aligned}  \]</p>
+<p>For the first inequality, recall</p>
+<p>\[ \hess u (X,Y)= \la \nabla _X \nabla u,  Y \ra.  \]</p>
+<p>The second equality follows from</p>
+<p>\[ \begin{aligned}
+    \la \nabla u,\nabla \la \nabla u,\nabla f \ra  \ra=&amp;\nabla u \cdot \la \nabla u,\nabla f \ra  \\
+    =&amp; \nabla u \cdot \nabla u \cdot f= \nabla u \cdot \nabla f \cdot u
+\end{aligned}  \]</p>
+<p>and</p>
+<p>\[ \begin{aligned}
+   \hess u(\nabla u,\nabla f)+\hess f(\nabla u,\nabla u)=&amp; \nabla u \cdot \nabla f \cdot u-(\nabla _{\nabla u}\nabla f) u+\nabla u \cdot \nabla   u \cdot f -(\nabla _{\nabla u}\nabla u) f\\
+   =&amp;\nabla u \cdot \nabla f \cdot u+\nabla u \cdot \nabla   u \cdot f -(\nabla _{\nabla u}\nabla f) u-(\nabla _{\nabla u}\nabla u) f \\
+   =&amp; 2 \la \nabla u,\nabla \la \nabla u,\nabla f \ra  \ra- \nabla u \cdot \la \nabla u,\nabla f \ra.
+\end{aligned}  \]</p>
+<div class="wiki-heading-with-edit"><h1>\(f\)-pseudoharmonic maps</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:92:1" title="Edit section at source line 92" aria-label="Edit section in VS Code">Edit</a></div>
+<p>\begin{equation}
+    E_{b,f}(u)=\frac{1}{2}\int_{M}|d_b u|^2 e^{-f} dv_{\theta }
+\end{equation}</p>
+<p>\np (<strong>The first variation formula.</strong>)</p>
+<p>Let \(u_t:M \to N\) be a family maps from pseudohermitian manifold \((M, H, \theta ) \) to Riemannian manifold \(N\).
+Then</p>
+<p>\[ \begin{aligned}
+    \frac{d}{dt} E_{b,f}(u_t)=&amp; \int_{M} \la \nabla _{\frac{\partial }{\partial t}} d u_t(e_i),du_t(e_i)  \ra e^{-f} dv_{\theta }\\
+    =&amp; \int_{M}^{} \la \nabla _{e_i} \frac{\partial u_t}{\partial t},du_t(e_i)  \ra e^{-f} dv_{\theta }\\
+    =&amp; \int_{M}^{} e_i \la V,e^{-f}du(e_i)  \ra -\la V, \nabla _{e_i} (e^{-f}du(e_i))  \ra
+    dv_{\theta }\\
+    =&amp; \int_{M}  e_i \la V,e^{-f}du(e_i)  \ra dv_{\theta }
+    +\int_{M} \la V,  e_i(f) du(e_i) -\nabla _{e_i} du(e_i)\ra e^{-f} 
+    dv_{\theta }.
+\end{aligned}  \]</p>
+<p>Set 1-form \(\eta (X):=\la V,e^{-f}du(X)  \ra\), then</p>
+<p>\[\begin{aligned}
+    \delta (\eta )=&amp;-\sum_{A=1}^{2m+1} (\nabla _{e_A} \eta) (e_A)\\
+    =&amp; -e_A \la V, e^{-f}du(e_A)  \ra +\la V, e^{-f} du(\nabla _{e_A}e_A)  \ra .
+\end{aligned}   \]</p>
+<p>It follows that</p>
+<p>\[ \begin{aligned}
+    \frac{d}{dt} E_{b,f}(u_t)=&amp; -\int_{M} \delta (\eta )+T\la V , e^{-f}du(T) \ra -\la V , e^{-f} du(\nabla _{T}T) \ra dv_{\theta }\\
+    &amp;-\int_{M} \la V, \tau _b (u) \ra e^{-f} dv_{\theta }+\int_{M} \la V, du(\nabla _b f) \ra e^{-f}dv_\theta \\
+    =&amp; - \int_{M}\la V, \tau _b (u) -du(\nabla _b f)\ra e^{-f}dv_\theta .
+\end{aligned}  \]</p>
+<p>Thus \(u\) is \(f\)-pseudoharmonic iff</p>
+<p>\begin{equation}
+    \tau _b (u) -du(\nabla _b f)=0,
+\end{equation}</p>
+<p>or, locally,</p>
+<p>\begin{equation}
+    u_{ii }^{\alpha  }-f_i u_{i }^{\alpha }=0, \quad \forall \alpha .
+\end{equation}</p>
+<p>\np (<strong>Bochner formula</strong>)</p>
+<p>Note that \(|d_b u|^2= \sum_{i,\alpha }^{} (u_{i}^{\alpha })^2\)</p>
+<p>\[ \begin{aligned}
+    &amp;\lap_b |d_b u|^2-\la d |d_b u|^2, d_b f \ra\\
+   =&amp; \lap_b |d_b u|^2-2u_{ij}^{\alpha }u_{i}^{\alpha }f_j\\
+\end{aligned}  \]</p>
+<div class="wiki-heading-with-edit"><h1>Stability of minimal hypersurfaces in a 3-manifold</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:140:1" title="Edit section at source line 140" aria-label="Edit section in VS Code">Edit</a></div>
+<ol class="wiki-enumerate decimal">
+<li>
+<p>Chen Zhou, <em>A new proof of Huber's theorem on differential geometry in the large</em></p>
+</li>
+<li>
+<p>Peter Li and Luen-fai Tam,  <em>Complete Surfaces With Finite Total Curvature</em></p>
+</li>
+</ol>
+<div class="theorem theorem">
+<header>Theorem (Huber)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:149:1" title="Edit theorem at source line 149" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(M\) be a connected open Riemann surface and let \(\mathrm{d}s^2\) be a complete conformal Riemannian metric( This metric can be expressed as \(\eqref{eq1}\) locally.) of class \(C^\infty\) on \(M\). If the integral</p>
+<p>\begin{equation}
+    \int_M K^- \mathrm{d}\sigma
+\end{equation}</p>
+<p>is finite, then \(M\) is homeomorphic to the interior of a compact surface with boundary.</p>
+</section>
+</div>
+<p>In order to understand the Huber's theorem, here I quote some preliminaries.</p>
+<p>We consider an open, two-dimensional Riemannian manifold \( M \) whose metric is defined by a positive definite quadratic form</p>
+<p>\[
+ds^2 = E(\xi, \eta)d\xi^2 + 2F(\xi, \eta)d\xi d\eta + G(\xi, \eta)d\eta^2,
+\]</p>
+<p>where \( \xi \) and \( \eta \) denoting local parameters. If \( E \), \( F \) and \( G \) are sufficiently regular, then it is possible to introduce (local) <em>isothermic parameters</em>, i.e., there exists a coordinate transformation \( x = x(\xi, \eta) \), \( y = y(\xi, \eta) \) such that \( E = G &gt; 0 \), \( F = 0 \) in the \( (x, y) \)-parameter system. Then we can write</p>
+<p>\begin{equation}\label{eq1}
+    ds^2 = e^{2u(x,y)}(dx^2 + dy^2) = e^{2u} |dz|^2,
+\end{equation}</p>
+<p>putting \( z = x + iy \). Such a transformation always exists, for example, when \( E \), \( F \) and \( G \) are of class \( C^3 \), and in this case the corresponding function \( u \) is also of class \( C^3 \) (cf. A. Wintner, p. 687).</p>
+<p>The well-known theorems of Cohn-Vossen [2] and Huber [8] assert that:</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:171:1" title="Edit proposition at source line 171" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \( M \) be a complete surface with the negative part of its Gaussian curvature integrable, i.e.,</p>
+<p>\[
+\int_M K_- \, dA &lt; \infty,
+\]</p>
+<p>where</p>
+<p>\[
+K_- = 
+\begin{cases} 
+0 &amp; \text{if } K &gt; 0, \\
+-K &amp; \text{if } K \leq 0.
+\end{cases}
+\]</p>
+<p>Then \( M \) must be conformally equivalent to a compact Riemann surface with finitely many points deleted. Moreover</p>
+<p>\[
+\int_M K \, dA \leq 2\pi\chi(M),
+\]</p>
+<p>where \( \chi(M) \) is the Euler characteristic of \( M \). In particular, if \( \int_M |K| \, dA &lt; \infty \), if in addition \( M \) is simply connected, then \( M \) must be conformally equivalent to the complex plane.</p>
+</section>
+</div>
+<p>The following proposition was proved by Hartman in [6] for simply connected surfaces. It was later generalized by Shiohama in [15] to arbitrary complete surfaces with finite total curvature.</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:192:1" title="Edit proposition at source line 192" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \( M \) be a complete surface with finite total curvature. If \( K \) is the Gaussian curvature of \( M \), then we have</p>
+<p>\[
+2\pi\chi(M) - \int_M K \, dA = \lim_{r \to \infty} \frac{L(r)}{r} = \lim_{r \to \infty} \frac{2A(r)}{r^2}.
+\]</p>
+<p>The next result, which was proved by Hartman in [6], asserts an upper bound of the area growth of a complete surface with finite total curvature. For a higher-dimensional generalization, we would like to refer the reader to [13].</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:200:1" title="Edit proposition at source line 200" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \( M \) be a complete surface with finite total curvature. Then there exists a constant \( C_1 \), depending only on \( \int_M |K| \, dA \), such that</p>
+<p>\[
+L(\partial B_x(r)) \leq C_1 r \quad \text{and} \quad A(B_x(r)) \leq \frac{C_1}{2} r^2,
+\]</p>
+<p>for all \( x \in M \) and for all \( r &gt; 0 \).</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:208:1" title="Edit proposition at source line 208" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \( M \) be a simply connected complete noncompact surface with finite total curvature. Then there exists \( R_0 &gt; 0 \), such that for all \( r &gt; R_0 \), the boundary of the geodesic ball of radius \( r \) centered at \( p \) must be homeomorphic to the circle. In particular, the geodesic ball \( B_p(r) \) is homeomorphic to the disk.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Uniformization theorem)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:213:1" title="Edit theorem at source line 213" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Suppose \( X \) is a simply connected Riemann surface. Then \( X \) can be mapped biholomorphically onto either the Riemann sphere \( \mathbb{P}^1 \), the complex plane \( \mathbb{C} \) or else the unit disk \( D \).</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:217:1" title="Edit definition at source line 217" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>Suppose \( X \) is a Riemann surface and \( \widetilde{X} \) is its universal covering. Since \( \widetilde{X} \) is simply connected, we may apply the Riemann Mapping Theorem to it. It is standard to call \( X \) <strong>elliptic</strong>, <strong>parabolic</strong> or <strong>hyperbolic</strong> depending on whether its universal covering is isomorphic to \( \mathbb{P}^1 \), \( \mathbb{C} \), or \( D \).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:221:1" title="Edit theorem at source line 221" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<ol class="wiki-enumerate alpha">
+<li>
+<p>The Riemann sphere \( \mathbb{P}^1 \) is elliptic.</p>
+</li>
+<li>
+<p>The complex plane \( \mathbb{C} \), the punctured plane \( \mathbb{C}^* \) and all tori \( \mathbb{C}/\Gamma \) are parabolic.</p>
+</li>
+<li>
+<p>Every other Riemann surface is hyperbolic.</p>
+</li>
+</ol>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h2>Fischer-Colbrie-Schoen Theorem</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:229:1" title="Edit section at source line 229" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Peter Li's book is not clear, the following is the original paper:</p>
+<div class="theorem theorem">
+<header>Theorem (Fischer-Colbrie-Schoen)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:231:1" title="Edit theorem at source line 231" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(N\) be a complete oriented 3-manifold of non-negative
+scalar curvature. Let \(M\) be an oriented complete stable minimal surface in \(N\).</p>
+<p>There are two possibilities:</p>
+<p>(i) If \(M\) is compact, then \(M\) is conformally equivalent to the sphere \(S^2\) or \(M\)
+is a totally geodesic flat torus \(T^2\). If \(S&gt;0\) on \(N\), then \(M\) is conformally
+equivalent to \(S^2\).</p>
+<p>(ii) If \(M\) is not compact, then \(M\) is conformally equivalent to the complex
+plane C, or the cylinder A. If \(M\) is a cylinder and the absolute total curvature
+of \(M\) is finite, then \(M\) is flat and totally geodesic. If the scalar curnature of \(N\) is everywhere positive, then \(M\) cannot be a cylinder with finite total curvature.
+If the Ricci curnature of \(N\) is non-negative, then the assumption of finite
+total curvature in (ii) can be removed.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:247:1" title="Edit remark at source line 247" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>Note that each of the four possibilities  does occur.</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Stokes Theorem</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:251:1" title="Edit section at source line 251" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Covering maps, nonorientable manifolds, singular boundary.</p>
+<p>Lee's deﬁnition implies that the tangent space at a boundary point is an \(n\)-dimensional vector space, just like the tangent spaces at interior points.</p>
+<div class="theorem lemma">
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:259:1" title="Edit lemma at source line 259" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>Let \(\tau \colon \mathbb{H}^n \to \mathbb{R}^n\) denote the inclusion map. For any \(a \in \partial\mathbb{H}^n\), the differential \(d \tau_a \colon T_a \mathbb{H}^n \to T_a \mathbb{R}^n\) is an isomorphism.</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Distance function</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:263:1" title="Edit section at source line 263" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:265:1" title="Edit theorem at source line 265" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Suppose \((M,g)\) is a connected Riemannian manifold, \(S \subseteq M\) is arbitrary, and \(f \colon M \to [0,\infty)\) is the distance to \(S\), that is, \(f(x) = d_g(x, S)\) for all \(x \in M\). If \(f\) is continuously differentiable on some open subset \(U \subseteq M \setminus S\), then \(\left| \nabla f \right| = 1\) on \(U\).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:268:1" title="Edit theorem at source line 268" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Suppose \((M, g)\) is a Riemannian manifold and \(f\) is a smooth local distance function on an open subset \(U \subseteq M\). Then \(\nabla_{\nabla f}(\nabla f) = 0\), and each integral curve of \(\nabla f\) is a unit-speed geodesic.</p>
+</section>
+</div>
+<div class="theorem exercise">
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:271:1" title="Edit exercise at source line 271" aria-label="Edit exercise in VS Code">Edit</a>
+<section>
+<p>Suppose \((M,g)\) is a complete, connected Riemannian manifold, \(S \subseteq M\) is a closed subset, and \(f \colon M \to \mathbb{R}\) is a continuous function such that \(f^{-1}(0) = S\) and \(f\) is smooth with unit gradient on \(M \setminus S\). Prove that \(f(x) = d_g(x, S)\) for all \(x \in M\).</p>
+</section>
+</div>
+<div class="theorem exercise">
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:275:1" title="Edit exercise at source line 275" aria-label="Edit exercise in VS Code">Edit</a>
+<section>
+<p>Suppose \((M, g)\) is a Riemannian \(n\)-manifold, \(P \subseteq M\) is a compact embedded submanifold, and \(U\) is an \(\epsilon\)-tubular neighborhood of \(P\) for some \(\epsilon &gt; 0\). For \(0 &lt; \delta &lt; \epsilon\), define \(U_{\delta}\) and \(P_{\delta}\) by</p>
+<p>\[ U_{\delta} = \{ x \in U : d_g(x, P) \leq \delta \}, \]</p>
+<p>\[ P_{\delta} = \{ x \in U : d_g(x, P) = \delta \}. \]</p>
+<p>(a) Prove that \(U_{\delta}\) is a regular domain and \(P_{\delta}\) is a compact, embedded submanifold of \(M\) for each \(\delta \in (0, \epsilon)\).</p>
+<p>(b) Generalize the result of Problem 6-30 by proving that</p>
+<p>\[ \text{Vol}(U_{\delta}) = \int_{0}^{\delta} \text{Area}(P_r) \, dr, \]</p>
+<p>where \(\text{Area}(P_r)\) denotes the \((n-1)\)-dimensional volume of \(P_r\) with the induced Riemannian metric.</p>
+</section>
+</div>
+<p>Also in the book <em>Riemannian Foliations</em> by Molino, (see proposition 3.5)</p>
+<p>``B.Reinhart established some important properties of these foliations and, in particular, the fact that every geodesic [for a bundle-like metric] that is perpendicular at some point to a leaf remains perpendicular to all the leaves that it meets. He also showed that if the metric is complete then the leaves have the same universal covering.''</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:294:1" title="Edit remark at source line 294" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>From above, we know that it's possible to define a distance function \(r\) to a compact section of a leaf \(\mathcal{F}_{p_0}\) in a Riemannian foliation \(M\). Then \(\nabla r\) is unit-speed geodesic and thus horizontal.
+When \(M\) has focal points wrt \(\mathcal{F}_{p_0}\), the integral on the whole space will not be affected, which gives a way to derive a monotonicty formula in general Riemannian foliation setting.</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Stability of minimal hypersurfaces in a higher dimensional manifold</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:299:1" title="Edit section at source line 299" aria-label="Edit section in VS Code">Edit</a></div>
+<p>reference:</p>
+<ul class="wiki-itemize">
+<li>
+<p>\href{https://math.stackexchange.com/questions/422683/question-in-do-carmos-book-riemannian-geometry-section-7}{stackexchange: ray exists in noncompact manifold}</p>
+</li>
+<li>
+<p>Cheeger, J., and Gromoll, D. (1972). <em>On the Structure of Complete Manifolds of Nonnegative Curvature</em>. Annals of Mathematics, 96(3), 413–443. \href{https://doi.org/10.2307/1970819}{https://doi.org/10.2307/1970819}</p>
+</li>
+<li>
+<p>\href{https://www.ams.org/books/gsm/019/}{https://www.ams.org/books/gsm/019/}</p>
+</li>
+<li>
+<p>\href{https://math.berkeley.edu/~chicheuk/notes/do%20Carmo.pdf}{A solution of Carmo's book}</p>
+</li>
+<li>
+<p>\href{https://www.ams.org/prizes-awards/pabrowse.cgi?parent_id=26}{Steele Prize For Mathematical Exposition}</p>
+</li>
+</ul>
+<div class="theorem exercise">
+<header>Exercise (Existence of a ray,from Carmo&#x27;s book)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:311:1" title="Edit exercise at source line 311" aria-label="Edit exercise in VS Code">Edit</a>
+<section>
+<p>A geodesic \(\gamma: [0,\infty) \to M\) in a Riemannian manifold \(M\) is called a ray starting from \(\gamma(0)\) if it minimizes the distance between \(\gamma(0)\) and \(\gamma(s)\), for any \(s \in (0,\infty)\). Assume that \(M\) is complete, non-compact, and let \(p \in M\). Show that \(M\) contains a ray starting from \(p\).</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:315:1" title="Edit corollary at source line 315" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>Let \(E\) be an end of a complete Riemannian manifold. Suppose that for some \(\nu &gt; 1\) and \(C &gt; 0\), \(E\) satisfies a Sobolev type inequality of the form</p>
+<p>\[
+\left( \int_E |u|^{2\nu} \right)^{\frac{1}{\nu}} \leq C \int_E |\nabla u|^2,
+\]</p>
+<p>for all compactly supported functions \(u \in H_{c}^{1,2}(E)\) defined on \(E\), then \(E\) must be nonparabolic.</p>
+</section>
+</div>
+<p>We know that \(\mathbb{R}^2\) is parabolic, but \(\mathbb{R}^n\) with \(n\geq 3\) is nonparabolic. Compare to (note that the dimension works here)</p>
+<div class="theorem theorem">
+<header>Theorem (Gagliardo--Nirenberg--Sobolev inequality)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:324:1" title="Edit theorem at source line 324" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Assume \(1 \leq p &lt; n\). There exists a constant \(C\), depending only on \(p\) and \(n\), such that</p>
+<p>\begin{equation}
+\|u\|_{L^{p^*}(\mathbb{R}^n)} \leq C\|\nabla u\|_{L^p(\mathbb{R}^n)},
+\end{equation}</p>
+<p>for all \(u \in C_c^1(\mathbb{R}^n)\).</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition (properly immersed submanifolds)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:334:1" title="Edit definition at source line 334" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>An embedded submanifold with or without boundary is said to be <em>properly embedded</em> if the inclusion map is proper.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:337:1" title="Edit proposition at source line 337" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>If \(\widetilde{M}\) is a smooth manifold with or without boundary, then an embedded submanifold \(M \subseteq \widetilde{M}\) is <em>properly embedded</em> if and only if it is a closed subset of \(\widetilde{M}\).</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark (cf.\href{https://doi.org/10.1016/j.aim.2013.12.001}{Shun Maeta})</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:341:1" title="Edit remark at source line 341" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>An immersed submanifold \(M\) in a Riemannian manifold \(N\) is said to be properly immersed if the immersion is a proper map. Here, we remark that the properness of the immersion implies the completeness of \((M,g)\).</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:345:1" title="Edit proposition at source line 345" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Suppose \(X\) and \(Y\) are topological spaces and \(F: X \to Y\) is a proper map. Then \(F\) takes every sequence diverging to inﬁnity in \(X\) to a sequence diverging to inﬁnity in \(Y\).</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:349:1" title="Edit proposition at source line 349" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Suppose \(X\) is any topological space, \(Y\) is a compactly generated Hausdorff space (e.g., any subset of a manifold with or without boundary), and \(F: X\to Y\) is a proper continuous map. Then \(F\) is a closed map.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:353:1" title="Edit proposition at source line 353" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>First countable spaces and locally compact spaces are compactly generated.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:357:1" title="Edit proposition at source line 357" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Suppose \(F\) is a proper continuous map from a topological space to a compactly generated Hausdorff space.</p>
+<p>(a) If \(F\) is surjective, it is a quotient map.</p>
+<p>(b) If \(F\) is injective, it is a topological embedding.</p>
+<p>(c) If \(F\) is bijective, it is a homeomorphism.</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:367:1" title="Edit proposition at source line 367" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Suppose \(M\) is a smooth manifold with or without boundary, and \(S \subseteq M\) is an immersed submanifold. If any of the following holds, then \(S\) is embedded.</p>
+<ol class="wiki-enumerate decimal">
+<li>
+<p>\(S\) has codimension \(0\) in \(M\).</p>
+</li>
+<li>
+<p>The inclusion map \(S \subseteq M\) is proper.</p>
+</li>
+<li>
+<p>\(S\) is compact.</p>
+</li>
+</ol>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Polynomial growth harmonic functions</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:376:1" title="Edit section at source line 376" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Preparing for chap 28,  from reviewing chap 27, Linear growth harmonic functions.</p>
+<ul class="wiki-itemize">
+<li>
+<p>Permutation and combination formula: \href{https://oi-wiki.org/math/combinatorics/combination/}{oiwiki}, also \href{https://www.amazon.com/Introduction-Enumerative-Combinatorics-Advanced-Mathematics/dp/007312561X}{amzon}</p>
+</li>
+<li>
+<p>Interesting about spinors: \href{https://arxiv.org/abs/2404.14331v1}{arxiv}</p>
+</li>
+</ul>
+<div class="theorem lemma">
+<header>Lemma (Li)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:384:1" title="Edit lemma at source line 384" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>Let \(M^m\) be a complete manifold with nonnegative Ricci curvature. Suppose \(f\) is a bounded subharmonic function defined on \(M\), then</p>
+<p>\[
+\lim_{\rho \to \infty} V_p^{-1}(\rho) \int_{B_p(\rho)} f(x) \, dx = \sup_M f.
+\]</p>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+\title{inbox}
+
+\section{Unique continuation}
+\begin{definition}
+  A measurable function $u$ defined in a domain $D$ of the euclidean  $n $-space  is said to have a zero of order $ \alpha >0$        at  $x_0 \in D $   in the $p$-mean ( $1 \leq p\leq \infty  $  ) if
+  $$ \int_{|x-x_0|<r}|u|^p dx=O(|r|^{p\alpha+n }). $$
+\end{definition}
+\begin{remark}
+  The usual definition of a zero of order $\alpha  $ corresponds to $p=\infty . $     
+\end{remark}
+\begin{remark}
+  The zero is said to be of infinite order if it is of order $\alpha  $   for all $\alpha >0 $. 
+\end{remark}
+
+\begin{theorem}[Heinz]
+  Let $r \leq 1 $ and $u $ vanishes outside a compact set contained in $0<|x|<r $, then      
+ \begin{equation}
+  cr^2 \int_{|x|<r} |x|^{-2 \alpha } |\Delta u|^2 dx \geq \int_{|x|<r} |x|^{- 2 \alpha } \left[ \sum_{i=1}^n |\frac{\partial u}{\partial x^i} |^2+|u|^2 \right] dx.
+ \end{equation}
+\end{theorem}
+
+
+Consider first the metric 
+$$ a_{ij}dx^idx^j .$$
+Fix a point $x_0 \in D $ and denote the distance by $r=|x-x_0| $. Introduce the new tensor (for constant $\nu  $  )
+$$ \tilde{a}^{ij}=e^{2 \nu r^2} a^{ij},\quad  \tilde{a}_{ij}=e^{-2 \nu r^2} a_{ij},$$    
+and the Laplacian-Beltrami operator
+$$ \tilde{A}= \frac{1}{\sqrt{\tilde{a}}} \frac{\partial }{\partial x^i} (\sqrt{\tilde{a}} a^{ij} \frac{\partial }{\partial x^j} )  .$$
+
+Then the new distance $\tilde{r} $ are related to $r $ by (geodesics are the same)
+$$ \tilde{r}=\int_{0}^{r} e^{-\nu \sigma ^2} d \sigma . $$    
+
+\begin{theorem}
+Denote the sphere by $\tilde{S}_h(x_0) $   with $\tilde{r} <h $ in the metric $d \tilde{s} $. Then 
+$$ ch^2 \int_{\tilde{S}_h(x_0)} \tilde{r}^{-2 \alpha } |\tilde{A}u|^2 \sqrt{\tilde{a}} dx \geq \int_{\tilde{S}_h(x_0)} \tilde{r}^{-2 \alpha } \left[ \tilde{a}^{ij}\frac{\partial u}{\partial x^i}\frac{\partial u}{\partial x^j} +|u|^2   \right] \sqrt{\tilde{a}} dx,$$
+where $u $ vanishes outside a compact set of $\tilde{S}_h(x_0) \setminus x_0 $ and $c $ is a constant independent on $u $ and $\alpha  .$              
+\end{theorem}
+
+
+\section{Bejancu: Geometry of CR-Submanifolds }
+
+I'm reading Bejancu's \textit{Geometry of CR-Submanifolds} and before that I was reading Blair's \textit{Riemannian Geometry of Contact and Symplectic Manifolds}. Next step, I should go back to \textit{foliation theory}.
+
+              
+\begin{itemize}
+    \item Yano and Kon, \textit{CR Submanifolds of Kaehlerian and Sasakian Manifolds}
+    \item Yano and Kon, \textit{Anti-invariant submanifolds}
+    \item Yano, \textit{On a Structure Defined by a Tensor Field f of Type (1,1) Satisfying $f^3+f = 0$.}
+    \item Yano, \textit{Integral formulas in Riemannian geometry}
+    \item Ogiue, \textit{Differential geometry of Kaehler submanifolds}
+\end{itemize}
+
+These two classes of submanifolds have been extensively investigated in the last decade from different viewpoints. The fundamental results on the geometry of totally real submanifolds can be found in Yano-Kon [1]. Also, a survey of the principal results on the geometry of complex submanifolds is given by Ogiue in [1].
+
+Yano-Kon's \textit{Anti-invariant submanifolds} is not easy to find online, so I borrow it from UniVie.
+But you can find it  in [archive.org](https://archive.org/details/antiinvariantsub0000yano/page/186/mode/2up).
+
+Bejancu's book is great, but it seems that there is a few misquoted or error. I mainly read the part of second chapter about CR submfd of an almost Hermitian manifold, and left the CR submfd in K\"ahler mfds to read when necessary. And the first chapter about basic theory of Rie mfds are also uesful.
+
+\section{$f$-harmonic maps}
+
+\begin{definition}[$f$-Laplacian, $\ricci_f$]
+    $$ \lap_f(u):=\lap u -\la \nabla u,\nabla f \ra  ,$$
+    $$ \ricci_f := \ricci +\hess f. $$
+\end{definition}
+
+\begin{proposition}[Bochner formula]
+ \begin{equation}
+   \frac{1}{2} \lap_f |\nabla u|^2=|\hess u|^2+\la \nabla u, \nabla \lap_f u\ra+\ricci_f(\nabla u,\nabla u). 
+ \end{equation}
+\end{proposition}
+Indeed, 
+$$ \begin{aligned}
+   \frac{1}{2} \lap_f |\nabla u|^2=& \frac{1}{2}\lap |\nabla u|^2-\hess u (\nabla u,\nabla f)\\
+   \la \nabla u,\nabla \lap_f u \ra=& \la \nabla u,\nabla \lap u \ra -\hess u(\nabla u,\nabla f)-\hess f(\nabla u,\nabla u).
+\end{aligned}  $$
+For the first inequality, recall 
+$$ \hess u (X,Y)= \la \nabla _X \nabla u,  Y \ra.  $$
+The second equality follows from 
+$$ \begin{aligned}
+    \la \nabla u,\nabla \la \nabla u,\nabla f \ra  \ra=&\nabla u \cdot \la \nabla u,\nabla f \ra  \\
+    =& \nabla u \cdot \nabla u \cdot f= \nabla u \cdot \nabla f \cdot u
+\end{aligned}  $$
+and 
+$$ \begin{aligned}
+   \hess u(\nabla u,\nabla f)+\hess f(\nabla u,\nabla u)=& \nabla u \cdot \nabla f \cdot u-(\nabla _{\nabla u}\nabla f) u+\nabla u \cdot \nabla   u \cdot f -(\nabla _{\nabla u}\nabla u) f\\
+   =&\nabla u \cdot \nabla f \cdot u+\nabla u \cdot \nabla   u \cdot f -(\nabla _{\nabla u}\nabla f) u-(\nabla _{\nabla u}\nabla u) f \\
+   =& 2 \la \nabla u,\nabla \la \nabla u,\nabla f \ra  \ra- \nabla u \cdot \la \nabla u,\nabla f \ra.
+\end{aligned}  $$
+
+
+\section{$f$-pseudoharmonic maps}
+
+\begin{equation}
+    E_{b,f}(u)=\frac{1}{2}\int_{M}|d_b u|^2 e^{-f} dv_{\theta }
+\end{equation}
+
+\np (\textbf{The first variation formula.})
+
+Let $u_t:M \to N$ be a family maps from pseudohermitian manifold $(M, H, \theta ) $ to Riemannian manifold $N$.
+Then 
+$$ \begin{aligned}
+    \frac{d}{dt} E_{b,f}(u_t)=& \int_{M} \la \nabla _{\frac{\partial }{\partial t}} d u_t(e_i),du_t(e_i)  \ra e^{-f} dv_{\theta }\\
+    =& \int_{M}^{} \la \nabla _{e_i} \frac{\partial u_t}{\partial t},du_t(e_i)  \ra e^{-f} dv_{\theta }\\
+    =& \int_{M}^{} e_i \la V,e^{-f}du(e_i)  \ra -\la V, \nabla _{e_i} (e^{-f}du(e_i))  \ra
+    dv_{\theta }\\
+    =& \int_{M}  e_i \la V,e^{-f}du(e_i)  \ra dv_{\theta }
+    +\int_{M} \la V,  e_i(f) du(e_i) -\nabla _{e_i} du(e_i)\ra e^{-f} 
+    dv_{\theta }.
+\end{aligned}  $$   
+Set 1-form $\eta (X):=\la V,e^{-f}du(X)  \ra$, then  
+$$\begin{aligned}
+    \delta (\eta )=&-\sum_{A=1}^{2m+1} (\nabla _{e_A} \eta) (e_A)\\
+    =& -e_A \la V, e^{-f}du(e_A)  \ra +\la V, e^{-f} du(\nabla _{e_A}e_A)  \ra .
+\end{aligned}   $$
+It follows that 
+$$ \begin{aligned}
+    \frac{d}{dt} E_{b,f}(u_t)=& -\int_{M} \delta (\eta )+T\la V , e^{-f}du(T) \ra -\la V , e^{-f} du(\nabla _{T}T) \ra dv_{\theta }\\
+    &-\int_{M} \la V, \tau _b (u) \ra e^{-f} dv_{\theta }+\int_{M} \la V, du(\nabla _b f) \ra e^{-f}dv_\theta \\
+    =& - \int_{M}\la V, \tau _b (u) -du(\nabla _b f)\ra e^{-f}dv_\theta .
+\end{aligned}  $$
+Thus $u$ is $f$-pseudoharmonic iff 
+\begin{equation}
+    \tau _b (u) -du(\nabla _b f)=0,
+\end{equation} 
+or, locally,
+\begin{equation}
+    u_{ii }^{\alpha  }-f_i u_{i }^{\alpha }=0, \quad \forall \alpha .
+\end{equation}
+
+\np (\textbf{Bochner formula}) 
+
+Note that $|d_b u|^2= \sum_{i,\alpha }^{} (u_{i}^{\alpha })^2$ 
+$$ \begin{aligned}
+    &\lap_b |d_b u|^2-\la d |d_b u|^2, d_b f \ra\\
+   =& \lap_b |d_b u|^2-2u_{ij}^{\alpha }u_{i}^{\alpha }f_j\\
+\end{aligned}  $$
+
+
+\section{Stability of minimal hypersurfaces in a 3-manifold}
+
+
+\begin{enumerate}
+    \item Chen Zhou, \textit{A new proof of Huber's theorem on differential geometry in the large}
+    \item Peter Li and Luen-fai Tam,  \textit{Complete Surfaces With Finite Total Curvature}
+\end{enumerate}
+
+
+\begin{theorem}[Huber]
+Let $M$ be a connected open Riemann surface and let $\mathrm{d}s^2$ be a complete conformal Riemannian metric( This metric can be expressed as $\eqref{eq1}$ locally.) of class $C^\infty$ on $M$. If the integral
+\begin{equation}
+    \int_M K^- \mathrm{d}\sigma
+\end{equation}
+is finite, then $M$ is homeomorphic to the interior of a compact surface with boundary.
+\end{theorem}
+In order to understand the Huber's theorem, here I quote some preliminaries.
+
+
+We consider an open, two-dimensional Riemannian manifold \( M \) whose metric is defined by a positive definite quadratic form
+\[
+ds^2 = E(\xi, \eta)d\xi^2 + 2F(\xi, \eta)d\xi d\eta + G(\xi, \eta)d\eta^2,
+\]
+where \( \xi \) and \( \eta \) denoting local parameters. If \( E \), \( F \) and \( G \) are sufficiently regular, then it is possible to introduce (local) \textit{isothermic parameters}, i.e., there exists a coordinate transformation \( x = x(\xi, \eta) \), \( y = y(\xi, \eta) \) such that \( E = G > 0 \), \( F = 0 \) in the \( (x, y) \)-parameter system. Then we can write
+\begin{equation}\label{eq1}
+    ds^2 = e^{2u(x,y)}(dx^2 + dy^2) = e^{2u} |dz|^2,
+\end{equation}
+putting \( z = x + iy \). Such a transformation always exists, for example, when \( E \), \( F \) and \( G \) are of class \( C^3 \), and in this case the corresponding function \( u \) is also of class \( C^3 \) (cf. A. Wintner, p. 687).
+
+
+The well-known theorems of Cohn-Vossen [2] and Huber [8] assert that:
+\begin{proposition}
+Let \( M \) be a complete surface with the negative part of its Gaussian curvature integrable, i.e., 
+\[
+\int_M K_- \, dA < \infty,
+\]
+where
+\[
+K_- = 
+\begin{cases} 
+0 & \text{if } K > 0, \\
+-K & \text{if } K \leq 0.
+\end{cases}
+\]
+Then \( M \) must be conformally equivalent to a compact Riemann surface with finitely many points deleted. Moreover
+\[
+\int_M K \, dA \leq 2\pi\chi(M),
+\]
+where \( \chi(M) \) is the Euler characteristic of \( M \). In particular, if \( \int_M |K| \, dA < \infty \), if in addition \( M \) is simply connected, then \( M \) must be conformally equivalent to the complex plane.
+\end{proposition}
+
+The following proposition was proved by Hartman in [6] for simply connected surfaces. It was later generalized by Shiohama in [15] to arbitrary complete surfaces with finite total curvature.
+\begin{proposition}
+Let \( M \) be a complete surface with finite total curvature. If \( K \) is the Gaussian curvature of \( M \), then we have
+\[
+2\pi\chi(M) - \int_M K \, dA = \lim_{r \to \infty} \frac{L(r)}{r} = \lim_{r \to \infty} \frac{2A(r)}{r^2}.
+\]
+The next result, which was proved by Hartman in [6], asserts an upper bound of the area growth of a complete surface with finite total curvature. For a higher-dimensional generalization, we would like to refer the reader to [13].
+\end{proposition}
+
+\begin{proposition}
+Let \( M \) be a complete surface with finite total curvature. Then there exists a constant \( C_1 \), depending only on \( \int_M |K| \, dA \), such that
+\[
+L(\partial B_x(r)) \leq C_1 r \quad \text{and} \quad A(B_x(r)) \leq \frac{C_1}{2} r^2,
+\]
+for all \( x \in M \) and for all \( r > 0 \).
+\end{proposition}
+
+\begin{proposition}
+Let \( M \) be a simply connected complete noncompact surface with finite total curvature. Then there exists \( R_0 > 0 \), such that for all \( r > R_0 \), the boundary of the geodesic ball of radius \( r \) centered at \( p \) must be homeomorphic to the circle. In particular, the geodesic ball \( B_p(r) \) is homeomorphic to the disk.
+\end{proposition}
+
+
+\begin{theorem}[Uniformization theorem]
+Suppose \( X \) is a simply connected Riemann surface. Then \( X \) can be mapped biholomorphically onto either the Riemann sphere \( \mathbb{P}^1 \), the complex plane \( \mathbb{C} \) or else the unit disk \( D \).
+\end{theorem}
+
+\begin{definition}
+    Suppose \( X \) is a Riemann surface and \( \widetilde{X} \) is its universal covering. Since \( \widetilde{X} \) is simply connected, we may apply the Riemann Mapping Theorem to it. It is standard to call \( X \) \textbf{elliptic}, \textbf{parabolic} or \textbf{hyperbolic} depending on whether its universal covering is isomorphic to \( \mathbb{P}^1 \), \( \mathbb{C} \), or \( D \).
+\end{definition}
+
+\begin{theorem}
+\begin{enumerate}[(a)]
+\item The Riemann sphere \( \mathbb{P}^1 \) is elliptic.
+\item The complex plane \( \mathbb{C} \), the punctured plane \( \mathbb{C}^* \) and all tori \( \mathbb{C}/\Gamma \) are parabolic.
+\item Every other Riemann surface is hyperbolic.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Fischer-Colbrie-Schoen Theorem}
+Peter Li's book is not clear, the following is the original paper:
+\begin{theorem}[Fischer-Colbrie-Schoen]
+     Let $N$ be a complete oriented 3-manifold of non-negative
+scalar curvature. Let $M$ be an oriented complete stable minimal surface in $N$. 
+
+There are two possibilities:
+
+(i) If $M$ is compact, then $M$ is conformally equivalent to the sphere $S^2$ or $M$
+is a totally geodesic flat torus $T^2$. If $S>0$ on $N$, then $M$ is conformally
+equivalent to $S^2$.
+
+(ii) If $M$ is not compact, then $M$ is conformally equivalent to the complex
+plane C, or the cylinder A. If $M$ is a cylinder and the absolute total curvature
+of $M$ is finite, then $M$ is flat and totally geodesic. If the scalar curnature of $N$ is everywhere positive, then $M$ cannot be a cylinder with finite total curvature.
+If the Ricci curnature of $N$ is non-negative, then the assumption of finite
+total curvature in (ii) can be removed.
+\end{theorem}
+\begin{remark}
+    Note that each of the four possibilities  does occur.
+\end{remark}
+
+\section{Stokes Theorem}
+
+
+Covering maps, nonorientable manifolds, singular boundary. 
+
+
+
+Lee's deﬁnition implies that the tangent space at a boundary point is an $n$-dimensional vector space, just like the tangent spaces at interior points.
+\begin{lemma}
+Let $\tau \colon \mathbb{H}^n \to \mathbb{R}^n$ denote the inclusion map. For any $a \in \partial\mathbb{H}^n$, the differential $d \tau_a \colon T_a \mathbb{H}^n \to T_a \mathbb{R}^n$ is an isomorphism.
+\end{lemma}
+
+\section{Distance function}
+
+\begin{theorem}
+Suppose $(M,g)$ is a connected Riemannian manifold, $S \subseteq M$ is arbitrary, and $f \colon M \to [0,\infty)$ is the distance to $S$, that is, $f(x) = d_g(x, S)$ for all $x \in M$. If $f$ is continuously differentiable on some open subset $U \subseteq M \setminus S$, then $\left| \nabla f \right| = 1$ on $U$.
+\end{theorem}
+\begin{theorem}
+Suppose $(M, g)$ is a Riemannian manifold and $f$ is a smooth local distance function on an open subset $U \subseteq M$. Then $\nabla_{\nabla f}(\nabla f) = 0$, and each integral curve of $\nabla f$ is a unit-speed geodesic.
+\end{theorem}
+\begin{exercise}
+       Suppose $(M,g)$ is a complete, connected Riemannian manifold, $S \subseteq M$ is a closed subset, and $f \colon M \to \mathbb{R}$ is a continuous function such that $f^{-1}(0) = S$ and $f$ is smooth with unit gradient on $M \setminus S$. Prove that $f(x) = d_g(x, S)$ for all $x \in M$.
+\end{exercise}
+
+\begin{exercise}
+    Suppose $(M, g)$ is a Riemannian $n$-manifold, $P \subseteq M$ is a compact embedded submanifold, and $U$ is an $\epsilon$-tubular neighborhood of $P$ for some $\epsilon > 0$. For $0 < \delta < \epsilon$, define $U_{\delta}$ and $P_{\delta}$ by
+\[ U_{\delta} = \{ x \in U : d_g(x, P) \leq \delta \}, \]
+\[ P_{\delta} = \{ x \in U : d_g(x, P) = \delta \}. \]
+
+(a) Prove that $U_{\delta}$ is a regular domain and $P_{\delta}$ is a compact, embedded submanifold of $M$ for each $\delta \in (0, \epsilon)$.
+
+(b) Generalize the result of Problem 6-30 by proving that
+\[ \text{Vol}(U_{\delta}) = \int_{0}^{\delta} \text{Area}(P_r) \, dr, \]
+where $\text{Area}(P_r)$ denotes the $(n-1)$-dimensional volume of $P_r$ with the induced Riemannian metric.
+
+\end{exercise}
+
+Also in the book \textit{Riemannian Foliations} by Molino, (see proposition 3.5)
+
+``B.Reinhart established some important properties of these foliations and, in particular, the fact that every geodesic [for a bundle-like metric] that is perpendicular at some point to a leaf remains perpendicular to all the leaves that it meets. He also showed that if the metric is complete then the leaves have the same universal covering.''
+
+
+
+\begin{remark}
+    From above, we know that it's possible to define a distance function \(r\) to a compact section of a leaf $\mathcal{F}_{p_0}$ in a Riemannian foliation $M$. Then $\nabla r$ is unit-speed geodesic and thus horizontal. 
+    When $M$ has focal points wrt $\mathcal{F}_{p_0}$, the integral on the whole space will not be affected, which gives a way to derive a monotonicty formula in general Riemannian foliation setting.
+\end{remark}
+
+\section{Stability of minimal hypersurfaces in a higher dimensional manifold}
+
+reference:
+\begin{itemize}
+    \item \href{https://math.stackexchange.com/questions/422683/question-in-do-carmos-book-riemannian-geometry-section-7}{stackexchange: ray exists in noncompact manifold}
+    \item Cheeger, J., and Gromoll, D. (1972). \textit{On the Structure of Complete Manifolds of Nonnegative Curvature}. Annals of Mathematics, 96(3), 413–443. \href{https://doi.org/10.2307/1970819}{https://doi.org/10.2307/1970819}
+    \item \href{https://www.ams.org/books/gsm/019/}{https://www.ams.org/books/gsm/019/}
+    \item \href{https://math.berkeley.edu/~chicheuk/notes/do%20Carmo.pdf}{A solution of Carmo's book}
+    \item \href{https://www.ams.org/prizes-awards/pabrowse.cgi?parent_id=26}{Steele Prize For Mathematical Exposition}
+\end{itemize}
+
+
+\begin{exercise}[Existence of a ray,from Carmo's book]
+    A geodesic $\gamma: [0,\infty) \to M$ in a Riemannian manifold $M$ is called a ray starting from $\gamma(0)$ if it minimizes the distance between $\gamma(0)$ and $\gamma(s)$, for any $s \in (0,\infty)$. Assume that $M$ is complete, non-compact, and let $p \in M$. Show that $M$ contains a ray starting from $p$.
+\end{exercise}
+
+\begin{corollary}
+     Let $E$ be an end of a complete Riemannian manifold. Suppose that for some $\nu > 1$ and $C > 0$, $E$ satisfies a Sobolev type inequality of the form
+\[
+\left( \int_E |u|^{2\nu} \right)^{\frac{1}{\nu}} \leq C \int_E |\nabla u|^2,
+\]
+for all compactly supported functions $u \in H_{c}^{1,2}(E)$ defined on $E$, then $E$ must be nonparabolic.
+
+\end{corollary}
+We know that $\mathbb{R}^2$ is parabolic, but $\mathbb{R}^n$ with $n\geq 3$ is nonparabolic. Compare to (note that the dimension works here)
+\begin{theorem}[Gagliardo--Nirenberg--Sobolev inequality]
+   Assume $1 \leq p < n$. There exists a constant $C$, depending only on $p$ and $n$, such that
+\begin{equation}
+\|u\|_{L^{p^*}(\mathbb{R}^n)} \leq C\|\nabla u\|_{L^p(\mathbb{R}^n)},
+\end{equation}
+for all $u \in C_c^1(\mathbb{R}^n)$.
+
+\end{theorem}
+
+
+\begin{definition}[properly immersed submanifolds]
+    An embedded submanifold with or without boundary is said to be \emph{properly embedded} if the inclusion map is proper.
+\end{definition}
+\begin{proposition}
+If $\widetilde{M}$ is a smooth manifold with or without boundary, then an embedded submanifold $M \subseteq \widetilde{M}$ is \emph{properly embedded} if and only if it is a closed subset of $\widetilde{M}$.
+\end{proposition}
+
+\begin{remark}[cf.\href{https://doi.org/10.1016/j.aim.2013.12.001}{Shun Maeta}]
+    An immersed submanifold $M$ in a Riemannian manifold $N$ is said to be properly immersed if the immersion is a proper map. Here, we remark that the properness of the immersion implies the completeness of $(M,g)$.
+\end{remark}
+
+\begin{proposition}
+    Suppose $X$ and $Y$ are topological spaces and $F: X \to Y$ is a proper map. Then $F$ takes every sequence diverging to inﬁnity in $X$ to a sequence diverging to inﬁnity in $Y$.
+\end{proposition}
+
+\begin{proposition}
+    Suppose $X$ is any topological space, $Y$ is a compactly generated Hausdorff space (e.g., any subset of a manifold with or without boundary), and $F: X\to Y$ is a proper continuous map. Then $F$ is a closed map.
+\end{proposition}
+
+\begin{proposition}
+    First countable spaces and locally compact spaces are compactly generated.
+\end{proposition}
+
+\begin{proposition}
+    Suppose $F$ is a proper continuous map from a topological space to a compactly generated Hausdorff space.
+
+(a) If $F$ is surjective, it is a quotient map.
+
+(b) If $F$ is injective, it is a topological embedding.
+
+(c) If $F$ is bijective, it is a homeomorphism.
+\end{proposition}
+
+\begin{proposition}
+Suppose $M$ is a smooth manifold with or without boundary, and $S \subseteq M$ is an immersed submanifold. If any of the following holds, then $S$ is embedded.
+\begin{enumerate}
+    \item $S$ has codimension $0$ in $M$.
+    \item The inclusion map $S \subseteq M$ is proper.
+    \item $S$ is compact.
+\end{enumerate}
+\end{proposition}
+
+\section{Polynomial growth harmonic functions}
+Preparing for chap 28,  from reviewing chap 27, Linear growth harmonic functions.
+
+\begin{itemize}
+    \item Permutation and combination formula: \href{https://oi-wiki.org/math/combinatorics/combination/}{oiwiki}, also \href{https://www.amazon.com/Introduction-Enumerative-Combinatorics-Advanced-Mathematics/dp/007312561X}{amzon}
+    \item Interesting about spinors: \href{https://arxiv.org/abs/2404.14331v1}{arxiv}
+\end{itemize}
+
+\begin{lemma}[Li]
+Let $M^m$ be a complete manifold with nonnegative Ricci curvature. Suppose $f$ is a bounded subharmonic function defined on $M$, then
+\[
+\lim_{\rho \to \infty} V_p^{-1}(\rho) \int_{B_p(\rho)} f(x) \, dx = \sup_M f.
+\]
+\end{lemma}
