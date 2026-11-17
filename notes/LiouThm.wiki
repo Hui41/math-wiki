@@ -35,13 +35,18 @@ r<\frac{\pi}{2\sqrt{k}}
 and containing no cut point of $q$. Such a geodesic ball is usually called a \textbf{regular geodesic ball}.
 \end{theorem}
 
+The regular ball rules out the cut points. Thus, if $N$ has nonnegative sectional curvature, \textit{not} every bouned ball is  regular in general. This is true, however, if $N$ is Cartan-Hadamard.  
+
 \section{Finite energy}
 
 Besides assuming that the image of the map is sufficiently ``small'', another common assumption is the finiteness of the energy. A classical result in this direction is due to Schoen and Yau.
 
 \begin{theorem}[\cite{SYau1976ener}]
-Let $(M,g)$ be a complete Riemannian manifold with nonnegative Ricci curvature, and let $(N,h)$ be a Riemannian manifold with nonpositive sectional curvature. If $f:M\to N$ is a harmonic map with finite energy, then $f$ is constant.
+Let $(M,g)$ be a complete noncompact Riemannian manifold with nonnegative Ricci curvature, and let $(N,h)$ be a Riemannian manifold with nonpositive sectional curvature. If $f:M\to N$ is a harmonic map with finite energy, then $f$ is constant.
 \end{theorem}
+\begin{remark}
+    The noncompactness can not be removed by the example of the identity map of flat torus $\mathbb{T}^2$.
+\end{remark}
 
 In addition, Garber, Ruijsenaars, Seiler, and Burns proved in \cite{Garber1979sigma} that if
 \[
@@ -49,7 +54,7 @@ u:\rr^m\to\ss^m,\qquad m\geq 3,
 \]
 is a harmonic map with finite energy, then $u$ is constant. Subsequently, Hildebrandt and Sealey obtained several generalizations. Hildebrandt showed that the metric on the domain may be replaced by a globally conformally flat metric, while Sealey showed that the domain may be replaced by the Poincar\'e ball $\mathbb{D}^m$; see \cite{Hil1982liou,sealeysome1982}.
 
- \section{Jin-type theorems}
+\section{Jin-type theorems}
 
 The two conditions discussed above are among the most common hypotheses used to derive Liouville-type theorems. In 1992, Jin proposed another condition leading to a Liouville theorem, namely, that the harmonic map satisfies a prescribed asymptotic behavior at infinity.
 
@@ -117,7 +122,7 @@ Yau's result can also be generalized to Liouville-type theorems under suitable g
 
 Using methods from probability theory and potential theory, Kendall proved the following Liouville-type theorem.
 
-\begin{theorem}[Theorem~6, \cite{Ken1988mart}]
+\begin{theorem}[Theorem 6, \cite{Ken1988mart}]
 Assume that the Riemannian manifold $(M,g)$ admits no nonconstant bounded harmonic functions. Let
 \[
 u:M\to B_r(q)\subset N
@@ -143,7 +148,7 @@ Notice that this theorem is independent of the choice of Riemannian metric on $M
 \[
 M=\ss^m,\qquad m\geq 2,
 \]
-and let $N$ be a Cartan--Hadamard manifold. In this case, the square of the distance function on $N$ is a globally defined strictly convex function. When $\ss^m$ is equipped with the standard round metric, the positivity of its Ricci curvature together with the nonpositivity of the sectional curvature of $N$ implies that every harmonic map
+and let $N$ be a Cartan-Hadamard manifold. In this case, the square of the distance function on $N$ is a globally defined strictly convex function. When $\ss^m$ is equipped with the standard round metric, the positivity of its Ricci curvature together with the nonpositivity of the sectional curvature of $N$ implies that every harmonic map
 \[
 u:\ss^m\to N
 \]

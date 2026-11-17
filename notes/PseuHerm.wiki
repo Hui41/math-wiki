@@ -74,8 +74,8 @@ collection of all its integral curves forms an oriented one-dimensional
 foliation $\mathcal{F}_{\xi }$ on $M$, which is called the \emph{Reeb
 foliation}. The first condition in \eqref{1.3} implies that $\xi $ is
 transversal to $H $. Therefore $T(M)$ admits a decomposition 
-\begin{equation}
-T(M)=H \oplus V_{\xi },  \label{1.4}
+\begin{equation}\label{1.4}    
+T(M)=H \oplus V_{\xi },  
 \end{equation} 
 where $V_{\xi }:= 
 \mathbb{R}
@@ -83,7 +83,7 @@ where $V_{\xi }:=
 foliation theory, $H $ and $V_{\xi }$ are called the horizontal and
 vertical distributions respectively. Let $\pi _{H}:TM\rightarrow H $ and $ 
 \pi _{V}:TM\rightarrow V_{\xi }$ be the natural projections associated with
-the direct sum decomposition (\ref{1.4}). In terms of $\theta $, the Levi
+the direct sum decomposition \eqref{1.4}. In terms of $\theta $, the Levi
 form $L_{\theta }$ can be extended to a Riemannian metric
 \begin{equation}
 g_{\theta }=L_{\theta }(\pi _{H},\pi _{H})+\theta \otimes \theta,  \label{1.5}
@@ -110,7 +110,7 @@ for any $X\in \Gamma (TM)$;
 
 \item $\nabla g_{\theta }=0$;
 
-\item $T_{\nabla }(X,Y)=2d\theta (X,Y)\xi $ \ and $T_{\nabla }(\xi
+\item $T_{\nabla }(X,Y)=2d\theta (X,Y)\xi $  and $T_{\nabla }(\xi
 ,JX)+JT_{\nabla }(\xi ,X)=0$ for any $X,Y\in H $, where $T_{\nabla }(\cdot
 ,\cdot )$ denotes the torsion of the connection $\nabla $.
 \end{enumerate}
@@ -124,7 +124,7 @@ $$ \begin{aligned}
 for any $Z,W \in H^{1,0}(M)$. See \cite{dongren2024dgpseudo} for more information.
 \begin{remark}
     One has 
-    $$ T^{\nabla }(X,Y) = 2 g_{\theta }(JX,Y) \xi +\theta (X) \tau Y-\theta (Y) \tau X,  $$
+    $$ T_{\nabla }(X,Y) = 2 g_{\theta }(JX,Y) \xi +\theta (X) \tau Y-\theta (Y) \tau X,  $$
     or (be careful with the wedge convention)
      $$ T_{\nabla }=2(\theta  \wedge \tau -\Omega \otimes  \xi ) .$$ 
      Also, 

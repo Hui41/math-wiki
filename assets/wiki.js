@@ -369,13 +369,21 @@
       const isReferences =
         original.trim().toLowerCase() === "references";
       
+// Add section number without destroying MathJax.
+
       const displayed = isReferences
         ? original
         : alreadyNumbered
           ? original
           : number + ". " + original;
 
-      heading.textContent = displayed;
+      // Preserve the heading's original HTML.
+      if (!isReferences && !alreadyNumbered) {
+        heading.insertBefore(
+          document.createTextNode(number + ". "),
+          heading.firstChild
+        );
+      }
 
       // Assign unique HTML anchor.
 
