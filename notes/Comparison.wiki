@@ -1,0 +1,305 @@
+\title{Comparison theorems}
+
+\section{Space forms}
+
+In applications, comparison theorems are mainly used to compare a given manifold with a space form of constant sectional curvature, in order to obtain suitable estimates. For this purpose, we first consider the Hessian of the distance function on a space form.
+
+Let $\overline{M}(K_0)$ be an $m$-dimensional space form of constant sectional curvature $K_0$, endowed with the metric $g$. In geodesic polar coordinates
+\[
+(r,\theta^1,\ldots,\theta^{m-1})
+\]
+centered at a point $O\in \overline{M}(K_0)$, the metric $g$ takes the form
+\[
+g=(dr)^2+f(r)^2\,d\sigma^2,
+\]
+where
+\[
+d\sigma^2
+=
+h_{ij}(\theta)\,d\theta^i d\theta^j,
+\qquad
+1\le i,j\le m-1,
+\]
+is the standard metric on the unit sphere $\mathbb{S}^{m-1}$.
+
+The radial function $f(r)$ satisfies
+\[
+\begin{cases}
+f''+K_0f=0,\\
+f(0)=0,\qquad f'(0)=1.
+\end{cases}
+\]
+Hence,
+\begin{equation}
+\label{1}
+    f(r)=
+\begin{cases}
+\dfrac{\sin(\sqrt{K_0}\,r)}{\sqrt{K_0}},
+& K_0>0,\quad r<\dfrac{\pi}{\sqrt{K_0}},
+\\
+r,
+& K_0=0,
+\\
+\dfrac{\sinh(\sqrt{-K_0}\,r)}{\sqrt{-K_0}},
+& K_0<0.
+\end{cases}
+\end{equation}
+
+
+\begin{proposition}
+    The distance function $\rho $ on $\overline{M}(K_0)$ can be expressed as 
+    \begin{equation}
+        \hess(\rho )=\frac{f'(\rho )}{f(\rho )}(g-d \rho \otimes d\rho ),
+    \end{equation}
+    where $f$ is defined by  \eqref{1}.
+\end{proposition}
+
+\begin{example}
+    The distance function from the original point on Euclidean space $\rr^m$ is given by 
+    $$ \rho (x)=\sqrt{x_{1}^{2}+\cdots +x_{m}^{2}}. $$ 
+    Thus 
+    $$ \rho _i = \frac{x_i}{\rho } , \qquad \rho _{ij}= \frac{\delta _{ij}}{\rho }-\frac{x_i x_j}{\rho ^3}. $$
+    For a vector field $\xi \in T_x \rr^m$, 
+    $$ \begin{aligned}
+        \hess(\rho )(\xi ,\xi )=& \rho _{ij} \xi ^i \xi ^j=\frac{|\xi |^2}{\rho }-\frac{\la x, \xi  \ra^2}{\rho ^3}\\
+        =& \frac{1}{\rho }(g-d \rho \otimes d \rho )(\xi ,\xi ) .
+    \end{aligned}  $$ 
+    When $\xi \perp \frac{\partial }{\partial \rho }$, 
+    $$ \hess(\rho )(\xi ,\xi )= \frac{|\xi |^2}{\rho }; $$ 
+    when $\xi =\frac{\partial }{\partial \rho }$,
+    $$ \hess(\rho )(\xi ,\xi )=0. $$ 
+\end{example}
+
+
+
+\section{Comparison theorems}
+
+Let $M$ be a complete Riemannian manifold, and let $\langle\cdot,\cdot\rangle$ denote the Riemannian metric. Fix a point $O\in M$. For any $p\in M$, define
+\[
+\rho(p)=\rho(O,p),
+\]
+where $\rho$ is the distance function from $O$. This is one of the most natural and important functions on a Riemannian manifold. We now consider the Hessian of the distance function.
+
+On the neighborhood
+\[
+\exp_O(E_O)\subset M
+\]
+of $O$ on which the exponential map $\exp_O$ is defined, introduce geodesic polar coordinates
+\[
+(r,\theta^1,\ldots,\theta^{m-1}).
+\]
+In these coordinates, the metric $g$ on $M$ takes the form
+\[
+g
+=
+(dr)^2
++
+f(r)^2 h_{ij}(r,\theta)\,d\theta^i d\theta^j,
+\qquad
+1\le i,j\le m-1,
+\]
+where $f(r)$ is a nonnegative radial function.
+
+Let
+\[
+p\in \exp_O(E_O)
+\]
+be a point which is not a cut point of $O$. Then there exists a unique minimizing unit-speed geodesic
+\[
+\gamma(t)
+\]
+joining $O$ to $p$, such that
+\[
+\gamma(0)=O,
+\qquad
+\gamma(r)=p.
+\]
+Consequently,
+\[
+\rho(p)=r.
+\]
+
+\begin{definition}
+Let $M$, $O$, $\rho$, and $\gamma$ be as above. If a two-dimensional plane
+\[
+\pi_p\subset T_pM
+\]
+contains the radial vector
+\[
+\frac{\partial}{\partial r}(p),
+\]
+then $\pi_p$ is called a \emph{radial plane}. The sectional curvature of a radial plane is called the \emph{radial curvature}.
+\end{definition}
+
+\begin{theorem}[Hessian Comparison Theorem]
+\label{hesscom}
+Let $M_k$ $(k=1,2)$ be two $m$-dimensional Riemannian manifolds, and let
+\[
+\gamma_k:[0,r]\to M_k
+\]
+be geodesics parametrized by arc length such that $\gamma_k(r)$ is not a cut point of $\gamma_k(0)$. Let $\rho_k$ denote the distance function on $M_k$ from $\gamma_k(0)$, for $k=1,2$.
+
+Assume that the radial curvature of $M_1$ along $\gamma_1$ is greater than or equal to the radial curvature of $M_2$ along $\gamma_2$. Then
+\[
+\operatorname{Hess}(\rho_1)(X_1,X_1)
+\le
+\operatorname{Hess}(\rho_2)(X_2,X_2),
+\]
+where
+\[
+X_k\in T_{\gamma_k(r)}M_k,
+\qquad k=1,2,
+\]
+satisfy
+\[
+\left\langle
+X_1,\frac{\partial}{\partial r_1}
+\right\rangle_{M_1}
+=
+\left\langle
+X_2,\frac{\partial}{\partial r_2}
+\right\rangle_{M_2},
+\]
+and
+\[
+\|X_1\|=\|X_2\|.
+\]
+\end{theorem}
+
+\begin{corollary}
+Under the same assumptions as in the Hessian comparison theorem, let
+\[
+\varphi:[0,+\infty)\to\mathbb{R}
+\]
+be a nondecreasing function. Then
+\[
+\operatorname{Hess}\bigl(\varphi(\rho_1)\bigr)(X_1,X_1)
+\le
+\operatorname{Hess}\bigl(\varphi(\rho_2)\bigr)(X_2,X_2).
+\]
+\end{corollary}
+
+
+\begin{theorem}[Laplacian Comparison Theorem]
+\label{lapcom}
+Let $M_1$ be an $m$-dimensional complete Riemannian manifold, and let
+\[
+\gamma_1:[0,r]\to M_1
+\]
+be a normal geodesic such that $\gamma_1(r)$ is not conjugate to $\gamma_1(0)$.
+Let $\rho_1$ denote the distance function on $M_1$ from $\gamma_1(0)$.
+
+Suppose that the radial Ricci curvature of $M_1$ along $\gamma_1$ satisfies
+\[
+\operatorname{Ric}^{M_1}\left(\frac{\partial}{\partial t}\right)
+\ge (m-1)K_0.
+\]
+If $K_0>0$, assume in addition that
+\[
+r<\frac{\pi}{\sqrt{K_0}}.
+\]
+Then
+\begin{equation}\label{3}
+    (\Delta \rho_1)\bigl(\gamma_1(r)\bigr)
+\le
+(m-1)\frac{f'(r)}{f(r)},
+\end{equation}
+where $f$ is defined as in \eqref{1}.
+\end{theorem}
+
+\begin{remark}
+    Note that \eqref{3} holds at every smooth point of $\rho _1$, say, if $\gamma_1 (r)$ is not in the cut locus of $\gamma _1(0)$.   In weak sense, \eqref{3} holds globally.
+\end{remark}
+
+
+Note that for a composite function $\varphi(\rho)$, we have
+\[
+\Delta \varphi(\rho)
+=
+\varphi''(\rho)
++
+\varphi'(\rho)\Delta \rho.
+\]
+Hence we obtain the following consequence.
+
+\begin{corollary}
+Under the same assumptions as in the Laplacian comparison theorem, let
+\[
+\varphi:[0,+\infty)\to\mathbb{R}
+\]
+be a nondecreasing function. Then
+\[
+\bigl(\Delta \varphi(\rho_1)\bigr)\bigl(\gamma_1(r)\bigr)
+\le
+\varphi''(r)
++
+(m-1)\varphi'(r)\frac{f'(r)}{f(r)}.
+\]
+\end{corollary}
+
+\begin{corollary}
+Let $M$ be an $m$-dimensional complete Riemannian manifold whose Ricci curvature satisfies
+\[
+\operatorname{Ric}\ge -(m-1)k^2,
+\qquad k\ge 0.
+\]
+Then, at every point where the distance function $\rho$ is smooth,
+\[
+\Delta \rho
+\le
+\frac{m-1}{\rho}(1+k\rho).
+\]
+\end{corollary}
+
+\begin{proof}
+By the Laplacian comparison theorem and the formula for the model function in the case
+\[
+K_0=-k^2,
+\]
+we have
+\[
+\Delta \rho
+\le
+(m-1)k\frac{\cosh(k\rho)}{\sinh(k\rho)}.
+\]
+
+For $x>0$, consider the function
+\[
+F(x)
+=
+(1+x)\sinh x-x\cosh x.
+\]
+Clearly,
+\[
+F(0)=0,
+\]
+and
+\[
+F'(x)
+=
+\sinh x+x(\cosh x-\sinh x)
+\ge 0.
+\]
+Therefore,
+\[
+F(x)\ge 0,
+\]
+which is equivalent to
+\[
+\frac{\cosh x}{\sinh x}
+\le
+\frac{1+x}{x}.
+\]
+Applying this inequality with $x=k\rho$ gives
+\[
+\Delta \rho
+\le
+(m-1)k\frac{\cosh(k\rho)}{\sinh(k\rho)}
+\le
+\frac{m-1}{\rho}(1+k\rho).
+\]
+\end{proof}
+
+
+
+

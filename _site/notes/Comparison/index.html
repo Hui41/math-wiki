@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Comparison theorems · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Comparison theorems</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Space forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<p>In applications, comparison theorems are mainly used to compare a given manifold with a space form of constant sectional curvature, in order to obtain suitable estimates. For this purpose, we first consider the Hessian of the distance function on a space form.</p>
+<p>Let \(\overline{M}(K_0)\) be an \(m\)-dimensional space form of constant sectional curvature \(K_0\), endowed with the metric \(g\). In geodesic polar coordinates</p>
+<p>\[
+(r,\theta^1,\ldots,\theta^{m-1})
+\]</p>
+<p>centered at a point \(O\in \overline{M}(K_0)\), the metric \(g\) takes the form</p>
+<p>\[
+g=(dr)^2+f(r)^2\,d\sigma^2,
+\]</p>
+<p>where</p>
+<p>\[
+d\sigma^2
+=
+h_{ij}(\theta)\,d\theta^i d\theta^j,
+\qquad
+1\le i,j\le m-1,
+\]</p>
+<p>is the standard metric on the unit sphere \(\mathbb{S}^{m-1}\).</p>
+<p>The radial function \(f(r)\) satisfies</p>
+<p>\[
+\begin{cases}
+f''+K_0f=0,\\
+f(0)=0,\qquad f'(0)=1.
+\end{cases}
+\]</p>
+<p>Hence,</p>
+<p>\begin{equation}
+\label{1}
+    f(r)=
+\begin{cases}
+\dfrac{\sin(\sqrt{K_0}\,r)}{\sqrt{K_0}},
+&amp; K_0&gt;0,\quad r&lt;\dfrac{\pi}{\sqrt{K_0}},
+\\
+r,
+&amp; K_0=0,
+\\
+\dfrac{\sinh(\sqrt{-K_0}\,r)}{\sqrt{-K_0}},
+&amp; K_0&lt;0.
+\end{cases}
+\end{equation}</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:49:1" title="Edit proposition at source line 49" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>The distance function \(\rho \) on \(\overline{M}(K_0)\) can be expressed as</p>
+<p>\begin{equation}
+        \hess(\rho )=\frac{f'(\rho )}{f(\rho )}(g-d \rho \otimes d\rho ),
+    \end{equation}</p>
+<p>where \(f\) is defined by  \eqref{1}.</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:57:1" title="Edit example at source line 57" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>The distance function from the original point on Euclidean space \(\rr^m\) is given by</p>
+<p>\[ \rho (x)=\sqrt{x_{1}^{2}+\cdots +x_{m}^{2}}. \]</p>
+<p>Thus</p>
+<p>\[ \rho _i = \frac{x_i}{\rho } , \qquad \rho _{ij}= \frac{\delta _{ij}}{\rho }-\frac{x_i x_j}{\rho ^3}. \]</p>
+<p>For a vector field \(\xi \in T_x \rr^m\),</p>
+<p>\[ \begin{aligned}
+        \hess(\rho )(\xi ,\xi )=&amp; \rho _{ij} \xi ^i \xi ^j=\frac{|\xi |^2}{\rho }-\frac{\la x, \xi  \ra^2}{\rho ^3}\\
+        =&amp; \frac{1}{\rho }(g-d \rho \otimes d \rho )(\xi ,\xi ) .
+    \end{aligned}  \]</p>
+<p>When \(\xi \perp \frac{\partial }{\partial \rho }\),</p>
+<p>\[ \hess(\rho )(\xi ,\xi )= \frac{|\xi |^2}{\rho }; \]</p>
+<p>when \(\xi =\frac{\partial }{\partial \rho }\),</p>
+<p>\[ \hess(\rho )(\xi ,\xi )=0. \]</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Comparison theorems</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:75:1" title="Edit section at source line 75" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Let \(M\) be a complete Riemannian manifold, and let \(\langle\cdot,\cdot\rangle\) denote the Riemannian metric. Fix a point \(O\in M\). For any \(p\in M\), define</p>
+<p>\[
+\rho(p)=\rho(O,p),
+\]</p>
+<p>where \(\rho\) is the distance function from \(O\). This is one of the most natural and important functions on a Riemannian manifold. We now consider the Hessian of the distance function.</p>
+<p>On the neighborhood</p>
+<p>\[
+\exp_O(E_O)\subset M
+\]</p>
+<p>of \(O\) on which the exponential map \(\exp_O\) is defined, introduce geodesic polar coordinates</p>
+<p>\[
+(r,\theta^1,\ldots,\theta^{m-1}).
+\]</p>
+<p>In these coordinates, the metric \(g\) on \(M\) takes the form</p>
+<p>\[
+g
+=
+(dr)^2
++
+f(r)^2 h_{ij}(r,\theta)\,d\theta^i d\theta^j,
+\qquad
+1\le i,j\le m-1,
+\]</p>
+<p>where \(f(r)\) is a nonnegative radial function.</p>
+<p>Let</p>
+<p>\[
+p\in \exp_O(E_O)
+\]</p>
+<p>be a point which is not a cut point of \(O\). Then there exists a unique minimizing unit-speed geodesic</p>
+<p>\[
+\gamma(t)
+\]</p>
+<p>joining \(O\) to \(p\), such that</p>
+<p>\[
+\gamma(0)=O,
+\qquad
+\gamma(r)=p.
+\]</p>
+<p>Consequently,</p>
+<p>\[
+\rho(p)=r.
+\]</p>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:122:1" title="Edit definition at source line 122" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>Let \(M\), \(O\), \(\rho\), and \(\gamma\) be as above. If a two-dimensional plane</p>
+<p>\[
+\pi_p\subset T_pM
+\]</p>
+<p>contains the radial vector</p>
+<p>\[
+\frac{\partial}{\partial r}(p),
+\]</p>
+<p>then \(\pi_p\) is called a <em>radial plane</em>. The sectional curvature of a radial plane is called the <em>radial curvature</em>.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Hessian Comparison Theorem)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:134:1" title="Edit theorem at source line 134" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="hesscom"></span>
+Let \(M_k\) \((k=1,2)\) be two \(m\)-dimensional Riemannian manifolds, and let</p>
+<p>\[
+\gamma_k:[0,r]\to M_k
+\]</p>
+<p>be geodesics parametrized by arc length such that \(\gamma_k(r)\) is not a cut point of \(\gamma_k(0)\). Let \(\rho_k\) denote the distance function on \(M_k\) from \(\gamma_k(0)\), for \(k=1,2\).</p>
+<p>Assume that the radial curvature of \(M_1\) along \(\gamma_1\) is greater than or equal to the radial curvature of \(M_2\) along \(\gamma_2\). Then</p>
+<p>\[
+\operatorname{Hess}(\rho_1)(X_1,X_1)
+\le
+\operatorname{Hess}(\rho_2)(X_2,X_2),
+\]</p>
+<p>where</p>
+<p>\[
+X_k\in T_{\gamma_k(r)}M_k,
+\qquad k=1,2,
+\]</p>
+<p>satisfy</p>
+<p>\[
+\left\langle
+X_1,\frac{\partial}{\partial r_1}
+\right\rangle_{M_1}
+=
+\left\langle
+X_2,\frac{\partial}{\partial r_2}
+\right\rangle_{M_2},
+\]</p>
+<p>and</p>
+<p>\[
+\|X_1\|=\|X_2\|.
+\]</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:169:1" title="Edit corollary at source line 169" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>Under the same assumptions as in the Hessian comparison theorem, let</p>
+<p>\[
+\varphi:[0,+\infty)\to\mathbb{R}
+\]</p>
+<p>be a nondecreasing function. Then</p>
+<p>\[
+\operatorname{Hess}\bigl(\varphi(\rho_1)\bigr)(X_1,X_1)
+\le
+\operatorname{Hess}\bigl(\varphi(\rho_2)\bigr)(X_2,X_2).
+\]</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (Laplacian Comparison Theorem)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:183:1" title="Edit theorem at source line 183" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="lapcom"></span>
+Let \(M_1\) be an \(m\)-dimensional complete Riemannian manifold, and let</p>
+<p>\[
+\gamma_1:[0,r]\to M_1
+\]</p>
+<p>be a normal geodesic such that \(\gamma_1(r)\) is not conjugate to \(\gamma_1(0)\).
+Let \(\rho_1\) denote the distance function on \(M_1\) from \(\gamma_1(0)\).</p>
+<p>Suppose that the radial Ricci curvature of \(M_1\) along \(\gamma_1\) satisfies</p>
+<p>\[
+\operatorname{Ric}^{M_1}\left(\frac{\partial}{\partial t}\right)
+\ge (m-1)K_0.
+\]</p>
+<p>If \(K_0&gt;0\), assume in addition that</p>
+<p>\[
+r&lt;\frac{\pi}{\sqrt{K_0}}.
+\]</p>
+<p>Then</p>
+<p>\begin{equation}\label{3}
+    (\Delta \rho_1)\bigl(\gamma_1(r)\bigr)
+\le
+(m-1)\frac{f'(r)}{f(r)},
+\end{equation}</p>
+<p>where \(f\) is defined as in \eqref{1}.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:210:1" title="Edit remark at source line 210" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>Note that \eqref{3} holds at every smooth point of \(\rho _1\), say, if \(\gamma_1 (r)\) is not in the cut locus of \(\gamma _1(0)\).   In weak sense, \eqref{3} holds globally.</p>
+</section>
+</div>
+<p>Note that for a composite function \(\varphi(\rho)\), we have</p>
+<p>\[
+\Delta \varphi(\rho)
+=
+\varphi''(\rho)
++
+\varphi'(\rho)\Delta \rho.
+\]</p>
+<p>Hence we obtain the following consequence.</p>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:225:1" title="Edit corollary at source line 225" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>Under the same assumptions as in the Laplacian comparison theorem, let</p>
+<p>\[
+\varphi:[0,+\infty)\to\mathbb{R}
+\]</p>
+<p>be a nondecreasing function. Then</p>
+<p>\[
+\bigl(\Delta \varphi(\rho_1)\bigr)\bigl(\gamma_1(r)\bigr)
+\le
+\varphi''(r)
++
+(m-1)\varphi'(r)\frac{f'(r)}{f(r)}.
+\]</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:240:1" title="Edit corollary at source line 240" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>Let \(M\) be an \(m\)-dimensional complete Riemannian manifold whose Ricci curvature satisfies</p>
+<p>\[
+\operatorname{Ric}\ge -(m-1)k^2,
+\qquad k\ge 0.
+\]</p>
+<p>Then, at every point where the distance function \(\rho\) is smooth,</p>
+<p>\[
+\Delta \rho
+\le
+\frac{m-1}{\rho}(1+k\rho).
+\]</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Comparison.wiki:254:1" title="Edit proof at source line 254" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p>By the Laplacian comparison theorem and the formula for the model function in the case</p>
+<p>\[
+K_0=-k^2,
+\]</p>
+<p>we have</p>
+<p>\[
+\Delta \rho
+\le
+(m-1)k\frac{\cosh(k\rho)}{\sinh(k\rho)}.
+\]</p>
+<p>For \(x&gt;0\), consider the function</p>
+<p>\[
+F(x)
+=
+(1+x)\sinh x-x\cosh x.
+\]</p>
+<p>Clearly,</p>
+<p>\[
+F(0)=0,
+\]</p>
+<p>and</p>
+<p>\[
+F'(x)
+=
+\sinh x+x(\cosh x-\sinh x)
+\ge 0.
+\]</p>
+<p>Therefore,</p>
+<p>\[
+F(x)\ge 0,
+\]</p>
+<p>which is equivalent to</p>
+<p>\[
+\frac{\cosh x}{\sinh x}
+\le
+\frac{1+x}{x}.
+\]</p>
+<p>Applying this inequality with \(x=k\rho\) gives</p>
+<p>\[
+\Delta \rho
+\le
+(m-1)k\frac{\cosh(k\rho)}{\sinh(k\rho)}
+\le
+\frac{m-1}{\rho}(1+k\rho).
+\]</p>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

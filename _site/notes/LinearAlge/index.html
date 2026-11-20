@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Notes on Linear algebra · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><a href="/notes/">All notes</a></nav>
+      <h1>Notes on Linear algebra</h1>
+      <article><div class="wiki-heading-with-edit"><h1>skew symmetric</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LinearAlge.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<p>For a real \(m\times m\) matrix \(A\):
+\(\|A\|_{\rm op}=\max_{|x|=1}|Ax|\) is the operator norm;
+\(\|A\|_{\rm HS}^2=\sum_{i,j}A_{ij}^2=\operatorname{tr}(A^tA)\) is the Hilbert-Schmidt norm.
+The matrix \(A^tA\) is symmetric and positive semidefinite, so it has an orthonormal eigenbasis with eigenvalues \(\mu_1\ge\mu_2\ge\dots\ge\mu_m\ge0\). Then</p>
+<p>\[\|A\|_{\rm op}^2=\max_{|x|=1}\langle A^tAx,x\rangle=\mu_1,\qquad \|A\|_{\rm HS}^2=\operatorname{tr}(A^tA)=\mu_1+\dots+\mu_m .\]</p>
+<p>For a general matrix this only gives \(\|A\|_{\rm op}^2\le\|A\|_{\rm HS}^2\). Equality is possible, for example when \(A\) has rank one. Skew-symmetry improves the constant to \(\tfrac12\).</p>
+<div class="theorem exercise">
+<header>Exercise</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LinearAlge.wiki:12:1" title="Edit exercise at source line 12" aria-label="Edit exercise in VS Code">Edit</a>
+<section>
+<p>Suppose \(A\) is a  real skew-symmetric matrix. Then</p>
+<p>\[\|A\|_{\rm op}^2\le \tfrac12\|A\|_{\rm HS}^2.\]</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/LinearAlge.wiki:16:1" title="Edit proof at source line 16" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p><em>The key fact: nonzero eigenvalues of \(A^tA\) have even multiplicity.</em></p>
+<p>Let \(A^t=-A\). Then \(A^tA=-A^2\), which commutes with \(A\).</p>
+<p>Fix an eigenvalue \(\mu&gt;0\) of \(A^tA\) and let \(E=\{x: A^tAx=\mu x\}\) be its eigenspace.</p>
+<p>\(A\) maps \(E\) into \(E\): If \(x\in E\), then \(A^tA(Ax)=A(A^tAx)=\mu\,Ax\), so \(Ax\in E\).</p>
+<p>On \(E\) we have \(A^2=-\mu\): This holds because \(A^2=-A^tA\).
+\(E\) has even dimension. Put \(J=\mu^{-1/2}A|_E\). By step 2, \(J:E\to E\) satisfies \(J^2=-I_E\). Taking determinants gives</p>
+<p>\[(\det J)^2=\det(-I_E)=(-1)^{\dim E}.\]</p>
+<p>The left side is a square of a real number, hence nonnegative, so \(\dim E\) is even. In other words, \(J\) is a complex structure on \(E\).</p>
+<p>So the largest eigenvalue \(\mu_1=\|A\|_{\rm op}^2\) appears at least twice in the list \(\mu_1,\dots,\mu_m\) (when \(A\neq0\)). Hence</p>
+<p>\[\|A\|_{\rm HS}^2=\sum_k\mu_k\ \ge\ 2\mu_1=2\|A\|_{\rm op}^2 .\]</p>
+<p><em>A hands-on version of the same argument.</em>
+Choose a unit vector \(v\) with \(|Av|=\|A\|_{\rm op}=:\lambda&gt;0\). Then \(v\) is a top eigenvector of \(A^tA\), so \(A^2v=-\lambda^2v\). Put \(w=Av/\lambda\). Then:</p>
+<p>\(|w|=1\);
+\(\langle v,w\rangle=\lambda^{-1}\langle v,Av\rangle=0\), because \(\langle v,Av\rangle=\langle A^tv,v\rangle=-\langle Av,v\rangle\);
+\(Aw=A^2v/\lambda=-\lambda v\), so \(|Aw|=\lambda\).</p>
+<p>Complete \(v,w\) to an orthonormal basis \(\{e_i\}\). Since \(\|A\|_{\rm HS}^2=\sum_i|Ae_i|^2\) for any orthonormal basis,</p>
+<p>\[\|A\|_{\rm HS}^2\ \ge\ |Av|^2+|Aw|^2=2\lambda^2 .\]</p>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

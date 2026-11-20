@@ -95,7 +95,7 @@ $$ \begin{aligned}
     E_{b,f}(u)=\frac{1}{2}\int_{M}|d_b u|^2 e^{-f} dv_{\theta }
 \end{equation}
 
-\np (\textbf{The first variation formula.})
+(\textbf{The first variation formula.})
 
 Let $u_t:M \to N$ be a family maps from pseudohermitian manifold $(M, H, \theta ) $ to Riemannian manifold $N$.
 Then 
@@ -128,7 +128,7 @@ or, locally,
     u_{ii }^{\alpha  }-f_i u_{i }^{\alpha }=0, \quad \forall \alpha .
 \end{equation}
 
-\np (\textbf{Bochner formula}) 
+(\textbf{Bochner formula}) 
 
 Note that $|d_b u|^2= \sum_{i,\alpha }^{} (u_{i}^{\alpha })^2$ 
 $$ \begin{aligned}

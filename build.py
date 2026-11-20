@@ -137,9 +137,42 @@ def compile_page(p):
         return '\n\n<nav class="structure"><strong>目录</strong><ul>'+''.join(rows)+'</ul></nav>\n\n'
     src=re.sub(r'\\begin\{structure\}(.*?)\\end\{structure\}',structure,src,flags=re.S)
     def wikilink(m):
-        slug=m.group(1).strip(); label=(m.group(2) or slug).strip()
-        page=LOOKUP.get(slug)
-        return '<a href="'+html.escape(href(page['slug']) if page else '#',quote=True)+'"'+('' if page else ' class="missing"')+'>'+html.escape(label)+'</a>'
+        target = m.group(1).strip()
+        custom_label = m.group(2)
+
+        # Allow an optional destination anchor:
+        # [[PseuHerm#section-1]]
+        slug, separator, anchor = target.partition("#")
+
+        slug = slug.strip()
+        page = LOOKUP.get(slug)
+
+        # Default to the document title, not its filename.
+        if custom_label is not None:
+            label = custom_label.strip()
+        elif page:
+            label = page["title"]
+        else:
+            label = slug
+
+        if page:
+            url = href(page["slug"])
+
+            if separator and anchor:
+                url += "#" + quote(anchor, safe="")
+
+            missing = ""
+        else:
+            url = "#"
+            missing = ' class="missing"'
+
+        return (
+            '<a href="' +
+            html.escape(url, quote=True) +
+            '"' + missing + '>' +
+            html.escape(label) +
+            '</a>'
+        )
     src=re.sub(r'\[\[([^\]|]+)(?:\|([^\]]+))?\]\]',wikilink,src)
     # IMPORTANT: protect TeX from Markdown rewriting underscores, backslashes, and asterisks.
     tokens={}
@@ -368,6 +401,13 @@ def compile_page(p):
 
     src=re.sub(r'\\(?:emph|textit)\{([^{}]*)\}',lambda m:'*'+m.group(1)+'*',src)
     src=re.sub(r'\\textbf\{([^{}]*)\}',lambda m:'**'+m.group(1)+'**',src)
+    # LaTeX section symbol in ordinary text.
+    # \S -> §
+    src = re.sub(
+        r'\\S\b[ \t]*',
+        '§ ',
+        src
+    )
     # Enumerate: preserve numbering across display equations.
     # Enumerate with optional numbering styles.
     def render_enumerate(match):

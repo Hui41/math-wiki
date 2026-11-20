@@ -59,7 +59,7 @@ $$\mathcal{L}_V g_{\mathcal{H}}=0$$
 for any vertical vector field $V$. 
 Equivalently, on each foliated coordinate chart $U$ with the local submersion $\pi_U: U \rightarrow \mathcal{B}_U$, there exists a Riemannian metric $h$ on $\mathcal{B}_U$ for which the local submersion $\pi_U:(U, g) \rightarrow$ $\left(\mathcal{B}_U, h\right)$ becomes a Riemannian submersion. In this case, we say that $(M, \mathcal{F}, g)$ is a \textbf{Riemannian foliation}. 
 
-There are some other equivalent ways to view Riemannian foliation: 
+There are some other equivalent ways to define Riemannian foliation: 
 \begin{itemize}
    \item The map $(X,Y) \in \mathcal{H} \times \mathcal{H} \mapsto \pi _{\mathcal{V}}(\nabla _XY) \in \mathcal{V}$ is skew-symmetric.
     \item A geodesic which is perpendicular to a leaf at one point is perpendicular to all the leaves it intersects. To see this, assume the geodesic property. Fix \(p\in M\), a horizontal vector \(X\in\mathcal H_p\), and let \(\gamma\) be the geodesic with
@@ -95,6 +95,17 @@ Thus
 \begin{remark}
     Traditionally the terminology  ``Riemannian foliation" refers only to a foliation endowed with a transverse Riemannian metric on the quotient bundle. It is a known fact (cf. \cite{molinoRiemannianFoliations1988}) that, if $g$ is a bundle-like metric on $(M, \mathcal{F})$, then it induces an associated transverse Riemannian metric $g_Q$ on $Q$ from $g_{\mathcal{H}}$ through the isomorphism $\tau: \mathcal{H} \rightarrow Q$. Conversely, if the quotient bundle $Q$ has a transverse Riemannian metric $g_Q$, then there is also a bundle-like metric $g$ that produces the same transverse metric on $Q$. Thus, in this paper, the triple $(M, \mathcal{F}, g)$ is referred to as a Riemannian foliation when $g$ is a bundle-like metric. In particular, if $\mathcal{F}$ is a simple foliation, it corresponds to a global Riemannian submersion from $(M, g)$ to a base manifold $\mathcal{B}$.
 \end{remark}
+
+\begin{example}[Sasakian manifold]
+    Suppose $(M,H,J, \theta )$ is a Sasakian manifold. From [[PseuHerm]], we see that 
+    $$  
+    \pi_{\mathcal{V}}( \nabla_X^\theta Y)
+    =
+    \bigl[\Omega(X,Y)-A(X,Y)\bigr] \xi = \Omega(X,Y) \xi,
+    $$ 
+    which is skew-symmetric. Thus Sasakian manifolds are Riemannian foliation. 
+\end{example}
+
 
 \section{Fundamental tensors}
 Let $\left(M^{m+k}, \mathcal{F}^k , g\right)$ be a Riemannian foliation and let $\nabla$ be the Levi-Civita connection of $g$. 

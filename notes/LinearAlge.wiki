@@ -1,0 +1,45 @@
+\title{Notes on Linear algebra}
+
+\section{skew symmetric}
+
+For a real $m\times m$ matrix $A$:
+$\|A\|_{\rm op}=\max_{|x|=1}|Ax|$ is the operator norm;
+$\|A\|_{\rm HS}^2=\sum_{i,j}A_{ij}^2=\operatorname{tr}(A^tA)$ is the Hilbert-Schmidt norm.
+The matrix $A^tA$ is symmetric and positive semidefinite, so it has an orthonormal eigenbasis with eigenvalues $\mu_1\ge\mu_2\ge\dots\ge\mu_m\ge0$. Then
+$$\|A\|_{\rm op}^2=\max_{|x|=1}\langle A^tAx,x\rangle=\mu_1,\qquad \|A\|_{\rm HS}^2=\operatorname{tr}(A^tA)=\mu_1+\dots+\mu_m .$$
+For a general matrix this only gives $\|A\|_{\rm op}^2\le\|A\|_{\rm HS}^2$. Equality is possible, for example when $A$ has rank one. Skew-symmetry improves the constant to $\tfrac12$.
+
+\begin{exercise}
+    Suppose $A$ is a  real skew-symmetric matrix. Then 
+    $$\|A\|_{\rm op}^2\le \tfrac12\|A\|_{\rm HS}^2.$$
+\end{exercise}
+\begin{proof}
+\textit{The key fact: nonzero eigenvalues of $A^tA$ have even multiplicity.}
+
+Let $A^t=-A$. Then $A^tA=-A^2$, which commutes with $A$.
+
+Fix an eigenvalue $\mu>0$ of $A^tA$ and let $E=\{x: A^tAx=\mu x\}$ be its eigenspace.
+
+$A$ maps $E$ into $E$: If $x\in E$, then $A^tA(Ax)=A(A^tAx)=\mu\,Ax$, so $Ax\in E$.
+
+On $E$ we have $A^2=-\mu$: This holds because $A^2=-A^tA$.
+$E$ has even dimension. Put $J=\mu^{-1/2}A|_E$. By step 2, $J:E\to E$ satisfies $J^2=-I_E$. Taking determinants gives 
+$$(\det J)^2=\det(-I_E)=(-1)^{\dim E}.$$
+The left side is a square of a real number, hence nonnegative, so $\dim E$ is even. In other words, $J$ is a complex structure on $E$.
+
+So the largest eigenvalue $\mu_1=\|A\|_{\rm op}^2$ appears at least twice in the list $\mu_1,\dots,\mu_m$ (when $A\neq0$). Hence
+
+$$\|A\|_{\rm HS}^2=\sum_k\mu_k\ \ge\ 2\mu_1=2\|A\|_{\rm op}^2 .$$
+
+\textit{A hands-on version of the same argument.} 
+Choose a unit vector $v$ with $|Av|=\|A\|_{\rm op}=:\lambda>0$. Then $v$ is a top eigenvector of $A^tA$, so $A^2v=-\lambda^2v$. Put $w=Av/\lambda$. Then:
+
+$|w|=1$;
+$\langle v,w\rangle=\lambda^{-1}\langle v,Av\rangle=0$, because $\langle v,Av\rangle=\langle A^tv,v\rangle=-\langle Av,v\rangle$;
+$Aw=A^2v/\lambda=-\lambda v$, so $|Aw|=\lambda$.
+
+Complete $v,w$ to an orthonormal basis $\{e_i\}$. Since $\|A\|_{\rm HS}^2=\sum_i|Ae_i|^2$ for any orthonormal basis,
+
+$$\|A\|_{\rm HS}^2\ \ge\ |Av|^2+|Aw|^2=2\lambda^2 .$$
+
+\end{proof}

@@ -231,6 +231,14 @@ the divergence and codifferential respectively.
    \begin{equation}\label{15}
      \trace_{g_{\theta }}(\nabla ^{\theta }-\nabla )=\trace_{G_{\theta }}(\nabla ^{\theta }-\nabla )=0. 
    \end{equation}
+   In particular, for any $X,Y \in \mathfrak{X}_{\mathcal{H}}$,  
+   \[
+    \nabla_X^\theta Y
+    =
+    \nabla_X Y
+    +
+    \bigl[\Omega(X,Y)-A(X,Y)\bigr] \xi .
+    \]
    
    For curvature tensor, we have 
        $$ \begin{aligned}

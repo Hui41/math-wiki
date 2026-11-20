@@ -43,6 +43,20 @@ An H-type foliation is said to be
 	The Yang-Mills assumption plays an important role in the theory of generalized curvature dimension inequalities. 
 \end{remark}
 
+\begin{example}[Sasakian manifold is Yang-Mills]
+    It's known that Tanaka-Webster connection is just Bott connection on a Sasakian manifold. 
+    Since 
+    $$ T(X,Y)=2 \la JX, Y \ra \xi , \quad X,Y \in \mathfrak{X}_{\mathcal{H}},$$
+    one can prove 
+    $$ (\nabla _{e_i}T)(e_i,Y)=0. $$
+    Indeed, 
+    $$ \begin{aligned}
+      \frac{1}{2} (\nabla _{e_i}T)(e_i,Y)=&\{ e_i \la J e_i, Y \ra-\la J\nabla _{e_i}e_i,  Y\ra-\la J e_i,  \nabla _{e_i} Y\ra \} \xi \\
+        =&0.
+    \end{aligned}  $$
+\end{example}
+
+
 \begin{proposition}
 	On an H-type foliation, one has for every $X \in \mathfrak{X}_{\mathcal{H}}, Z \in \mathfrak{X}_{\mathcal{V}}$, 
 	$$ -\pi _{\mathcal{V}}([X,J_Z X])=|X|^2Z. $$

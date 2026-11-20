@@ -511,17 +511,20 @@ article #wiki-references {
 }
 
 /* ==========================================
-   Math Wiki — Desktop reading width
+   Math Wiki — Symmetric three-column layout
    ========================================== */
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
 
-  /* Center the article and limit its width */
+  /* Keep the article in the middle column */
+  main {
+    margin-right: 300px;
+  }
+
+  /* Let the article use the available middle width */
   main article {
     width: 100%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
     box-sizing: border-box;
   }
 
