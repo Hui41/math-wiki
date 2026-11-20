@@ -47,10 +47,95 @@ for file in files:
     src=body
     ))
 LOOKUP={p['slug']:p for p in PAGES}
+# ==========================================
+# Wiki page hierarchy for breadcrumbs
+# ==========================================
 
+PARENTS = {}
+
+for page in PAGES:
+    blocks = re.findall(
+        r'\\begin\{structure\}(.*?)\\end\{structure\}',
+        page['src'],
+        flags=re.S
+    )
+
+    for block in blocks:
+        last_subpage = None
+
+        for line in block.splitlines():
+            match = re.match(
+                r'^\s*\\(subpage|subsubpage)\{([^{}]+)\}',
+                line
+            )
+
+            if not match:
+                continue
+
+            kind, child = match.groups()
+            child = child.strip()
+
+            if child not in LOOKUP or child == page['slug']:
+                continue
+
+            if kind == 'subpage':
+                PARENTS.setdefault(child, page['slug'])
+                last_subpage = child
+
+            elif kind == 'subsubpage':
+                parent = last_subpage or page['slug']
+
+                if child != parent:
+                    PARENTS.setdefault(child, parent)
 def href(slug):
     return BASE+'/notes/'+quote(slug,safe='')+'/'
+# ==========================================
+# Generate breadcrumb navigation
+# ==========================================
 
+def breadcrumbs(page):
+    chain = []
+    current = page['slug']
+    visited = set()
+
+    while current in LOOKUP and current not in visited:
+        visited.add(current)
+        chain.append(LOOKUP[current])
+
+        current = PARENTS.get(current)
+
+    chain.reverse()
+
+    parts = [
+        '<a class="wiki-home-link" href="' +
+        html.escape(BASE + '/notes/', quote=True) +
+        '">All notes</a>'
+    ]
+
+    for i, item in enumerate(chain):
+        title = html.escape(item['title'])
+
+        if i == len(chain) - 1:
+            parts.append(
+                '<span class="breadcrumb-current" '
+                'aria-current="page">' +
+                title +
+                '</span>'
+            )
+        else:
+            parts.append(
+                '<a href="' +
+                html.escape(href(item['slug']), quote=True) +
+                '">' + title + '</a>'
+            )
+
+    return (
+        '<div class="wiki-breadcrumbs" '
+        'aria-label="Breadcrumb">'
+        + '<span class="breadcrumb-separator">'
+        + ' › </span>'.join(parts)
+        + '</div>'
+    )
 def balanced(s, i):
     """Read a braced group, honoring nested braces."""
     if i >= len(s) or s[i] != '{':
@@ -125,16 +210,48 @@ def compile_page(p):
         src=re.sub(r'^\\'+cmd+r'\*?\{([^\n{}]+)\}\s*$',lambda m:mark+' '+m.group(1),src,flags=re.M)
     # Wiki's hierarchical navigation is not LaTeX math. Render a local page tree.
     def structure(m):
-        rows=[]
+        rows = []
+
         for raw in m.group(1).splitlines():
-            x=re.match(r'^\s*\\(subpage|subsubpage)\{([^{}]+)\}',raw)
-            if not x:continue
-            label=x.group(2).strip(); slug=label
-            found=LOOKUP.get(slug)
-            h=href(found['slug']) if found else '#'
-            cls='' if found else ' class="missing" title="Create a page with this filename"'
-            rows.append(f'<li class="{x.group(1)}"><a href="{html.escape(h,quote=True)}"{cls}>{html.escape(label)}</a></li>')
-        return '\n\n<nav class="structure"><strong>目录</strong><ul>'+''.join(rows)+'</ul></nav>\n\n'
+            x = re.match(
+                r'^\s*\\(subpage|subsubpage)\{([^{}]+)\}',
+                raw
+            )
+
+            if not x:
+                continue
+
+            slug = x.group(2).strip()
+            found = LOOKUP.get(slug)
+
+            # Display the target Wiki's title.
+            label = found["title"] if found else slug
+
+            url = href(found["slug"]) if found else "#"
+
+            missing = (
+                ""
+                if found
+                else ' class="missing" title="Page not found"'
+            )
+
+            rows.append(
+                f'<li class="{x.group(1)}">'
+                f'<a href="{html.escape(url, quote=True)}"'
+                f'{missing}>'
+                f'{html.escape(label)}</a></li>'
+            )
+
+        # Use the Wiki language, not the language
+        # of individual referenced documents.
+        heading = "Contents" if lang == "en" else "目录"
+
+        return (
+            '\n\n<nav class="structure">'
+            f'<strong>{heading}</strong>'
+            '<ul>' + ''.join(rows) + '</ul>'
+            '</nav>\n\n'
+        )
     src=re.sub(r'\\begin\{structure\}(.*?)\\end\{structure\}',structure,src,flags=re.S)
     def wikilink(m):
         target = m.group(1).strip()
@@ -520,10 +637,23 @@ metadata=[dict(title=p['title'],slug=p['slug'],text=re.sub(r'\\[a-zA-Z]+',' ',p[
 for p in PAGES:
     content,macros=compile_page(p)
     destination=OUT/'notes'/p['slug']; destination.mkdir(parents=True)
-    doc=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->',html.escape(p['title'])).replace('<!-- CONTENT -->',content).replace('<!-- NAV -->','<a href="'+BASE+'/notes/">All notes</a>')
+    doc=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->',html.escape(p['title'])).replace('<!-- CONTENT -->',content).replace('<!-- NAV -->', breadcrumbs(p))
     doc=doc.replace('/* PAGE_MACROS */',json.dumps(macros,ensure_ascii=False)[1:-1])
     (destination/'index.html').write_text(doc,encoding='utf-8')
-links=''.join('<li><a href="'+href(p['slug'])+'">'+html.escape(p['title'])+'</a></li>' for p in PAGES)
+# Show only top-level Wiki pages in All notes.
+top_level_pages = [
+    p for p in PAGES
+    if p['slug'] not in PARENTS
+]
+
+links = ''.join(
+    '<li><a class="wiki-index-link" href="' +
+    href(p['slug']) +
+    '">' +
+    html.escape(p['title']) +
+    '</a></li>'
+    for p in top_level_pages
+)
 index=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->','Mathematical Notes').replace('<!-- CONTENT -->','<p>Mathematical notes index</p><ul class="index-list">'+links+'</ul>').replace('<!-- NAV -->','').replace('/* PAGE_MACROS */','')
 (OUT/'notes').mkdir(exist_ok=True)
 (OUT/'notes'/'index.html').write_text(index,encoding='utf-8')

@@ -530,3 +530,110 @@ article #wiki-references {
 
 }
 
+/* ==========================================
+   Math Wiki — Breadcrumb navigation
+   ========================================== */
+
+main > nav {
+  min-height: 24px;
+  margin-bottom: 18px;
+}
+
+.wiki-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45em;
+
+  font: 14px/1.7 system-ui, sans-serif;
+  color: var(--muted);
+}
+
+.wiki-breadcrumbs a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.wiki-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.wiki-breadcrumbs .breadcrumb-separator {
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+.wiki-breadcrumbs .breadcrumb-current {
+  color: var(--text);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .wiki-breadcrumbs {
+    font-size: 12px;
+    gap: 0.3em;
+  }
+}
+
+/* ==========================================
+   Math Wiki — Icons for All Notes
+   ========================================== */
+
+.wiki-index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+}
+
+/* Outline book icon */
+
+.wiki-index-link::before {
+  content: "";
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+
+  background-color: currentColor;
+  opacity: 0.7;
+
+  -webkit-mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18V5a2 2 0 0 1 2-2h3a4 4 0 0 1 4 4 4 4 0 0 1 4-4h3a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1h-4a4 4 0 0 0-4 2 4 4 0 0 0-4-2H4a1 1 0 0 1-1-1Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+
+  mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18V5a2 2 0 0 1 2-2h3a4 4 0 0 1 4 4 4 4 0 0 1 4-4h3a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1h-4a4 4 0 0 0-4 2 4 4 0 0 0-4-2H4a1 1 0 0 1-1-1Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+/* Home icon in breadcrumbs */
+
+.wiki-home-link::before {
+  content: "⌂";
+  display: inline-block;
+  margin-right: 0.4em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  vertical-align: -0.05em;
+}
+
+.wiki-home-link {
+  white-space: nowrap;
+}
+
+/* All Notes: book icons without bullet points */
+
+li:has(> .wiki-index-link) {
+  list-style: none;
+  margin-left: 0;
+}
+
+li:has(> .wiki-index-link)::marker {
+  content: "";
+}
+
+.wiki-index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+}

@@ -1,0 +1,11 @@
+\title{Harmonic maps}
+\begin{structure}
+    \subpage{Basic notions}
+    \subpage{LiouThm}
+    \subpage{Existence and Regularity}
+    \subpage{Unique continuation}
+    \subpage{Second variation}
+\end{structure}
+
+
+
