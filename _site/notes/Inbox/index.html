@@ -578,6 +578,56 @@ When \(M\) has focal points wrt \(\mathcal{F}_{p_0}\), the integral on the whole
 \]</p>
 </section>
 </div>
+<div class="wiki-heading-with-edit"><h2>The Wedge Product</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Inbox.wiki:391:1" title="Edit section at source line 391" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Different authors use different conventions for the wedge product of differential forms. Here we follow the <em>determinant convention</em>, as used by John M. Lee. The main alternative is the <em>Alt convention</em>, which is common among specialists in complex geometry and several complex variables. The two conventions differ only by a constant factor.</p>
+<p>Let us begin with an example. For a \(2\)-form \(\Omega\) and a \(1\)-form \(\theta\), the wedge product is</p>
+<p>\[
+\Omega \wedge \theta (X,Y,Z)=\Omega(X,Y)\, \theta (Z)+\Omega (Y,Z)\, \theta (X)+\Omega (Z,X)\, \theta (Y).
+\]</p>
+<p>Notice that the right-hand side is the most economical expression possible. If we expand the general formula directly, many terms coincide and must be combined; for instance,</p>
+<p>\[
+\Omega(X,Y)\, \theta (Z)-\Omega(Y,X)\, \theta (Z)=2\,\Omega(X,Y)\, \theta(Z).
+\]</p>
+<p>In the final expression, however, each distinct term appears exactly once.</p>
+<p>Is this a coincidence? To find out, consider the wedge product of two \(2\)-forms:</p>
+<p>\[
+\begin{aligned}
+    \omega \wedge \eta (X,Y,Z,W)=\;&amp;\omega (X,Y)\, \eta (Z,W)+ \omega (X,Z)\, \eta (W,Y)+\omega (X,W)\, \eta (Y,Z) \\
+    &amp;+\omega (Y,Z)\, \eta (X,W)+\omega (Y,W)\, \eta (Z,X)\\
+    &amp;+\omega (Z,W)\, \eta (X,Y).
+\end{aligned}
+\]</p>
+<p>After some simplification, we again arrive at the same economical form: every distinct term appears exactly once.</p>
+<p>To understand why, we return to the definition of the wedge product. For a \(k\)-form \(\omega\) and an \(l\)-form \(\eta\),</p>
+<p>\[
+\omega \wedge \eta=\frac{(k+l) !}{k !\, l !} \operatorname{Alt}(\omega \otimes \eta),
+\]</p>
+<p>where, for a covariant \(k\)-tensor \(\alpha\), the alternation operator is defined by</p>
+<p>\[
+\operatorname{Alt} \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right).
+\]</p>
+<p>The factor \(1/k!\) in the definition of \(\operatorname{Alt}\) is easy to explain. The sum contains exactly \(k!\) terms, so \(\operatorname{Alt}\) is an average over all permutations. This normalization also ensures that \(\operatorname{Alt}\) leaves alternating tensors unchanged.</p>
+<p>The coefficient in the wedge product is less obvious. At first glance it looks like an ordinary normalizing constant chosen to make formulas tidy. On closer inspection, however, it is exactly the binomial coefficient \(\binom{k+l}{k}\). This observation explains the phenomenon above.</p>
+<p>Combining the two formulas, we obtain</p>
+<p>\begin{equation}\label{eqm1}
+  \omega \wedge \eta=\frac{1}{k !\, l !}  \sum_{\sigma \in S_{k+l}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} (\omega\otimes\eta)\right).
+\end{equation}</p>
+<p>Evaluate the right-hand side of \eqref{eqm1} on \(k+l\) vectors. Each permutation \(\sigma\) splits these vectors into two groups. The first \(k\) vectors are fed into \(\omega\), and the remaining \(l\) vectors are fed into \(\eta\). This gives the following counting.</p>
+<ul class="wiki-itemize">
+<li>
+<p><em>Number of distinct terms.</em> A term is determined by which \(k\) of the \(k+l\) vectors go into \(\omega\). Different choices give terms that cannot be combined. Hence the most economical expression has exactly \(\binom{k+l}{k}\) terms.</p>
+</li>
+<li>
+<p><em>Multiplicity of each term.</em> Two permutations give the same split if and only if they differ by a rearrangement of the \(k\) arguments of \(\omega\) and of the \(l\) arguments of \(\eta\). Since \(\omega\) and \(\eta\) are alternating, the sign changes cancel, and all such permutations contribute the same term. Each distinct term therefore appears exactly \(k!\, l!\) times.</p>
+</li>
+</ul>
+<p>The multiplicity \(k!\, l!\) is precisely the denominator in \eqref{eq1}. After cancellation, each distinct term appears exactly once:</p>
+<p>\[
+\omega \wedge \eta\,(v_1,\dots,v_{k+l})=\sum_{\sigma}(\operatorname{sgn}\sigma)\,
+\omega\big(v_{\sigma(1)},\dots,v_{\sigma(k)}\big)\,
+\eta\big(v_{\sigma(k+1)},\dots,v_{\sigma(k+l)}\big),
+\]</p>
+<p>where the sum runs over the \(\binom{k+l}{k}\) permutations satisfying \(\sigma(1)&lt;\dots&lt;\sigma(k)\) and \(\sigma(k+1)&lt;\dots&lt;\sigma(k+l)\). These are the \((k,l)\)-shuffles.</p>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>

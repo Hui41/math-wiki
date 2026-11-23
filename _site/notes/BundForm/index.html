@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Bundle-valued forms · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}v_g", "ip": ["\\langle #1,#2\\rangle", 2]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><div class="wiki-breadcrumbs" aria-label="Breadcrumb"><span class="breadcrumb-separator"><a class="wiki-home-link" href="/notes/">All notes</a> › </span><span class="breadcrumb-current" aria-current="page">Bundle-valued forms</span></div></nav>
+      <h1>Bundle-valued forms</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Bundle-valued forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Let \(E\to M\) be a smooth complex vector bundle.</p>
+<p><strong>Several natural wedge product operations</strong>:</p>
+<ol class="wiki-enumerate alpha">
+<li>
+<p>\(\alpha \in \mathscr{E}^q (M), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)\)</p>
+<p>\[ \alpha \wedge  (\beta \otimes \sigma) = (\alpha \wedge  \beta) \otimes \sigma \]</p>
+</li>
+<li>
+<p>\(\alpha \otimes \varphi  \in \mathscr{E}^q (M;E^*), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)\)</p>
+<p>\[ (\alpha \otimes \varphi) \wedge  (\beta \otimes \sigma) =\varphi (\sigma ) (\alpha \wedge  \beta) \in \mathscr{E}^{q+q'}(M) \]</p>
+</li>
+<li>
+<p>\(\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes B \in  \mathscr{E}^{q'} (M;End(E))\)</p>
+<p>\[ (\alpha \otimes A) \wedge  (\beta \otimes B) =(\alpha \wedge  \beta) \otimes (A\circ B) \in \mathscr{E}^{q+q'}(M;End(E)) \]</p>
+</li>
+<li>
+<p>\(\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes \sigma  \in  \mathscr{E}^{q'} (M;E)\)</p>
+<p>\[ (\alpha \otimes A) \wedge  (\beta \otimes \sigma ) =(\alpha \wedge  \beta) \otimes A(\sigma ) \in \mathscr{E}^{q+q'}(M;E) \]</p>
+</li>
+</ol>
+<div class="theorem example">
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:13:1" title="Edit example at source line 13" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>In a local basis, \(\{s_j\}\) is a frame of \(E\), and \(\{\epsilon \}\) is its dual frame.   Then</p>
+<p>\begin{equation*}
+		\begin{aligned}
+		\omega \wedge \eta &amp; =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
+		&amp; =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
+		&amp; =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
+		\end{aligned}
+		\end{equation*}</p>
+<p>That's matric product: in an expression like \(\omega_k^j\)   we always interpret <strong>the upper index as the row number and the lower index as the column number</strong>.
+Likewise, if \( \gamma =\gamma^m \otimes s_m \),</p>
+<p>\begin{equation*}
+			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
+		\end{equation*}</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition (Cauchy–Riemann Operator)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:28:1" title="Edit definition at source line 28" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>If \(E\) is holomorphic, then the following is well-defined:</p>
+<p>\begin{equation*}
+		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
+	\end{equation*}</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:35:1" title="Edit proposition at source line 35" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Suppose \(M\) is a complex manifold and \(E \to M\) is a holomorphic vector bundle.
+There are operators \(\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)\) satisfying the following properties:</p>
+<ul class="wiki-itemize">
+<li>
+<p>For \(\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)\), \(\bar{\partial}_E \sigma = 0\) if and only if \(\sigma\) is a holomorphic section.</p>
+</li>
+<li>
+<p>For \(\alpha \in \mathscr{E}^{p,q}(M)\) and \(\beta \in \mathscr{E}^{p',q'}(M; E)\),</p>
+<p>\[
+		\bar{\partial}_E (\alpha \wedge \beta) = \bar{\partial} \alpha \wedge \beta + (-1)^{p+q} \alpha \wedge \bar{\partial}_E \beta.
+		\]</p>
+</li>
+<li>
+<p>For \(\gamma \in \mathscr{E}^{p,q}(M; E^*)\) and \(\beta \in \mathscr{E}^{p',q'}(M; E)\),</p>
+<p>\[
+		\bar{\partial} (\gamma \wedge \beta) = \bar{\partial}_E \gamma \wedge \beta + (-1)^{p+q} \gamma \wedge \bar{\partial}_E \beta.
+		\]</p>
+</li>
+<li>
+<p>\(\bar{\partial}_E \circ \bar{\partial}_E = 0\).</p>
+</li>
+<li>
+<p>If \(\alpha \in \mathscr{E}^{p,q}(M; E)\) satisfies \(\bar{\partial}_E \alpha = 0\), then in a neighborhood of each point there exists \(\beta \in \mathscr{E}^{p,q-1}(M; E)\) such that \(\bar{\partial}_E \beta = \alpha\).</p>
+</li>
+</ul>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

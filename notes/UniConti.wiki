@@ -1,0 +1,321 @@
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\loc}{\mathrm{loc}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+
+\title{Unique Continuation}
+
+\section{Setting and statement}
+
+Throughout, $(M,g)$ is a connected Riemannian manifold of dimension $n$, not
+necessarily complete. All bundles are real; for Hermitian bundles replace
+$\la\cdot,\cdot\ra$ by $\operatorname{Re}\la\cdot,\cdot\ra$ everywhere. We write
+$e_1,\dots,e_n$ for a local orthonormal frame, $e^1,\dots,e^n$ for the dual
+coframe, and $\la u,v\ra=\int_M\la u,v\ra\dd\vol$, $\norm u^2=\la u,u\ra$ for
+$L^2$-quantities.
+
+\begin{definition}[Dirac bundle]\label{def:dirac}
+A \emph{Dirac bundle} over $M$ is a Euclidean vector bundle $\cS\to M$ with a
+metric connection $\nabla$ and a bundle map
+$c\colon T^*M\to\operatorname{End}(\cS)$ (Clifford multiplication) such that for all
+$1$-forms $\alpha,\beta$:
+\begin{enumerate}[(a)]
+\item $c(\alpha)c(\beta)+c(\beta)c(\alpha)=-2\,g(\alpha,\beta)\,\mathrm{Id}$;
+\item $c(\alpha)^*=-c(\alpha)$ pointwise;
+\item $\nabla_X\big(c(\alpha)u\big)=c(\nabla_X\alpha)u+c(\alpha)\nabla_Xu$.
+\end{enumerate}
+Its \emph{Dirac operator} is $Du=\sum_{i}c(e^i)\nabla_{e_i}u$; this does not depend
+on the frame.
+\end{definition}
+
+By (a)-(b), $c(\alpha)^*c(\alpha)=-c(\alpha)^2=|\alpha|^2$; so $c(\alpha)$
+is an isometry when $|\alpha|=1$, and then $c(\alpha)^{-1}=-c(\alpha)$.
+
+
+In local coordinates, write
+\[
+\alpha=\frac1{p!}\alpha_{i_1\cdots i_p}
+\,dx^{i_1}\wedge\cdots\wedge dx^{i_p},
+\]
+
+\[
+\beta=\frac1{p!}\beta_{j_1\cdots j_p}
+\,dx^{j_1}\wedge\cdots\wedge dx^{j_p}.
+\]
+
+Using the inverse metric \(g^{ij}\), define
+\[
+\beta^{i_1\cdots i_p}
+=
+g^{i_1j_1}\cdots g^{i_pj_p}
+\beta_{j_1\cdots j_p}.
+\]
+Recall, by definition, \(\beta^\sharp\) is the unique vector field satisfying
+\begin{equation}
+    g(\beta^\sharp,X)=\beta(X)
+\end{equation}
+for every vector field \(X\).
+The corresponding \(p\)-vector is
+\[
+\beta^\sharp
+=
+\frac1{p!}\beta^{i_1\cdots i_p}
+\frac{\partial}{\partial x^{i_1}}
+\wedge\cdots\wedge
+\frac{\partial}{\partial x^{i_p}}.
+\]
+In particular,
+\[
+(dx^{i_1}\wedge\cdots\wedge dx^{i_p})
+\left(
+\partial_{j_1}\wedge\cdots\wedge\partial_{j_p}
+\right)
+=
+\det(\delta^{i_a}_{j_b}).
+\]
+
+For a decomposable \(p\)-vector, the natural pairing is defined by
+\begin{equation}
+    \alpha(X_1\wedge\cdots\wedge X_p)
+=
+\alpha(X_1,\ldots,X_p).
+\end{equation}
+Using this, one shows 
+\begin{equation}
+    g(\alpha ,\beta )=g(\alpha ^{\#},\beta ^{\#}).
+\end{equation}
+This coincides with 
+\begin{equation}
+\langle\alpha,\beta\rangle
+=
+\frac1{p!}
+g^{i_1j_1}\cdots g^{i_pj_p}
+\alpha_{i_1\cdots i_p}
+\beta_{j_1\cdots j_p}.
+\end{equation} 
+
+\begin{proposition}
+    Let $\alpha $ be $1$-form, then   
+    $$ \la \alpha \wedge \omega  , \eta   \ra= \la \omega  , \iota _{\alpha ^{\#}} \eta  \ra $$
+    for forms \(\omega  \) and \(\eta  \) of the appropriate degrees.
+\end{proposition}
+\begin{proof}
+    The components of the \((p+1)\)-form \(\alpha\wedge\omega\) are
+\[
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+=
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}.
+\]
+
+By definition of the inner product on \((p+1)\)-forms,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\]
+Thus,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\tag{5}
+\]
+
+Because \(\eta\) is antisymmetric, moving \(i_a\) to the first position introduces precisely the sign \((-1)^a\).
+Therefore, after relabeling dummy indices, each summand in (5) has the same value:
+\[
+(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}
+\quad\leadsto\quad
+\alpha_j\omega_{i_1\cdots i_p}\eta_{j i_1\cdots i_p}.
+\]
+
+There are \(p+1\) such summands. Hence,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+&=
+\frac{p+1}{(p+1)!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}\\
+&=
+\frac1{p!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+
+Since our coframe is orthonormal,
+\[
+\alpha^\sharp=\alpha_j e_j.
+\]
+
+The definition of interior multiplication gives
+\[
+\begin{aligned}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}
+&=
+\eta(\alpha^\sharp,e_{i_1},\ldots,e_{i_p})\\
+&=
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+
+Thus,
+\[
+\begin{aligned}
+\langle\omega,\iota_{\alpha^\sharp}\eta\rangle
+&=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}\\
+&=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+\end{proof}
+
+
+For an \(E\)-valued \(p\)-form \(\sigma\), the covariant exterior derivative is defined by
+\[
+\begin{aligned}
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+={}&
+\sum_{j=0}^p(-1)^j
+\nabla^E_{X_j}
+\sigma(X_0,\ldots,\widehat X_j,\ldots,X_p)\\
+&+
+\sum_{0\le j<k\le p}(-1)^{j+k}
+\sigma([X_j,X_k],X_0,\ldots,\widehat X_j,\ldots,\widehat X_k,\ldots,X_p).
+\end{aligned}
+\tag{8.1}
+\]
+
+Because the Levi-Civita connection has zero torsion,
+the expression simplifies to
+\[
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]
+By the definition of the formal adjoint,
+\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+\int_M
+\langle\omega,\delta^\nabla\sigma\rangle\,dv_g.
+\]
+\begin{lemma}
+If $(E_i)$ is a basis of $T_xM$, $X_j$ are vectors at $x$, and $g^{st}$ is the inverse of the matrix $g(E_s,E_t)$, then for $\rho\in A^p(\xi)$,
+\[
+(\delta^\nabla\rho)(X_1,\ldots,X_{p-1})
+=
+-\sum_{s,t}
+g^{st}
+(\nabla_{E_t}\rho)
+(E_s,X_1,\ldots,X_{p-1}).
+\]
+
+In particular, if $\rho\in A^1(\xi)$, then
+\[
+\delta^\nabla\rho
+=
+-\operatorname{trace}\nabla\rho.
+\]
+\end{lemma}
+
+Now we can give the following example.
+\begin{example}[bundle-valued forms]\label{ex:forms}
+Let $E\to M$ be a Euclidean vector bundle with metric connection $\nabla^E$ and
+$\cS=\Lambda^\bullet T^*M\otimes E$, with the connection induced by the
+Levi-Civita connection and $\nabla^E$, and
+\[
+c(\alpha)\sigma=\alpha\wedge\sigma-\iota_{\alpha^\sharp}\sigma .
+\]
+Since $(\alpha\wedge)^*=\iota_{\alpha^\sharp}$ and
+$$\alpha\wedge\iota_{\beta^\sharp}+\iota_{\beta^\sharp}\alpha\wedge=g(\alpha,\beta),$$
+while $$(\alpha\wedge)^2=0=(\iota_{\alpha^\sharp})^2,$$
+ conditions
+(a)-(b) hold; (c) holds because wedge and interior products are
+parallel. Since the Levi-Civita connection is torsion free,
+\[
+d^\nabla\sigma=\sum_i e^i\wedge\nabla_{e_i}\sigma,\qquad
+\delta^\nabla\sigma:=(d^\nabla)^*\sigma=-\sum_i\iota_{e_i}\nabla_{e_i}\sigma ,
+\]
+so $D=d^\nabla+\delta^\nabla$. For $\sigma$ of pure degree $p$, $d^\nabla\sigma$ and
+$\delta^\nabla\sigma$ have degrees $p+1$ and $p-1$, hence are pointwise orthogonal:
+\begin{equation}\label{eq:pyth}
+|D\sigma|^2=|d^\nabla\sigma|^2+|\delta^\nabla\sigma|^2 .
+\end{equation}
+For $E$ the trivial line bundle this is the operator $d+d^*$ of \cite{EL78}.
+\end{example}
+
+\begin{example}\label{ex:other}
+Other Dirac bundles: the spinor bundle of a spin manifold (with the spin Dirac
+operator), twisted by any bundle with metric connection; on a K\"ahler manifold,
+$\Lambda^{0,\bullet}T^*M\otimes E$ for a Hermitian holomorphic bundle with its Chern
+connection, with $D=\sqrt2(\bar\partial_E+\bar\partial_E^*)$
+\cite[Ch.~II]{LM89}.
+\end{example}
+
+Here is the form of the theorem we prove.
+
+\begin{thmA}
+Let $\cS$ be a Dirac bundle over a connected Riemannian manifold $M$, and let
+$u\in W^{1,2}_\loc(M;\cS)$ satisfy
+\begin{equation}\label{eq:hyp}
+|Du|\le V\,|u|\qquad\text{a.e. on }M,
+\end{equation}
+for some $V\in L^\infty_\loc(M)$. If $u=0$ a.e.\ on a nonempty open subset of $M$,
+then $u=0$ a.e.\ on $M$.
+\end{thmA}
+
+By Example~\ref{ex:forms} and \eqref{eq:pyth}, Theorem~A contains the statement of
+\cite[(1.27)]{EL78}, with forms allowed to take values in a bundle:
+
+\begin{thmB}[Aronszajn--Krzywicki--Szarski]
+Let $M$ be a connected Riemannian manifold, $E\to M$ a Riemannian vector bundle with
+metric connection, and $\sigma\in W^{1,2}_\loc(\Lambda^pT^*M\otimes E)$. Suppose that
+for every compact $K\subset M$ there is a constant $C_K$ with
+\[
+|d^\nabla\sigma|^2+|\delta^\nabla\sigma|^2\le C_K|\sigma|^2\qquad\text{a.e. on }K.
+\]
+If $\sigma$ vanishes on a nonempty open subset of $M$, then $\sigma\equiv0$.
+\end{thmB}
+
+\begin{remark}\label{rem:sharp}
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Both $d$ and $d^*$ are needed.} If $f\in C^\infty_c(M)$ is nonconstant,
+$\sigma=df$ is closed and vanishes outside $\supp f$. Likewise $\sigma={*}df$ is
+coclosed. What makes the theorem work is that $D^2$ has the scalar principal
+symbol $|\xi|^2$; see the Weitzenb\"ock formula \eqref{eq:weitz}.
+\item \emph{No regularity of the potential.} Only $V\in L^\infty_\loc$ is used. This
+is what allows nonlinear applications (\S\ref{sec:appl}).
+\item \emph{Strong unique continuation.} For smooth metrics the stronger conclusion
+also holds when $u$ only vanishes to infinite order at a point (in the $L^2$
+sense); this requires Carleman estimates with weights singular at a point and is
+considerably more delicate for first-order systems. The weak form is all that is
+used in \cite{EL78}, and it is what we prove.
+\end{enumerate}
+\end{remark}

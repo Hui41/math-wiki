@@ -1,0 +1,545 @@
+\title{Bundle-valued forms}
+
+\section{The Wedge Product}
+\label{se:wedpro}
+In this section, we make a few words for a rule of calculating wedge product. 
+
+Different authors use different conventions for the wedge product of differential forms. Here we follow the \emph{determinant convention}, as used by John M. Lee. The main alternative is the \emph{Alt convention}, which is common among specialists in complex geometry and several complex variables. The two conventions differ only by a constant factor.
+
+Let us begin with an example. For a $2$-form $\Omega$ and a $1$-form $\theta$, the wedge product is
+$$
+\Omega \wedge \theta (X,Y,Z)=\Omega(X,Y)\, \theta (Z)+\Omega (Y,Z)\, \theta (X)+\Omega (Z,X)\, \theta (Y).
+$$
+Notice that the right-hand side is the most economical expression possible. If we expand the general formula directly, many terms coincide and must be combined; for instance,
+$$
+\Omega(X,Y)\, \theta (Z)-\Omega(Y,X)\, \theta (Z)=2\,\Omega(X,Y)\, \theta(Z).
+$$
+In the final expression, however, each distinct term appears exactly once.
+
+Is this a coincidence? To find out, consider the wedge product of two $2$-forms:
+$$
+\begin{aligned}
+    \omega \wedge \eta (X,Y,Z,W)=\;&\omega (X,Y)\, \eta (Z,W)+ \omega (X,Z)\, \eta (W,Y)+\omega (X,W)\, \eta (Y,Z) \\
+    &+\omega (Y,Z)\, \eta (X,W)+\omega (Y,W)\, \eta (Z,X)\\
+    &+\omega (Z,W)\, \eta (X,Y).
+\end{aligned}
+$$
+After some simplification, we again arrive at the same economical form: every distinct term appears exactly once.
+
+To understand why, we return to the definition of the wedge product. For a $k$-form $\omega$ and an $l$-form $\eta$,
+$$
+\omega \wedge \eta=\frac{(k+l) !}{k !\, l !} \operatorname{Alt}(\omega \otimes \eta),
+$$
+where, for a covariant $k$-tensor $\alpha$, the alternation operator is defined by
+$$
+\operatorname{Alt} \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right).
+$$
+The factor $1/k!$ in the definition of $\operatorname{Alt}$ is easy to explain. The sum contains exactly $k!$ terms, so $\operatorname{Alt}$ is an average over all permutations. This normalization also ensures that $\operatorname{Alt}$ leaves alternating tensors unchanged.
+
+The coefficient in the wedge product is less obvious. At first glance it looks like an ordinary normalizing constant chosen to make formulas tidy. On closer inspection, however, it is exactly the binomial coefficient $\binom{k+l}{k}$. This observation explains the phenomenon above.
+
+Combining the two formulas, we obtain
+\begin{equation}\label{eqm1}
+  \omega \wedge \eta=\frac{1}{k !\, l !}  \sum_{\sigma \in S_{k+l}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} (\omega\otimes\eta)\right).
+\end{equation}
+Evaluate the right-hand side of \eqref{eqm1} on $k+l$ vectors. Each permutation $\sigma$ splits these vectors into two groups. The first $k$ vectors are fed into $\omega$, and the remaining $l$ vectors are fed into $\eta$. This gives the following counting.
+\begin{itemize}
+  \item \emph{Number of distinct terms.} A term is determined by which $k$ of the $k+l$ vectors go into $\omega$. Different choices give terms that cannot be combined. Hence the most economical expression has exactly $\binom{k+l}{k}$ terms.
+  \item \emph{Multiplicity of each term.} Two permutations give the same split if and only if they differ by a rearrangement of the $k$ arguments of $\omega$ and of the $l$ arguments of $\eta$. Since $\omega$ and $\eta$ are alternating, the sign changes cancel, and all such permutations contribute the same term. Each distinct term therefore appears exactly $k!\, l!$ times.
+\end{itemize}
+The multiplicity $k!\, l!$ is precisely the denominator in \eqref{eqm1}. After cancellation, each distinct term appears exactly once:
+$$
+\omega \wedge \eta\,(v_1,\dots,v_{k+l})=\sum_{\sigma}(\operatorname{sgn}\sigma)\,
+\omega\big(v_{\sigma(1)},\dots,v_{\sigma(k)}\big)\,
+\eta\big(v_{\sigma(k+1)},\dots,v_{\sigma(k+l)}\big),
+$$
+where the sum runs over the $\binom{k+l}{k}$ permutations satisfying $\sigma(1)<\dots<\sigma(k)$ and $\sigma(k+1)<\dots<\sigma(k+l)$. These are the $(k,l)$-shuffles.
+
+\section{Product and pairing for differential forms}
+
+In local coordinates, write
+\[
+\alpha=\frac1{p!}\alpha_{i_1\cdots i_p}
+\,dx^{i_1}\wedge\cdots\wedge dx^{i_p},
+\]
+
+\[
+\beta=\frac1{p!}\beta_{j_1\cdots j_p}
+\,dx^{j_1}\wedge\cdots\wedge dx^{j_p}.
+\]
+Using the inverse metric \(g^{ij}\), define
+\[
+\beta^{i_1\cdots i_p}
+=
+g^{i_1j_1}\cdots g^{i_pj_p}
+\beta_{j_1\cdots j_p}.
+\]
+Recall, by definition, \(\beta^\sharp\) is the unique vector field satisfying
+\begin{equation}
+    g(\beta^\sharp,X)=\beta(X)
+\end{equation}
+for every vector field \(X\).
+The corresponding \(p\)-vector is
+\[
+\beta^\sharp
+=
+\frac1{p!}\beta^{i_1\cdots i_p}
+\frac{\partial}{\partial x^{i_1}}
+\wedge\cdots\wedge
+\frac{\partial}{\partial x^{i_p}}.
+\]
+In particular,
+\[
+(dx^{i_1}\wedge\cdots\wedge dx^{i_p})
+\left(
+\partial_{j_1}\wedge\cdots\wedge\partial_{j_p}
+\right)
+=
+\det(\delta^{i_a}_{j_b}).
+\]
+
+For a decomposable \(p\)-vector, the natural pairing is defined by
+\begin{equation}
+    \alpha(X_1\wedge\cdots\wedge X_p)
+=
+\alpha(X_1,\ldots,X_p).
+\end{equation}
+Using this, one shows 
+\begin{equation}
+    g(\alpha ,\beta )=g(\alpha ^{\#},\beta ^{\#}).
+\end{equation}
+This is 
+\begin{equation}
+\langle\alpha,\beta\rangle
+=
+\frac1{p!}
+g^{i_1j_1}\cdots g^{i_pj_p}
+\alpha_{i_1\cdots i_p}
+\beta_{j_1\cdots j_p}.
+\end{equation} 
+Note that the factor $\frac{1}{p!}$ allows us to get a clean expression for adjoint operator, see \eqref{7}. 
+
+\begin{proposition}
+    Let $\alpha $ be $1$-form, then   
+    \begin{equation}\label{6}
+         \la \alpha \wedge \omega  , \eta   \ra= \la \omega  , \iota _{\alpha ^{\#}} \eta  \ra 
+    \end{equation}
+    for forms \(\omega  \) and \(\eta  \) of the appropriate degrees.
+\end{proposition}
+\begin{proof}
+    The components of the \((p+1)\)-form \(\alpha\wedge\omega\) are
+\[
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+=
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}.
+\]
+This is exactly what we discussed in \S \ref{se:wedpro}.
+By definition of the inner product on \((p+1)\)-forms,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\]
+Thus,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\tag{5}
+\]
+
+Because \(\eta\) is antisymmetric, moving \(i_a\) to the first position introduces precisely the sign \((-1)^a\).
+Therefore, after relabeling dummy indices, each summand in (5) has the same value:
+\[
+(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}
+\quad\leadsto\quad
+\alpha_j\omega_{i_1\cdots i_p}\eta_{j i_1\cdots i_p}.
+\]
+There are \(p+1\) such summands. Hence,
+\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+&=
+\frac{p+1}{(p+1)!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}\\
+&=
+\frac1{p!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+Since our coframe is orthonormal,
+\[
+\alpha^\sharp=\alpha_j e_j.
+\]
+The definition of interior multiplication gives
+\[
+\begin{aligned}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}
+&=
+\eta(\alpha^\sharp,e_{i_1},\ldots,e_{i_p})\\
+&=
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+Thus,
+\[
+\begin{aligned}
+\langle\omega,\iota_{\alpha^\sharp}\eta\rangle
+&=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}\\
+&=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]
+\end{proof}
+
+
+\section{Bundle-valued forms}
+
+For an \(E\)-valued \(p\)-form \(\sigma\), the covariant exterior derivative is defined by
+\[
+\begin{aligned}
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+={}&
+\sum_{j=0}^p(-1)^j
+\nabla^E_{X_j}
+\sigma(X_0,\ldots,\widehat X_j,\ldots,X_p)\\
+&+
+\sum_{0\le j<k\le p}(-1)^{j+k}
+\sigma([X_j,X_k],X_0,\ldots,\widehat X_j,\ldots,\widehat X_k,\ldots,X_p).
+\end{aligned}
+\]
+Because the Levi-Civita connection has zero torsion,
+the expression simplifies to
+\[
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]
+By the definition of the formal adjoint,
+\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+\int_M
+\langle\omega,\delta^\nabla\sigma\rangle\,dv_g.
+\]
+\begin{lemma}
+If $(E_i)$ is a basis of $T_xM$, $X_j$ are vectors at $x$, and $g^{st}$ is the inverse of the matrix $g(E_s,E_t)$, then for $\rho\in A^p(\xi)$,
+\[
+(\delta^\nabla\rho)(X_1,\ldots,X_{p-1})
+=
+-\sum_{s,t}
+g^{st}
+(\nabla_{E_t}\rho)
+(E_s,X_1,\ldots,X_{p-1}).
+\]
+In particular, if $\rho\in A^1(\xi)$, then
+\[
+\delta^\nabla\rho
+=
+-\operatorname{trace}\nabla\rho.
+\]
+\end{lemma}
+
+\begin{proposition}
+    We have 
+    \begin{equation}\label{7}
+        d^\nabla=\sum_i e^i\wedge\nabla_{e_i}, \qquad \delta^\nabla
+        =
+        -\sum_i\iota_{e_i}\nabla_{e_i}.
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    The first one is due to 
+\[
+\left(\sum_i e^i\wedge\nabla_{e_i}\sigma\right)
+(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]
+ For the second,   using \eqref{6},
+\[
+\begin{aligned}
+\int_M\langle d^\nabla\omega,\sigma\rangle\,dv_g
+&=
+\sum_i\int_M
+\langle e^i\wedge\nabla_{e_i}\omega,\sigma\rangle\,dv_g\\
+&=
+\sum_i\int_M
+\langle\nabla_{e_i}\omega,\iota_{e_i}\sigma\rangle\,dv_g.
+\end{aligned}
+\]
+Now integrate by parts. In a local orthonormal frame, it is convenient to perform the computation at a point where
+\[
+\nabla_{e_i}e_j=0.
+\]
+The compatibility of the connection with the inner product gives, after integration over \(M\),
+\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+-\int_M
+\la
+\omega,\sum_i\iota_{e_i}\nabla_{e_i}\sigma
+\ra\,dv_g.
+\]
+\end{proof}
+
+
+\subsection{Pairing rules for bundle-valued forms}
+
+Let $E\to M$ be a smooth complex or real vector bundle. 
+
+\begin{enumerate}[(a)]
+	\item $\alpha \in \mathscr{E}^q (M), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ \alpha \wedge  (\beta \otimes \sigma) = (\alpha \wedge  \beta) \otimes \sigma $$
+	\item  $\alpha \otimes \varphi  \in \mathscr{E}^q (M;E^*), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes \varphi) \wedge  (\beta \otimes \sigma) =\varphi (\sigma ) (\alpha \wedge  \beta) \in \mathscr{E}^{q+q'}(M) $$
+	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes B \in  \mathscr{E}^{q'} (M;End(E))$ $$ (\alpha \otimes A) \wedge  (\beta \otimes B) =(\alpha \wedge  \beta) \otimes (A\circ B) \in \mathscr{E}^{q+q'}(M;End(E)) $$
+	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes \sigma  \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes A) \wedge  (\beta \otimes \sigma ) =(\alpha \wedge  \beta) \otimes A(\sigma ) \in \mathscr{E}^{q+q'}(M;E) $$
+\end{enumerate}
+\begin{example}
+	In a local basis, $\{s_j\}$ is a frame of $E$, and $\{\epsilon \}$ is its dual frame.   Then
+	\begin{equation*}
+		\begin{aligned}
+		\omega \wedge \eta & =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
+		& =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
+		& =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
+		\end{aligned}
+		\end{equation*}
+		That's matric product: in an expression like $\omega_k^j$   we always interpret the upper index as the row number and the lower index as the column number.
+		Likewise, if $ \gamma =\gamma^m \otimes s_m $,  
+		\begin{equation*}
+			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
+		\end{equation*}
+\end{example}
+\begin{definition}[Cauchy–Riemann Operator]
+	If $E$ is holomorphic, then the following is well-defined:
+	\begin{equation*}
+		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Suppose $M$ is a complex manifold and $E \to M$ is a holomorphic vector bundle.
+	There are operators $\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)$ satisfying the following properties:
+	\begin{itemize}
+		\item For $\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)$, $\bar{\partial}_E \sigma = 0$ if and only if $\sigma$ is a holomorphic section.
+	
+		\item For $\alpha \in \mathscr{E}^{p,q}(M)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\[
+		\bar{\partial}_E (\alpha \wedge \beta) = \bar{\partial} \alpha \wedge \beta + (-1)^{p+q} \alpha \wedge \bar{\partial}_E \beta.
+		\]
+	
+		\item For $\gamma \in \mathscr{E}^{p,q}(M; E^*)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
+		\[
+		\bar{\partial} (\gamma \wedge \beta) = \bar{\partial}_E \gamma \wedge \beta + (-1)^{p+q} \gamma \wedge \bar{\partial}_E \beta.
+		\]
+	
+		\item $\bar{\partial}_E \circ \bar{\partial}_E = 0$.
+	
+		\item If $\alpha \in \mathscr{E}^{p,q}(M; E)$ satisfies $\bar{\partial}_E \alpha = 0$, then in a neighborhood of each point there exists $\beta \in \mathscr{E}^{p,q-1}(M; E)$ such that $\bar{\partial}_E \beta = \alpha$.
+	\end{itemize} 
+\end{proposition}
+
+
+\subsection{The rough Laplacian}
+
+The operator \(\nabla^*\) is defined as the formal \(L^2\)-adjoint of the connection \(\nabla\).
+An important point is that \(\nabla^*\) is not itself a connection. It is a first-order differential operator acting in the opposite direction:
+\[
+\nabla:\Gamma(S)\longrightarrow\Gamma(T^*M\otimes S),
+\]
+\[
+\nabla^*:\Gamma(T^*M\otimes S)\longrightarrow\Gamma(S).
+\]
+Let us derive its definition and local expression.
+
+For \(u\in\Gamma(S)\), we have
+\[
+\nabla u\in\Gamma(T^*M\otimes S).
+\]
+The formal adjoint \(\nabla^*\) is defined by the identity
+\[
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+\int_M\langle u,\nabla^*A\rangle\,dv_g
+\]
+for all compactly supported smooth sections
+\(
+u\in\Gamma_c(S),
+A\in\Gamma_c(T^*M\otimes S).
+\)
+
+\begin{proposition}
+    We have 
+    \begin{equation}
+        \nabla^*A
+        =-\sum_{i=1}^n\bigl(\nabla^{T^*M\otimes S}_{e_i}A\bigr)(e_i).
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    Choose a local orthonormal frame \(\{e_1,\ldots,e_n\}\), with dual coframe \(\{e^1,\ldots,e^n\}\).
+Write
+\[
+A=\sum_{i=1}^n e^i\otimes A_i,
+\qquad A_i\in\Gamma(S).
+\]
+Then
+\[
+\nabla u=\sum_i e^i\otimes\nabla_{e_i}u.
+\]
+Consequently,
+\[
+\langle\nabla u,A\rangle
+=
+\sum_i\langle\nabla_{e_i}u,A_i\rangle.
+\]
+
+Because \(\nabla\) is a metric connection,
+\[
+\langle\nabla_{e_i}u,A_i\rangle
+=
+e_i\langle u,A_i\rangle
+-
+\langle u,\nabla_{e_i}A_i\rangle.
+\]
+Integrating and using the divergence theorem gives
+\[
+\int_M e_i\langle u,A_i\rangle\,dv_g
+=
+-\int_M\langle u,A_i\rangle
+\operatorname{div}(e_i)\,dv_g.
+\]
+Therefore,
+\[
+\begin{aligned}
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+-\int_M\left\langle
+u,
+\sum_i\bigl(
+\nabla_{e_i}A_i+
+(\operatorname{div}e_i)A_i
+\bigr)
+\right\rangle\,dv_g.
+\end{aligned}
+\]
+We conclude that
+\begin{equation}
+    \nabla^*A
+=
+-\sum_i
+\left[
+\nabla_{e_i}A_i+
+(\operatorname{div}e_i)A_i
+\right].
+\end{equation}
+
+On the other hand,
+\[
+\begin{aligned}
+\bigl(\nabla^{T^*M\otimes S}_{e_i}A\bigr)(e_i)
+&=
+\nabla_{e_i}(A(e_i))
+-
+A(\nabla_{e_i}^{LC}e_i).
+\end{aligned}
+\]
+Thus another useful formula is
+\begin{equation}\label{10}
+    \nabla^*A
+=
+-\sum_i
+\left[
+\nabla_{e_i}(A(e_i))
+-
+A(\nabla^{LC}_{e_i}e_i)
+\right].
+\end{equation}
+\end{proof}
+
+Taking \(A=\nabla u\), we obtain
+\[
+A(e_i)=\nabla_{e_i}u.
+\]
+Substituting into \eqref{10},
+\[
+\begin{aligned}
+\nabla^*\nabla u
+&=
+-\sum_i
+\left[
+\nabla_{e_i}\nabla_{e_i}u
+-
+\nabla_{\nabla^{LC}_{e_i}e_i}u
+\right].
+\end{aligned}
+\]
+Hence
+\begin{equation}
+    \nabla^*\nabla u
+=
+-\sum_{i=1}^n
+\left(
+\nabla_{e_i}\nabla_{e_i}u
+-
+\nabla_{\nabla^{LC}_{e_i}e_i}u
+\right).
+\end{equation}
+This is called the \textbf{rough Laplacian} or \textbf{connection Laplacian}.
+
+\begin{remark}
+    When considering higher degree bundle-valued form, we should take the following viewpoint.
+     The induced connection on \(E\)-valued \(p\)-forms is
+\[
+\nabla:\Omega^p(M,E)
+\longrightarrow
+\Gamma(T^*M\otimes\Lambda^pT^*M\otimes E).
+\]
+Thus,
+\[
+\nabla u\in\Omega^1(M,\Lambda^pT^*M\otimes E).
+\]
+Its formal adjoint is
+\[
+\nabla^*:
+\Gamma(T^*M\otimes\Lambda^pT^*M\otimes E)
+\longrightarrow
+\Omega^p(M,E).
+\]
+For compactly supported smooth sections \(u\) and \(A\), it is characterized by
+\[
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+\int_M\langle u,\nabla^*A\rangle\,dv_g.
+\]
+The inner products are induced by \(g\) on the form indices and by \(h\) on the \(E\)-valued coefficients.
+\end{remark}
+
+
+

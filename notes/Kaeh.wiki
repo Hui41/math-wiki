@@ -665,58 +665,5 @@ where $R$ is applied to $\left\{ \frac{\partial}{\partial x_{\alpha}}, 1 \leq \a
 
 
 
-\section{Bundle-valued forms}
-Let $E\to M$ be a smooth complex vector bundle. 
-
-\textbf{Several natural wedge product operations}:
-\begin{enumerate}[(a)]
-	\item $\alpha \in \mathscr{E}^q (M), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ \alpha \wedge  (\beta \otimes \sigma) = (\alpha \wedge  \beta) \otimes \sigma $$
-	\item  $\alpha \otimes \varphi  \in \mathscr{E}^q (M;E^*), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes \varphi) \wedge  (\beta \otimes \sigma) =\varphi (\sigma ) (\alpha \wedge  \beta) \in \mathscr{E}^{q+q'}(M) $$
-	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes B \in  \mathscr{E}^{q'} (M;Edn(E))$ $$ (\alpha \otimes A) \wedge  (\beta \otimes B) =(\alpha \wedge  \beta) \otimes (A\circ B) \in \mathscr{E}^{q+q'}(M;End(E)) $$
-	\item $\alpha \otimes A  \in \mathscr{E}^q (M;End(E)), \beta \otimes \sigma  \in  \mathscr{E}^{q'} (M;E)$ $$ (\alpha \otimes A) \wedge  (\beta \otimes \sigma ) =(\alpha \wedge  \beta) \otimes A(\sigma ) \in \mathscr{E}^{q+q'}(M;E) $$
-\end{enumerate}
-\begin{example}
-	In a local basis, $\{s_j\}$ is a frame of $E$, and $\{\epsilon \}$ is its dual frame.   Then
-	\begin{equation*}
-		\begin{aligned}
-		\omega \wedge \eta & =\left(\omega_k^j \otimes s_j \otimes \varepsilon^k\right) \wedge\left(\eta_m^l \otimes s_l \otimes \varepsilon^m\right) \\
-		& =\left(\omega_k^j \wedge \eta_m^l\right) \otimes\left(\delta_l^k s_j \otimes \varepsilon^m\right) \\
-		& =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
-		\end{aligned}
-		\end{equation*}
-		That's matric product: in an expression like $\omega_k^j$   we always interpret \textbf{the upper index as the row number and the lower index as the column number}.
-		Likewise, if $ \gamma =\gamma^m \otimes s_m $,  
-		\begin{equation*}
-			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
-		\end{equation*}
-\end{example}
-\begin{definition}[Cauchy–Riemann Operator]
-	If $E$ is holomorphic, then the following is well-defined:
-	\begin{equation*}
-		\bar \partial_E \sigma |_{U}= (\bar \partial \sigma^j )\otimes s_j, \quad \forall \sigma  \in \mathscr{E}^{p,q}(M,E).
-	\end{equation*}
-\end{definition}
-
-\begin{proposition}
-	Suppose $M$ is a complex manifold and $E \to M$ is a holomorphic vector bundle.
-	There are operators $\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)$ satisfying the following properties:
-	\begin{itemize}[(i)]
-		\item For $\sigma \in \mathscr{E}^{0,0}(M; E) = \Gamma(E)$, $\bar{\partial}_E \sigma = 0$ if and only if $\sigma$ is a holomorphic section.
-	
-		\item For $\alpha \in \mathscr{E}^{p,q}(M)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
-		\[
-		\bar{\partial}_E (\alpha \wedge \beta) = \bar{\partial} \alpha \wedge \beta + (-1)^{p+q} \alpha \wedge \bar{\partial}_E \beta.
-		\]
-	
-		\item For $\gamma \in \mathscr{E}^{p,q}(M; E^*)$ and $\beta \in \mathscr{E}^{p',q'}(M; E)$,
-		\[
-		\bar{\partial} (\gamma \wedge \beta) = \bar{\partial}_E \gamma \wedge \beta + (-1)^{p+q} \gamma \wedge \bar{\partial}_E \beta.
-		\]
-	
-		\item $\bar{\partial}_E \circ \bar{\partial}_E = 0$.
-	
-		\item If $\alpha \in \mathscr{E}^{p,q}(M; E)$ satisfies $\bar{\partial}_E \alpha = 0$, then in a neighborhood of each point there exists $\beta \in \mathscr{E}^{p,q-1}(M; E)$ such that $\bar{\partial}_E \beta = \alpha$.
-	\end{itemize} 
-\end{proposition}
 
 \bibliography{references}

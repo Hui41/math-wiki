@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light dark">
+  <title>Unique Continuation · Mathematical Notes</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="/assets/wiki.css">
+  <script>
+    // Set theme before painting to avoid a light-mode flash.
+    (function () {
+      var choice;
+      try { choice = localStorage.getItem('math-wiki-theme'); } catch (e) {}
+      var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        tags: 'ams',
+        packages: {'[+]': ['ams']},
+        macros: {
+          dbb: '\\bar{\\partial}_b',
+          Ric: '\\operatorname{Ric}',
+          di: '\\operatorname{div}',
+          trace: '\\operatorname{tr}',
+          "grad": "\\operatorname{grad}", "dimension": "\\operatorname{dim}", "trace": "\\operatorname{tr}", "di": "\\operatorname{div}", "ricci": "\\operatorname{Ric}", "sc": "\\operatorname{Scal}", "tor": "\\operatorname{Tor}", "dist": "\\operatorname{dist}", "hess": "\\operatorname{Hess}", "Span": "\\operatorname{span}", "rank": "\\operatorname{rank}", "supp": "\\operatorname{supp}", "id": "\\operatorname{Id}", "Cl": "\\operatorname{Cl}", "zz": "\\mathbb Z", "rr": "\\mathbb R", "cc": "\\mathbb C", "qq": "\\mathbb Q", "ss": "\\mathbb S", "oo": "\\infty", "db": "\\partial_b", "dbb": "\\bar{\\partial}_b", "lap": "\\Delta", "fint": "\\mathop{\\int\\mkern-17mu-}\\nolimits", "la": "\\langle", "ra": "\\rangle", "dd": "\\,\\mathrm{d}", "ip": ["\\langle #1,#2\\rangle", 2], "cS": "\\mathcal{S}", "vol": "\\mathrm{vol}", "loc": "\\mathrm{loc}", "norm": ["\\lVert #1\\rVert", 1]
+        }
+      },
+      options: {skipHtmlTags: ['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style id="wiki-section-jump-css">
+
+/* Chapter Edit links */
+
+article .wiki-heading-with-edit {
+    position: relative;
+}
+
+article .wiki-heading-with-edit > .wiki-source-jump {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    font: normal 0.76rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.55;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Theorem Edit links */
+
+article .theorem {
+    position: relative;
+}
+
+article .theorem > .wiki-source-jump {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.65rem;
+
+    font: normal 0.73rem/1.4 system-ui, sans-serif;
+    color: inherit;
+    opacity: 0.50;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Hover and keyboard focus */
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:hover,
+
+article .wiki-heading-with-edit >
+.wiki-source-jump:focus-visible,
+
+article .theorem >
+.wiki-source-jump:hover,
+
+article .theorem >
+.wiki-source-jump:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Small screens */
+
+@media (max-width: 700px) {
+    article .wiki-heading-with-edit >
+    .wiki-source-jump {
+        position: static;
+        display: block;
+        text-align: right;
+        transform: none;
+        margin-top: -0.4em;
+    }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/notes/">∑ &nbsp; Mathematical Notes</a>
+    <div class="header-actions">
+      <span class="right">Personal wiki</span>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾ Dark</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-index" href="/notes/">All notes</a>
+      <input id="search" type="search" placeholder="Search notes…" aria-label="Search notes">
+      <div id="results"></div>
+      <div id="page-toc" class="page-toc" aria-label="Contents of this page" hidden>
+        <div class="toc-heading">On this page</div>
+        <ul id="page-toc-list"></ul>
+      </div>
+      <div class="aside-help">Links: <code>[[Sas]]</code><br>Formulas: <code>$...$</code></div>
+    </aside>
+    <main>
+      <nav><div class="wiki-breadcrumbs" aria-label="Breadcrumb"><span class="breadcrumb-separator"><a class="wiki-home-link" href="/notes/">All notes</a> › </span><span class="breadcrumb-current" aria-current="page">Unique Continuation</span></div></nav>
+      <h1>Unique Continuation</h1>
+      <article><div class="wiki-heading-with-edit"><h1>Setting and statement</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:10:1" title="Edit section at source line 10" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Throughout, \((M,g)\) is a connected Riemannian manifold of dimension \(n\), not
+necessarily complete. All bundles are real; for Hermitian bundles replace
+\(\la\cdot,\cdot\ra\) by \(\operatorname{Re}\la\cdot,\cdot\ra\) everywhere. We write
+\(e_1,\dots,e_n\) for a local orthonormal frame, \(e^1,\dots,e^n\) for the dual
+coframe, and \(\la u,v\ra=\int_M\la u,v\ra\dd\vol\), \(\norm u^2=\la u,u\ra\) for
+\(L^2\)-quantities.</p>
+<div class="theorem definition">
+<header>Definition (Dirac bundle)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:19:1" title="Edit definition at source line 19" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="def:dirac"></span>
+A <em>Dirac bundle</em> over \(M\) is a Euclidean vector bundle \(\cS\to M\) with a
+metric connection \(\nabla\) and a bundle map
+\(c\colon T^*M\to\operatorname{End}(\cS)\) (Clifford multiplication) such that for all
+\(1\)-forms \(\alpha,\beta\):</p>
+<ol class="wiki-enumerate alpha">
+<li>
+<p>\(c(\alpha)c(\beta)+c(\beta)c(\alpha)=-2\,g(\alpha,\beta)\,\mathrm{Id}\);</p>
+</li>
+<li>
+<p>\(c(\alpha)^*=-c(\alpha)\) pointwise;</p>
+</li>
+<li>
+<p>\(\nabla_X\big(c(\alpha)u\big)=c(\nabla_X\alpha)u+c(\alpha)\nabla_Xu\).</p>
+</li>
+</ol>
+<p>Its <em>Dirac operator</em> is \(Du=\sum_{i}c(e^i)\nabla_{e_i}u\); this does not depend
+on the frame.</p>
+</section>
+</div>
+<p>By (a)-(b), \(c(\alpha)^*c(\alpha)=-c(\alpha)^2=|\alpha|^2\); so \(c(\alpha)\)
+is an isometry when \(|\alpha|=1\), and then \(c(\alpha)^{-1}=-c(\alpha)\).</p>
+<p>In local coordinates, write</p>
+<p>\[
+\alpha=\frac1{p!}\alpha_{i_1\cdots i_p}
+\,dx^{i_1}\wedge\cdots\wedge dx^{i_p},
+\]</p>
+<p>\[
+\beta=\frac1{p!}\beta_{j_1\cdots j_p}
+\,dx^{j_1}\wedge\cdots\wedge dx^{j_p}.
+\]</p>
+<p>Using the inverse metric \(g^{ij}\), define</p>
+<p>\[
+\beta^{i_1\cdots i_p}
+=
+g^{i_1j_1}\cdots g^{i_pj_p}
+\beta_{j_1\cdots j_p}.
+\]</p>
+<p>Recall, by definition, \(\beta^\sharp\) is the unique vector field satisfying</p>
+<p>\begin{equation}
+    g(\beta^\sharp,X)=\beta(X)
+\end{equation}</p>
+<p>for every vector field \(X\).
+The corresponding \(p\)-vector is</p>
+<p>\[
+\beta^\sharp
+=
+\frac1{p!}\beta^{i_1\cdots i_p}
+\frac{\partial}{\partial x^{i_1}}
+\wedge\cdots\wedge
+\frac{\partial}{\partial x^{i_p}}.
+\]</p>
+<p>In particular,</p>
+<p>\[
+(dx^{i_1}\wedge\cdots\wedge dx^{i_p})
+\left(
+\partial_{j_1}\wedge\cdots\wedge\partial_{j_p}
+\right)
+=
+\det(\delta^{i_a}_{j_b}).
+\]</p>
+<p>For a decomposable \(p\)-vector, the natural pairing is defined by</p>
+<p>\begin{equation}
+    \alpha(X_1\wedge\cdots\wedge X_p)
+=
+\alpha(X_1,\ldots,X_p).
+\end{equation}</p>
+<p>Using this, one shows</p>
+<p>\begin{equation}
+    g(\alpha ,\beta )=g(\alpha ^{\#},\beta ^{\#}).
+\end{equation}</p>
+<p>This coincides with</p>
+<p>\begin{equation}
+\langle\alpha,\beta\rangle
+=
+\frac1{p!}
+g^{i_1j_1}\cdots g^{i_pj_p}
+\alpha_{i_1\cdots i_p}
+\beta_{j_1\cdots j_p}.
+\end{equation}</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:99:1" title="Edit proposition at source line 99" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \(\alpha \) be \(1\)-form, then</p>
+<p>\[ \la \alpha \wedge \omega  , \eta   \ra= \la \omega  , \iota _{\alpha ^{\#}} \eta  \ra \]</p>
+<p>for forms \(\omega  \) and \(\eta  \) of the appropriate degrees.</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:104:1" title="Edit proof at source line 104" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p>The components of the \((p+1)\)-form \(\alpha\wedge\omega\) are</p>
+<p>\[
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+=
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}.
+\]</p>
+<p>By definition of the inner product on \((p+1)\)-forms,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Thus,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\tag{5}
+\]</p>
+<p>Because \(\eta\) is antisymmetric, moving \(i_a\) to the first position introduces precisely the sign \((-1)^a\).
+Therefore, after relabeling dummy indices, each summand in (5) has the same value:</p>
+<p>\[
+(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}
+\quad\leadsto\quad
+\alpha_j\omega_{i_1\cdots i_p}\eta_{j i_1\cdots i_p}.
+\]</p>
+<p>There are \(p+1\) such summands. Hence,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+&amp;=
+\frac{p+1}{(p+1)!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}\\
+&amp;=
+\frac1{p!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Since our coframe is orthonormal,</p>
+<p>\[
+\alpha^\sharp=\alpha_j e_j.
+\]</p>
+<p>The definition of interior multiplication gives</p>
+<p>\[
+\begin{aligned}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}
+&amp;=
+\eta(\alpha^\sharp,e_{i_1},\ldots,e_{i_p})\\
+&amp;=
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Thus,</p>
+<p>\[
+\begin{aligned}
+\langle\omega,\iota_{\alpha^\sharp}\eta\rangle
+&amp;=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}\\
+&amp;=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+</section>
+</div>
+<p>For an \(E\)-valued \(p\)-form \(\sigma\), the covariant exterior derivative is defined by</p>
+<p>\[
+\begin{aligned}
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+={}&amp;
+\sum_{j=0}^p(-1)^j
+\nabla^E_{X_j}
+\sigma(X_0,\ldots,\widehat X_j,\ldots,X_p)\\
+&amp;+
+\sum_{0\le j&lt;k\le p}(-1)^{j+k}
+\sigma([X_j,X_k],X_0,\ldots,\widehat X_j,\ldots,\widehat X_k,\ldots,X_p).
+\end{aligned}
+\tag{8.1}
+\]</p>
+<p>Because the Levi-Civita connection has zero torsion,
+the expression simplifies to</p>
+<p>\[
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]</p>
+<p>By the definition of the formal adjoint,</p>
+<p>\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+\int_M
+\langle\omega,\delta^\nabla\sigma\rangle\,dv_g.
+\]</p>
+<div class="theorem lemma">
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:229:1" title="Edit lemma at source line 229" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>If \((E_i)\) is a basis of \(T_xM\), \(X_j\) are vectors at \(x\), and \(g^{st}\) is the inverse of the matrix \(g(E_s,E_t)\), then for \(\rho\in A^p(\xi)\),</p>
+<p>\[
+(\delta^\nabla\rho)(X_1,\ldots,X_{p-1})
+=
+-\sum_{s,t}
+g^{st}
+(\nabla_{E_t}\rho)
+(E_s,X_1,\ldots,X_{p-1}).
+\]</p>
+<p>In particular, if \(\rho\in A^1(\xi)\), then</p>
+<p>\[
+\delta^\nabla\rho
+=
+-\operatorname{trace}\nabla\rho.
+\]</p>
+</section>
+</div>
+<p>Now we can give the following example.</p>
+<div class="theorem example">
+<header>Example (bundle-valued forms)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:249:1" title="Edit example at source line 249" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="ex:forms"></span>
+Let \(E\to M\) be a Euclidean vector bundle with metric connection \(\nabla^E\) and
+\(\cS=\Lambda^\bullet T^*M\otimes E\), with the connection induced by the
+Levi-Civita connection and \(\nabla^E\), and</p>
+<p>\[
+c(\alpha)\sigma=\alpha\wedge\sigma-\iota_{\alpha^\sharp}\sigma .
+\]</p>
+<p>Since \((\alpha\wedge)^*=\iota_{\alpha^\sharp}\) and</p>
+<p>\[\alpha\wedge\iota_{\beta^\sharp}+\iota_{\beta^\sharp}\alpha\wedge=g(\alpha,\beta),\]</p>
+<p>while</p>
+<p>\[(\alpha\wedge)^2=0=(\iota_{\alpha^\sharp})^2,\]</p>
+<p>conditions
+(a)-(b) hold; (c) holds because wedge and interior products are
+parallel. Since the Levi-Civita connection is torsion free,</p>
+<p>\[
+d^\nabla\sigma=\sum_i e^i\wedge\nabla_{e_i}\sigma,\qquad
+\delta^\nabla\sigma:=(d^\nabla)^*\sigma=-\sum_i\iota_{e_i}\nabla_{e_i}\sigma ,
+\]</p>
+<p>so \(D=d^\nabla+\delta^\nabla\). For \(\sigma\) of pure degree \(p\), \(d^\nabla\sigma\) and
+\(\delta^\nabla\sigma\) have degrees \(p+1\) and \(p-1\), hence are pointwise orthogonal:</p>
+<p>\begin{equation}\label{eq:pyth}
+|D\sigma|^2=|d^\nabla\sigma|^2+|\delta^\nabla\sigma|^2 .
+\end{equation}</p>
+<p>For \(E\) the trivial line bundle this is the operator \(d+d^*\) of [<a href="#ref-EL78">EL78</a>].</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:274:1" title="Edit example at source line 274" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="ex:other"></span>
+Other Dirac bundles: the spinor bundle of a spin manifold (with the spin Dirac
+operator), twisted by any bundle with metric connection; on a Kähler manifold,
+\(\Lambda^{0,\bullet}T^*M\otimes E\) for a Hermitian holomorphic bundle with its Chern
+connection, with \(D=\sqrt2(\bar\partial_E+\bar\partial_E^*)\)
+[<a href="#ref-LM89">LM89</a>, Ch. II].</p>
+</section>
+</div>
+<p>Here is the form of the theorem we prove.</p>
+<p>\begin{thmA}
+Let \(\cS\) be a Dirac bundle over a connected Riemannian manifold \(M\), and let
+\(u\in W^{1,2}_\loc(M;\cS)\) satisfy</p>
+<p>\begin{equation}\label{eq:hyp}
+|Du|\le V\,|u|\qquad\text{a.e. on }M,
+\end{equation}</p>
+<p>for some \(V\in L^\infty_\loc(M)\). If \(u=0\) a.e.\ on a nonempty open subset of \(M\),
+then \(u=0\) a.e.\ on \(M\).
+\end{thmA}</p>
+<p>By Example~<a class="wiki-crossref" data-wiki-ref="ex:forms" href="#">??</a> and \eqref{eq:pyth}, Theorem~A contains the statement of
+[<a href="#ref-EL78">EL78</a>, (1.27)], with forms allowed to take values in a bundle:</p>
+<p>\begin{thmB}[Aronszajn--Krzywicki--Szarski]
+Let \(M\) be a connected Riemannian manifold, \(E\to M\) a Riemannian vector bundle with
+metric connection, and \(\sigma\in W^{1,2}_\loc(\Lambda^pT^*M\otimes E)\). Suppose that
+for every compact \(K\subset M\) there is a constant \(C_K\) with</p>
+<p>\[
+|d^\nabla\sigma|^2+|\delta^\nabla\sigma|^2\le C_K|\sigma|^2\qquad\text{a.e. on }K.
+\]</p>
+<p>If \(\sigma\) vanishes on a nonempty open subset of \(M\), then \(\sigma\equiv0\).
+\end{thmB}</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/UniConti.wiki:307:1" title="Edit remark at source line 307" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p><span class="wiki-label" data-wiki-label="rem:sharp"></span></p>
+<ol class="wiki-enumerate decimal">
+<li>
+<p><em>Both \(d\) and \(d^*\) are needed.</em> If \(f\in C^\infty_c(M)\) is nonconstant,
+\(\sigma=df\) is closed and vanishes outside \(\supp f\). Likewise \(\sigma={*}df\) is
+coclosed. What makes the theorem work is that \(D^2\) has the scalar principal
+symbol \(|\xi|^2\); see the Weitzenböck formula \eqref{eq:weitz}.</p>
+</li>
+<li>
+<p><em>No regularity of the potential.</em> Only \(V\in L^\infty_\loc\) is used. This
+is what allows nonlinear applications (§ <a class="wiki-crossref" data-wiki-ref="sec:appl" href="#">??</a>).</p>
+</li>
+<li>
+<p><em>Strong unique continuation.</em> For smooth metrics the stronger conclusion
+also holds when \(u\) only vanishes to infinite order at a point (in the \(L^2\)
+sense); this requires Carleman estimates with weights singular at a point and is
+considerably more delicate for first-order systems. The weak form is all that is
+used in [<a href="#ref-EL78">EL78</a>], and it is what we prove.</p>
+</li>
+</ol>
+</section>
+</div>
+</article>
+      <footer>Source-controlled math notes · GitHub Pages</footer>
+    </main>
+  </div>
+  <script src="/assets/wiki.js"></script>
+</body>
+</html>

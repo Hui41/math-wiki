@@ -387,3 +387,56 @@ Let $M^m$ be a complete manifold with nonnegative Ricci curvature. Suppose $f$ i
 \lim_{\rho \to \infty} V_p^{-1}(\rho) \int_{B_p(\rho)} f(x) \, dx = \sup_M f.
 \]
 \end{lemma}
+
+\subsection{The Wedge Product}
+
+Different authors use different conventions for the wedge product of differential forms. Here we follow the \emph{determinant convention}, as used by John M. Lee. The main alternative is the \emph{Alt convention}, which is common among specialists in complex geometry and several complex variables. The two conventions differ only by a constant factor.
+
+Let us begin with an example. For a $2$-form $\Omega$ and a $1$-form $\theta$, the wedge product is
+$$
+\Omega \wedge \theta (X,Y,Z)=\Omega(X,Y)\, \theta (Z)+\Omega (Y,Z)\, \theta (X)+\Omega (Z,X)\, \theta (Y).
+$$
+Notice that the right-hand side is the most economical expression possible. If we expand the general formula directly, many terms coincide and must be combined; for instance,
+$$
+\Omega(X,Y)\, \theta (Z)-\Omega(Y,X)\, \theta (Z)=2\,\Omega(X,Y)\, \theta(Z).
+$$
+In the final expression, however, each distinct term appears exactly once.
+
+Is this a coincidence? To find out, consider the wedge product of two $2$-forms:
+$$
+\begin{aligned}
+    \omega \wedge \eta (X,Y,Z,W)=\;&\omega (X,Y)\, \eta (Z,W)+ \omega (X,Z)\, \eta (W,Y)+\omega (X,W)\, \eta (Y,Z) \\
+    &+\omega (Y,Z)\, \eta (X,W)+\omega (Y,W)\, \eta (Z,X)\\
+    &+\omega (Z,W)\, \eta (X,Y).
+\end{aligned}
+$$
+After some simplification, we again arrive at the same economical form: every distinct term appears exactly once.
+
+To understand why, we return to the definition of the wedge product. For a $k$-form $\omega$ and an $l$-form $\eta$,
+$$
+\omega \wedge \eta=\frac{(k+l) !}{k !\, l !} \operatorname{Alt}(\omega \otimes \eta),
+$$
+where, for a covariant $k$-tensor $\alpha$, the alternation operator is defined by
+$$
+\operatorname{Alt} \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right).
+$$
+The factor $1/k!$ in the definition of $\operatorname{Alt}$ is easy to explain. The sum contains exactly $k!$ terms, so $\operatorname{Alt}$ is an average over all permutations. This normalization also ensures that $\operatorname{Alt}$ leaves alternating tensors unchanged.
+
+The coefficient in the wedge product is less obvious. At first glance it looks like an ordinary normalizing constant chosen to make formulas tidy. On closer inspection, however, it is exactly the binomial coefficient $\binom{k+l}{k}$. This observation explains the phenomenon above.
+
+Combining the two formulas, we obtain
+\begin{equation}\label{eqm1}
+  \omega \wedge \eta=\frac{1}{k !\, l !}  \sum_{\sigma \in S_{k+l}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} (\omega\otimes\eta)\right).
+\end{equation}
+Evaluate the right-hand side of \eqref{eqm1} on $k+l$ vectors. Each permutation $\sigma$ splits these vectors into two groups. The first $k$ vectors are fed into $\omega$, and the remaining $l$ vectors are fed into $\eta$. This gives the following counting.
+\begin{itemize}
+  \item \emph{Number of distinct terms.} A term is determined by which $k$ of the $k+l$ vectors go into $\omega$. Different choices give terms that cannot be combined. Hence the most economical expression has exactly $\binom{k+l}{k}$ terms.
+  \item \emph{Multiplicity of each term.} Two permutations give the same split if and only if they differ by a rearrangement of the $k$ arguments of $\omega$ and of the $l$ arguments of $\eta$. Since $\omega$ and $\eta$ are alternating, the sign changes cancel, and all such permutations contribute the same term. Each distinct term therefore appears exactly $k!\, l!$ times.
+\end{itemize}
+The multiplicity $k!\, l!$ is precisely the denominator in \eqref{eq1}. After cancellation, each distinct term appears exactly once:
+$$
+\omega \wedge \eta\,(v_1,\dots,v_{k+l})=\sum_{\sigma}(\operatorname{sgn}\sigma)\,
+\omega\big(v_{\sigma(1)},\dots,v_{\sigma(k)}\big)\,
+\eta\big(v_{\sigma(k+1)},\dots,v_{\sigma(k+l)}\big),
+$$
+where the sum runs over the $\binom{k+l}{k}$ permutations satisfying $\sigma(1)<\dots<\sigma(k)$ and $\sigma(k+1)<\dots<\sigma(k+l)$. These are the $(k,l)$-shuffles.
