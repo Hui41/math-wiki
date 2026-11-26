@@ -1,3 +1,9 @@
+\usepackage{tikz-cd} 
+\usepackage{tikz}
+\tikzset{
+  block/.style={draw, rounded corners, align=center, inner sep=5pt},
+  line/.style={-{Stealth}}
+}
 \title{Sasakian Manifolds}
 
 \section{Definitions}
@@ -39,6 +45,387 @@ $$ J_c(Y)=\begin{cases}
     T  &\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  $$
 Then, using the integrability of $J_c$ and the fact that $T$ is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that $(M,H,J_b)$ is precisely the pseudo-Hermitian manifold with $\tau=0$.
+
+\section{Contact geometry viewpoint}
+Another viewpoint to define Sasakian manifold is taken by contact geometry.
+
+Let $M^{2 n+1}$ be an almost contact manifold with structure tensors $(\phi, \xi, \eta)$ and consider the manifold $M^{2 n+1} \times \mathbb{R}$. We denote a vector field on $M^{2 n+1} \times \mathbb{R}$ by $(X, f \frac{d}{d t})$, where $X$ is tangent to $M^{2 n+1}, t$ the coordinate on $\mathbb{R}$, and $f$ a $C^{\infty}$ function on $M^{2 n+1} \times \mathbb{R}$. Define an almost complex structure $J$ on $M^{2 n+1} \times \mathbb{R}$ by
+$$
+J\left(X, f \frac{d}{d t}\right)=\left(\phi X-f \xi, \eta(X) \frac{d}{d t}\right)
+$$
+that $J^2=-I$ is easy to check. If now $J$ is integrable, we say that the almost contact structure $(\phi, \xi, \eta)$ is \textbf{normal} (Sasaki and Hatakeyama [1961]).
+
+\begin{remark}
+    Compare to the ``regular''.
+\end{remark}
+
+\begin{definition}
+    We are thus led to define four tensors $N^{(1)}, N^{(2)}, N^{(3)}, N^{(4)}$ by
+    \begin{equation}
+        \begin{aligned}
+N^{(1)}(X, Y) & =[\phi, \phi](X, Y)+2 d \eta(X, Y) \xi, \\
+N^{(2)}(X, Y) & =\left(L_{\phi X} \eta\right)(Y)-\left(L_{\phi Y} \eta\right)(X), \\
+N^{(3)} & =\left(L_{\xi} \phi\right) X \\
+N^{(4)} & =\left(L_{\xi} \eta\right)(X) .
+\end{aligned}
+    \end{equation}
+\end{definition}
+
+\begin{theorem}
+    For an almost contact structure $(\phi, \xi, \eta)$ the vanishing of $N^{(1)}$ implies the vanishing of $N^{(2)}, N^{(3)}$ and $N^{(4)}$.
+\end{theorem}
+\begin{theorem}
+     For a contact structure $(\phi, \xi, \eta, g)$, $N^{(2)}$ and $N^{(4)}$ vanish. Moreover, $N^{(3)}$ vanishes if and only if $\xi$ is a Killing vector field.
+\end{theorem}
+
+\begin{lemma}
+     For an almost contact metric structure $(\phi, \xi, \eta, g)$, the covariant derivative of $\phi$ is given by
+     \begin{equation}
+         \begin{aligned}
+2 g\left(\left(\nabla_X \phi\right) Y, Z\right)= & 3 d \Phi(X, \phi Y, \phi Z)-3 d \Phi(X, Y, Z)+g\left(N^{(1)}(Y, Z), \phi X\right) \\
+& +N^{(2)}(Y, Z) \eta(X)+2 d \eta(\phi Y, X) \eta(Z) \\
+& -2 d \eta(\phi Z, X) \eta(Y).
+\end{aligned}
+     \end{equation}
+\end{lemma}
+
+\begin{definition}
+Define  a tensor
+    \begin{equation}
+        h:=\frac{1}{2}\left(L_{\xi} \phi\right) X=\frac{1}{2}N^{(3)}.
+    \end{equation}
+\end{definition}
+\begin{remark}
+    The first property to note is immediate, namely $h \xi=0$. 
+\end{remark}
+
+\begin{lemma}
+    On a contact metric manifold $h$ is a symmetric operator,
+    \begin{equation}
+        \nabla_X \xi=-\phi X-\phi h X.
+    \end{equation}
+$h$ anticommutes with $\phi$, and $\operatorname{tr} h=0$.
+\end{lemma}
+\begin{corollary}
+    On a contact metric manifold $\delta \eta=0$.
+\end{corollary}
+
+Now we can give another definition of Sasakian manifolds. 
+\begin{definition}
+    A Sasakian manifold is a normal contact metric manifold.
+\end{definition}
+\begin{theorem}
+    An almost contact metric structure $(\phi, \xi, \eta, g)$ is Sasakian if and only if
+    \begin{equation}\label{eq28}
+        \left(\nabla_X \phi\right) Y=g(X, Y) \xi-\eta(Y) X .
+    \end{equation}
+\end{theorem}
+
+\begin{corollary}
+    A Sasakian manifold is $K$-contact.
+\end{corollary}
+\begin{remark}
+    In dimension 3 the converse is true, Corollary 6.5. For K-contact structures that are not Sasakian, see Example 6.7.2.
+\end{remark}
+
+Let's draw two diagrams to make a conclusion:
+
+\begin{tikzpicture}[
+    >=Stealth,
+    every node/.style={font=\small},
+    box/.style={
+        draw=black!65,
+        rounded corners=2pt,
+        minimum height=9mm,
+        minimum width=37mm,
+        inner sep=5pt,
+        align=center
+    },
+    arrow/.style={
+        ->,
+        semithick,
+        draw=black!75
+    },
+    condition/.style={
+        font=\footnotesize,
+        fill=white,
+        inner sep=2pt
+    }
+]
+
+% Nodes
+\node[box] (a) at (0,3.5) {Hermitian};
+
+\node[box] (b) at (7,3.5) {K\"ahler};
+
+\node[box] (c) at (0,0) {Almost Hermitian};
+
+\node[box] (d) at (7,0) {Almost K\"ahler};
+
+% Horizontal arrows
+\draw[arrow] (a) --
+    node[condition,above] {$d\Omega=0$} (b);
+
+\draw[arrow] (c) --
+    node[condition,below] {$d\Omega=0$} (d);
+
+% Vertical arrows
+\draw[arrow] (c) --
+    node[condition,left] {$[J,J]=0$} (a);
+
+\draw[arrow] (d) --
+    node[condition,right] {$[J,J]=0$} (b);
+
+% Diagonal arrow
+\draw[arrow] (c.north east) --
+    node[
+        condition,
+        pos=0.52,
+        above left=2pt
+    ] {$\nabla J=0$}
+    (b.south west);
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[
+    >=Stealth,
+    every node/.style={font=\small},
+    box/.style={
+        draw=black!65,
+        rounded corners=2pt,
+        minimum height=10mm,
+        inner sep=6pt,
+        align=center
+    },
+    arrow/.style={
+        ->,
+        semithick,
+        draw=black!75
+    },
+    condition/.style={
+        font=\footnotesize,
+        fill=white,
+        inner sep=2pt
+    }
+]
+
+% Nodes
+\node[box] (a) at (0,3.7)
+    {Normal almost contact metric};
+
+\node[box] (b) at (9.5,3.7)
+    {Sasakian};
+
+\node[box] (c) at (0,0)
+    {Almost contact metric};
+
+\node[box] (d) at (9.5,0)
+    {Contact metric};
+
+% Horizontal arrows
+\draw[arrow] (a) --
+    node[condition,above] {$\Phi=d\eta$} (b);
+
+\draw[arrow] (c) --
+    node[condition,below] {$\Phi=d\eta$} (d);
+
+% Vertical arrows
+\draw[arrow] (c) --
+    node[condition,left] {$N^{(1)}=0$} (a);
+
+\draw[arrow] (d) --
+    node[condition,right] {$N^{(1)}=0$} (b);
+
+% Diagonal arrow
+\draw[arrow] (c.north east) --
+    node[
+        condition,
+        pos=0.55,
+        above left=2pt
+    ] {$(\ast)$}
+    (b.south west);
+
+% Explanation below the diagram
+\node[
+    font=\footnotesize,
+    anchor=north,
+    align=center
+] at (4.75,-1.3) {%
+    $(\ast)\quad
+    (\nabla_X\phi)Y
+    =g(X,Y)\xi-\eta(Y)X$
+};
+
+\end{tikzpicture}
+
+
+\subsection{More about Sasakian manifolds}
+
+Recall that
+    a \textbf{contact metric structure} on an odd-dimensional manifold $N^{2 n+1}$ is given by $(\varphi, \xi, \eta, g)$, where $\varphi$ is a tensor field of type $(1,1)$ on $N, \xi$ is a vector field, $\eta$ is an 1-form and $g$ is a Riemannian metric such that
+    \begin{equation}\label{eq1}
+        \varphi^2=-I+\eta \otimes \xi, \quad \eta(\xi)=1
+    \end{equation}
+and
+\begin{equation}\label{eq2}
+    g(\varphi X, \varphi Y)=g(X, Y)-\eta(X) \eta(Y), \quad g(X, \varphi Y)=d \eta(X, Y), \quad \forall X, Y \in C(T N) .
+\end{equation}
+
+\begin{remark} Recall that \cite{dragomir_differential_2006}, from $\eqref{eq1}$, one can deduce
+    $$
+\varphi \xi=0, \quad \eta \circ \varphi=0.
+$$
+\end{remark}
+
+\begin{example}
+    Strictly pseudoconvex CR manifolds are therefore contact Riemannian manifolds, in a natural way.
+\end{example}
+\begin{theorem}
+   Let $\left(M, T_{1,0}(M), \theta\right)$ be a pseudo-Hermitian manifold. Then the Webster metric $g_\theta$ is Sasakian if and only if the Tanaka-Webster connection of $\left(M, T_{1,0}(M), \theta\right)$ has vanishing pseudo-Hermitian torsion, that is, $\tau=0$.
+\end{theorem}
+
+Recall that
+    a contact metric manifold $(N, \varphi, \xi, \eta, g)$ is called \textbf{Sasakian} if it is normal, i.e.
+$$
+N_{\varphi}+2 d \eta \otimes \xi=0,
+$$
+where
+\begin{equation}\label{eq:Jtorsion}
+    N_{\varphi}(X, Y)=[\varphi X, \varphi Y]-\varphi[\varphi X, Y]-\varphi[X, \varphi Y]+\varphi^2[X, Y], \quad \forall X, Y \in C(T N),
+\end{equation}
+is the \textbf{Nijenhuis tensor} field of $\varphi$, or, equivalently, if
+\begin{equation}
+    \left(\nabla_X \varphi\right)(Y)=g(X, Y) \xi-\eta(Y) X, \quad \forall X, Y \in C(T N) .
+\end{equation}
+
+\begin{remark}
+    We note that from the above formula it follows 
+    \begin{equation}
+        \nabla_X \xi=-\varphi X.
+    \end{equation}
+\end{remark}
+
+\subsection{Connections and curvatures}
+
+\begin{theorem}
+ Let $\left(M, T_{1,0}(M), \theta\right)$ be a pseudo-Hermitian manifold and $g_\theta$ the Webster metric of $\left(M, T_{1,0}(M), \theta\right)$. Then there exists a unique linear connection $\nabla$ on $M$, called the \textbf{Tanaka-Webster} connection, such that:
+ 
+(1) the Levi distribution $H(M)$ is parallel with respect to $\nabla$;
+
+(2) $\nabla g_\theta=0, \nabla J=0, \nabla \theta=0$ (hence $\left.\nabla T=0\right)$;
+
+(3) the torsion $T_{\nabla}$ of $\nabla$ satisfies $T_{\nabla}(X, Y)=-2 \Omega(X, Y) T$ and $T_{\nabla}(T, J X)=-J T_{\nabla}(T, X)$, for any $X, Y \in H(M)$.
+\end{theorem}
+
+We denote by $\nabla^\theta$ the Levi-Civita connection of $\left(M, g_\theta\right)$. One can see that the Levi-Civita connection $\nabla^\theta$ is related to the Tanaka-Webster connection $\nabla$ by
+\begin{equation}\label{eq33}
+    \nabla^\theta=\nabla+(\Omega-A) \otimes T+\tau \otimes \theta+2 \theta \odot J,
+\end{equation}
+where $2(\theta \odot J)(X, Y)=\theta(X) J Y+\theta(Y) J X$. Thus, we have $\nabla_X^\theta T=$ $\tau(X)+J X$. In particular, 
+\begin{equation}
+    \nabla_T^\theta T=0.
+\end{equation}
+If $X, Y \in H(M)$, then
+\begin{equation}
+    \nabla_X^\theta Y=\nabla_X Y+[\Omega(X, Y)-A(X, Y)] T .
+\end{equation}
+Since $\nabla^\theta-\nabla$ is a $(1,2)$ tensor field on $M$ and $\nabla_T^\theta T=\nabla_T T=0$, we can define a vector field $V$ on $M$ given by
+\begin{equation}
+    V=\operatorname{trace}_{g_\theta}\left(\nabla^\theta-\nabla\right)=\operatorname{trace}_{G_\theta}\left(\nabla^\theta-\nabla\right) .
+\end{equation}
+Actually we have 
+\begin{equation}
+    V=-\operatorname{trace}_{g_\theta}(\tau) T=0
+\end{equation}
+
+
+
+
+
+
+
+\begin{definition}
+    Let $(N, \varphi, \xi, \eta, g)$ be a Sasakian manifold. The sectional curvature of a 2 -plane generated by $X$ and $\varphi X$, where $X$ is an unit vector orthogonal to $\xi$, is called the $\varphi$-\textbf{sectional curvature} determined by $X$. If the $\varphi$-sectional curvature is a constant $c$, then $(N, \varphi, \xi, \eta, g)$ is called a \textbf{Sasakian space form} and it is denoted by $N(c)$.
+The curvature tensor field of a Sasakian space form $N(c)$ is given by
+\begin{equation}
+    \begin{aligned}
+R(X, Y) Z= & \frac{c+3}{4}\{g(Z, Y) X-g(Z, X) Y\}+\frac{c-1}{4}\{\eta(Z) \eta(X) Y- \\
+& -\eta(Z) \eta(Y) X+g(Z, X) \eta(Y) \xi-g(Z, Y) \eta(X) \xi+ \\
+& +g(Z, \varphi Y) \varphi X-g(Z, \varphi X) \varphi Y+2 g(X, \varphi Y) \varphi Z\}
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\begin{remark}[cf. \cite{chen_bochner-type_2012}]
+    The $\varphi$-sectional curvature determines the curvature tensor $R$ completely.
+\end{remark}
+
+\begin{remark}
+    A direct consequence of $\eqref{eq33}$ is that, for Sasakian manifolds, we have(substitute $\tau=0, A=0$ )
+    \begin{equation}
+        K(X, JX)=K^{\theta}(X,JX)+3, \forall X \in \mathcal{H}(M),
+    \end{equation}
+    and 
+    \begin{equation}
+        K(X, T)=K^{\theta}(X,T)-1=0, \forall X \in \mathcal{H}(M),
+    \end{equation}
+    where $K$ is sectional curvature wrt TW connection, while $K^{\theta}$ is the sectional curvature wrt LC connection.
+\end{remark}
+
+\begin{theorem}[cf. \cite{blair_riemannian_2010}]
+     Let $M(c)$ be a complete, simply connected Sasakian manifold with constant $\phi$-sectional curvature $c$. Then $M(c)$ belongs one of the three families of examples listed below.
+\end{theorem}
+
+To begin, let $(\phi, \xi, \eta, g)$ be a contact metric structure and recall the notion of a $\mathcal{D}$-\textbf{homothetic deformation}:
+\begin{equation}\label{eq6}
+    \bar{\eta}=a \eta, \quad \bar{\xi}=\frac{1}{a} \xi, \quad \bar{\phi}=\phi, \quad \bar{g}=a g+a(a-1) \eta \otimes \eta,
+\end{equation}
+where $a$ is a positive constant. The deformed structure $(\bar{\phi}, \bar{\xi}, \bar{\eta}, \bar{g})$ is again a contact metric structure, and it enjoys many of the properties of the original structure. In particular, if $(\phi, \xi, \eta, g)$ is Sasakian, so is $(\bar{\phi}, \bar{\xi}, \bar{\eta}, \bar{g})$; if $M(c)$ is a Sasakian space form, then deforming the structure, we obtain the Sasakian space form $M(\bar{c})$ where $$\bar{c}=\frac{c+3}{a}-3$$ (see Tanno [1968], [1969] for details). We will show that there exist Sasakian space forms $M(c)$ for every value of $c$. 
+
+\begin{remark}
+    $\eqref{eq6}$ is natural from my point of view: we want to make a conformal transformation on $\mathcal{D}$ or ,more precisely, homothetic deformation,  so we hope when restricting to $\mathcal{D}$: $\bar{g}=ag$, so we may assume $\bar{g}=ag+b\eta\otimes \eta.$ But from the 2nd of $\eqref{eq2}$, we are suggested to let $\bar{\eta}=a\eta$ so $\bar{\xi}$ follows its step. Now put the above transformations to the 1st of $\eqref{eq2}$ (testing $\bar{\xi}$), we get $b=a^2-a$.
+\end{remark}
+
+\begin{example}[$\mathbb{S}^{2 n+1}, c>-3$]
+    Let $\mathbb{S}^{2 n+1}=\left\{z \in \mathbb{C}^{n+1}:|z|=1\right\}$ be the unit $(2 n+1)$-dimensional Euclidean sphere. Consider the following structure tensor fields on $\mathbb{S}^{2 n+1}$ : the standard metric field $g_0$, the vector field $\xi_0(z)=-\mathcal{J} z, z \in \mathbb{S}^{2 n+1}$, where $\mathcal{J}$ is the usual almost complex structure on $\mathbb{C}^{n+1}$ defined by
+$$
+\mathcal{J} z=\left(-y^1, \ldots,-y^{n+1}, x^1, \ldots, x^{n+1}\right),
+$$
+for $z=\left(x^1, \ldots, x^{n+1}, y^1, \ldots, y^{n+1}\right)$, and $\varphi_0=s \circ \mathcal{J}$, where $s: T_z \mathbb{C}^{n+1} \rightarrow T_z \mathbb{S}^{2 n+1}$ denotes the orthogonal projection.  Then $g_0$ and $\xi_0$ detemine $\eta_0$ and $\varphi_0$ by 
+$$
+\eta_0=g_0(\xi_0,\cdot), \quad d\eta_0(X,Y)=2g( X,\varphi_0 Y).
+$$
+Equipped with these tensors, $\mathbb{S}^{2 n+1}$ becomes a Sasakian space form with the $\varphi_0$-sectional curvature equal to 1 , denoted by $\mathbb{S}^{2 n+1}(1)$. Now, consider the deformed structure on $\mathbb{S}^{2 n+1}$
+$$
+\eta=a \eta_0, \quad \xi=\frac{1}{a} \xi_0, \quad \varphi=\varphi_0, \quad g=a g_0+a(a-1) \eta_0 \otimes \eta_0
+$$
+where $a$ is a positive constant. The structure $(\varphi, \xi, \eta, g)$ is still a Sasakian structure and $\left(\mathbb{S}^{2 n+1}, \varphi, \xi, \eta, g\right)$ is a Sasakian space form with constant $\varphi$-sectional curvature $c=\frac{4}{a}-3$, $c>-3$, denoted by $\mathbb{S}^{2 n+1}(c)$.
+\end{example}
+
+\begin{example}[$\mathbb{R}^{2 n+1}, c=-3$]
+    The Euclidean space $\mathbb{R}^{2 n+1}\left(x^1, \ldots, x^n, y^1, \ldots, y^n, z\right)$ is a Sasaki manifold with Sasaki structure $(\xi, \eta, \phi, g)$ as follows:
+$$
+\begin{gathered}
+\xi=2 \frac{\partial}{\partial z}, \quad \eta=\frac{1}{2}\left(d z-\sum_{i=1}^n y^i d x^i\right), \quad g=\eta \otimes \eta+\frac{1}{4} \sum_{i=1}^n\left(\left(d x^i\right)^2+\left(d y^i\right)^2\right), \\
+\phi\left(\frac{\partial}{\partial x^i}\right)=-\frac{\partial}{\partial y^i}, \quad \phi\left(\frac{\partial}{\partial y^i}\right)=\frac{\partial}{\partial x^i}+y^i \frac{\partial}{\partial z}, \quad \phi\left(\frac{\partial}{\partial z}\right)=0 .
+\end{gathered}
+$$
+\end{example}
+
+\begin{example}[$B^n \times \mathbb{R}, c<-3$]
+    Let $B^n$ be a simply connected bounded domain in $\mathbb{C}^n$ and $(J, G)$ a Kähler structure with constant holomorphic sectional curvature $k<0$. For such a structure, the fundamental 2 -form $\Omega$ of the Kähler structure is exact and hence $\Omega=d \omega$ for some real analytic 1 -form $\omega$. Now on $B^n \times \mathbb{R}$ let $\pi$ denote the projection onto $B^n$ and $t$ the coordinate on $\mathbb{R}$. Then $B^n \times \mathbb{R}$ with $\eta=\pi^* \omega+d t$ and $g=\pi^* G+\eta \otimes \eta$ is a Sasakian manifold. Regarding $\eta$ as a connection form on $B^n \times \mathbb{R}$, let $\tilde{\pi} X$ denote the horizontal lift of a vector field $X$ on $B^n$. Also we denote by $\underline{K}$ the sectional curvature of $B^n$. Then by direct computation (see Ogiue [1965] or use the Riemannian submersion technique of O'Neill [1966]), we have $K(\tilde{\pi} X, \tilde{\pi} Y)=\underline{K}(X, Y)-3 \eta\left(\nabla_{\tilde{\pi} X} \tilde{\pi} Y\right)^2$ where $\{X, Y\}$ is an orthonormal pair on $B^n$. Now $g\left(\nabla_{\tilde{\pi} X} \tilde{\pi} Y, \xi\right)=-g\left(\tilde{\pi} Y, \nabla_{\tilde{\pi} X} \xi\right)=g(\tilde{\pi} Y, \phi \tilde{\pi} X)=$ $g(\tilde{\pi} Y, \tilde{\pi} J X)$. Therefore $B^n \times \mathbb{R}$ has constant $\phi$-sectional curvature $c=$ $k-3$
+\end{example}
+
+The following is a Sasakian analogue of Schur’s Theorem.
+\begin{theorem}[cf. \cite{adachi_geometric_2010}]
+     If the $\phi$-sectional curvature at each point of a Sasakian manifold $M$ of dimension $\geq 5$ does not depend on the choice of $\phi$-section at that point, then it is constant on $M$.
+\end{theorem}
+
+The following is the unique
+existence theorem of Sasakian space forms.
+\begin{theorem}
+    For any two simply connected complete Sasakian manifolds of constant $\phi$-sectional curvature $c$, there exists an isomorphism between them which preserves their almost contact metric structures.
+\end{theorem}
 
 
 

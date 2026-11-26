@@ -637,3 +637,38 @@ li:has(> .wiki-index-link)::marker {
   align-items: center;
   gap: 0.65em;
 }
+
+.wiki-tikz {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.wiki-tikz img {
+  max-width: 100%;
+  height: auto;
+  background: white;
+}
+
+:root {
+    --wiki-article-bg: #ffffff;
+}
+
+:root[data-theme="dark"] {
+    --wiki-article-bg: #1b2620;
+}
+
+main,
+main article {
+    background-color: var(--wiki-article-bg);
+}
+
+/* TikZ diagrams */
+
+article img.wiki-tikz {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    margin: 1.5rem auto;
+    background: transparent;
+}

@@ -128,9 +128,321 @@ article .theorem >
     <main>
       <nav><div class="wiki-breadcrumbs" aria-label="Breadcrumb"><span class="breadcrumb-separator"><a class="wiki-home-link" href="/notes/">All notes</a> › </span><span class="breadcrumb-current" aria-current="page">Bundle-valued forms</span></div></nav>
       <h1>Bundle-valued forms</h1>
-      <article><div class="wiki-heading-with-edit"><h1>Bundle-valued forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
-<p>Let \(E\to M\) be a smooth complex vector bundle.</p>
-<p><strong>Several natural wedge product operations</strong>:</p>
+      <article><div class="wiki-heading-with-edit"><h1>The Wedge Product</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+<p><span class="wiki-label" data-wiki-label="se:wedpro"></span>
+In this section, we make a few words for a rule of calculating wedge product.</p>
+<p>Different authors use different conventions for the wedge product of differential forms. Here we follow the <em>determinant convention</em>, as used by John M. Lee. The main alternative is the <em>Alt convention</em>, which is common among specialists in complex geometry and several complex variables. The two conventions differ only by a constant factor.</p>
+<p>Let us begin with an example. For a \(2\)-form \(\Omega\) and a \(1\)-form \(\theta\), the wedge product is</p>
+<p>\[
+\Omega \wedge \theta (X,Y,Z)=\Omega(X,Y)\, \theta (Z)+\Omega (Y,Z)\, \theta (X)+\Omega (Z,X)\, \theta (Y).
+\]</p>
+<p>Notice that the right-hand side is the most economical expression possible. If we expand the general formula directly, many terms coincide and must be combined; for instance,</p>
+<p>\[
+\Omega(X,Y)\, \theta (Z)-\Omega(Y,X)\, \theta (Z)=2\,\Omega(X,Y)\, \theta(Z).
+\]</p>
+<p>In the final expression, however, each distinct term appears exactly once.</p>
+<p>Is this a coincidence? To find out, consider the wedge product of two \(2\)-forms:</p>
+<p>\[
+\begin{aligned}
+    \omega \wedge \eta (X,Y,Z,W)=\;&amp;\omega (X,Y)\, \eta (Z,W)+ \omega (X,Z)\, \eta (W,Y)+\omega (X,W)\, \eta (Y,Z) \\
+    &amp;+\omega (Y,Z)\, \eta (X,W)+\omega (Y,W)\, \eta (Z,X)\\
+    &amp;+\omega (Z,W)\, \eta (X,Y).
+\end{aligned}
+\]</p>
+<p>After some simplification, we again arrive at the same economical form: every distinct term appears exactly once.</p>
+<p>To understand why, we return to the definition of the wedge product. For a \(k\)-form \(\omega\) and an \(l\)-form \(\eta\),</p>
+<p>\[
+\omega \wedge \eta=\frac{(k+l) !}{k !\, l !} \operatorname{Alt}(\omega \otimes \eta),
+\]</p>
+<p>where, for a covariant \(k\)-tensor \(\alpha\), the alternation operator is defined by</p>
+<p>\[
+\operatorname{Alt} \alpha=\frac{1}{k !} \sum_{\sigma \in S_{k}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} \alpha\right).
+\]</p>
+<p>The factor \(1/k!\) in the definition of \(\operatorname{Alt}\) is easy to explain. The sum contains exactly \(k!\) terms, so \(\operatorname{Alt}\) is an average over all permutations. This normalization also ensures that \(\operatorname{Alt}\) leaves alternating tensors unchanged.</p>
+<p>The coefficient in the wedge product is less obvious. At first glance it looks like an ordinary normalizing constant chosen to make formulas tidy. On closer inspection, however, it is exactly the binomial coefficient \(\binom{k+l}{k}\). This observation explains the phenomenon above.</p>
+<p>Combining the two formulas, we obtain</p>
+<p>\begin{equation}\label{eqm1}
+  \omega \wedge \eta=\frac{1}{k !\, l !}  \sum_{\sigma \in S_{k+l}}(\operatorname{sgn} \sigma)\left({ }^{\sigma} (\omega\otimes\eta)\right).
+\end{equation}</p>
+<p>Evaluate the right-hand side of \eqref{eqm1} on \(k+l\) vectors. Each permutation \(\sigma\) splits these vectors into two groups. The first \(k\) vectors are fed into \(\omega\), and the remaining \(l\) vectors are fed into \(\eta\). This gives the following counting.</p>
+<ul class="wiki-itemize">
+<li>
+<p><em>Number of distinct terms.</em> A term is determined by which \(k\) of the \(k+l\) vectors go into \(\omega\). Different choices give terms that cannot be combined. Hence the most economical expression has exactly \(\binom{k+l}{k}\) terms.</p>
+</li>
+<li>
+<p><em>Multiplicity of each term.</em> Two permutations give the same split if and only if they differ by a rearrangement of the \(k\) arguments of \(\omega\) and of the \(l\) arguments of \(\eta\). Since \(\omega\) and \(\eta\) are alternating, the sign changes cancel, and all such permutations contribute the same term. Each distinct term therefore appears exactly \(k!\, l!\) times.</p>
+</li>
+</ul>
+<p>The multiplicity \(k!\, l!\) is precisely the denominator in \eqref{eqm1}. After cancellation, each distinct term appears exactly once:</p>
+<p>\[
+\omega \wedge \eta\,(v_1,\dots,v_{k+l})=\sum_{\sigma}(\operatorname{sgn}\sigma)\,
+\omega\big(v_{\sigma(1)},\dots,v_{\sigma(k)}\big)\,
+\eta\big(v_{\sigma(k+1)},\dots,v_{\sigma(k+l)}\big),
+\]</p>
+<p>where the sum runs over the \(\binom{k+l}{k}\) permutations satisfying \(\sigma(1)&lt;\dots&lt;\sigma(k)\) and \(\sigma(k+1)&lt;\dots&lt;\sigma(k+l)\). These are the \((k,l)\)-shuffles.</p>
+<div class="wiki-heading-with-edit"><h1>Product and pairing for differential forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:58:1" title="Edit section at source line 58" aria-label="Edit section in VS Code">Edit</a></div>
+<p>In local coordinates, write</p>
+<p>\[
+\alpha=\frac1{p!}\alpha_{i_1\cdots i_p}
+\,dx^{i_1}\wedge\cdots\wedge dx^{i_p},
+\]</p>
+<p>\[
+\beta=\frac1{p!}\beta_{j_1\cdots j_p}
+\,dx^{j_1}\wedge\cdots\wedge dx^{j_p}.
+\]</p>
+<p>Using the inverse metric \(g^{ij}\), define</p>
+<p>\[
+\beta^{i_1\cdots i_p}
+=
+g^{i_1j_1}\cdots g^{i_pj_p}
+\beta_{j_1\cdots j_p}.
+\]</p>
+<p>Recall, by definition, \(\beta^\sharp\) is the unique vector field satisfying</p>
+<p>\begin{equation}
+    g(\beta^\sharp,X)=\beta(X)
+\end{equation}</p>
+<p>for every vector field \(X\).
+The corresponding \(p\)-vector is</p>
+<p>\[
+\beta^\sharp
+=
+\frac1{p!}\beta^{i_1\cdots i_p}
+\frac{\partial}{\partial x^{i_1}}
+\wedge\cdots\wedge
+\frac{\partial}{\partial x^{i_p}}.
+\]</p>
+<p>In particular,</p>
+<p>\[
+(dx^{i_1}\wedge\cdots\wedge dx^{i_p})
+\left(
+\partial_{j_1}\wedge\cdots\wedge\partial_{j_p}
+\right)
+=
+\det(\delta^{i_a}_{j_b}).
+\]</p>
+<p>For a decomposable \(p\)-vector, the natural pairing is defined by</p>
+<p>\begin{equation}
+    \alpha(X_1\wedge\cdots\wedge X_p)
+=
+\alpha(X_1,\ldots,X_p).
+\end{equation}</p>
+<p>Using this, one shows</p>
+<p>\begin{equation}
+    g(\alpha ,\beta )=g(\alpha ^{\#},\beta ^{\#}).
+\end{equation}</p>
+<p>This is</p>
+<p>\begin{equation}
+\langle\alpha,\beta\rangle
+=
+\frac1{p!}
+g^{i_1j_1}\cdots g^{i_pj_p}
+\alpha_{i_1\cdots i_p}
+\beta_{j_1\cdots j_p}.
+\end{equation}</p>
+<p>Note that the factor \(\frac{1}{p!}\) allows us to get a clean expression for adjoint operator, see \eqref{7}.</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:122:1" title="Edit proposition at source line 122" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>Let \(\alpha \) be \(1\)-form, then</p>
+<p>\begin{equation}\label{6}
+         \la \alpha \wedge \omega  , \eta   \ra= \la \omega  , \iota _{\alpha ^{\#}} \eta  \ra 
+    \end{equation}</p>
+<p>for forms \(\omega  \) and \(\eta  \) of the appropriate degrees.</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:129:1" title="Edit proof at source line 129" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p>The components of the \((p+1)\)-form \(\alpha\wedge\omega\) are</p>
+<p>\[
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+=
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}.
+\]</p>
+<p>This is exactly what we discussed in § <a class="wiki-crossref" data-wiki-ref="se:wedpro" href="#">??</a>.
+By definition of the inner product on \((p+1)\)-forms,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+(\alpha\wedge\omega)_{i_0\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Thus,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+=
+\frac1{(p+1)!}
+\sum_{a=0}^p(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}.
+\end{aligned}
+\tag{5}
+\]</p>
+<p>Because \(\eta\) is antisymmetric, moving \(i_a\) to the first position introduces precisely the sign \((-1)^a\).
+Therefore, after relabeling dummy indices, each summand in (5) has the same value:</p>
+<p>\[
+(-1)^a
+\alpha_{i_a}
+\omega_{i_0\cdots\widehat{i_a}\cdots i_p}
+\eta_{i_0\cdots i_p}
+\quad\leadsto\quad
+\alpha_j\omega_{i_1\cdots i_p}\eta_{j i_1\cdots i_p}.
+\]</p>
+<p>There are \(p+1\) such summands. Hence,</p>
+<p>\[
+\begin{aligned}
+\langle\alpha\wedge\omega,\eta\rangle
+&amp;=
+\frac{p+1}{(p+1)!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}\\
+&amp;=
+\frac1{p!}
+\alpha_j\omega_{i_1\cdots i_p}
+\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Since our coframe is orthonormal,</p>
+<p>\[
+\alpha^\sharp=\alpha_j e_j.
+\]</p>
+<p>The definition of interior multiplication gives</p>
+<p>\[
+\begin{aligned}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}
+&amp;=
+\eta(\alpha^\sharp,e_{i_1},\ldots,e_{i_p})\\
+&amp;=
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+<p>Thus,</p>
+<p>\[
+\begin{aligned}
+\langle\omega,\iota_{\alpha^\sharp}\eta\rangle
+&amp;=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+(\iota_{\alpha^\sharp}\eta)_{i_1\cdots i_p}\\
+&amp;=
+\frac1{p!}
+\omega_{i_1\cdots i_p}
+\alpha_j\eta_{j i_1\cdots i_p}.
+\end{aligned}
+\]</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Bundle-valued forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:218:1" title="Edit section at source line 218" aria-label="Edit section in VS Code">Edit</a></div>
+<p>For an \(E\)-valued \(p\)-form \(\sigma\), the covariant exterior derivative is defined by</p>
+<p>\[
+\begin{aligned}
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+={}&amp;
+\sum_{j=0}^p(-1)^j
+\nabla^E_{X_j}
+\sigma(X_0,\ldots,\widehat X_j,\ldots,X_p)\\
+&amp;+
+\sum_{0\le j&lt;k\le p}(-1)^{j+k}
+\sigma([X_j,X_k],X_0,\ldots,\widehat X_j,\ldots,\widehat X_k,\ldots,X_p).
+\end{aligned}
+\]</p>
+<p>Because the Levi-Civita connection has zero torsion,
+the expression simplifies to</p>
+<p>\[
+(d^\nabla\sigma)(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]</p>
+<p>By the definition of the formal adjoint,</p>
+<p>\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+\int_M
+\langle\omega,\delta^\nabla\sigma\rangle\,dv_g.
+\]</p>
+<div class="theorem lemma">
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:250:1" title="Edit lemma at source line 250" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>If \((E_i)\) is a basis of \(T_xM\), \(X_j\) are vectors at \(x\), and \(g^{st}\) is the inverse of the matrix \(g(E_s,E_t)\), then for \(\rho\in A^p(\xi)\),</p>
+<p>\[
+(\delta^\nabla\rho)(X_1,\ldots,X_{p-1})
+=
+-\sum_{s,t}
+g^{st}
+(\nabla_{E_t}\rho)
+(E_s,X_1,\ldots,X_{p-1}).
+\]</p>
+<p>In particular, if \(\rho\in A^1(\xi)\), then</p>
+<p>\[
+\delta^\nabla\rho
+=
+-\operatorname{trace}\nabla\rho.
+\]</p>
+</section>
+</div>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:268:1" title="Edit proposition at source line 268" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>We have</p>
+<p>\begin{equation}\label{7}
+        d^\nabla=\sum_i e^i\wedge\nabla_{e_i}, \qquad \delta^\nabla
+        =
+        -\sum_i\iota_{e_i}\nabla_{e_i}.
+    \end{equation}</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:276:1" title="Edit proof at source line 276" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p>The first one is due to</p>
+<p>\[
+\left(\sum_i e^i\wedge\nabla_{e_i}\sigma\right)
+(X_0,\ldots,X_p)
+=
+\sum_{j=0}^p(-1)^j
+(\nabla_{X_j}\sigma)
+(X_0,\ldots,\widehat X_j,\ldots,X_p).
+\]</p>
+<p>For the second,   using \eqref{6},</p>
+<p>\[
+\begin{aligned}
+\int_M\langle d^\nabla\omega,\sigma\rangle\,dv_g
+&amp;=
+\sum_i\int_M
+\langle e^i\wedge\nabla_{e_i}\omega,\sigma\rangle\,dv_g\\
+&amp;=
+\sum_i\int_M
+\langle\nabla_{e_i}\omega,\iota_{e_i}\sigma\rangle\,dv_g.
+\end{aligned}
+\]</p>
+<p>Now integrate by parts. In a local orthonormal frame, it is convenient to perform the computation at a point where</p>
+<p>\[
+\nabla_{e_i}e_j=0.
+\]</p>
+<p>The compatibility of the connection with the inner product gives, after integration over \(M\),</p>
+<p>\[
+\int_M
+\langle d^\nabla\omega,\sigma\rangle\,dv_g
+=
+-\int_M
+\la
+\omega,\sum_i\iota_{e_i}\nabla_{e_i}\sigma
+\ra\,dv_g.
+\]</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h2>Pairing rules for bundle-valued forms</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:315:1" title="Edit section at source line 315" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Let \(E\to M\) be a smooth complex or real vector bundle.</p>
 <ol class="wiki-enumerate alpha">
 <li>
 <p>\(\alpha \in \mathscr{E}^q (M), \beta \otimes \sigma \in  \mathscr{E}^{q'} (M;E)\)</p>
@@ -150,7 +462,7 @@ article .theorem >
 </li>
 </ol>
 <div class="theorem example">
-<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:13:1" title="Edit example at source line 13" aria-label="Edit example in VS Code">Edit</a>
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:325:1" title="Edit example at source line 325" aria-label="Edit example in VS Code">Edit</a>
 <section>
 <p>In a local basis, \(\{s_j\}\) is a frame of \(E\), and \(\{\epsilon \}\) is its dual frame.   Then</p>
 <p>\begin{equation*}
@@ -160,7 +472,7 @@ article .theorem >
 		&amp; =\left(\omega_k^j \wedge \eta_m^k\right) \otimes\left(s_j \otimes \varepsilon^m\right)
 		\end{aligned}
 		\end{equation*}</p>
-<p>That's matric product: in an expression like \(\omega_k^j\)   we always interpret <strong>the upper index as the row number and the lower index as the column number</strong>.
+<p>That's matric product: in an expression like \(\omega_k^j\)   we always interpret the upper index as the row number and the lower index as the column number.
 Likewise, if \( \gamma =\gamma^m \otimes s_m \),</p>
 <p>\begin{equation*}
 			\omega \wedge \gamma =(\omega^j_k \wedge \gamma^k) \otimes s_j.
@@ -168,7 +480,7 @@ Likewise, if \( \gamma =\gamma^m \otimes s_m \),</p>
 </section>
 </div>
 <div class="theorem definition">
-<header>Definition (Cauchy–Riemann Operator)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:28:1" title="Edit definition at source line 28" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition (Cauchy–Riemann Operator)</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:340:1" title="Edit definition at source line 340" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>If \(E\) is holomorphic, then the following is well-defined:</p>
 <p>\begin{equation*}
@@ -177,7 +489,7 @@ Likewise, if \( \gamma =\gamma^m \otimes s_m \),</p>
 </section>
 </div>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:35:1" title="Edit proposition at source line 35" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:347:1" title="Edit proposition at source line 347" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Suppose \(M\) is a complex manifold and \(E \to M\) is a holomorphic vector bundle.
 There are operators \(\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}^{p,q+1}(M; E)\) satisfying the following properties:</p>
@@ -204,6 +516,181 @@ There are operators \(\bar{\partial}_E : \mathscr{E}^{p,q}(M; E) \to \mathscr{E}
 <p>If \(\alpha \in \mathscr{E}^{p,q}(M; E)\) satisfies \(\bar{\partial}_E \alpha = 0\), then in a neighborhood of each point there exists \(\beta \in \mathscr{E}^{p,q-1}(M; E)\) such that \(\bar{\partial}_E \beta = \alpha\).</p>
 </li>
 </ul>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h2>The rough Laplacian</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:370:1" title="Edit section at source line 370" aria-label="Edit section in VS Code">Edit</a></div>
+<p>The operator \(\nabla^*\) is defined as the formal \(L^2\)-adjoint of the connection \(\nabla\).
+An important point is that \(\nabla^*\) is not itself a connection. It is a first-order differential operator acting in the opposite direction:</p>
+<p>\[
+\nabla:\Gamma(S)\longrightarrow\Gamma(T^*M\otimes S),
+\]</p>
+<p>\[
+\nabla^*:\Gamma(T^*M\otimes S)\longrightarrow\Gamma(S).
+\]</p>
+<p>Let us derive its definition and local expression.</p>
+<p>For \(u\in\Gamma(S)\), we have</p>
+<p>\[
+\nabla u\in\Gamma(T^*M\otimes S).
+\]</p>
+<p>The formal adjoint \(\nabla^*\) is defined by the identity</p>
+<p>\[
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+\int_M\langle u,\nabla^*A\rangle\,dv_g
+\]</p>
+<p>for all compactly supported smooth sections
+\(
+u\in\Gamma_c(S),
+A\in\Gamma_c(T^*M\otimes S).
+\)</p>
+<div class="theorem proposition">
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:398:1" title="Edit proposition at source line 398" aria-label="Edit proposition in VS Code">Edit</a>
+<section>
+<p>We have</p>
+<p>\begin{equation}
+        \nabla^*A
+        =-\sum_{i=1}^n\bigl(\nabla^{T^*M\otimes S}_{e_i}A\bigr)(e_i).
+    \end{equation}</p>
+</section>
+</div>
+<div class="theorem proof">
+<header>Proof</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:405:1" title="Edit proof at source line 405" aria-label="Edit proof in VS Code">Edit</a>
+<section>
+<p>Choose a local orthonormal frame \(\{e_1,\ldots,e_n\}\), with dual coframe \(\{e^1,\ldots,e^n\}\).
+Write</p>
+<p>\[
+A=\sum_{i=1}^n e^i\otimes A_i,
+\qquad A_i\in\Gamma(S).
+\]</p>
+<p>Then</p>
+<p>\[
+\nabla u=\sum_i e^i\otimes\nabla_{e_i}u.
+\]</p>
+<p>Consequently,</p>
+<p>\[
+\langle\nabla u,A\rangle
+=
+\sum_i\langle\nabla_{e_i}u,A_i\rangle.
+\]</p>
+<p>Because \(\nabla\) is a metric connection,</p>
+<p>\[
+\langle\nabla_{e_i}u,A_i\rangle
+=
+e_i\langle u,A_i\rangle
+-
+\langle u,\nabla_{e_i}A_i\rangle.
+\]</p>
+<p>Integrating and using the divergence theorem gives</p>
+<p>\[
+\int_M e_i\langle u,A_i\rangle\,dv_g
+=
+-\int_M\langle u,A_i\rangle
+\operatorname{div}(e_i)\,dv_g.
+\]</p>
+<p>Therefore,</p>
+<p>\[
+\begin{aligned}
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+-\int_M\left\langle
+u,
+\sum_i\bigl(
+\nabla_{e_i}A_i+
+(\operatorname{div}e_i)A_i
+\bigr)
+\right\rangle\,dv_g.
+\end{aligned}
+\]</p>
+<p>We conclude that</p>
+<p>\begin{equation}
+    \nabla^*A
+=
+-\sum_i
+\left[
+\nabla_{e_i}A_i+
+(\operatorname{div}e_i)A_i
+\right].
+\end{equation}</p>
+<p>On the other hand,</p>
+<p>\[
+\begin{aligned}
+\bigl(\nabla^{T^*M\otimes S}_{e_i}A\bigr)(e_i)
+&amp;=
+\nabla_{e_i}(A(e_i))
+-
+A(\nabla_{e_i}^{LC}e_i).
+\end{aligned}
+\]</p>
+<p>Thus another useful formula is</p>
+<p>\begin{equation}\label{10}
+    \nabla^*A
+=
+-\sum_i
+\left[
+\nabla_{e_i}(A(e_i))
+-
+A(\nabla^{LC}_{e_i}e_i)
+\right].
+\end{equation}</p>
+</section>
+</div>
+<p>Taking \(A=\nabla u\), we obtain</p>
+<p>\[
+A(e_i)=\nabla_{e_i}u.
+\]</p>
+<p>Substituting into \eqref{10},</p>
+<p>\[
+\begin{aligned}
+\nabla^*\nabla u
+&amp;=
+-\sum_i
+\left[
+\nabla_{e_i}\nabla_{e_i}u
+-
+\nabla_{\nabla^{LC}_{e_i}e_i}u
+\right].
+\end{aligned}
+\]</p>
+<p>Hence</p>
+<p>\begin{equation}
+    \nabla^*\nabla u
+=
+-\sum_{i=1}^n
+\left(
+\nabla_{e_i}\nabla_{e_i}u
+-
+\nabla_{\nabla^{LC}_{e_i}e_i}u
+\right).
+\end{equation}</p>
+<p>This is called the <strong>rough Laplacian</strong> or <strong>connection Laplacian</strong>.</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/BundForm.wiki:516:1" title="Edit remark at source line 516" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>When considering higher degree bundle-valued form, we should take the following viewpoint.
+The induced connection on \(E\)-valued \(p\)-forms is</p>
+<p>\[
+\nabla:\Omega^p(M,E)
+\longrightarrow
+\Gamma(T^*M\otimes\Lambda^pT^*M\otimes E).
+\]</p>
+<p>Thus,</p>
+<p>\[
+\nabla u\in\Omega^1(M,\Lambda^pT^*M\otimes E).
+\]</p>
+<p>Its formal adjoint is</p>
+<p>\[
+\nabla^*:
+\Gamma(T^*M\otimes\Lambda^pT^*M\otimes E)
+\longrightarrow
+\Omega^p(M,E).
+\]</p>
+<p>For compactly supported smooth sections \(u\) and \(A\), it is characterized by</p>
+<p>\[
+\int_M\langle\nabla u,A\rangle\,dv_g
+=
+\int_M\langle u,\nabla^*A\rangle\,dv_g.
+\]</p>
+<p>The inner products are induced by \(g\) on the form indices and by \(h\) on the \(E\)-valued coefficients.</p>
 </section>
 </div>
 </article>

@@ -6,6 +6,7 @@ from urllib.parse import quote
 import html, json, re, shutil, os
 from markdown_it import MarkdownIt
 from bib_auto import expand_bibliography
+from tikz_render import render_tikz
 
 ROOT=Path(__file__).resolve().parent
 BASE='/' + os.environ.get('WIKI_BASE_PATH', '').strip('/') if os.environ.get('WIKI_BASE_PATH', '').strip('/') else ''
@@ -190,7 +191,11 @@ if global_macros_file.exists():
         global_macros_file.read_text(encoding="utf-8")
     )
 def compile_page(p):
-    src = expand_bibliography(p['src'])
+    src, diagrams = render_tikz(
+        p['src'], f"notes/{p['slug']}.wiki", ROOT / '.tikz-cache', BASE,
+        lambda prose: {**GLOBAL_MACROS, **macros_from(prose)[1]},
+    )
+    src = expand_bibliography(src)
     src,macros=macros_from(src)
 
     # Global macros apply to every page.
@@ -624,9 +629,10 @@ def compile_page(p):
     )
     rendered=MD.render(src)
     for key,tex in tokens.items():rendered=rendered.replace(key,html.escape(tex,quote=False))
-    return rendered,macros
+    return rendered,macros,diagrams
 
 TEMPLATE=(ROOT/'template.html').read_text(encoding='utf-8')
+compiled_pages = [(p, *compile_page(p)) for p in PAGES]
 if OUT.exists():shutil.rmtree(OUT)
 OUT.mkdir(); shutil.copytree(ROOT/'assets',OUT/'assets')
 if BASE:
@@ -634,8 +640,12 @@ if BASE:
     js.write_text(js.read_text(encoding='utf-8').replace("'/search.json'", "'"+BASE+"/search.json'").replace("'/notes/'", "'"+BASE+"/notes/'"), encoding='utf-8')
 metadata=[dict(title=p['title'],slug=p['slug'],text=re.sub(r'\\[a-zA-Z]+',' ',p['src'])[:6000]) for p in PAGES]
 (OUT/'search.json').write_text(json.dumps(metadata,ensure_ascii=False),encoding='utf-8')
-for p in PAGES:
-    content,macros=compile_page(p)
+for p, content, macros, diagrams in compiled_pages:
+    if diagrams:
+        diagram_output = OUT / 'assets' / 'tikz'
+        diagram_output.mkdir(exist_ok=True)
+        for diagram in diagrams:
+            shutil.copyfile(diagram, diagram_output / diagram.name)
     destination=OUT/'notes'/p['slug']; destination.mkdir(parents=True)
     doc=TEMPLATE.replace('/assets/',BASE+'/assets/').replace('/notes/',BASE+'/notes/').replace('<!-- TITLE -->',html.escape(p['title'])).replace('<!-- CONTENT -->',content).replace('<!-- NAV -->', breadcrumbs(p))
     doc=doc.replace('/* PAGE_MACROS */',json.dumps(macros,ensure_ascii=False)[1:-1])

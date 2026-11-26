@@ -128,18 +128,18 @@ article .theorem >
     <main>
       <nav><div class="wiki-breadcrumbs" aria-label="Breadcrumb"><span class="breadcrumb-separator"><a class="wiki-home-link" href="/notes/">All notes</a> › </span><span class="breadcrumb-current" aria-current="page">Sasakian Manifolds</span></div></nav>
       <h1>Sasakian Manifolds</h1>
-      <article><div class="wiki-heading-with-edit"><h1>Definitions</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:3:1" title="Edit section at source line 3" aria-label="Edit section in VS Code">Edit</a></div>
+      <article><div class="wiki-heading-with-edit"><h1>Definitions</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:9:1" title="Edit section at source line 9" aria-label="Edit section in VS Code">Edit</a></div>
 <p>There are many equivalent definitons of Sasakian manifold.
 We will take a viewpoint from <a href="/notes/PseuHerm/">Pseudo-Hermitian Geometry</a>.</p>
 <div class="theorem definition">
-<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:7:1" title="Edit definition at source line 7" aria-label="Edit definition in VS Code">Edit</a>
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:13:1" title="Edit definition at source line 13" aria-label="Edit definition in VS Code">Edit</a>
 <section>
 <p>A Sasakian manifold is a pseudo-Hermitian manifold \((M,H,J,\theta)\), whose pseudo-Hermitian torsion \(\tau \)  vanishes.</p>
 </section>
 </div>
 <p>The following proposition gives different characterizations of Sasakian manifolds.</p>
 <div class="theorem proposition">
-<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:13:1" title="Edit proposition at source line 13" aria-label="Edit proposition in VS Code">Edit</a>
+<header>Proposition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:19:1" title="Edit proposition at source line 19" aria-label="Edit proposition in VS Code">Edit</a>
 <section>
 <p>Let \((M^{2m+1},g)\) be a Riemannian manifold, \(\nabla\) the Levi-Civita connection, and \(R\) its curvature tensor.
 Then the following conditions are equivalent:</p>
@@ -177,7 +177,308 @@ First,  the tangent bundle admits the decomposition with respect to \(g\):</p>
     T  &amp;\text{ if }~ Y=r \frac{\partial }{\partial r}.
 \end{cases}  \]</p>
 <p>Then, using the integrability of \(J_c\) and the fact that \(T\) is a Killing vector field, one can verify the formally integrable condition. Further analysis shows that \((M,H,J_b)\) is precisely the pseudo-Hermitian manifold with \(\tau=0\).</p>
-<div class="wiki-heading-with-edit"><h1>Space forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:45:1" title="Edit section at source line 45" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="wiki-heading-with-edit"><h1>Contact geometry viewpoint</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:49:1" title="Edit section at source line 49" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Another viewpoint to define Sasakian manifold is taken by contact geometry.</p>
+<p>Let \(M^{2 n+1}\) be an almost contact manifold with structure tensors \((\phi, \xi, \eta)\) and consider the manifold \(M^{2 n+1} \times \mathbb{R}\). We denote a vector field on \(M^{2 n+1} \times \mathbb{R}\) by \((X, f \frac{d}{d t})\), where \(X\) is tangent to \(M^{2 n+1}, t\) the coordinate on \(\mathbb{R}\), and \(f\) a \(C^{\infty}\) function on \(M^{2 n+1} \times \mathbb{R}\). Define an almost complex structure \(J\) on \(M^{2 n+1} \times \mathbb{R}\) by</p>
+<p>\[
+J\left(X, f \frac{d}{d t}\right)=\left(\phi X-f \xi, \eta(X) \frac{d}{d t}\right)
+\]</p>
+<p>that \(J^2=-I\) is easy to check. If now \(J\) is integrable, we say that the almost contact structure \((\phi, \xi, \eta)\) is <strong>normal</strong> (Sasaki and Hatakeyama [1961]).</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:58:1" title="Edit remark at source line 58" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>Compare to the ``regular''.</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:62:1" title="Edit definition at source line 62" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>We are thus led to define four tensors \(N^{(1)}, N^{(2)}, N^{(3)}, N^{(4)}\) by</p>
+<p>\begin{equation}
+        \begin{aligned}
+N^{(1)}(X, Y) &amp; =[\phi, \phi](X, Y)+2 d \eta(X, Y) \xi, \\
+N^{(2)}(X, Y) &amp; =\left(L_{\phi X} \eta\right)(Y)-\left(L_{\phi Y} \eta\right)(X), \\
+N^{(3)} &amp; =\left(L_{\xi} \phi\right) X \\
+N^{(4)} &amp; =\left(L_{\xi} \eta\right)(X) .
+\end{aligned}
+    \end{equation}</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:74:1" title="Edit theorem at source line 74" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>For an almost contact structure \((\phi, \xi, \eta)\) the vanishing of \(N^{(1)}\) implies the vanishing of \(N^{(2)}, N^{(3)}\) and \(N^{(4)}\).</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:77:1" title="Edit theorem at source line 77" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>For a contact structure \((\phi, \xi, \eta, g)\), \(N^{(2)}\) and \(N^{(4)}\) vanish. Moreover, \(N^{(3)}\) vanishes if and only if \(\xi\) is a Killing vector field.</p>
+</section>
+</div>
+<div class="theorem lemma">
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:81:1" title="Edit lemma at source line 81" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>For an almost contact metric structure \((\phi, \xi, \eta, g)\), the covariant derivative of \(\phi\) is given by</p>
+<p>\begin{equation}
+         \begin{aligned}
+2 g\left(\left(\nabla_X \phi\right) Y, Z\right)= &amp; 3 d \Phi(X, \phi Y, \phi Z)-3 d \Phi(X, Y, Z)+g\left(N^{(1)}(Y, Z), \phi X\right) \\
+&amp; +N^{(2)}(Y, Z) \eta(X)+2 d \eta(\phi Y, X) \eta(Z) \\
+&amp; -2 d \eta(\phi Z, X) \eta(Y).
+\end{aligned}
+     \end{equation}</p>
+</section>
+</div>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:92:1" title="Edit definition at source line 92" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>Define  a tensor</p>
+<p>\begin{equation}
+        h:=\frac{1}{2}\left(L_{\xi} \phi\right) X=\frac{1}{2}N^{(3)}.
+    \end{equation}</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:98:1" title="Edit remark at source line 98" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>The first property to note is immediate, namely \(h \xi=0\).</p>
+</section>
+</div>
+<div class="theorem lemma">
+<header>Lemma</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:102:1" title="Edit lemma at source line 102" aria-label="Edit lemma in VS Code">Edit</a>
+<section>
+<p>On a contact metric manifold \(h\) is a symmetric operator,</p>
+<p>\begin{equation}
+        \nabla_X \xi=-\phi X-\phi h X.
+    \end{equation}</p>
+<p>\(h\) anticommutes with \(\phi\), and \(\operatorname{tr} h=0\).</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:109:1" title="Edit corollary at source line 109" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>On a contact metric manifold \(\delta \eta=0\).</p>
+</section>
+</div>
+<p>Now we can give another definition of Sasakian manifolds.</p>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:114:1" title="Edit definition at source line 114" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>A Sasakian manifold is a normal contact metric manifold.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:117:1" title="Edit theorem at source line 117" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>An almost contact metric structure \((\phi, \xi, \eta, g)\) is Sasakian if and only if</p>
+<p>\begin{equation}\label{eq28}
+        \left(\nabla_X \phi\right) Y=g(X, Y) \xi-\eta(Y) X .
+    \end{equation}</p>
+</section>
+</div>
+<div class="theorem corollary">
+<header>Corollary</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:124:1" title="Edit corollary at source line 124" aria-label="Edit corollary in VS Code">Edit</a>
+<section>
+<p>A Sasakian manifold is \(K\)-contact.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:127:1" title="Edit remark at source line 127" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>In dimension 3 the converse is true, Corollary 6.5. For K-contact structures that are not Sasakian, see Example 6.7.2.</p>
+</section>
+</div>
+<p>Let's draw two diagrams to make a conclusion:</p>
+<div class="wiki-tikz"><img src="/assets/tikz/3b0036dedbb9586782a9d7f045c3eafeca738c10cc9406141601f87e1e316468.svg" alt="TikZ diagram"></div>
+<div class="wiki-tikz"><img src="/assets/tikz/09ab9e57544c7e8604b62aa5ec56d2dbade7a144ecda69978c2af1feb8a2d287.svg" alt="TikZ diagram"></div>
+<div class="wiki-heading-with-edit"><h2>More about Sasakian manifolds</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:262:1" title="Edit section at source line 262" aria-label="Edit section in VS Code">Edit</a></div>
+<p>Recall that
+a <strong>contact metric structure</strong> on an odd-dimensional manifold \(N^{2 n+1}\) is given by \((\varphi, \xi, \eta, g)\), where \(\varphi\) is a tensor field of type \((1,1)\) on \(N, \xi\) is a vector field, \(\eta\) is an 1-form and \(g\) is a Riemannian metric such that</p>
+<p>\begin{equation}\label{eq1}
+        \varphi^2=-I+\eta \otimes \xi, \quad \eta(\xi)=1
+    \end{equation}</p>
+<p>and</p>
+<p>\begin{equation}\label{eq2}
+    g(\varphi X, \varphi Y)=g(X, Y)-\eta(X) \eta(Y), \quad g(X, \varphi Y)=d \eta(X, Y), \quad \forall X, Y \in C(T N) .
+\end{equation}</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:274:1" title="Edit remark at source line 274" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>Recall that [<a href="#ref-dragomir_differential_2006">dragomir_differential_2006</a>], from \(\eqref{eq1}\), one can deduce</p>
+<p>\[
+\varphi \xi=0, \quad \eta \circ \varphi=0.
+\]</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:280:1" title="Edit example at source line 280" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>Strictly pseudoconvex CR manifolds are therefore contact Riemannian manifolds, in a natural way.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:283:1" title="Edit theorem at source line 283" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(\left(M, T_{1,0}(M), \theta\right)\) be a pseudo-Hermitian manifold. Then the Webster metric \(g_\theta\) is Sasakian if and only if the Tanaka-Webster connection of \(\left(M, T_{1,0}(M), \theta\right)\) has vanishing pseudo-Hermitian torsion, that is, \(\tau=0\).</p>
+</section>
+</div>
+<p>Recall that
+a contact metric manifold \((N, \varphi, \xi, \eta, g)\) is called <strong>Sasakian</strong> if it is normal, i.e.</p>
+<p>\[
+N_{\varphi}+2 d \eta \otimes \xi=0,
+\]</p>
+<p>where</p>
+<p>\begin{equation}\label{eq:Jtorsion}
+    N_{\varphi}(X, Y)=[\varphi X, \varphi Y]-\varphi[\varphi X, Y]-\varphi[X, \varphi Y]+\varphi^2[X, Y], \quad \forall X, Y \in C(T N),
+\end{equation}</p>
+<p>is the <strong>Nijenhuis tensor</strong> field of \(\varphi\), or, equivalently, if</p>
+<p>\begin{equation}
+    \left(\nabla_X \varphi\right)(Y)=g(X, Y) \xi-\eta(Y) X, \quad \forall X, Y \in C(T N) .
+\end{equation}</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:301:1" title="Edit remark at source line 301" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>We note that from the above formula it follows</p>
+<p>\begin{equation}
+        \nabla_X \xi=-\varphi X.
+    \end{equation}</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h2>Connections and curvatures</h2><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:308:1" title="Edit section at source line 308" aria-label="Edit section in VS Code">Edit</a></div>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:310:1" title="Edit theorem at source line 310" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(\left(M, T_{1,0}(M), \theta\right)\) be a pseudo-Hermitian manifold and \(g_\theta\) the Webster metric of \(\left(M, T_{1,0}(M), \theta\right)\). Then there exists a unique linear connection \(\nabla\) on \(M\), called the <strong>Tanaka-Webster</strong> connection, such that:</p>
+<p>(1) the Levi distribution \(H(M)\) is parallel with respect to \(\nabla\);</p>
+<p>(2) \(\nabla g_\theta=0, \nabla J=0, \nabla \theta=0\) (hence \(\left.\nabla T=0\right)\);</p>
+<p>(3) the torsion \(T_{\nabla}\) of \(\nabla\) satisfies \(T_{\nabla}(X, Y)=-2 \Omega(X, Y) T\) and \(T_{\nabla}(T, J X)=-J T_{\nabla}(T, X)\), for any \(X, Y \in H(M)\).</p>
+</section>
+</div>
+<p>We denote by \(\nabla^\theta\) the Levi-Civita connection of \(\left(M, g_\theta\right)\). One can see that the Levi-Civita connection \(\nabla^\theta\) is related to the Tanaka-Webster connection \(\nabla\) by</p>
+<p>\begin{equation}\label{eq33}
+    \nabla^\theta=\nabla+(\Omega-A) \otimes T+\tau \otimes \theta+2 \theta \odot J,
+\end{equation}</p>
+<p>where \(2(\theta \odot J)(X, Y)=\theta(X) J Y+\theta(Y) J X\). Thus, we have \(\nabla_X^\theta T=\) \(\tau(X)+J X\). In particular,</p>
+<p>\begin{equation}
+    \nabla_T^\theta T=0.
+\end{equation}</p>
+<p>If \(X, Y \in H(M)\), then</p>
+<p>\begin{equation}
+    \nabla_X^\theta Y=\nabla_X Y+[\Omega(X, Y)-A(X, Y)] T .
+\end{equation}</p>
+<p>Since \(\nabla^\theta-\nabla\) is a \((1,2)\) tensor field on \(M\) and \(\nabla_T^\theta T=\nabla_T T=0\), we can define a vector field \(V\) on \(M\) given by</p>
+<p>\begin{equation}
+    V=\operatorname{trace}_{g_\theta}\left(\nabla^\theta-\nabla\right)=\operatorname{trace}_{G_\theta}\left(\nabla^\theta-\nabla\right) .
+\end{equation}</p>
+<p>Actually we have</p>
+<p>\begin{equation}
+    V=-\operatorname{trace}_{g_\theta}(\tau) T=0
+\end{equation}</p>
+<div class="theorem definition">
+<header>Definition</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:347:1" title="Edit definition at source line 347" aria-label="Edit definition in VS Code">Edit</a>
+<section>
+<p>Let \((N, \varphi, \xi, \eta, g)\) be a Sasakian manifold. The sectional curvature of a 2 -plane generated by \(X\) and \(\varphi X\), where \(X\) is an unit vector orthogonal to \(\xi\), is called the \(\varphi\)-<strong>sectional curvature</strong> determined by \(X\). If the \(\varphi\)-sectional curvature is a constant \(c\), then \((N, \varphi, \xi, \eta, g)\) is called a <strong>Sasakian space form</strong> and it is denoted by \(N(c)\).
+The curvature tensor field of a Sasakian space form \(N(c)\) is given by</p>
+<p>\begin{equation}
+    \begin{aligned}
+R(X, Y) Z= &amp; \frac{c+3}{4}\{g(Z, Y) X-g(Z, X) Y\}+\frac{c-1}{4}\{\eta(Z) \eta(X) Y- \\
+&amp; -\eta(Z) \eta(Y) X+g(Z, X) \eta(Y) \xi-g(Z, Y) \eta(X) \xi+ \\
+&amp; +g(Z, \varphi Y) \varphi X-g(Z, \varphi X) \varphi Y+2 g(X, \varphi Y) \varphi Z\}
+\end{aligned}
+\end{equation}</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark (cf. [<a href="#ref-chen_bochner-type_2012">chen_bochner-type_2012</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:359:1" title="Edit remark at source line 359" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>The \(\varphi\)-sectional curvature determines the curvature tensor \(R\) completely.</p>
+</section>
+</div>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:363:1" title="Edit remark at source line 363" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>A direct consequence of \(\eqref{eq33}\) is that, for Sasakian manifolds, we have(substitute \(\tau=0, A=0\) )</p>
+<p>\begin{equation}
+        K(X, JX)=K^{\theta}(X,JX)+3, \forall X \in \mathcal{H}(M),
+    \end{equation}</p>
+<p>and</p>
+<p>\begin{equation}
+        K(X, T)=K^{\theta}(X,T)-1=0, \forall X \in \mathcal{H}(M),
+    \end{equation}</p>
+<p>where \(K\) is sectional curvature wrt TW connection, while \(K^{\theta}\) is the sectional curvature wrt LC connection.</p>
+</section>
+</div>
+<div class="theorem theorem">
+<header>Theorem (cf. [<a href="#ref-blair_riemannian_2010">blair_riemannian_2010</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:375:1" title="Edit theorem at source line 375" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>Let \(M(c)\) be a complete, simply connected Sasakian manifold with constant \(\phi\)-sectional curvature \(c\). Then \(M(c)\) belongs one of the three families of examples listed below.</p>
+</section>
+</div>
+<p>To begin, let \((\phi, \xi, \eta, g)\) be a contact metric structure and recall the notion of a \(\mathcal{D}\)-<strong>homothetic deformation</strong>:</p>
+<p>\begin{equation}\label{eq6}
+    \bar{\eta}=a \eta, \quad \bar{\xi}=\frac{1}{a} \xi, \quad \bar{\phi}=\phi, \quad \bar{g}=a g+a(a-1) \eta \otimes \eta,
+\end{equation}</p>
+<p>where \(a\) is a positive constant. The deformed structure \((\bar{\phi}, \bar{\xi}, \bar{\eta}, \bar{g})\) is again a contact metric structure, and it enjoys many of the properties of the original structure. In particular, if \((\phi, \xi, \eta, g)\) is Sasakian, so is \((\bar{\phi}, \bar{\xi}, \bar{\eta}, \bar{g})\); if \(M(c)\) is a Sasakian space form, then deforming the structure, we obtain the Sasakian space form \(M(\bar{c})\) where</p>
+<p>\[\bar{c}=\frac{c+3}{a}-3\]</p>
+<p>(see Tanno [1968], [1969] for details). We will show that there exist Sasakian space forms \(M(c)\) for every value of \(c\).</p>
+<div class="theorem remark">
+<header>Remark</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:385:1" title="Edit remark at source line 385" aria-label="Edit remark in VS Code">Edit</a>
+<section>
+<p>\(\eqref{eq6}\) is natural from my point of view: we want to make a conformal transformation on \(\mathcal{D}\) or ,more precisely, homothetic deformation,  so we hope when restricting to \(\mathcal{D}\): \(\bar{g}=ag\), so we may assume \(\bar{g}=ag+b\eta\otimes \eta.\) But from the 2nd of \(\eqref{eq2}\), we are suggested to let \(\bar{\eta}=a\eta\) so \(\bar{\xi}\) follows its step. Now put the above transformations to the 1st of \(\eqref{eq2}\) (testing \(\bar{\xi}\)), we get \(b=a^2-a\).</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example (\(\mathbb{S}^{2 n+1}, c&gt;-3\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:389:1" title="Edit example at source line 389" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>Let \(\mathbb{S}^{2 n+1}=\left\{z \in \mathbb{C}^{n+1}:|z|=1\right\}\) be the unit \((2 n+1)\)-dimensional Euclidean sphere. Consider the following structure tensor fields on \(\mathbb{S}^{2 n+1}\) : the standard metric field \(g_0\), the vector field \(\xi_0(z)=-\mathcal{J} z, z \in \mathbb{S}^{2 n+1}\), where \(\mathcal{J}\) is the usual almost complex structure on \(\mathbb{C}^{n+1}\) defined by</p>
+<p>\[
+\mathcal{J} z=\left(-y^1, \ldots,-y^{n+1}, x^1, \ldots, x^{n+1}\right),
+\]</p>
+<p>for \(z=\left(x^1, \ldots, x^{n+1}, y^1, \ldots, y^{n+1}\right)\), and \(\varphi_0=s \circ \mathcal{J}\), where \(s: T_z \mathbb{C}^{n+1} \rightarrow T_z \mathbb{S}^{2 n+1}\) denotes the orthogonal projection.  Then \(g_0\) and \(\xi_0\) detemine \(\eta_0\) and \(\varphi_0\) by</p>
+<p>\[
+\eta_0=g_0(\xi_0,\cdot), \quad d\eta_0(X,Y)=2g( X,\varphi_0 Y).
+\]</p>
+<p>Equipped with these tensors, \(\mathbb{S}^{2 n+1}\) becomes a Sasakian space form with the \(\varphi_0\)-sectional curvature equal to 1 , denoted by \(\mathbb{S}^{2 n+1}(1)\). Now, consider the deformed structure on \(\mathbb{S}^{2 n+1}\)</p>
+<p>\[
+\eta=a \eta_0, \quad \xi=\frac{1}{a} \xi_0, \quad \varphi=\varphi_0, \quad g=a g_0+a(a-1) \eta_0 \otimes \eta_0
+\]</p>
+<p>where \(a\) is a positive constant. The structure \((\varphi, \xi, \eta, g)\) is still a Sasakian structure and \(\left(\mathbb{S}^{2 n+1}, \varphi, \xi, \eta, g\right)\) is a Sasakian space form with constant \(\varphi\)-sectional curvature \(c=\frac{4}{a}-3\), \(c&gt;-3\), denoted by \(\mathbb{S}^{2 n+1}(c)\).</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example (\(\mathbb{R}^{2 n+1}, c=-3\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:405:1" title="Edit example at source line 405" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>The Euclidean space \(\mathbb{R}^{2 n+1}\left(x^1, \ldots, x^n, y^1, \ldots, y^n, z\right)\) is a Sasaki manifold with Sasaki structure \((\xi, \eta, \phi, g)\) as follows:</p>
+<p>\[
+\begin{gathered}
+\xi=2 \frac{\partial}{\partial z}, \quad \eta=\frac{1}{2}\left(d z-\sum_{i=1}^n y^i d x^i\right), \quad g=\eta \otimes \eta+\frac{1}{4} \sum_{i=1}^n\left(\left(d x^i\right)^2+\left(d y^i\right)^2\right), \\
+\phi\left(\frac{\partial}{\partial x^i}\right)=-\frac{\partial}{\partial y^i}, \quad \phi\left(\frac{\partial}{\partial y^i}\right)=\frac{\partial}{\partial x^i}+y^i \frac{\partial}{\partial z}, \quad \phi\left(\frac{\partial}{\partial z}\right)=0 .
+\end{gathered}
+\]</p>
+</section>
+</div>
+<div class="theorem example">
+<header>Example (\(B^n \times \mathbb{R}, c&lt;-3\))</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:415:1" title="Edit example at source line 415" aria-label="Edit example in VS Code">Edit</a>
+<section>
+<p>Let \(B^n\) be a simply connected bounded domain in \(\mathbb{C}^n\) and \((J, G)\) a Kähler structure with constant holomorphic sectional curvature \(k&lt;0\). For such a structure, the fundamental 2 -form \(\Omega\) of the Kähler structure is exact and hence \(\Omega=d \omega\) for some real analytic 1 -form \(\omega\). Now on \(B^n \times \mathbb{R}\) let \(\pi\) denote the projection onto \(B^n\) and \(t\) the coordinate on \(\mathbb{R}\). Then \(B^n \times \mathbb{R}\) with \(\eta=\pi^* \omega+d t\) and \(g=\pi^* G+\eta \otimes \eta\) is a Sasakian manifold. Regarding \(\eta\) as a connection form on \(B^n \times \mathbb{R}\), let \(\tilde{\pi} X\) denote the horizontal lift of a vector field \(X\) on \(B^n\). Also we denote by \(\underline{K}\) the sectional curvature of \(B^n\). Then by direct computation (see Ogiue [1965] or use the Riemannian submersion technique of O'Neill [1966]), we have \(K(\tilde{\pi} X, \tilde{\pi} Y)=\underline{K}(X, Y)-3 \eta\left(\nabla_{\tilde{\pi} X} \tilde{\pi} Y\right)^2\) where \(\{X, Y\}\) is an orthonormal pair on \(B^n\). Now \(g\left(\nabla_{\tilde{\pi} X} \tilde{\pi} Y, \xi\right)=-g\left(\tilde{\pi} Y, \nabla_{\tilde{\pi} X} \xi\right)=g(\tilde{\pi} Y, \phi \tilde{\pi} X)=\) \(g(\tilde{\pi} Y, \tilde{\pi} J X)\). Therefore \(B^n \times \mathbb{R}\) has constant \(\phi\)-sectional curvature \(c=\) \(k-3\)</p>
+</section>
+</div>
+<p>The following is a Sasakian analogue of Schur’s Theorem.</p>
+<div class="theorem theorem">
+<header>Theorem (cf. [<a href="#ref-adachi_geometric_2010">adachi_geometric_2010</a>])</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:420:1" title="Edit theorem at source line 420" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>If the \(\phi\)-sectional curvature at each point of a Sasakian manifold \(M\) of dimension \(\geq 5\) does not depend on the choice of \(\phi\)-section at that point, then it is constant on \(M\).</p>
+</section>
+</div>
+<p>The following is the unique
+existence theorem of Sasakian space forms.</p>
+<div class="theorem theorem">
+<header>Theorem</header><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:426:1" title="Edit theorem at source line 426" aria-label="Edit theorem in VS Code">Edit</a>
+<section>
+<p>For any two simply connected complete Sasakian manifolds of constant \(\phi\)-sectional curvature \(c\), there exists an isomorphism between them which preserves their almost contact metric structures.</p>
+</section>
+</div>
+<div class="wiki-heading-with-edit"><h1>Space forms</h1><a class="wiki-source-jump" href="vscode://file/Users/hui/Documents/math-wiki/math-wiki/notes/Sas.wiki:432:1" title="Edit section at source line 432" aria-label="Edit section in VS Code">Edit</a></div>
 </article>
       <footer>Source-controlled math notes · GitHub Pages</footer>
     </main>

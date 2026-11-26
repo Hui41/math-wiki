@@ -41,3 +41,17 @@ Open `http://localhost:8000/notes/`. Run the server rather than opening `index.h
 
 Run `python build.py` with no `WIKI_BASE_PATH` to keep links rooted at `/` for `http://localhost:8000/notes/`. The GitHub workflow applies the prefix only during deployment.
 
+
+### TikZ 图形
+
+在 `.wiki` 中单独成段写 `tikzpicture` 或 `tikzcd`，例如：
+
+```latex
+\begin{tikzcd}
+A \arrow[r,"f"] & B
+\end{tikzcd}
+```
+
+Mac 使用 MacTeX 的 `latex` 和 `dvisvgm`。打开 **Math Wiki: Open Preview** 后保存笔记即可刷新。可在笔记中用 `\usetikzlibrary`、`\usetikzcdlibrary` 或 `\tikzset` 加载库及定义样式。图中的文字由 TeX 编译，页面里的 MathJax 公式编号不会传给图形。
+
+构建将编译好的 SVG 缓存在 `.tikz-cache/`，并把当前页面引用的图复制到 `_site/assets/tikz/`。编译失败时，错误会标出对应的笔记和行号。
