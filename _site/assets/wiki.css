@@ -13,8 +13,6 @@
   --code: #e7eee7;
   --math-block: #f0f5ee;
   --theorem: #f1f6ef;
-  --remark: #f5f7ef;
-  --proof: #f8f5ed;
   --hover: #dbe9da;
   font-family: Georgia, 'Times New Roman', serif;
   background: var(--page);
@@ -34,8 +32,6 @@
   --code: #304738;
   --math-block: #22382c;
   --theorem: #263d30;
-  --remark: #2b3a30;
-  --proof: #37382d;
   --hover: #345641;
 }
 * { box-sizing: border-box; }
@@ -64,9 +60,9 @@ article h2 { font-size: 23px; margin: 28px 0 14px; }
 article h3 { font-size: 20px; margin: 25px 0 12px; }
 article p { margin: 15px 0; }
 article a.missing { color: #b47c80; text-decoration: underline dotted; }
-.theorem { border-left: 3px solid #87a996; background: var(--theorem); padding: 12px 17px; margin: 19px 0; border-radius: 5px; min-width: 0; max-width: 100%; }
-.theorem.remark,.theorem.example { border-color: #a3afa0; background: var(--remark); }
-.theorem.proof { border-color: #b9a48e; background: var(--proof); }
+.theorem { border-left: 3px solid #87a996; padding: 12px 17px; margin: 19px 0; border-radius: 5px; min-width: 0; max-width: 100%; }
+.theorem.remark,.theorem.example { border-color: #a3afa0; }
+.theorem.proof { border-color: #b9a48e; }
 .theorem.exercise { border-color: #a69dc2; }
 article .theorem>header { all: unset; display: inline; font-weight: 700; color: var(--text); }
 article .theorem>header::after { content: '. '; white-space: pre; }
@@ -165,31 +161,24 @@ footer { border-top: 1px solid var(--border); margin-top: 62px; padding: 22px 0;
 /* 1. Colors for light mode */
 
 :root {
-  --env-theorem-bg: #e9f1e9;
   --env-theorem-border: #588a68;
   --env-theorem-title: #2d6748;
 
-  --env-proposition-bg: #edf2fa;
   --env-proposition-border: #7899c9;
   --env-proposition-title: #456a9b;
 
-  --env-lemma-bg: #f1f2f5;
   --env-lemma-border: #9299a5;
   --env-lemma-title: #586271;
 
-  --env-definition-bg: #f8f4e8;
   --env-definition-border: #ba9a56;
   --env-definition-title: #856827;
 
-  --env-remark-bg: #f1f4f2;
   --env-remark-border: #9aafa2;
   --env-remark-title: #547361;
 
-  --env-example-bg: #eef5f4;
   --env-example-border: #75a6a4;
   --env-example-title: #357b78;
 
-  --env-exercise-bg: #f5f0f7;
   --env-exercise-border: #a18bad;
   --env-exercise-title: #805b90;
 }
@@ -198,31 +187,24 @@ footer { border-top: 1px solid var(--border); margin-top: 62px; padding: 22px 0;
 /* 2. Colors for dark mode */
 
 :root[data-theme="dark"] {
-  --env-theorem-bg: #1c3025;
   --env-theorem-border: #588a68;
   --env-theorem-title: #a5d3b2;
 
-  --env-proposition-bg: #252e3a;
   --env-proposition-border: #7899c9;
   --env-proposition-title: #b4ccef;
 
-  --env-lemma-bg: #272a30;
   --env-lemma-border: #9299a5;
   --env-lemma-title: #c4cad4;
 
-  --env-definition-bg: #2d2b20;
   --env-definition-border: #ba9a56;
   --env-definition-title: #dec58c;
 
-  --env-remark-bg: #252b29;
   --env-remark-border: #9aafa2;
   --env-remark-title: #a9c4b2;
 
-  --env-example-bg: #242d30;
   --env-example-border: #75a6a4;
   --env-example-title: #a0d3cf;
 
-  --env-exercise-bg: #292630;
   --env-exercise-border: #a18bad;
   --env-exercise-title: #ceb7d9;
 }
@@ -245,7 +227,6 @@ article .theorem {
 /* 4. Theorem */
 
 article .theorem.theorem {
-  background: var(--env-theorem-bg);
   border-left-color: var(--env-theorem-border);
 }
 
@@ -257,7 +238,6 @@ article .theorem.theorem > header {
 /* 5. Proposition */
 
 article .theorem.proposition {
-  background: var(--env-proposition-bg);
   border-left-color: var(--env-proposition-border);
 }
 
@@ -270,7 +250,6 @@ article .theorem.proposition > header {
 
 article .theorem.lemma,
 article .theorem.corollary {
-  background: var(--env-lemma-bg);
   border-left-color: var(--env-lemma-border);
 }
 
@@ -283,7 +262,6 @@ article .theorem.corollary > header {
 /* 7. Definition */
 
 article .theorem.definition {
-  background: var(--env-definition-bg);
   border-left-color: var(--env-definition-border);
 }
 
@@ -295,7 +273,6 @@ article .theorem.definition > header {
 /* 8. Remark */
 
 article .theorem.remark {
-  background: var(--env-remark-bg);
   border-left-color: var(--env-remark-border);
 }
 
@@ -307,7 +284,6 @@ article .theorem.remark > header {
 /* 9. Example */
 
 article .theorem.example {
-  background: var(--env-example-bg);
   border-left-color: var(--env-example-border);
 }
 
@@ -319,7 +295,6 @@ article .theorem.example > header {
 /* 10. Exercise */
 
 article .theorem.exercise {
-  background: var(--env-exercise-bg);
   border-left-color: var(--env-exercise-border);
 }
 
